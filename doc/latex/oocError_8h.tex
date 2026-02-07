@@ -1,0 +1,123 @@
+\doxysection{src/errors/ooc\+Error.h File Reference}
+\hypertarget{oocError_8h}{}\label{oocError_8h}\index{src/errors/oocError.h@{src/errors/oocError.h}}
+
+
+Error code definitions for the OOC (Object-\/\+Oriented C) framework.  
+
+
+\doxysubsubsection*{Typedefs}
+\begin{DoxyCompactItemize}
+\item 
+\Hypertarget{oocError_8h_ab873998fb23c9ecc59b167549940b55b}\label{oocError_8h_ab873998fb23c9ecc59b167549940b55b} 
+typedef enum \mbox{\hyperlink{oocError_8h_a1effaed6897d01c49b4771abc4185718}{OOC\+\_\+\+Error}} {\bfseries OOC\+\_\+\+Error}
+\begin{DoxyCompactList}\small\item\em Error code enumeration for OOC framework operations. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsubsection*{Enumerations}
+\begin{DoxyCompactItemize}
+\item 
+enum \mbox{\hyperlink{oocError_8h_a1effaed6897d01c49b4771abc4185718}{OOC\+\_\+\+Error}} \{ \newline
+\mbox{\hyperlink{oocError_8h_a1effaed6897d01c49b4771abc4185718ace916a88c6b27c1dae6fbec2e5c11d41}{OOC\+\_\+\+ERROR\+\_\+\+NONE}} = 0
+, \mbox{\hyperlink{oocError_8h_a1effaed6897d01c49b4771abc4185718a92b75dd49361355ad7bf8b4486e44f08}{OOC\+\_\+\+ERROR\+\_\+\+OUT\+\_\+\+OF\+\_\+\+MEMORY}}
+, \mbox{\hyperlink{oocError_8h_a1effaed6897d01c49b4771abc4185718a5bb8180d5d0eebdcb0d4523152c371e3}{OOC\+\_\+\+ERROR\+\_\+\+INVALID\+\_\+\+ARGUMENT}}
+, \mbox{\hyperlink{oocError_8h_a1effaed6897d01c49b4771abc4185718a3274f792def1637e24478eb4b6f355b5}{OOC\+\_\+\+ERROR\+\_\+\+INVALID\+\_\+\+OBJECT}}
+, \newline
+\mbox{\hyperlink{oocError_8h_a1effaed6897d01c49b4771abc4185718ae5d211375355575073261021f6294bb8}{OOC\+\_\+\+ERROR\+\_\+\+NOT\+\_\+\+IMPLEMENTED}}
+, \mbox{\hyperlink{oocError_8h_a1effaed6897d01c49b4771abc4185718a206f097a4d002209f0f5c798f6fd113c}{OOC\+\_\+\+ERROR\+\_\+\+NO\+\_\+\+CLASS}}
+, \mbox{\hyperlink{oocError_8h_a1effaed6897d01c49b4771abc4185718af6f6342c736ab5489f0c2e58d757046e}{OOC\+\_\+\+ERROR\+\_\+\+FINAL\+\_\+\+CLASS\+\_\+\+INHERITANCE}}
+, \mbox{\hyperlink{oocError_8h_a1effaed6897d01c49b4771abc4185718a9ba4c03af1b2a082708e1bd66d5d567b}{OOC\+\_\+\+ERROR\+\_\+\+BUFFER\+\_\+\+TOO\+\_\+\+SMALL}}
+, \newline
+\mbox{\hyperlink{oocError_8h_a1effaed6897d01c49b4771abc4185718a4e99e3568bd0e6ece38433b32209513a}{OOC\+\_\+\+ERROR\+\_\+\+STANDARD}}
+, \mbox{\hyperlink{oocError_8h_a1effaed6897d01c49b4771abc4185718aab9cc3713ead5591a717e80502318aa9}{OOC\+\_\+\+ERROR\+\_\+\+DUPLICATE\+\_\+\+INTERFACE}}
+, \mbox{\hyperlink{oocError_8h_a1effaed6897d01c49b4771abc4185718a739f64cf16d81af9f2b658b8f3f5ea59}{OOC\+\_\+\+ERROR\+\_\+\+NULL\+\_\+\+POINTER}}
+, \mbox{\hyperlink{oocError_8h_a1effaed6897d01c49b4771abc4185718a47b23346e1097fc1503fb7e0d6a1b4f4}{OOC\+\_\+\+ERROR\+\_\+\+INTERFACE\+\_\+\+NOT\+\_\+\+FOUND}}
+, \newline
+\mbox{\hyperlink{oocError_8h_a1effaed6897d01c49b4771abc4185718aad6c7f594d20e75ea8e7a9af00c2e565}{OOC\+\_\+\+ERROR\+\_\+\+UNSUPPORTED}}
+, {\bfseries OOC\+\_\+\+ERROR\+\_\+\+NOT\+\_\+\+FOUND}
+, {\bfseries OOC\+\_\+\+ERROR\+\_\+\+DUPLICATE\+\_\+\+FOUND}
+, {\bfseries OOC\+\_\+\+ERROR\+\_\+\+INVALID\+\_\+\+STATE}
+, \newline
+{\bfseries OOC\+\_\+\+ERROR\+\_\+\+NOT\+\_\+\+SUPPORTED}
+, {\bfseries OOC\+\_\+\+ERROR\+\_\+\+INVALID\+\_\+\+MODIFIER}
+, {\bfseries OOC\+\_\+\+ERROR\+\_\+\+NO\+\_\+\+PARENT}
+, {\bfseries OOC\+\_\+\+ERROR\+\_\+\+ABSTRACT\+\_\+\+METHOD\+\_\+\+NOT\+\_\+\+IMPLEMENTED}
+, \newline
+\mbox{\hyperlink{oocError_8h_a1effaed6897d01c49b4771abc4185718aaeeb54efa54c17a1bf3cd44fb79823fa}{OOC\+\_\+\+ERROR\+\_\+\+COUNT}}
+ \}
+\begin{DoxyCompactList}\small\item\em Enumeration of all possible error codes in the OOC framework. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+Error code definitions for the OOC (Object-\/\+Oriented C) framework. 
+
+This header defines all error codes used throughout the OOC framework. Error codes are used to indicate various failure conditions and provide standardized error reporting across the framework. 
+
+\label{doc-enum-members}
+\Hypertarget{oocError_8h_doc-enum-members}
+\doxysubsection{Enumeration Type Documentation}
+\Hypertarget{oocError_8h_a1effaed6897d01c49b4771abc4185718}\index{oocError.h@{oocError.h}!OOC\_Error@{OOC\_Error}}
+\index{OOC\_Error@{OOC\_Error}!oocError.h@{oocError.h}}
+\doxysubsubsection{\texorpdfstring{OOC\_Error}{OOC\_Error}}
+{\footnotesize\ttfamily \label{oocError_8h_a1effaed6897d01c49b4771abc4185718} 
+enum \mbox{\hyperlink{oocError_8h_a1effaed6897d01c49b4771abc4185718}{OOC\+\_\+\+Error}}}
+
+
+
+Enumeration of all possible error codes in the OOC framework. 
+
+\begin{DoxyEnumFields}[2]{Enumerator}
+\raisebox{\heightof{T}}[0pt][0pt]{\index{OOC\_ERROR\_NONE@{OOC\_ERROR\_NONE}!oocError.h@{oocError.h}}\index{oocError.h@{oocError.h}!OOC\_ERROR\_NONE@{OOC\_ERROR\_NONE}}}\Hypertarget{oocError_8h_a1effaed6897d01c49b4771abc4185718ace916a88c6b27c1dae6fbec2e5c11d41}\label{oocError_8h_a1effaed6897d01c49b4771abc4185718ace916a88c6b27c1dae6fbec2e5c11d41} 
+OOC\+\_\+\+ERROR\+\_\+\+NONE&No error occurred -\/ operation completed successfully. \\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{OOC\_ERROR\_OUT\_OF\_MEMORY@{OOC\_ERROR\_OUT\_OF\_MEMORY}!oocError.h@{oocError.h}}\index{oocError.h@{oocError.h}!OOC\_ERROR\_OUT\_OF\_MEMORY@{OOC\_ERROR\_OUT\_OF\_MEMORY}}}\Hypertarget{oocError_8h_a1effaed6897d01c49b4771abc4185718a92b75dd49361355ad7bf8b4486e44f08}\label{oocError_8h_a1effaed6897d01c49b4771abc4185718a92b75dd49361355ad7bf8b4486e44f08} 
+OOC\+\_\+\+ERROR\+\_\+\+OUT\+\_\+\+OF\+\_\+\+MEMORY&Memory allocation failed. \\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{OOC\_ERROR\_INVALID\_ARGUMENT@{OOC\_ERROR\_INVALID\_ARGUMENT}!oocError.h@{oocError.h}}\index{oocError.h@{oocError.h}!OOC\_ERROR\_INVALID\_ARGUMENT@{OOC\_ERROR\_INVALID\_ARGUMENT}}}\Hypertarget{oocError_8h_a1effaed6897d01c49b4771abc4185718a5bb8180d5d0eebdcb0d4523152c371e3}\label{oocError_8h_a1effaed6897d01c49b4771abc4185718a5bb8180d5d0eebdcb0d4523152c371e3} 
+OOC\+\_\+\+ERROR\+\_\+\+INVALID\+\_\+\+ARGUMENT&Invalid argument passed to function. \\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{OOC\_ERROR\_INVALID\_OBJECT@{OOC\_ERROR\_INVALID\_OBJECT}!oocError.h@{oocError.h}}\index{oocError.h@{oocError.h}!OOC\_ERROR\_INVALID\_OBJECT@{OOC\_ERROR\_INVALID\_OBJECT}}}\Hypertarget{oocError_8h_a1effaed6897d01c49b4771abc4185718a3274f792def1637e24478eb4b6f355b5}\label{oocError_8h_a1effaed6897d01c49b4771abc4185718a3274f792def1637e24478eb4b6f355b5} 
+OOC\+\_\+\+ERROR\+\_\+\+INVALID\+\_\+\+OBJECT&Object is not valid or corrupted. \\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{OOC\_ERROR\_NOT\_IMPLEMENTED@{OOC\_ERROR\_NOT\_IMPLEMENTED}!oocError.h@{oocError.h}}\index{oocError.h@{oocError.h}!OOC\_ERROR\_NOT\_IMPLEMENTED@{OOC\_ERROR\_NOT\_IMPLEMENTED}}}\Hypertarget{oocError_8h_a1effaed6897d01c49b4771abc4185718ae5d211375355575073261021f6294bb8}\label{oocError_8h_a1effaed6897d01c49b4771abc4185718ae5d211375355575073261021f6294bb8} 
+OOC\+\_\+\+ERROR\+\_\+\+NOT\+\_\+\+IMPLEMENTED&Requested functionality is not implemented. \\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{OOC\_ERROR\_NO\_CLASS@{OOC\_ERROR\_NO\_CLASS}!oocError.h@{oocError.h}}\index{oocError.h@{oocError.h}!OOC\_ERROR\_NO\_CLASS@{OOC\_ERROR\_NO\_CLASS}}}\Hypertarget{oocError_8h_a1effaed6897d01c49b4771abc4185718a206f097a4d002209f0f5c798f6fd113c}\label{oocError_8h_a1effaed6897d01c49b4771abc4185718a206f097a4d002209f0f5c798f6fd113c} 
+OOC\+\_\+\+ERROR\+\_\+\+NO\+\_\+\+CLASS&No class descriptor found. \\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{OOC\_ERROR\_FINAL\_CLASS\_INHERITANCE@{OOC\_ERROR\_FINAL\_CLASS\_INHERITANCE}!oocError.h@{oocError.h}}\index{oocError.h@{oocError.h}!OOC\_ERROR\_FINAL\_CLASS\_INHERITANCE@{OOC\_ERROR\_FINAL\_CLASS\_INHERITANCE}}}\Hypertarget{oocError_8h_a1effaed6897d01c49b4771abc4185718af6f6342c736ab5489f0c2e58d757046e}\label{oocError_8h_a1effaed6897d01c49b4771abc4185718af6f6342c736ab5489f0c2e58d757046e} 
+OOC\+\_\+\+ERROR\+\_\+\+FINAL\+\_\+\+CLASS\+\_\+\+INHERITANCE&Attempt to inherit from a final class. \\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{OOC\_ERROR\_BUFFER\_TOO\_SMALL@{OOC\_ERROR\_BUFFER\_TOO\_SMALL}!oocError.h@{oocError.h}}\index{oocError.h@{oocError.h}!OOC\_ERROR\_BUFFER\_TOO\_SMALL@{OOC\_ERROR\_BUFFER\_TOO\_SMALL}}}\Hypertarget{oocError_8h_a1effaed6897d01c49b4771abc4185718a9ba4c03af1b2a082708e1bd66d5d567b}\label{oocError_8h_a1effaed6897d01c49b4771abc4185718a9ba4c03af1b2a082708e1bd66d5d567b} 
+OOC\+\_\+\+ERROR\+\_\+\+BUFFER\+\_\+\+TOO\+\_\+\+SMALL&Provided buffer is too small for the operation. \\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{OOC\_ERROR\_STANDARD@{OOC\_ERROR\_STANDARD}!oocError.h@{oocError.h}}\index{oocError.h@{oocError.h}!OOC\_ERROR\_STANDARD@{OOC\_ERROR\_STANDARD}}}\Hypertarget{oocError_8h_a1effaed6897d01c49b4771abc4185718a4e99e3568bd0e6ece38433b32209513a}\label{oocError_8h_a1effaed6897d01c49b4771abc4185718a4e99e3568bd0e6ece38433b32209513a} 
+OOC\+\_\+\+ERROR\+\_\+\+STANDARD&Standard library error occurred. \\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{OOC\_ERROR\_DUPLICATE\_INTERFACE@{OOC\_ERROR\_DUPLICATE\_INTERFACE}!oocError.h@{oocError.h}}\index{oocError.h@{oocError.h}!OOC\_ERROR\_DUPLICATE\_INTERFACE@{OOC\_ERROR\_DUPLICATE\_INTERFACE}}}\Hypertarget{oocError_8h_a1effaed6897d01c49b4771abc4185718aab9cc3713ead5591a717e80502318aa9}\label{oocError_8h_a1effaed6897d01c49b4771abc4185718aab9cc3713ead5591a717e80502318aa9} 
+OOC\+\_\+\+ERROR\+\_\+\+DUPLICATE\+\_\+\+INTERFACE&Interface type already implemented by this object. \\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{OOC\_ERROR\_NULL\_POINTER@{OOC\_ERROR\_NULL\_POINTER}!oocError.h@{oocError.h}}\index{oocError.h@{oocError.h}!OOC\_ERROR\_NULL\_POINTER@{OOC\_ERROR\_NULL\_POINTER}}}\Hypertarget{oocError_8h_a1effaed6897d01c49b4771abc4185718a739f64cf16d81af9f2b658b8f3f5ea59}\label{oocError_8h_a1effaed6897d01c49b4771abc4185718a739f64cf16d81af9f2b658b8f3f5ea59} 
+OOC\+\_\+\+ERROR\+\_\+\+NULL\+\_\+\+POINTER&NULL pointer provided where a valid pointer was expected. \\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{OOC\_ERROR\_INTERFACE\_NOT\_FOUND@{OOC\_ERROR\_INTERFACE\_NOT\_FOUND}!oocError.h@{oocError.h}}\index{oocError.h@{oocError.h}!OOC\_ERROR\_INTERFACE\_NOT\_FOUND@{OOC\_ERROR\_INTERFACE\_NOT\_FOUND}}}\Hypertarget{oocError_8h_a1effaed6897d01c49b4771abc4185718a47b23346e1097fc1503fb7e0d6a1b4f4}\label{oocError_8h_a1effaed6897d01c49b4771abc4185718a47b23346e1097fc1503fb7e0d6a1b4f4} 
+OOC\+\_\+\+ERROR\+\_\+\+INTERFACE\+\_\+\+NOT\+\_\+\+FOUND&Requested interface not implemented by this object. \\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{OOC\_ERROR\_UNSUPPORTED@{OOC\_ERROR\_UNSUPPORTED}!oocError.h@{oocError.h}}\index{oocError.h@{oocError.h}!OOC\_ERROR\_UNSUPPORTED@{OOC\_ERROR\_UNSUPPORTED}}}\Hypertarget{oocError_8h_a1effaed6897d01c49b4771abc4185718aad6c7f594d20e75ea8e7a9af00c2e565}\label{oocError_8h_a1effaed6897d01c49b4771abc4185718aad6c7f594d20e75ea8e7a9af00c2e565} 
+OOC\+\_\+\+ERROR\+\_\+\+UNSUPPORTED&Operation not supported by this implementation. \\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{OOC\_ERROR\_COUNT@{OOC\_ERROR\_COUNT}!oocError.h@{oocError.h}}\index{oocError.h@{oocError.h}!OOC\_ERROR\_COUNT@{OOC\_ERROR\_COUNT}}}\Hypertarget{oocError_8h_a1effaed6897d01c49b4771abc4185718aaeeb54efa54c17a1bf3cd44fb79823fa}\label{oocError_8h_a1effaed6897d01c49b4771abc4185718aaeeb54efa54c17a1bf3cd44fb79823fa} 
+OOC\+\_\+\+ERROR\+\_\+\+COUNT&Total count of error codes (must be last) \\
+\hline
+
+\end{DoxyEnumFields}

@@ -1,0 +1,142 @@
+\doxysection{ooc\+String.\+h}
+\hypertarget{oocString_8h_source}{}\label{oocString_8h_source}\index{src/string/oocString.h@{src/string/oocString.h}}
+\mbox{\hyperlink{oocString_8h}{Go to the documentation of this file.}}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00001\ }
+\DoxyCodeLine{00015\ }
+\DoxyCodeLine{00016\ \textcolor{preprocessor}{\#ifndef\ OOC\_STRING\_H\_}}
+\DoxyCodeLine{00017\ \textcolor{preprocessor}{\#define\ OOC\_STRING\_H\_}}
+\DoxyCodeLine{00018\ }
+\DoxyCodeLine{00019\ \textcolor{preprocessor}{\#include\ <stdarg.h>}}
+\DoxyCodeLine{00020\ \textcolor{preprocessor}{\#include\ <stddef.h>}}
+\DoxyCodeLine{00021\ \textcolor{preprocessor}{\#include\ <stdbool.h>}}
+\DoxyCodeLine{00022\ }
+\DoxyCodeLine{00023\ \textcolor{preprocessor}{\#include\ "{}\mbox{\hyperlink{oocError_8h}{oocError.h}}"{}}}
+\DoxyCodeLine{00024\ }
+\DoxyCodeLine{00029\ \textcolor{keywordtype}{void}*\ \mbox{\hyperlink{oocString_8h_aea2f5aef6271a66133f63fee3e42a161}{ooc\_stringClass}}();}
+\DoxyCodeLine{00030\ }
+\DoxyCodeLine{00031\ \textcolor{comment}{//\ ============================================================================}}
+\DoxyCodeLine{00032\ \textcolor{comment}{//\ Static\ methods\ for\ C\ strings\ (equivalent\ to\ Java\ static\ methods)}}
+\DoxyCodeLine{00033\ \textcolor{comment}{//\ ============================================================================}}
+\DoxyCodeLine{00034\ }
+\DoxyCodeLine{00042\ \textcolor{keywordtype}{char}*\ \mbox{\hyperlink{oocString_8h_a78525fbc15bef46f5ad6dca36f021554}{ooc\_StringFormatv}}(\textcolor{keyword}{const}\ \textcolor{keywordtype}{char}*\ format,\ va\_list*\ args);}
+\DoxyCodeLine{00043\ }
+\DoxyCodeLine{00051\ \textcolor{keywordtype}{char}*\ \mbox{\hyperlink{oocString_8h_a80072b4fca6bb716f3c6e4ec39a212d2}{ooc\_StringFormat}}(\textcolor{keyword}{const}\ \textcolor{keywordtype}{char}*\ format,\ ...);}
+\DoxyCodeLine{00052\ }
+\DoxyCodeLine{00059\ \textcolor{keywordtype}{char}*\ \mbox{\hyperlink{oocString_8h_ae6395e3b37c39b4fcde5e2fa74634eaa}{ooc\_StringFromInt}}(\textcolor{keywordtype}{int}\ value);}
+\DoxyCodeLine{00060\ }
+\DoxyCodeLine{00067\ \textcolor{keywordtype}{char}*\ \mbox{\hyperlink{oocString_8h_a72f6a9b714374f695564baa3973aafbf}{ooc\_StringFromDouble}}(\textcolor{keywordtype}{double}\ value);}
+\DoxyCodeLine{00068\ }
+\DoxyCodeLine{00075\ \textcolor{keywordtype}{char}*\ \mbox{\hyperlink{oocString_8h_a17d515cb6a356854716db41a8c61565b}{ooc\_StringFromChar}}(\textcolor{keywordtype}{char}\ value);}
+\DoxyCodeLine{00076\ }
+\DoxyCodeLine{00083\ \textcolor{keywordtype}{char}*\ \mbox{\hyperlink{oocString_8h_afd230a01dd517a8c5dd6efd42efdad70}{ooc\_StringFromBool}}(\textcolor{keywordtype}{bool}\ value);}
+\DoxyCodeLine{00084\ }
+\DoxyCodeLine{00093\ \mbox{\hyperlink{oocError_8h_a1effaed6897d01c49b4771abc4185718}{OOC\_Error}}\ \mbox{\hyperlink{oocString_8h_a9352ece494ff0642032cf6f4d7d39b89}{ooc\_StringFormatAt}}(\textcolor{keywordtype}{char}*\ buffer,\ \textcolor{keywordtype}{size\_t}\ bufferSize,\ \textcolor{keyword}{const}\ \textcolor{keywordtype}{char}*\ format,\ ...);}
+\DoxyCodeLine{00094\ }
+\DoxyCodeLine{00102\ \mbox{\hyperlink{oocError_8h_a1effaed6897d01c49b4771abc4185718}{OOC\_Error}}\ \mbox{\hyperlink{oocString_8h_acf5decf816f5febdbeb084e85a9882ab}{ooc\_StringFromIntAt}}(\textcolor{keywordtype}{char}*\ buffer,\ \textcolor{keywordtype}{size\_t}\ bufferSize,\ \textcolor{keywordtype}{int}\ value);}
+\DoxyCodeLine{00103\ }
+\DoxyCodeLine{00111\ \mbox{\hyperlink{oocError_8h_a1effaed6897d01c49b4771abc4185718}{OOC\_Error}}\ \mbox{\hyperlink{oocString_8h_a820ebe722b3b58151c5b1de806c90b74}{ooc\_StringFromDoubleAt}}(\textcolor{keywordtype}{char}*\ buffer,\ \textcolor{keywordtype}{size\_t}\ bufferSize,\ \textcolor{keywordtype}{double}\ value);}
+\DoxyCodeLine{00112\ }
+\DoxyCodeLine{00120\ \mbox{\hyperlink{oocError_8h_a1effaed6897d01c49b4771abc4185718}{OOC\_Error}}\ \mbox{\hyperlink{oocString_8h_a18cbe6a8ab657444bc93eded0eeee18f}{ooc\_StringFromCharAt}}(\textcolor{keywordtype}{char}*\ buffer,\ \textcolor{keywordtype}{size\_t}\ bufferSize,\ \textcolor{keywordtype}{char}\ value);}
+\DoxyCodeLine{00121\ }
+\DoxyCodeLine{00129\ \mbox{\hyperlink{oocError_8h_a1effaed6897d01c49b4771abc4185718}{OOC\_Error}}\ \mbox{\hyperlink{oocString_8h_a2d41235a9cd48dd9b05d6a3b4864f3a9}{ooc\_StringFromBoolAt}}(\textcolor{keywordtype}{char}*\ buffer,\ \textcolor{keywordtype}{size\_t}\ bufferSize,\ \textcolor{keywordtype}{bool}\ value);}
+\DoxyCodeLine{00130\ }
+\DoxyCodeLine{00131\ \textcolor{comment}{//\ ============================================================================}}
+\DoxyCodeLine{00132\ \textcolor{comment}{//\ Static\ versions\ of\ instance\ methods\ -\/\ operate\ on\ C\ strings}}
+\DoxyCodeLine{00133\ \textcolor{comment}{//\ ============================================================================}}
+\DoxyCodeLine{00134\ }
+\DoxyCodeLine{00140\ \textcolor{keywordtype}{size\_t}\ \mbox{\hyperlink{oocString_8h_aba49bd50e02e4ef50b944a4a84fd1e97}{ooc\_StringLength}}(\textcolor{keyword}{const}\ \textcolor{keywordtype}{char}*\ str);}
+\DoxyCodeLine{00141\ }
+\DoxyCodeLine{00149\ \textcolor{keywordtype}{char}\ \mbox{\hyperlink{oocString_8h_a56eec88363dba4feda3bb24d94850f1a}{ooc\_StringCharAt}}(\textcolor{keyword}{const}\ \textcolor{keywordtype}{char}*\ str,\ \textcolor{keywordtype}{size\_t}\ index);}
+\DoxyCodeLine{00150\ }
+\DoxyCodeLine{00159\ \mbox{\hyperlink{oocError_8h_a1effaed6897d01c49b4771abc4185718}{OOC\_Error}}\ \mbox{\hyperlink{oocString_8h_ab874cb81f84e11ef2804f302d0af0ded}{ooc\_StringSetCharAt}}(\textcolor{keywordtype}{char}*\ str,\ \textcolor{keywordtype}{size\_t}\ index,\ \textcolor{keywordtype}{char}\ ch);}
+\DoxyCodeLine{00160\ }
+\DoxyCodeLine{00169\ \textcolor{keywordtype}{char}*\ \mbox{\hyperlink{oocString_8h_ad818415562ed339e2919b03554c76ff5}{ooc\_StringSubstring}}(\textcolor{keyword}{const}\ \textcolor{keywordtype}{char}*\ str,\ \textcolor{keywordtype}{size\_t}\ start,\ \textcolor{keywordtype}{size\_t}\ end);}
+\DoxyCodeLine{00170\ }
+\DoxyCodeLine{00180\ \mbox{\hyperlink{oocError_8h_a1effaed6897d01c49b4771abc4185718}{OOC\_Error}}\ \mbox{\hyperlink{oocString_8h_ab3f1995be93d174381812108a1e8a22b}{ooc\_StringSubstringAt}}(\textcolor{keywordtype}{char}*\ buffer,\ \textcolor{keywordtype}{size\_t}\ bufferSize,\ \textcolor{keyword}{const}\ \textcolor{keywordtype}{char}*\ str,\ \textcolor{keywordtype}{size\_t}\ start,\ \textcolor{keywordtype}{size\_t}\ end);}
+\DoxyCodeLine{00181\ }
+\DoxyCodeLine{00189\ \textcolor{keywordtype}{char}*\ \mbox{\hyperlink{oocString_8h_ac7404b816ae80360f481b6fae968c0cd}{ooc\_StringConcat}}(\textcolor{keyword}{const}\ \textcolor{keywordtype}{char}*\ str1,\ \textcolor{keyword}{const}\ \textcolor{keywordtype}{char}*\ str2);}
+\DoxyCodeLine{00190\ }
+\DoxyCodeLine{00199\ \mbox{\hyperlink{oocError_8h_a1effaed6897d01c49b4771abc4185718}{OOC\_Error}}\ \mbox{\hyperlink{oocString_8h_a667bb68a7540b88beec1073797095fef}{ooc\_StringConcatAt}}(\textcolor{keywordtype}{char}*\ buffer,\ \textcolor{keywordtype}{size\_t}\ bufferSize,\ \textcolor{keyword}{const}\ \textcolor{keywordtype}{char}*\ str1,\ \textcolor{keyword}{const}\ \textcolor{keywordtype}{char}*\ str2);}
+\DoxyCodeLine{00200\ }
+\DoxyCodeLine{00207\ \textcolor{keywordtype}{bool}\ \mbox{\hyperlink{oocString_8h_a94a12e7dd9a1c84dc13be224946efdcb}{ooc\_StringStartsWithString}}(\textcolor{keyword}{const}\ \textcolor{keywordtype}{char}*\ str,\ \textcolor{keyword}{const}\ \textcolor{keywordtype}{char}*\ prefix);}
+\DoxyCodeLine{00208\ }
+\DoxyCodeLine{00215\ \textcolor{keywordtype}{bool}\ \mbox{\hyperlink{oocString_8h_a89c86788d6812a3e65324a37e468920c}{ooc\_StringEndsWithString}}(\textcolor{keyword}{const}\ \textcolor{keywordtype}{char}*\ str,\ \textcolor{keyword}{const}\ \textcolor{keywordtype}{char}*\ suffix);}
+\DoxyCodeLine{00216\ }
+\DoxyCodeLine{00223\ \textcolor{keywordtype}{int}\ \mbox{\hyperlink{oocString_8h_a38c8f1544697744af6294da788f23928}{ooc\_StringIndexOfChar}}(\textcolor{keyword}{const}\ \textcolor{keywordtype}{char}*\ str,\ \textcolor{keywordtype}{char}\ ch);}
+\DoxyCodeLine{00224\ }
+\DoxyCodeLine{00231\ \textcolor{keywordtype}{int}\ \mbox{\hyperlink{oocString_8h_aa67f6a358272dac5292d423f123340c2}{ooc\_StringLastIndexOfChar}}(\textcolor{keyword}{const}\ \textcolor{keywordtype}{char}*\ str,\ \textcolor{keywordtype}{char}\ ch);}
+\DoxyCodeLine{00232\ }
+\DoxyCodeLine{00239\ \textcolor{keywordtype}{int}\ \mbox{\hyperlink{oocString_8h_a1ac6f1cfd325a5c69bb3c86849ebbf93}{ooc\_StringIndexOfString}}(\textcolor{keyword}{const}\ \textcolor{keywordtype}{char}*\ str,\ \textcolor{keyword}{const}\ \textcolor{keywordtype}{char}*\ sub);}
+\DoxyCodeLine{00240\ }
+\DoxyCodeLine{00247\ \textcolor{keywordtype}{int}\ \mbox{\hyperlink{oocString_8h_a8cfff8e6ec133b0d1b609dd477b4b9e0}{ooc\_StringLastIndexOfString}}(\textcolor{keyword}{const}\ \textcolor{keywordtype}{char}*\ str,\ \textcolor{keyword}{const}\ \textcolor{keywordtype}{char}*\ sub);}
+\DoxyCodeLine{00248\ }
+\DoxyCodeLine{00256\ \mbox{\hyperlink{oocError_8h_a1effaed6897d01c49b4771abc4185718}{OOC\_Error}}\ \mbox{\hyperlink{oocString_8h_aa841c49548995ec90d1bf2b1b37df442}{ooc\_StringReplaceChar}}(\textcolor{keywordtype}{char}*\ str,\ \textcolor{keywordtype}{char}\ oldChar,\ \textcolor{keywordtype}{char}\ newChar);}
+\DoxyCodeLine{00257\ }
+\DoxyCodeLine{00263\ \mbox{\hyperlink{oocError_8h_a1effaed6897d01c49b4771abc4185718}{OOC\_Error}}\ \mbox{\hyperlink{oocString_8h_a005562a64a2251a9772a34e1552c6edf}{ooc\_StringToLowerCase}}(\textcolor{keywordtype}{char}*\ str);}
+\DoxyCodeLine{00264\ }
+\DoxyCodeLine{00270\ \mbox{\hyperlink{oocError_8h_a1effaed6897d01c49b4771abc4185718}{OOC\_Error}}\ \mbox{\hyperlink{oocString_8h_a1003abe16958bc3b10257008a5607837}{ooc\_StringToUpperCase}}(\textcolor{keywordtype}{char}*\ str);}
+\DoxyCodeLine{00271\ }
+\DoxyCodeLine{00277\ \textcolor{keywordtype}{char}*\ \mbox{\hyperlink{oocString_8h_ab14d94ee4c6bba161d0019c64544f199}{ooc\_StringTrim}}(\textcolor{keywordtype}{char}*\ str);}
+\DoxyCodeLine{00278\ }
+\DoxyCodeLine{00284\ \textcolor{keywordtype}{bool}\ \mbox{\hyperlink{oocString_8h_a8cbeb88c2dc093b5adbcf3b9efebedc7}{ooc\_StringIsEmpty}}(\textcolor{keyword}{const}\ \textcolor{keywordtype}{char}*\ str);}
+\DoxyCodeLine{00285\ }
+\DoxyCodeLine{00291\ \mbox{\hyperlink{oocError_8h_a1effaed6897d01c49b4771abc4185718}{OOC\_Error}}\ \mbox{\hyperlink{oocString_8h_a2877816592382d26363c8425620244f5}{ooc\_StringReverse}}(\textcolor{keywordtype}{char}*\ str);}
+\DoxyCodeLine{00292\ }
+\DoxyCodeLine{00299\ \textcolor{keywordtype}{bool}\ \mbox{\hyperlink{oocString_8h_a9afb4494a3c103afa7a9e3d32026de4d}{ooc\_StringContainsString}}(\textcolor{keyword}{const}\ \textcolor{keywordtype}{char}*\ str,\ \textcolor{keyword}{const}\ \textcolor{keywordtype}{char}*\ sub);}
+\DoxyCodeLine{00300\ }
+\DoxyCodeLine{00301\ \textcolor{comment}{//\ ============================================================================}}
+\DoxyCodeLine{00302\ \textcolor{comment}{//\ Instance\ methods\ -\/\ operate\ on\ String\ objects}}
+\DoxyCodeLine{00303\ \textcolor{comment}{//\ ============================================================================}}
+\DoxyCodeLine{00304\ }
+\DoxyCodeLine{00310\ \textcolor{keywordtype}{size\_t}\ \mbox{\hyperlink{oocString_8h_ade72c9acfd666d40cdd9d39515268328}{ooc\_stringLength}}(\textcolor{keyword}{const}\ \textcolor{keywordtype}{void}*\ self);}
+\DoxyCodeLine{00311\ }
+\DoxyCodeLine{00319\ \textcolor{keywordtype}{char}\ \mbox{\hyperlink{oocString_8h_a9f5fd2be436f1666f4f80db9efe386e7}{ooc\_stringCharAt}}(\textcolor{keyword}{const}\ \textcolor{keywordtype}{void}*\ self,\ \textcolor{keywordtype}{size\_t}\ index);}
+\DoxyCodeLine{00320\ }
+\DoxyCodeLine{00329\ \textcolor{keywordtype}{void}*\ \mbox{\hyperlink{oocString_8h_aa0ba02aa71b2eff5a0e9635639387167}{ooc\_stringSubstring}}(\textcolor{keyword}{const}\ \textcolor{keywordtype}{void}*\ self,\ \textcolor{keywordtype}{size\_t}\ start,\ \textcolor{keywordtype}{size\_t}\ end);}
+\DoxyCodeLine{00330\ }
+\DoxyCodeLine{00338\ \textcolor{keywordtype}{void}*\ \mbox{\hyperlink{oocString_8h_a7fcd5d28707507bfdb3c82020d47b7aa}{ooc\_stringConcat}}(\textcolor{keyword}{const}\ \textcolor{keywordtype}{void}*\ self,\ \textcolor{keyword}{const}\ \textcolor{keywordtype}{void}*\ other);}
+\DoxyCodeLine{00339\ }
+\DoxyCodeLine{00346\ \textcolor{keywordtype}{bool}\ \mbox{\hyperlink{oocString_8h_a24c638f7974166c6cb52a3180b413bb4}{ooc\_stringStartsWithString}}(\textcolor{keyword}{const}\ \textcolor{keywordtype}{void}*\ self,\ \textcolor{keyword}{const}\ \textcolor{keywordtype}{void}*\ prefix);}
+\DoxyCodeLine{00347\ }
+\DoxyCodeLine{00354\ \textcolor{keywordtype}{bool}\ \mbox{\hyperlink{oocString_8h_affe2682dfe6836511c11872af413e6f8}{ooc\_stringStartsWithCString}}(\textcolor{keyword}{const}\ \textcolor{keywordtype}{void}*\ self,\ \textcolor{keyword}{const}\ \textcolor{keywordtype}{char}*\ prefix);}
+\DoxyCodeLine{00355\ }
+\DoxyCodeLine{00362\ \textcolor{keywordtype}{bool}\ \mbox{\hyperlink{oocString_8h_ac6ba0dfc209f591c47967aad9dd24194}{ooc\_stringEndsWithString}}(\textcolor{keyword}{const}\ \textcolor{keywordtype}{void}*\ self,\ \textcolor{keyword}{const}\ \textcolor{keywordtype}{void}*\ suffix);}
+\DoxyCodeLine{00363\ }
+\DoxyCodeLine{00370\ \textcolor{keywordtype}{bool}\ \mbox{\hyperlink{oocString_8h_a4e6da84fe313fc8165852a52ede878fd}{ooc\_stringEndsWithCString}}(\textcolor{keyword}{const}\ \textcolor{keywordtype}{void}*\ self,\ \textcolor{keyword}{const}\ \textcolor{keywordtype}{char}*\ suffix);}
+\DoxyCodeLine{00371\ }
+\DoxyCodeLine{00378\ \textcolor{keywordtype}{int}\ \mbox{\hyperlink{oocString_8h_a59f9caff2af8fd0225c31404dffed58d}{ooc\_stringIndexOfChar}}(\textcolor{keyword}{const}\ \textcolor{keywordtype}{void}*\ self,\ \textcolor{keywordtype}{char}\ ch);}
+\DoxyCodeLine{00379\ }
+\DoxyCodeLine{00386\ \textcolor{keywordtype}{int}\ \mbox{\hyperlink{oocString_8h_a79796666f0e30f40db0dd99631452b57}{ooc\_stringLastIndexOfChar}}(\textcolor{keyword}{const}\ \textcolor{keywordtype}{void}*\ self,\ \textcolor{keywordtype}{char}\ ch);}
+\DoxyCodeLine{00387\ }
+\DoxyCodeLine{00394\ \textcolor{keywordtype}{int}\ \mbox{\hyperlink{oocString_8h_a33fa13e3f2366f83595863dea772278e}{ooc\_stringIndexOfString}}(\textcolor{keyword}{const}\ \textcolor{keywordtype}{void}*\ self,\ \textcolor{keyword}{const}\ \textcolor{keywordtype}{void}*\ sub);}
+\DoxyCodeLine{00395\ }
+\DoxyCodeLine{00402\ \textcolor{keywordtype}{int}\ \mbox{\hyperlink{oocString_8h_a78463fd3531155e4da195b09aea24227}{ooc\_stringIndexOfCString}}(\textcolor{keyword}{const}\ \textcolor{keywordtype}{void}*\ self,\ \textcolor{keyword}{const}\ \textcolor{keywordtype}{char}*\ sub);}
+\DoxyCodeLine{00403\ }
+\DoxyCodeLine{00410\ \textcolor{keywordtype}{int}\ \mbox{\hyperlink{oocString_8h_ac767aa5ce0840aa8b56dc191d5d80180}{ooc\_stringLastIndexOfString}}(\textcolor{keyword}{const}\ \textcolor{keywordtype}{void}*\ self,\ \textcolor{keyword}{const}\ \textcolor{keywordtype}{void}*\ sub);}
+\DoxyCodeLine{00411\ }
+\DoxyCodeLine{00418\ \textcolor{keywordtype}{int}\ \mbox{\hyperlink{oocString_8h_af853b520ecdd6fc4750c72a449d69cc2}{ooc\_stringLastIndexOfCString}}(\textcolor{keyword}{const}\ \textcolor{keywordtype}{void}*\ self,\ \textcolor{keyword}{const}\ \textcolor{keywordtype}{char}*\ sub);}
+\DoxyCodeLine{00419\ }
+\DoxyCodeLine{00428\ \textcolor{keywordtype}{void}*\ \mbox{\hyperlink{oocString_8h_a96ac5fa1d220247be60a7bf566201dcc}{ooc\_stringReplaceChar}}(\textcolor{keyword}{const}\ \textcolor{keywordtype}{void}*\ self,\ \textcolor{keywordtype}{char}\ oldChar,\ \textcolor{keywordtype}{char}\ newChar);}
+\DoxyCodeLine{00429\ }
+\DoxyCodeLine{00436\ \textcolor{keywordtype}{void}*\ \mbox{\hyperlink{oocString_8h_afbf31031c4c17d56849e6980de0bfeb5}{ooc\_stringToLowerCase}}(\textcolor{keyword}{const}\ \textcolor{keywordtype}{void}*\ self);}
+\DoxyCodeLine{00437\ }
+\DoxyCodeLine{00444\ \textcolor{keywordtype}{void}*\ \mbox{\hyperlink{oocString_8h_ad8392975b7d930a99c313019613cb9b3}{ooc\_stringToUpperCase}}(\textcolor{keyword}{const}\ \textcolor{keywordtype}{void}*\ self);}
+\DoxyCodeLine{00445\ }
+\DoxyCodeLine{00452\ \textcolor{keywordtype}{void}*\ \mbox{\hyperlink{oocString_8h_a6aecb32d85f2b0033eb5475e9327ac6e}{ooc\_stringTrim}}(\textcolor{keyword}{const}\ \textcolor{keywordtype}{void}*\ self);}
+\DoxyCodeLine{00453\ }
+\DoxyCodeLine{00459\ \textcolor{keywordtype}{bool}\ \mbox{\hyperlink{oocString_8h_a0d8b1c13708b334527dd1c8509e35dff}{ooc\_stringIsEmpty}}(\textcolor{keyword}{const}\ \textcolor{keywordtype}{void}*\ self);}
+\DoxyCodeLine{00460\ }
+\DoxyCodeLine{00467\ \textcolor{keywordtype}{bool}\ \mbox{\hyperlink{oocString_8h_a944617e0d8c0d3752f49ec65268e16bf}{ooc\_stringContainsString}}(\textcolor{keyword}{const}\ \textcolor{keywordtype}{void}*\ self,\ \textcolor{keyword}{const}\ \textcolor{keywordtype}{void}*\ sub);}
+\DoxyCodeLine{00468\ }
+\DoxyCodeLine{00475\ \textcolor{keywordtype}{bool}\ \mbox{\hyperlink{oocString_8h_a575d71c13c44348669be8456324fe1ef}{ooc\_stringContainsCString}}(\textcolor{keyword}{const}\ \textcolor{keywordtype}{void}*\ self,\ \textcolor{keyword}{const}\ \textcolor{keywordtype}{char}*\ sub);}
+\DoxyCodeLine{00476\ }
+\DoxyCodeLine{00483\ \textcolor{keywordtype}{char}*\ \mbox{\hyperlink{oocString_8h_af94c334fc13c2a50224ea05cc180174e}{ooc\_stringToCString}}(\textcolor{keyword}{const}\ \textcolor{keywordtype}{void}*\ self);}
+\DoxyCodeLine{00484\ }
+\DoxyCodeLine{00492\ \mbox{\hyperlink{oocError_8h_a1effaed6897d01c49b4771abc4185718}{OOC\_Error}}\ \mbox{\hyperlink{oocString_8h_a9efdd52e1938f1c34f58415341037924}{ooc\_stringToCStringAt}}(\textcolor{keyword}{const}\ \textcolor{keywordtype}{void}*\ self,\ \textcolor{keywordtype}{char}*\ buffer,\ \textcolor{keywordtype}{size\_t}\ bufferSize);}
+\DoxyCodeLine{00493\ }
+\DoxyCodeLine{00501\ \textcolor{keyword}{const}\ \textcolor{keywordtype}{char}*\ \mbox{\hyperlink{oocString_8h_a5e9bc8aceeedffce4a9eff6e7bafeba5}{ooc\_stringGetCString}}(\textcolor{keyword}{const}\ \textcolor{keywordtype}{void}*\ self);}
+\DoxyCodeLine{00502\ }
+\DoxyCodeLine{00503\ \textcolor{preprocessor}{\#endif\ }\textcolor{comment}{/*\ OOC\_STRING\_H\_\ */}\textcolor{preprocessor}{}}
+
+\end{DoxyCode}

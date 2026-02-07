@@ -1,0 +1,86 @@
+\doxysection{src/collection/map/hash\+Map/ooc\+Hash\+Map.h File Reference}
+\hypertarget{oocHashMap_8h}{}\label{oocHashMap_8h}\index{src/collection/map/hashMap/oocHashMap.h@{src/collection/map/hashMap/oocHashMap.h}}
+
+
+Hash\+Map implementation for the OOC (Object-\/\+Oriented C) framework.  
+
+
+\doxysubsubsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+void \texorpdfstring{$\ast$}{*} \mbox{\hyperlink{oocHashMap_8h_aaf3263289ec5664a9554934eddb3e597}{ooc\+\_\+hash\+Map\+Class}} ()
+\begin{DoxyCompactList}\small\item\em Returns the Hash\+Map class descriptor. \end{DoxyCompactList}\item 
+void \texorpdfstring{$\ast$}{*} \mbox{\hyperlink{oocHashMap_8h_a7e0535a97813e85d558c33794a8b6004}{ooc\+\_\+hash\+Map\+Get\+Key\+Iterator}} (void \texorpdfstring{$\ast$}{*}self)
+\begin{DoxyCompactList}\small\item\em Returns an iterator over the keys contained in this Hash\+Map. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+Hash\+Map implementation for the OOC (Object-\/\+Oriented C) framework. 
+
+This header defines the Hash\+Map class that implements the Map interface using a hash table with separate chaining. It makes no guarantees about the iteration order of entries. This implementation permits null keys and null values. Performance\+: O(1) average case for get, put, and remove operations. 
+
+\label{doc-func-members}
+\Hypertarget{oocHashMap_8h_doc-func-members}
+\doxysubsection{Function Documentation}
+\Hypertarget{oocHashMap_8h_aaf3263289ec5664a9554934eddb3e597}\index{oocHashMap.h@{oocHashMap.h}!ooc\_hashMapClass@{ooc\_hashMapClass}}
+\index{ooc\_hashMapClass@{ooc\_hashMapClass}!oocHashMap.h@{oocHashMap.h}}
+\doxysubsubsection{\texorpdfstring{ooc\_hashMapClass()}{ooc\_hashMapClass()}}
+{\footnotesize\ttfamily \label{oocHashMap_8h_aaf3263289ec5664a9554934eddb3e597} 
+void \texorpdfstring{$\ast$}{*} ooc\+\_\+hash\+Map\+Class (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})}
+
+
+
+Returns the Hash\+Map class descriptor. 
+
+\begin{DoxyReturn}{Returns}
+Pointer to the Hash\+Map class object
+\end{DoxyReturn}
+Constructor parameters\+:
+\begin{DoxyItemize}
+\item initial\+Capacity (size\+\_\+t)\+: Initial capacity for the hash table, or 0 for default (16)
+\end{DoxyItemize}
+
+Example\+: 
+\begin{DoxyCode}{0}
+\DoxyCodeLine{\textcolor{keywordtype}{void}*\ map\ =\ ooc\_new(\mbox{\hyperlink{oocHashMap_8h_aaf3263289ec5664a9554934eddb3e597}{ooc\_hashMapClass}}(),\ 16);}
+
+\end{DoxyCode}
+ \Hypertarget{oocHashMap_8h_a7e0535a97813e85d558c33794a8b6004}\index{oocHashMap.h@{oocHashMap.h}!ooc\_hashMapGetKeyIterator@{ooc\_hashMapGetKeyIterator}}
+\index{ooc\_hashMapGetKeyIterator@{ooc\_hashMapGetKeyIterator}!oocHashMap.h@{oocHashMap.h}}
+\doxysubsubsection{\texorpdfstring{ooc\_hashMapGetKeyIterator()}{ooc\_hashMapGetKeyIterator()}}
+{\footnotesize\ttfamily \label{oocHashMap_8h_a7e0535a97813e85d558c33794a8b6004} 
+void \texorpdfstring{$\ast$}{*} ooc\+\_\+hash\+Map\+Get\+Key\+Iterator (\begin{DoxyParamCaption}\item[{void \texorpdfstring{$\ast$}{*}}]{self}{}\end{DoxyParamCaption})}
+
+
+
+Returns an iterator over the keys contained in this Hash\+Map. 
+
+The returned iterator traverses all keys currently stored in the map. No guarantees are made about the order of iteration.
+
+The iterator reflects the state of the map at the time of creation. Structural modification of the map during iteration (except through the iterator’s own remove operation, if supported) results in undefined behavior.
+
+Ownership\+:
+\begin{DoxyItemize}
+\item The caller owns the returned iterator and is responsible for destroying it using ooc\+\_\+destroy().
+\item The map owns the keys returned by the iterator.
+\end{DoxyItemize}
+
+
+\begin{DoxyParams}{Parameters}
+{\em self} & Pointer to a Hash\+Map instance \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+Pointer to an Iterator over the map’s keys, or NULL on error
+\end{DoxyReturn}
+Example\+: 
+\begin{DoxyCode}{0}
+\DoxyCodeLine{\textcolor{keywordtype}{void}*\ it\ =\ \mbox{\hyperlink{oocHashMap_8h_a7e0535a97813e85d558c33794a8b6004}{ooc\_hashMapGetKeyIterator}}(map);}
+\DoxyCodeLine{\textcolor{keywordflow}{while}\ (ooc\_iteratorHasNext(it))\ \{}
+\DoxyCodeLine{\ \ \ \ \textcolor{keywordtype}{void}*\ key\ =\ ooc\_iteratorNext(it);}
+\DoxyCodeLine{\ \ \ \ \textcolor{comment}{//\ use\ key}}
+\DoxyCodeLine{\}}
+\DoxyCodeLine{ooc\_destroy(it);}
+
+\end{DoxyCode}
+ 

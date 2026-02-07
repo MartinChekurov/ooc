@@ -1,0 +1,46 @@
+\doxysection{src/collection/abstract\+Collection/array\+Deque/ooc\+Array\+Deque.h File Reference}
+\hypertarget{oocArrayDeque_8h}{}\label{oocArrayDeque_8h}\index{src/collection/abstractCollection/arrayDeque/oocArrayDeque.h@{src/collection/abstractCollection/arrayDeque/oocArrayDeque.h}}
+
+
+Array\+Deque implementation for the OOC (Object-\/\+Oriented C) framework.  
+
+
+\doxysubsubsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+void \texorpdfstring{$\ast$}{*} \mbox{\hyperlink{oocArrayDeque_8h_ae132956391e229f03175f0e8a82eea0e}{ooc\+\_\+array\+Deque\+Class}} ()
+\begin{DoxyCompactList}\small\item\em Returns the Array\+Deque class descriptor. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+Array\+Deque implementation for the OOC (Object-\/\+Oriented C) framework. 
+
+This header defines the Array\+Deque class, a resizable array implementation of the Deque interface. It provides efficient O(1) insertion and deletion operations at both ends using a circular buffer. 
+
+\label{doc-func-members}
+\Hypertarget{oocArrayDeque_8h_doc-func-members}
+\doxysubsection{Function Documentation}
+\Hypertarget{oocArrayDeque_8h_ae132956391e229f03175f0e8a82eea0e}\index{oocArrayDeque.h@{oocArrayDeque.h}!ooc\_arrayDequeClass@{ooc\_arrayDequeClass}}
+\index{ooc\_arrayDequeClass@{ooc\_arrayDequeClass}!oocArrayDeque.h@{oocArrayDeque.h}}
+\doxysubsubsection{\texorpdfstring{ooc\_arrayDequeClass()}{ooc\_arrayDequeClass()}}
+{\footnotesize\ttfamily \label{oocArrayDeque_8h_ae132956391e229f03175f0e8a82eea0e} 
+void \texorpdfstring{$\ast$}{*} ooc\+\_\+array\+Deque\+Class (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})}
+
+
+
+Returns the Array\+Deque class descriptor. 
+
+\begin{DoxyReturn}{Returns}
+Pointer to the Array\+Deque class object
+\end{DoxyReturn}
+Constructor parameters\+:
+\begin{DoxyItemize}
+\item initial\+Capacity (size\+\_\+t)\+: Initial capacity for the circular buffer, or 0 for default (16)
+\end{DoxyItemize}
+
+Example\+: 
+\begin{DoxyCode}{0}
+\DoxyCodeLine{\textcolor{keywordtype}{void}*\ deque\ =\ ooc\_new(\mbox{\hyperlink{oocArrayDeque_8h_ae132956391e229f03175f0e8a82eea0e}{ooc\_arrayDequeClass}}(),\ 32);\ \ \textcolor{comment}{//\ Create\ with\ capacity\ 32}}
+
+\end{DoxyCode}
+ 

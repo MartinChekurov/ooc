@@ -1,0 +1,280 @@
+\doxysection{src/interface/iterable/collection/queue/ooc\+Queue.h File Reference}
+\hypertarget{oocQueue_8h}{}\label{oocQueue_8h}\index{src/interface/iterable/collection/queue/oocQueue.h@{src/interface/iterable/collection/queue/oocQueue.h}}
+
+
+Queue interface for the OOC (Object-\/\+Oriented C) framework.  
+
+
+{\ttfamily \#include "{}ooc\+Error.\+h"{}}\newline
+{\ttfamily \#include $<$stdbool.\+h$>$}\newline
+{\ttfamily \#include $<$stddef.\+h$>$}\newline
+\doxysubsubsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+void \texorpdfstring{$\ast$}{*} \mbox{\hyperlink{oocQueue_8h_a5493bc408925e5f59878f12b60ea247e}{ooc\+\_\+queue\+Class}} ()
+\begin{DoxyCompactList}\small\item\em Returns the Queue interface class descriptor. \end{DoxyCompactList}\item 
+void \texorpdfstring{$\ast$}{*} \mbox{\hyperlink{oocQueue_8h_ac5168731aa1a9f3c4fe56c88b0c3edcd}{ooc\+\_\+queue\+Get\+Iterator}} (void \texorpdfstring{$\ast$}{*}self)
+\begin{DoxyCompactList}\small\item\em Returns an Iterator over the elements in queue. \end{DoxyCompactList}\item 
+size\+\_\+t \mbox{\hyperlink{oocQueue_8h_a16b8da78de1b021546f62a1d445098b7}{ooc\+\_\+queue\+Size}} (void \texorpdfstring{$\ast$}{*}self)
+\begin{DoxyCompactList}\small\item\em Returns the number of elements in the queue. \end{DoxyCompactList}\item 
+bool \mbox{\hyperlink{oocQueue_8h_a6d7cfa9f5c57a876fdca29914ff78d43}{ooc\+\_\+queue\+Is\+Empty}} (void \texorpdfstring{$\ast$}{*}self)
+\begin{DoxyCompactList}\small\item\em Checks if the queue is empty. \end{DoxyCompactList}\item 
+bool \mbox{\hyperlink{oocQueue_8h_a13f7a8efc782c19264e72ff46a298319}{ooc\+\_\+queue\+Contains}} (void \texorpdfstring{$\ast$}{*}self, void \texorpdfstring{$\ast$}{*}element)
+\begin{DoxyCompactList}\small\item\em Checks if the queue contains the specified element. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{oocError_8h_a1effaed6897d01c49b4771abc4185718}{OOC\+\_\+\+Error}} \mbox{\hyperlink{oocQueue_8h_a82deebc7f94b4743a991d25e5a49c58a}{ooc\+\_\+queue\+Add}} (void \texorpdfstring{$\ast$}{*}self, void \texorpdfstring{$\ast$}{*}element)
+\begin{DoxyCompactList}\small\item\em Adds an element to the queue. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{oocError_8h_a1effaed6897d01c49b4771abc4185718}{OOC\+\_\+\+Error}} \mbox{\hyperlink{oocQueue_8h_a83d72bb1b61330dc4bbf949c7e03efc8}{ooc\+\_\+queue\+Remove}} (void \texorpdfstring{$\ast$}{*}self, void \texorpdfstring{$\ast$}{*}element)
+\begin{DoxyCompactList}\small\item\em Removes the first occurrence of the specified element from the queue. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{oocError_8h_a1effaed6897d01c49b4771abc4185718}{OOC\+\_\+\+Error}} \mbox{\hyperlink{oocQueue_8h_aca51ad1623fd9d0f975ad521360db412}{ooc\+\_\+queue\+Clear}} (void \texorpdfstring{$\ast$}{*}self)
+\begin{DoxyCompactList}\small\item\em Removes all elements from the queue. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{oocError_8h_a1effaed6897d01c49b4771abc4185718}{OOC\+\_\+\+Error}} \mbox{\hyperlink{oocQueue_8h_a2fd7549a0b3f263fe2aed9ccffd4b85a}{ooc\+\_\+queue\+Push}} (void \texorpdfstring{$\ast$}{*}self, void \texorpdfstring{$\ast$}{*}element)
+\begin{DoxyCompactList}\small\item\em Inserts an element into the queue. \end{DoxyCompactList}\item 
+void \texorpdfstring{$\ast$}{*} \mbox{\hyperlink{oocQueue_8h_a4431454b761197b54059e4c2f4baec2e}{ooc\+\_\+queue\+Pop}} (void \texorpdfstring{$\ast$}{*}self)
+\begin{DoxyCompactList}\small\item\em Retrieves and removes an element from the queue. \end{DoxyCompactList}\item 
+void \texorpdfstring{$\ast$}{*} \mbox{\hyperlink{oocQueue_8h_a95cdb66f6f1f8f76cc1702aa022f081b}{ooc\+\_\+queue\+Peek}} (void \texorpdfstring{$\ast$}{*}self)
+\begin{DoxyCompactList}\small\item\em Retrieves, but does not remove, an element from the queue. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+Queue interface for the OOC (Object-\/\+Oriented C) framework. 
+
+This header defines the Queue interface that represents a collection designed for holding elements prior to processing. Queues typically order elements in a FIFO (first-\/in-\/first-\/out) manner, though other orderings are possible.
+
+Queue extends the Collection interface and provides insertion, extraction, and inspection operations. 
+
+\label{doc-func-members}
+\Hypertarget{oocQueue_8h_doc-func-members}
+\doxysubsection{Function Documentation}
+\Hypertarget{oocQueue_8h_a82deebc7f94b4743a991d25e5a49c58a}\index{oocQueue.h@{oocQueue.h}!ooc\_queueAdd@{ooc\_queueAdd}}
+\index{ooc\_queueAdd@{ooc\_queueAdd}!oocQueue.h@{oocQueue.h}}
+\doxysubsubsection{\texorpdfstring{ooc\_queueAdd()}{ooc\_queueAdd()}}
+{\footnotesize\ttfamily \label{oocQueue_8h_a82deebc7f94b4743a991d25e5a49c58a} 
+\mbox{\hyperlink{oocError_8h_a1effaed6897d01c49b4771abc4185718}{OOC\+\_\+\+Error}} ooc\+\_\+queue\+Add (\begin{DoxyParamCaption}\item[{void \texorpdfstring{$\ast$}{*}}]{self}{, }\item[{void \texorpdfstring{$\ast$}{*}}]{element}{}\end{DoxyParamCaption})}
+
+
+
+Adds an element to the queue. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em self} & queue object instance \\
+\hline
+{\em element} & Element to add \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+OOC\+\_\+\+ERROR\+\_\+\+NONE on success, appropriate error code on failure 
+\end{DoxyReturn}
+\begin{DoxyNote}{Note}
+Inherited from Collection interface. Behavior depends on implementation. 
+\end{DoxyNote}
+\Hypertarget{oocQueue_8h_a5493bc408925e5f59878f12b60ea247e}\index{oocQueue.h@{oocQueue.h}!ooc\_queueClass@{ooc\_queueClass}}
+\index{ooc\_queueClass@{ooc\_queueClass}!oocQueue.h@{oocQueue.h}}
+\doxysubsubsection{\texorpdfstring{ooc\_queueClass()}{ooc\_queueClass()}}
+{\footnotesize\ttfamily \label{oocQueue_8h_a5493bc408925e5f59878f12b60ea247e} 
+void \texorpdfstring{$\ast$}{*} ooc\+\_\+queue\+Class (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})}
+
+
+
+Returns the Queue interface class descriptor. 
+
+\begin{DoxyReturn}{Returns}
+Pointer to the Queue interface class object
+\end{DoxyReturn}
+This function returns the class descriptor for the Queue interface, which extends Collection and adds queue-\/specific operations. \Hypertarget{oocQueue_8h_aca51ad1623fd9d0f975ad521360db412}\index{oocQueue.h@{oocQueue.h}!ooc\_queueClear@{ooc\_queueClear}}
+\index{ooc\_queueClear@{ooc\_queueClear}!oocQueue.h@{oocQueue.h}}
+\doxysubsubsection{\texorpdfstring{ooc\_queueClear()}{ooc\_queueClear()}}
+{\footnotesize\ttfamily \label{oocQueue_8h_aca51ad1623fd9d0f975ad521360db412} 
+\mbox{\hyperlink{oocError_8h_a1effaed6897d01c49b4771abc4185718}{OOC\+\_\+\+Error}} ooc\+\_\+queue\+Clear (\begin{DoxyParamCaption}\item[{void \texorpdfstring{$\ast$}{*}}]{self}{}\end{DoxyParamCaption})}
+
+
+
+Removes all elements from the queue. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em self} & queue object instance \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+OOC\+\_\+\+ERROR\+\_\+\+NONE on success, appropriate error code on failure 
+\end{DoxyReturn}
+\Hypertarget{oocQueue_8h_a13f7a8efc782c19264e72ff46a298319}\index{oocQueue.h@{oocQueue.h}!ooc\_queueContains@{ooc\_queueContains}}
+\index{ooc\_queueContains@{ooc\_queueContains}!oocQueue.h@{oocQueue.h}}
+\doxysubsubsection{\texorpdfstring{ooc\_queueContains()}{ooc\_queueContains()}}
+{\footnotesize\ttfamily \label{oocQueue_8h_a13f7a8efc782c19264e72ff46a298319} 
+bool ooc\+\_\+queue\+Contains (\begin{DoxyParamCaption}\item[{void \texorpdfstring{$\ast$}{*}}]{self}{, }\item[{void \texorpdfstring{$\ast$}{*}}]{element}{}\end{DoxyParamCaption})}
+
+
+
+Checks if the queue contains the specified element. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em self} & queue object instance \\
+\hline
+{\em element} & Element to check for presence \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+true if the queue contains the element, false otherwise 
+\end{DoxyReturn}
+\Hypertarget{oocQueue_8h_ac5168731aa1a9f3c4fe56c88b0c3edcd}\index{oocQueue.h@{oocQueue.h}!ooc\_queueGetIterator@{ooc\_queueGetIterator}}
+\index{ooc\_queueGetIterator@{ooc\_queueGetIterator}!oocQueue.h@{oocQueue.h}}
+\doxysubsubsection{\texorpdfstring{ooc\_queueGetIterator()}{ooc\_queueGetIterator()}}
+{\footnotesize\ttfamily \label{oocQueue_8h_ac5168731aa1a9f3c4fe56c88b0c3edcd} 
+void \texorpdfstring{$\ast$}{*} ooc\+\_\+queue\+Get\+Iterator (\begin{DoxyParamCaption}\item[{void \texorpdfstring{$\ast$}{*}}]{self}{}\end{DoxyParamCaption})}
+
+
+
+Returns an Iterator over the elements in queue. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em self} & Iterable object instance \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+Pointer to a new Iterator object, or NULL on failure 
+\end{DoxyReturn}
+\begin{DoxyNote}{Note}
+Caller is responsible for calling ooc\+\_\+destroy() on the returned iterator 
+
+Multiple iterators can be obtained and used concurrently, each maintaining its own iteration state
+\end{DoxyNote}
+This method creates a new Iterator that can be used to traverse the elements of the queue. The Iterator interface provides has\+Next() and next() methods for sequential access.
+
+Example usage\+: 
+\begin{DoxyCode}{0}
+\DoxyCodeLine{\textcolor{keywordtype}{void}*\ iter\ =\ \mbox{\hyperlink{oocQueue_8h_ac5168731aa1a9f3c4fe56c88b0c3edcd}{ooc\_queueGetIterator}}(collection);}
+\DoxyCodeLine{\textcolor{keywordflow}{while}\ (ooc\_iteratorHasNext(iter))\ \{}
+\DoxyCodeLine{\ \ \ \ \textcolor{keywordtype}{void}*\ element\ =\ ooc\_iteratorNext(iter);}
+\DoxyCodeLine{\ \ \ \ \textcolor{comment}{//\ process\ element}}
+\DoxyCodeLine{\}}
+\DoxyCodeLine{ooc\_destroy(iter);}
+
+\end{DoxyCode}
+ \Hypertarget{oocQueue_8h_a6d7cfa9f5c57a876fdca29914ff78d43}\index{oocQueue.h@{oocQueue.h}!ooc\_queueIsEmpty@{ooc\_queueIsEmpty}}
+\index{ooc\_queueIsEmpty@{ooc\_queueIsEmpty}!oocQueue.h@{oocQueue.h}}
+\doxysubsubsection{\texorpdfstring{ooc\_queueIsEmpty()}{ooc\_queueIsEmpty()}}
+{\footnotesize\ttfamily \label{oocQueue_8h_a6d7cfa9f5c57a876fdca29914ff78d43} 
+bool ooc\+\_\+queue\+Is\+Empty (\begin{DoxyParamCaption}\item[{void \texorpdfstring{$\ast$}{*}}]{self}{}\end{DoxyParamCaption})}
+
+
+
+Checks if the queue is empty. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em self} & queue object instance \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+true if the queue contains no elements, false otherwise 
+\end{DoxyReturn}
+\Hypertarget{oocQueue_8h_a95cdb66f6f1f8f76cc1702aa022f081b}\index{oocQueue.h@{oocQueue.h}!ooc\_queuePeek@{ooc\_queuePeek}}
+\index{ooc\_queuePeek@{ooc\_queuePeek}!oocQueue.h@{oocQueue.h}}
+\doxysubsubsection{\texorpdfstring{ooc\_queuePeek()}{ooc\_queuePeek()}}
+{\footnotesize\ttfamily \label{oocQueue_8h_a95cdb66f6f1f8f76cc1702aa022f081b} 
+void \texorpdfstring{$\ast$}{*} ooc\+\_\+queue\+Peek (\begin{DoxyParamCaption}\item[{void \texorpdfstring{$\ast$}{*}}]{self}{}\end{DoxyParamCaption})}
+
+
+
+Retrieves, but does not remove, an element from the queue. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em self} & Queue object instance \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+Pointer to the element that would be returned by pop(), or NULL if queue is empty 
+\end{DoxyReturn}
+\begin{DoxyNote}{Note}
+Which element is returned depends on implementation 
+\end{DoxyNote}
+\Hypertarget{oocQueue_8h_a4431454b761197b54059e4c2f4baec2e}\index{oocQueue.h@{oocQueue.h}!ooc\_queuePop@{ooc\_queuePop}}
+\index{ooc\_queuePop@{ooc\_queuePop}!oocQueue.h@{oocQueue.h}}
+\doxysubsubsection{\texorpdfstring{ooc\_queuePop()}{ooc\_queuePop()}}
+{\footnotesize\ttfamily \label{oocQueue_8h_a4431454b761197b54059e4c2f4baec2e} 
+void \texorpdfstring{$\ast$}{*} ooc\+\_\+queue\+Pop (\begin{DoxyParamCaption}\item[{void \texorpdfstring{$\ast$}{*}}]{self}{}\end{DoxyParamCaption})}
+
+
+
+Retrieves and removes an element from the queue. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em self} & Queue object instance \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+Pointer to the removed element, or NULL if queue is empty 
+\end{DoxyReturn}
+\begin{DoxyNote}{Note}
+Which element is removed depends on implementation (FIFO, LIFO, priority, etc.) 
+\end{DoxyNote}
+\Hypertarget{oocQueue_8h_a2fd7549a0b3f263fe2aed9ccffd4b85a}\index{oocQueue.h@{oocQueue.h}!ooc\_queuePush@{ooc\_queuePush}}
+\index{ooc\_queuePush@{ooc\_queuePush}!oocQueue.h@{oocQueue.h}}
+\doxysubsubsection{\texorpdfstring{ooc\_queuePush()}{ooc\_queuePush()}}
+{\footnotesize\ttfamily \label{oocQueue_8h_a2fd7549a0b3f263fe2aed9ccffd4b85a} 
+\mbox{\hyperlink{oocError_8h_a1effaed6897d01c49b4771abc4185718}{OOC\+\_\+\+Error}} ooc\+\_\+queue\+Push (\begin{DoxyParamCaption}\item[{void \texorpdfstring{$\ast$}{*}}]{self}{, }\item[{void \texorpdfstring{$\ast$}{*}}]{element}{}\end{DoxyParamCaption})}
+
+
+
+Inserts an element into the queue. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em self} & Queue object instance \\
+\hline
+{\em element} & Element to add \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+OOC\+\_\+\+ERROR\+\_\+\+NONE on success, appropriate error code on failure 
+\end{DoxyReturn}
+\begin{DoxyNote}{Note}
+Equivalent to add(). Ordering depends on implementation (FIFO, LIFO, priority, etc.) 
+\end{DoxyNote}
+\Hypertarget{oocQueue_8h_a83d72bb1b61330dc4bbf949c7e03efc8}\index{oocQueue.h@{oocQueue.h}!ooc\_queueRemove@{ooc\_queueRemove}}
+\index{ooc\_queueRemove@{ooc\_queueRemove}!oocQueue.h@{oocQueue.h}}
+\doxysubsubsection{\texorpdfstring{ooc\_queueRemove()}{ooc\_queueRemove()}}
+{\footnotesize\ttfamily \label{oocQueue_8h_a83d72bb1b61330dc4bbf949c7e03efc8} 
+\mbox{\hyperlink{oocError_8h_a1effaed6897d01c49b4771abc4185718}{OOC\+\_\+\+Error}} ooc\+\_\+queue\+Remove (\begin{DoxyParamCaption}\item[{void \texorpdfstring{$\ast$}{*}}]{self}{, }\item[{void \texorpdfstring{$\ast$}{*}}]{element}{}\end{DoxyParamCaption})}
+
+
+
+Removes the first occurrence of the specified element from the queue. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em self} & queue object instance \\
+\hline
+{\em element} & Element to remove \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+OOC\+\_\+\+ERROR\+\_\+\+NONE on success, appropriate error code on failure 
+\end{DoxyReturn}
+\begin{DoxyNote}{Note}
+Inherited from Collection interface 
+\end{DoxyNote}
+\Hypertarget{oocQueue_8h_a16b8da78de1b021546f62a1d445098b7}\index{oocQueue.h@{oocQueue.h}!ooc\_queueSize@{ooc\_queueSize}}
+\index{ooc\_queueSize@{ooc\_queueSize}!oocQueue.h@{oocQueue.h}}
+\doxysubsubsection{\texorpdfstring{ooc\_queueSize()}{ooc\_queueSize()}}
+{\footnotesize\ttfamily \label{oocQueue_8h_a16b8da78de1b021546f62a1d445098b7} 
+size\+\_\+t ooc\+\_\+queue\+Size (\begin{DoxyParamCaption}\item[{void \texorpdfstring{$\ast$}{*}}]{self}{}\end{DoxyParamCaption})}
+
+
+
+Returns the number of elements in the queue. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em self} & queue object instance \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+Number of elements, or 0 if self is NULL 
+\end{DoxyReturn}

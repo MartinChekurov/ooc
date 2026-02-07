@@ -1,0 +1,124 @@
+\doxysection{src/interface/iterator/ooc\+Iterator.h File Reference}
+\hypertarget{oocIterator_8h}{}\label{oocIterator_8h}\index{src/interface/iterator/oocIterator.h@{src/interface/iterator/oocIterator.h}}
+
+
+Iterator interface for the OOC (Object-\/\+Oriented C) framework.  
+
+
+{\ttfamily \#include "{}ooc\+Error.\+h"{}}\newline
+{\ttfamily \#include $<$stdbool.\+h$>$}\newline
+\doxysubsubsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+void \texorpdfstring{$\ast$}{*} \mbox{\hyperlink{oocIterator_8h_a54149729db7313b500f6a70d3b5a8db8}{ooc\+\_\+iterator\+Class}} ()
+\begin{DoxyCompactList}\small\item\em Returns the Iterator interface class descriptor. \end{DoxyCompactList}\item 
+bool \mbox{\hyperlink{oocIterator_8h_a05e8b3861a3ff59e4241ccb8a7915103}{ooc\+\_\+iterator\+Has\+Next}} (void \texorpdfstring{$\ast$}{*}self)
+\begin{DoxyCompactList}\small\item\em Checks if there are more elements to iterate. \end{DoxyCompactList}\item 
+void \texorpdfstring{$\ast$}{*} \mbox{\hyperlink{oocIterator_8h_ae4c7ef1f27f9c83bd897f4fa619a9664}{ooc\+\_\+iterator\+Next}} (void \texorpdfstring{$\ast$}{*}self)
+\begin{DoxyCompactList}\small\item\em Returns the next element and advances the iterator position. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{oocError_8h_a1effaed6897d01c49b4771abc4185718}{OOC\+\_\+\+Error}} \mbox{\hyperlink{oocIterator_8h_af7edc84624f3ebc9af046bf069a379d4}{ooc\+\_\+iterator\+Remove}} (void \texorpdfstring{$\ast$}{*}self)
+\begin{DoxyCompactList}\small\item\em Removes from the underlying collection the last element returned by next() \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+Iterator interface for the OOC (Object-\/\+Oriented C) framework. 
+
+This header defines the Iterator interface used for traversing collections. Iterator objects are obtained from Iterable collections and provide methods to sequentially access elements. Each Iterator maintains its own position state, allowing multiple independent iterations over the same collection. 
+
+\label{doc-func-members}
+\Hypertarget{oocIterator_8h_doc-func-members}
+\doxysubsection{Function Documentation}
+\Hypertarget{oocIterator_8h_a54149729db7313b500f6a70d3b5a8db8}\index{oocIterator.h@{oocIterator.h}!ooc\_iteratorClass@{ooc\_iteratorClass}}
+\index{ooc\_iteratorClass@{ooc\_iteratorClass}!oocIterator.h@{oocIterator.h}}
+\doxysubsubsection{\texorpdfstring{ooc\_iteratorClass()}{ooc\_iteratorClass()}}
+{\footnotesize\ttfamily \label{oocIterator_8h_a54149729db7313b500f6a70d3b5a8db8} 
+void \texorpdfstring{$\ast$}{*} ooc\+\_\+iterator\+Class (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})}
+
+
+
+Returns the Iterator interface class descriptor. 
+
+\begin{DoxyReturn}{Returns}
+Pointer to the Iterator interface class object
+\end{DoxyReturn}
+This function returns the class descriptor for the Iterator interface, which can be used to check if an object implements the iteration protocol. \Hypertarget{oocIterator_8h_a05e8b3861a3ff59e4241ccb8a7915103}\index{oocIterator.h@{oocIterator.h}!ooc\_iteratorHasNext@{ooc\_iteratorHasNext}}
+\index{ooc\_iteratorHasNext@{ooc\_iteratorHasNext}!oocIterator.h@{oocIterator.h}}
+\doxysubsubsection{\texorpdfstring{ooc\_iteratorHasNext()}{ooc\_iteratorHasNext()}}
+{\footnotesize\ttfamily \label{oocIterator_8h_a05e8b3861a3ff59e4241ccb8a7915103} 
+bool ooc\+\_\+iterator\+Has\+Next (\begin{DoxyParamCaption}\item[{void \texorpdfstring{$\ast$}{*}}]{self}{}\end{DoxyParamCaption})}
+
+
+
+Checks if there are more elements to iterate. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em self} & Iterator object instance \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+true if there are more elements, false otherwise 
+\end{DoxyReturn}
+\Hypertarget{oocIterator_8h_ae4c7ef1f27f9c83bd897f4fa619a9664}\index{oocIterator.h@{oocIterator.h}!ooc\_iteratorNext@{ooc\_iteratorNext}}
+\index{ooc\_iteratorNext@{ooc\_iteratorNext}!oocIterator.h@{oocIterator.h}}
+\doxysubsubsection{\texorpdfstring{ooc\_iteratorNext()}{ooc\_iteratorNext()}}
+{\footnotesize\ttfamily \label{oocIterator_8h_ae4c7ef1f27f9c83bd897f4fa619a9664} 
+void \texorpdfstring{$\ast$}{*} ooc\+\_\+iterator\+Next (\begin{DoxyParamCaption}\item[{void \texorpdfstring{$\ast$}{*}}]{self}{}\end{DoxyParamCaption})}
+
+
+
+Returns the next element and advances the iterator position. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em self} & Iterator object instance \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+Pointer to the next element, or NULL if no more elements 
+\end{DoxyReturn}
+\begin{DoxyNote}{Note}
+The returned pointer\textquotesingle{}s lifetime depends on the implementation 
+\end{DoxyNote}
+\Hypertarget{oocIterator_8h_af7edc84624f3ebc9af046bf069a379d4}\index{oocIterator.h@{oocIterator.h}!ooc\_iteratorRemove@{ooc\_iteratorRemove}}
+\index{ooc\_iteratorRemove@{ooc\_iteratorRemove}!oocIterator.h@{oocIterator.h}}
+\doxysubsubsection{\texorpdfstring{ooc\_iteratorRemove()}{ooc\_iteratorRemove()}}
+{\footnotesize\ttfamily \label{oocIterator_8h_af7edc84624f3ebc9af046bf069a379d4} 
+\mbox{\hyperlink{oocError_8h_a1effaed6897d01c49b4771abc4185718}{OOC\+\_\+\+Error}} ooc\+\_\+iterator\+Remove (\begin{DoxyParamCaption}\item[{void \texorpdfstring{$\ast$}{*}}]{self}{}\end{DoxyParamCaption})}
+
+
+
+Removes from the underlying collection the last element returned by next() 
+
+
+\begin{DoxyParams}{Parameters}
+{\em self} & Iterator object instance \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+OOC\+\_\+\+ERROR\+\_\+\+NONE on success, appropriate error code on failure 
+\end{DoxyReturn}
+\begin{DoxyNote}{Note}
+This method can be called only once per call to next() 
+
+Must call next() at least once before calling remove() 
+
+Calling remove() twice without an intervening next() returns an error 
+
+The behavior is unspecified if the underlying collection is modified during iteration in any way other than by calling this method 
+
+Not all iterators support removal; unsupported operations return OOC\+\_\+\+ERROR\+\_\+\+UNSUPPORTED\+\_\+\+OPERATION
+\end{DoxyNote}
+Example usage\+: 
+\begin{DoxyCode}{0}
+\DoxyCodeLine{\textcolor{keywordtype}{void}*\ iter\ =\ \mbox{\hyperlink{oocCollection_8h_a7af12cfdb5100b7ce2033d82fa15b380}{ooc\_collectionGetIterator}}(collection);}
+\DoxyCodeLine{\textcolor{keywordflow}{while}\ (ooc\_iteratorHasNext(iter))\ \{}
+\DoxyCodeLine{\ \ \ \ \textcolor{keywordtype}{void}*\ element\ =\ ooc\_iteratorNext(iter);}
+\DoxyCodeLine{\ \ \ \ \textcolor{keywordflow}{if}\ (shouldRemove(element))\ \{}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \mbox{\hyperlink{oocIterator_8h_af7edc84624f3ebc9af046bf069a379d4}{ooc\_iteratorRemove}}(iter);\ \ \textcolor{comment}{//\ Safe\ removal\ during\ iteration}}
+\DoxyCodeLine{\ \ \ \ \}}
+\DoxyCodeLine{\}}
+\DoxyCodeLine{ooc\_destroy(iter);}
+
+\end{DoxyCode}
+ 

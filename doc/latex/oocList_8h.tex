@@ -1,0 +1,343 @@
+\doxysection{src/interface/iterable/collection/list/ooc\+List.h File Reference}
+\hypertarget{oocList_8h}{}\label{oocList_8h}\index{src/interface/iterable/collection/list/oocList.h@{src/interface/iterable/collection/list/oocList.h}}
+
+
+List interface for the OOC (Object-\/\+Oriented C) framework.  
+
+
+{\ttfamily \#include "{}ooc\+Error.\+h"{}}\newline
+{\ttfamily \#include $<$stddef.\+h$>$}\newline
+{\ttfamily \#include $<$stdbool.\+h$>$}\newline
+\doxysubsubsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+void \texorpdfstring{$\ast$}{*} \mbox{\hyperlink{oocList_8h_a16fa7c62eff3ea55f178048026bf9c33}{ooc\+\_\+list\+Class}} ()
+\begin{DoxyCompactList}\small\item\em Returns the List interface class descriptor. \end{DoxyCompactList}\item 
+void \texorpdfstring{$\ast$}{*} \mbox{\hyperlink{oocList_8h_a2d7cf1c5e25e9837e001c241127fd7d1}{ooc\+\_\+list\+Get\+Iterator}} (void \texorpdfstring{$\ast$}{*}self)
+\begin{DoxyCompactList}\small\item\em Returns an Iterator over the elements in list. \end{DoxyCompactList}\item 
+size\+\_\+t \mbox{\hyperlink{oocList_8h_aea18eba0a7aa10080676ef0d47b58c9d}{ooc\+\_\+list\+Size}} (void \texorpdfstring{$\ast$}{*}self)
+\begin{DoxyCompactList}\small\item\em Returns the number of elements in the list. \end{DoxyCompactList}\item 
+bool \mbox{\hyperlink{oocList_8h_af1a1c6972e2fa17219ef1c0aa3ddc1fc}{ooc\+\_\+list\+Is\+Empty}} (void \texorpdfstring{$\ast$}{*}self)
+\begin{DoxyCompactList}\small\item\em Checks if the list is empty. \end{DoxyCompactList}\item 
+bool \mbox{\hyperlink{oocList_8h_a84961a0229e98d60452f74b523ad0fcc}{ooc\+\_\+list\+Contains}} (void \texorpdfstring{$\ast$}{*}self, void \texorpdfstring{$\ast$}{*}element)
+\begin{DoxyCompactList}\small\item\em Checks if the list contains the specified element. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{oocError_8h_a1effaed6897d01c49b4771abc4185718}{OOC\+\_\+\+Error}} \mbox{\hyperlink{oocList_8h_a9579f47a2b0b05d4f4f1b57229455898}{ooc\+\_\+list\+Add}} (void \texorpdfstring{$\ast$}{*}self, void \texorpdfstring{$\ast$}{*}element)
+\begin{DoxyCompactList}\small\item\em Adds an element to the list. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{oocError_8h_a1effaed6897d01c49b4771abc4185718}{OOC\+\_\+\+Error}} \mbox{\hyperlink{oocList_8h_aae17ac5d8a5ab2980fb46f57d0791c4d}{ooc\+\_\+list\+Remove}} (void \texorpdfstring{$\ast$}{*}self, void \texorpdfstring{$\ast$}{*}element)
+\begin{DoxyCompactList}\small\item\em Removes the specified element from the list. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{oocError_8h_a1effaed6897d01c49b4771abc4185718}{OOC\+\_\+\+Error}} \mbox{\hyperlink{oocList_8h_ac3dca6ef3d9b539a06ddc999a26011aa}{ooc\+\_\+list\+Clear}} (void \texorpdfstring{$\ast$}{*}self)
+\begin{DoxyCompactList}\small\item\em Removes all elements from the list. \end{DoxyCompactList}\item 
+void \texorpdfstring{$\ast$}{*} \mbox{\hyperlink{oocList_8h_ad376c37a5afc20409e3546a41cb30629}{ooc\+\_\+list\+Get\+At}} (void \texorpdfstring{$\ast$}{*}self, size\+\_\+t index)
+\begin{DoxyCompactList}\small\item\em Retrieves the element at the specified index. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{oocError_8h_a1effaed6897d01c49b4771abc4185718}{OOC\+\_\+\+Error}} \mbox{\hyperlink{oocList_8h_ad9781f75749e7bc6995e9a88d78ede82}{ooc\+\_\+list\+Set\+At}} (void \texorpdfstring{$\ast$}{*}self, size\+\_\+t index, void \texorpdfstring{$\ast$}{*}element)
+\begin{DoxyCompactList}\small\item\em Replaces the element at the specified index. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{oocError_8h_a1effaed6897d01c49b4771abc4185718}{OOC\+\_\+\+Error}} \mbox{\hyperlink{oocList_8h_a2e3f306dbd77f772ca244c9468c869b4}{ooc\+\_\+list\+Insert\+At}} (void \texorpdfstring{$\ast$}{*}self, size\+\_\+t index, void \texorpdfstring{$\ast$}{*}element)
+\begin{DoxyCompactList}\small\item\em Inserts an element at the specified index. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{oocError_8h_a1effaed6897d01c49b4771abc4185718}{OOC\+\_\+\+Error}} \mbox{\hyperlink{oocList_8h_af0db8b9bc566fe32177235b42bf0b7ad}{ooc\+\_\+list\+Remove\+At}} (void \texorpdfstring{$\ast$}{*}self, size\+\_\+t index)
+\begin{DoxyCompactList}\small\item\em Removes the element at the specified index. \end{DoxyCompactList}\item 
+int \mbox{\hyperlink{oocList_8h_a50763d45be7c0a3cf85724799a06a01a}{ooc\+\_\+list\+Index\+Of}} (void \texorpdfstring{$\ast$}{*}self, void \texorpdfstring{$\ast$}{*}element)
+\begin{DoxyCompactList}\small\item\em Finds the first occurrence of an element in the list. \end{DoxyCompactList}\item 
+int \mbox{\hyperlink{oocList_8h_a08cc5cdcf3c0dd72d4c6d4648836adda}{ooc\+\_\+list\+Last\+Index\+Of}} (void \texorpdfstring{$\ast$}{*}self, void \texorpdfstring{$\ast$}{*}element)
+\begin{DoxyCompactList}\small\item\em Finds the last occurrence of an element in the list. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+List interface for the OOC (Object-\/\+Oriented C) framework. 
+
+This header defines the List interface that represents an ordered collection with indexed access. Lists extend the Collection interface and provide positional access and manipulation of elements. 
+
+\label{doc-func-members}
+\Hypertarget{oocList_8h_doc-func-members}
+\doxysubsection{Function Documentation}
+\Hypertarget{oocList_8h_a9579f47a2b0b05d4f4f1b57229455898}\index{oocList.h@{oocList.h}!ooc\_listAdd@{ooc\_listAdd}}
+\index{ooc\_listAdd@{ooc\_listAdd}!oocList.h@{oocList.h}}
+\doxysubsubsection{\texorpdfstring{ooc\_listAdd()}{ooc\_listAdd()}}
+{\footnotesize\ttfamily \label{oocList_8h_a9579f47a2b0b05d4f4f1b57229455898} 
+\mbox{\hyperlink{oocError_8h_a1effaed6897d01c49b4771abc4185718}{OOC\+\_\+\+Error}} ooc\+\_\+list\+Add (\begin{DoxyParamCaption}\item[{void \texorpdfstring{$\ast$}{*}}]{self}{, }\item[{void \texorpdfstring{$\ast$}{*}}]{element}{}\end{DoxyParamCaption})}
+
+
+
+Adds an element to the list. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em self} & list object instance \\
+\hline
+{\em element} & Element to add \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+OOC\+\_\+\+ERROR\+\_\+\+NONE on success, appropriate error code on failure 
+\end{DoxyReturn}
+\Hypertarget{oocList_8h_a16fa7c62eff3ea55f178048026bf9c33}\index{oocList.h@{oocList.h}!ooc\_listClass@{ooc\_listClass}}
+\index{ooc\_listClass@{ooc\_listClass}!oocList.h@{oocList.h}}
+\doxysubsubsection{\texorpdfstring{ooc\_listClass()}{ooc\_listClass()}}
+{\footnotesize\ttfamily \label{oocList_8h_a16fa7c62eff3ea55f178048026bf9c33} 
+void \texorpdfstring{$\ast$}{*} ooc\+\_\+list\+Class (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})}
+
+
+
+Returns the List interface class descriptor. 
+
+\begin{DoxyReturn}{Returns}
+Pointer to the List interface class object
+\end{DoxyReturn}
+This function returns the class descriptor for the List interface, which extends Collection and adds indexed access operations. \Hypertarget{oocList_8h_ac3dca6ef3d9b539a06ddc999a26011aa}\index{oocList.h@{oocList.h}!ooc\_listClear@{ooc\_listClear}}
+\index{ooc\_listClear@{ooc\_listClear}!oocList.h@{oocList.h}}
+\doxysubsubsection{\texorpdfstring{ooc\_listClear()}{ooc\_listClear()}}
+{\footnotesize\ttfamily \label{oocList_8h_ac3dca6ef3d9b539a06ddc999a26011aa} 
+\mbox{\hyperlink{oocError_8h_a1effaed6897d01c49b4771abc4185718}{OOC\+\_\+\+Error}} ooc\+\_\+list\+Clear (\begin{DoxyParamCaption}\item[{void \texorpdfstring{$\ast$}{*}}]{self}{}\end{DoxyParamCaption})}
+
+
+
+Removes all elements from the list. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em self} & list object instance \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+OOC\+\_\+\+ERROR\+\_\+\+NONE on success, appropriate error code on failure 
+\end{DoxyReturn}
+\Hypertarget{oocList_8h_a84961a0229e98d60452f74b523ad0fcc}\index{oocList.h@{oocList.h}!ooc\_listContains@{ooc\_listContains}}
+\index{ooc\_listContains@{ooc\_listContains}!oocList.h@{oocList.h}}
+\doxysubsubsection{\texorpdfstring{ooc\_listContains()}{ooc\_listContains()}}
+{\footnotesize\ttfamily \label{oocList_8h_a84961a0229e98d60452f74b523ad0fcc} 
+bool ooc\+\_\+list\+Contains (\begin{DoxyParamCaption}\item[{void \texorpdfstring{$\ast$}{*}}]{self}{, }\item[{void \texorpdfstring{$\ast$}{*}}]{element}{}\end{DoxyParamCaption})}
+
+
+
+Checks if the list contains the specified element. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em self} & list object instance \\
+\hline
+{\em element} & Element to check for presence \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+true if the list contains the element, false otherwise 
+\end{DoxyReturn}
+\Hypertarget{oocList_8h_ad376c37a5afc20409e3546a41cb30629}\index{oocList.h@{oocList.h}!ooc\_listGetAt@{ooc\_listGetAt}}
+\index{ooc\_listGetAt@{ooc\_listGetAt}!oocList.h@{oocList.h}}
+\doxysubsubsection{\texorpdfstring{ooc\_listGetAt()}{ooc\_listGetAt()}}
+{\footnotesize\ttfamily \label{oocList_8h_ad376c37a5afc20409e3546a41cb30629} 
+void \texorpdfstring{$\ast$}{*} ooc\+\_\+list\+Get\+At (\begin{DoxyParamCaption}\item[{void \texorpdfstring{$\ast$}{*}}]{self}{, }\item[{size\+\_\+t}]{index}{}\end{DoxyParamCaption})}
+
+
+
+Retrieves the element at the specified index. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em self} & List object instance \\
+\hline
+{\em index} & Zero-\/based index of the element \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+Pointer to the element, or NULL if index is out of bounds 
+\end{DoxyReturn}
+\Hypertarget{oocList_8h_a2d7cf1c5e25e9837e001c241127fd7d1}\index{oocList.h@{oocList.h}!ooc\_listGetIterator@{ooc\_listGetIterator}}
+\index{ooc\_listGetIterator@{ooc\_listGetIterator}!oocList.h@{oocList.h}}
+\doxysubsubsection{\texorpdfstring{ooc\_listGetIterator()}{ooc\_listGetIterator()}}
+{\footnotesize\ttfamily \label{oocList_8h_a2d7cf1c5e25e9837e001c241127fd7d1} 
+void \texorpdfstring{$\ast$}{*} ooc\+\_\+list\+Get\+Iterator (\begin{DoxyParamCaption}\item[{void \texorpdfstring{$\ast$}{*}}]{self}{}\end{DoxyParamCaption})}
+
+
+
+Returns an Iterator over the elements in list. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em self} & Iterable object instance \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+Pointer to a new Iterator object, or NULL on failure 
+\end{DoxyReturn}
+\begin{DoxyNote}{Note}
+Caller is responsible for calling ooc\+\_\+destroy() on the returned iterator 
+
+Multiple iterators can be obtained and used concurrently, each maintaining its own iteration state
+\end{DoxyNote}
+This method creates a new Iterator that can be used to traverse the elements of the list. The Iterator interface provides has\+Next() and next() methods for sequential access.
+
+Example usage\+: 
+\begin{DoxyCode}{0}
+\DoxyCodeLine{\textcolor{keywordtype}{void}*\ iter\ =\ \mbox{\hyperlink{oocList_8h_a2d7cf1c5e25e9837e001c241127fd7d1}{ooc\_listGetIterator}}(collection);}
+\DoxyCodeLine{\textcolor{keywordflow}{while}\ (ooc\_iteratorHasNext(iter))\ \{}
+\DoxyCodeLine{\ \ \ \ \textcolor{keywordtype}{void}*\ element\ =\ ooc\_iteratorNext(iter);}
+\DoxyCodeLine{\ \ \ \ \textcolor{comment}{//\ process\ element}}
+\DoxyCodeLine{\}}
+\DoxyCodeLine{ooc\_destroy(iter);}
+
+\end{DoxyCode}
+ \Hypertarget{oocList_8h_a50763d45be7c0a3cf85724799a06a01a}\index{oocList.h@{oocList.h}!ooc\_listIndexOf@{ooc\_listIndexOf}}
+\index{ooc\_listIndexOf@{ooc\_listIndexOf}!oocList.h@{oocList.h}}
+\doxysubsubsection{\texorpdfstring{ooc\_listIndexOf()}{ooc\_listIndexOf()}}
+{\footnotesize\ttfamily \label{oocList_8h_a50763d45be7c0a3cf85724799a06a01a} 
+int ooc\+\_\+list\+Index\+Of (\begin{DoxyParamCaption}\item[{void \texorpdfstring{$\ast$}{*}}]{self}{, }\item[{void \texorpdfstring{$\ast$}{*}}]{element}{}\end{DoxyParamCaption})}
+
+
+
+Finds the first occurrence of an element in the list. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em self} & List object instance \\
+\hline
+{\em element} & Element to search for \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+Index of the first occurrence, or -\/1 if not found 
+\end{DoxyReturn}
+\Hypertarget{oocList_8h_a2e3f306dbd77f772ca244c9468c869b4}\index{oocList.h@{oocList.h}!ooc\_listInsertAt@{ooc\_listInsertAt}}
+\index{ooc\_listInsertAt@{ooc\_listInsertAt}!oocList.h@{oocList.h}}
+\doxysubsubsection{\texorpdfstring{ooc\_listInsertAt()}{ooc\_listInsertAt()}}
+{\footnotesize\ttfamily \label{oocList_8h_a2e3f306dbd77f772ca244c9468c869b4} 
+\mbox{\hyperlink{oocError_8h_a1effaed6897d01c49b4771abc4185718}{OOC\+\_\+\+Error}} ooc\+\_\+list\+Insert\+At (\begin{DoxyParamCaption}\item[{void \texorpdfstring{$\ast$}{*}}]{self}{, }\item[{size\+\_\+t}]{index}{, }\item[{void \texorpdfstring{$\ast$}{*}}]{element}{}\end{DoxyParamCaption})}
+
+
+
+Inserts an element at the specified index. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em self} & List object instance \\
+\hline
+{\em index} & Zero-\/based index where element should be inserted \\
+\hline
+{\em element} & Element to insert \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+OOC\+\_\+\+ERROR\+\_\+\+NONE on success, appropriate error code on failure 
+\end{DoxyReturn}
+\begin{DoxyNote}{Note}
+Elements at and after the index are shifted to the right 
+\end{DoxyNote}
+\Hypertarget{oocList_8h_af1a1c6972e2fa17219ef1c0aa3ddc1fc}\index{oocList.h@{oocList.h}!ooc\_listIsEmpty@{ooc\_listIsEmpty}}
+\index{ooc\_listIsEmpty@{ooc\_listIsEmpty}!oocList.h@{oocList.h}}
+\doxysubsubsection{\texorpdfstring{ooc\_listIsEmpty()}{ooc\_listIsEmpty()}}
+{\footnotesize\ttfamily \label{oocList_8h_af1a1c6972e2fa17219ef1c0aa3ddc1fc} 
+bool ooc\+\_\+list\+Is\+Empty (\begin{DoxyParamCaption}\item[{void \texorpdfstring{$\ast$}{*}}]{self}{}\end{DoxyParamCaption})}
+
+
+
+Checks if the list is empty. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em self} & list object instance \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+true if the list contains no elements, false otherwise 
+\end{DoxyReturn}
+\Hypertarget{oocList_8h_a08cc5cdcf3c0dd72d4c6d4648836adda}\index{oocList.h@{oocList.h}!ooc\_listLastIndexOf@{ooc\_listLastIndexOf}}
+\index{ooc\_listLastIndexOf@{ooc\_listLastIndexOf}!oocList.h@{oocList.h}}
+\doxysubsubsection{\texorpdfstring{ooc\_listLastIndexOf()}{ooc\_listLastIndexOf()}}
+{\footnotesize\ttfamily \label{oocList_8h_a08cc5cdcf3c0dd72d4c6d4648836adda} 
+int ooc\+\_\+list\+Last\+Index\+Of (\begin{DoxyParamCaption}\item[{void \texorpdfstring{$\ast$}{*}}]{self}{, }\item[{void \texorpdfstring{$\ast$}{*}}]{element}{}\end{DoxyParamCaption})}
+
+
+
+Finds the last occurrence of an element in the list. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em self} & List object instance \\
+\hline
+{\em element} & Element to search for \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+Index of the last occurrence, or -\/1 if not found 
+\end{DoxyReturn}
+\Hypertarget{oocList_8h_aae17ac5d8a5ab2980fb46f57d0791c4d}\index{oocList.h@{oocList.h}!ooc\_listRemove@{ooc\_listRemove}}
+\index{ooc\_listRemove@{ooc\_listRemove}!oocList.h@{oocList.h}}
+\doxysubsubsection{\texorpdfstring{ooc\_listRemove()}{ooc\_listRemove()}}
+{\footnotesize\ttfamily \label{oocList_8h_aae17ac5d8a5ab2980fb46f57d0791c4d} 
+\mbox{\hyperlink{oocError_8h_a1effaed6897d01c49b4771abc4185718}{OOC\+\_\+\+Error}} ooc\+\_\+list\+Remove (\begin{DoxyParamCaption}\item[{void \texorpdfstring{$\ast$}{*}}]{self}{, }\item[{void \texorpdfstring{$\ast$}{*}}]{element}{}\end{DoxyParamCaption})}
+
+
+
+Removes the specified element from the list. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em self} & list object instance \\
+\hline
+{\em element} & Element to remove \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+OOC\+\_\+\+ERROR\+\_\+\+NONE on success, appropriate error code on failure 
+\end{DoxyReturn}
+\Hypertarget{oocList_8h_af0db8b9bc566fe32177235b42bf0b7ad}\index{oocList.h@{oocList.h}!ooc\_listRemoveAt@{ooc\_listRemoveAt}}
+\index{ooc\_listRemoveAt@{ooc\_listRemoveAt}!oocList.h@{oocList.h}}
+\doxysubsubsection{\texorpdfstring{ooc\_listRemoveAt()}{ooc\_listRemoveAt()}}
+{\footnotesize\ttfamily \label{oocList_8h_af0db8b9bc566fe32177235b42bf0b7ad} 
+\mbox{\hyperlink{oocError_8h_a1effaed6897d01c49b4771abc4185718}{OOC\+\_\+\+Error}} ooc\+\_\+list\+Remove\+At (\begin{DoxyParamCaption}\item[{void \texorpdfstring{$\ast$}{*}}]{self}{, }\item[{size\+\_\+t}]{index}{}\end{DoxyParamCaption})}
+
+
+
+Removes the element at the specified index. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em self} & List object instance \\
+\hline
+{\em index} & Zero-\/based index of the element to remove \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+OOC\+\_\+\+ERROR\+\_\+\+NONE on success, appropriate error code on failure 
+\end{DoxyReturn}
+\begin{DoxyNote}{Note}
+Elements after the index are shifted to the left 
+\end{DoxyNote}
+\Hypertarget{oocList_8h_ad9781f75749e7bc6995e9a88d78ede82}\index{oocList.h@{oocList.h}!ooc\_listSetAt@{ooc\_listSetAt}}
+\index{ooc\_listSetAt@{ooc\_listSetAt}!oocList.h@{oocList.h}}
+\doxysubsubsection{\texorpdfstring{ooc\_listSetAt()}{ooc\_listSetAt()}}
+{\footnotesize\ttfamily \label{oocList_8h_ad9781f75749e7bc6995e9a88d78ede82} 
+\mbox{\hyperlink{oocError_8h_a1effaed6897d01c49b4771abc4185718}{OOC\+\_\+\+Error}} ooc\+\_\+list\+Set\+At (\begin{DoxyParamCaption}\item[{void \texorpdfstring{$\ast$}{*}}]{self}{, }\item[{size\+\_\+t}]{index}{, }\item[{void \texorpdfstring{$\ast$}{*}}]{element}{}\end{DoxyParamCaption})}
+
+
+
+Replaces the element at the specified index. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em self} & List object instance \\
+\hline
+{\em index} & Zero-\/based index of the element to replace \\
+\hline
+{\em element} & New element to set at the index \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+OOC\+\_\+\+ERROR\+\_\+\+NONE on success, appropriate error code on failure 
+\end{DoxyReturn}
+\Hypertarget{oocList_8h_aea18eba0a7aa10080676ef0d47b58c9d}\index{oocList.h@{oocList.h}!ooc\_listSize@{ooc\_listSize}}
+\index{ooc\_listSize@{ooc\_listSize}!oocList.h@{oocList.h}}
+\doxysubsubsection{\texorpdfstring{ooc\_listSize()}{ooc\_listSize()}}
+{\footnotesize\ttfamily \label{oocList_8h_aea18eba0a7aa10080676ef0d47b58c9d} 
+size\+\_\+t ooc\+\_\+list\+Size (\begin{DoxyParamCaption}\item[{void \texorpdfstring{$\ast$}{*}}]{self}{}\end{DoxyParamCaption})}
+
+
+
+Returns the number of elements in the list. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em self} & list object instance \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+Number of elements, or 0 if self is NULL 
+\end{DoxyReturn}

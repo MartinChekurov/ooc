@@ -1,0 +1,109 @@
+\doxysection{src/collection/abstract\+Collection/list/array\+List/ooc\+Array\+List.h File Reference}
+\hypertarget{oocArrayList_8h}{}\label{oocArrayList_8h}\index{src/collection/abstractCollection/list/arrayList/oocArrayList.h@{src/collection/abstractCollection/list/arrayList/oocArrayList.h}}
+
+
+Array\+List implementation for the OOC (Object-\/\+Oriented C) framework.  
+
+
+{\ttfamily \#include "{}ooc\+Error.\+h"{}}\newline
+{\ttfamily \#include $<$stddef.\+h$>$}\newline
+\doxysubsubsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+void \texorpdfstring{$\ast$}{*} \mbox{\hyperlink{oocArrayList_8h_a7efe7f26bad1bd2e79e5c7afd0a2c54a}{ooc\+\_\+array\+List\+Class}} ()
+\begin{DoxyCompactList}\small\item\em Returns the Array\+List class descriptor. \end{DoxyCompactList}\item 
+size\+\_\+t \mbox{\hyperlink{oocArrayList_8h_a32691e3507496a50da2f0058d450cba7}{ooc\+\_\+array\+List\+Capacity}} (void \texorpdfstring{$\ast$}{*}self)
+\begin{DoxyCompactList}\small\item\em Returns the current capacity of the Array\+List. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{oocError_8h_a1effaed6897d01c49b4771abc4185718}{OOC\+\_\+\+Error}} \mbox{\hyperlink{oocArrayList_8h_a5497c421d79df955a4241939dfef548e}{ooc\+\_\+array\+List\+Ensure\+Capacity}} (void \texorpdfstring{$\ast$}{*}self, size\+\_\+t min\+Capacity)
+\begin{DoxyCompactList}\small\item\em Ensures the Array\+List can hold at least the specified capacity. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{oocError_8h_a1effaed6897d01c49b4771abc4185718}{OOC\+\_\+\+Error}} \mbox{\hyperlink{oocArrayList_8h_a530b6fffb3bc1f6e2faf69331e137821}{ooc\+\_\+array\+List\+Trim\+To\+Size}} (void \texorpdfstring{$\ast$}{*}self)
+\begin{DoxyCompactList}\small\item\em Trims the capacity to match the current size. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+Array\+List implementation for the OOC (Object-\/\+Oriented C) framework. 
+
+This header defines the Array\+List class, a resizable array implementation of the List interface. It provides fast indexed access and amortized O(1) append operations. 
+
+\label{doc-func-members}
+\Hypertarget{oocArrayList_8h_doc-func-members}
+\doxysubsection{Function Documentation}
+\Hypertarget{oocArrayList_8h_a32691e3507496a50da2f0058d450cba7}\index{oocArrayList.h@{oocArrayList.h}!ooc\_arrayListCapacity@{ooc\_arrayListCapacity}}
+\index{ooc\_arrayListCapacity@{ooc\_arrayListCapacity}!oocArrayList.h@{oocArrayList.h}}
+\doxysubsubsection{\texorpdfstring{ooc\_arrayListCapacity()}{ooc\_arrayListCapacity()}}
+{\footnotesize\ttfamily \label{oocArrayList_8h_a32691e3507496a50da2f0058d450cba7} 
+size\+\_\+t ooc\+\_\+array\+List\+Capacity (\begin{DoxyParamCaption}\item[{void \texorpdfstring{$\ast$}{*}}]{self}{}\end{DoxyParamCaption})}
+
+
+
+Returns the current capacity of the Array\+List. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em self} & Array\+List object instance \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+Current capacity, or 0 if self is NULL 
+\end{DoxyReturn}
+\Hypertarget{oocArrayList_8h_a7efe7f26bad1bd2e79e5c7afd0a2c54a}\index{oocArrayList.h@{oocArrayList.h}!ooc\_arrayListClass@{ooc\_arrayListClass}}
+\index{ooc\_arrayListClass@{ooc\_arrayListClass}!oocArrayList.h@{oocArrayList.h}}
+\doxysubsubsection{\texorpdfstring{ooc\_arrayListClass()}{ooc\_arrayListClass()}}
+{\footnotesize\ttfamily \label{oocArrayList_8h_a7efe7f26bad1bd2e79e5c7afd0a2c54a} 
+void \texorpdfstring{$\ast$}{*} ooc\+\_\+array\+List\+Class (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})}
+
+
+
+Returns the Array\+List class descriptor. 
+
+\begin{DoxyReturn}{Returns}
+Pointer to the Array\+List class object
+\end{DoxyReturn}
+Constructor parameters\+:
+\begin{DoxyItemize}
+\item initial\+Capacity (size\+\_\+t)\+: Initial capacity for the array, or 0 for default (10)
+\end{DoxyItemize}
+
+Example\+: 
+\begin{DoxyCode}{0}
+\DoxyCodeLine{\textcolor{keywordtype}{void}*\ list\ =\ ooc\_new(\mbox{\hyperlink{oocArrayList_8h_a7efe7f26bad1bd2e79e5c7afd0a2c54a}{ooc\_arrayListClass}}(),\ 20);\ \ \textcolor{comment}{//\ Create\ with\ capacity\ 20}}
+
+\end{DoxyCode}
+ \Hypertarget{oocArrayList_8h_a5497c421d79df955a4241939dfef548e}\index{oocArrayList.h@{oocArrayList.h}!ooc\_arrayListEnsureCapacity@{ooc\_arrayListEnsureCapacity}}
+\index{ooc\_arrayListEnsureCapacity@{ooc\_arrayListEnsureCapacity}!oocArrayList.h@{oocArrayList.h}}
+\doxysubsubsection{\texorpdfstring{ooc\_arrayListEnsureCapacity()}{ooc\_arrayListEnsureCapacity()}}
+{\footnotesize\ttfamily \label{oocArrayList_8h_a5497c421d79df955a4241939dfef548e} 
+\mbox{\hyperlink{oocError_8h_a1effaed6897d01c49b4771abc4185718}{OOC\+\_\+\+Error}} ooc\+\_\+array\+List\+Ensure\+Capacity (\begin{DoxyParamCaption}\item[{void \texorpdfstring{$\ast$}{*}}]{self}{, }\item[{size\+\_\+t}]{min\+Capacity}{}\end{DoxyParamCaption})}
+
+
+
+Ensures the Array\+List can hold at least the specified capacity. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em self} & Array\+List object instance \\
+\hline
+{\em min\+Capacity} & Minimum capacity required \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+OOC\+\_\+\+ERROR\+\_\+\+NONE on success, appropriate error code on failure 
+\end{DoxyReturn}
+\Hypertarget{oocArrayList_8h_a530b6fffb3bc1f6e2faf69331e137821}\index{oocArrayList.h@{oocArrayList.h}!ooc\_arrayListTrimToSize@{ooc\_arrayListTrimToSize}}
+\index{ooc\_arrayListTrimToSize@{ooc\_arrayListTrimToSize}!oocArrayList.h@{oocArrayList.h}}
+\doxysubsubsection{\texorpdfstring{ooc\_arrayListTrimToSize()}{ooc\_arrayListTrimToSize()}}
+{\footnotesize\ttfamily \label{oocArrayList_8h_a530b6fffb3bc1f6e2faf69331e137821} 
+\mbox{\hyperlink{oocError_8h_a1effaed6897d01c49b4771abc4185718}{OOC\+\_\+\+Error}} ooc\+\_\+array\+List\+Trim\+To\+Size (\begin{DoxyParamCaption}\item[{void \texorpdfstring{$\ast$}{*}}]{self}{}\end{DoxyParamCaption})}
+
+
+
+Trims the capacity to match the current size. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em self} & Array\+List object instance \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+OOC\+\_\+\+ERROR\+\_\+\+NONE on success, appropriate error code on failure 
+\end{DoxyReturn}

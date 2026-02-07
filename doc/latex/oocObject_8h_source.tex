@@ -1,0 +1,75 @@
+\doxysection{ooc\+Object.\+h}
+\hypertarget{oocObject_8h_source}{}\label{oocObject_8h_source}\index{src/object/oocObject.h@{src/object/oocObject.h}}
+\mbox{\hyperlink{oocObject_8h}{Go to the documentation of this file.}}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00001\ }
+\DoxyCodeLine{00010\ }
+\DoxyCodeLine{00011\ \textcolor{preprocessor}{\#ifndef\ OOC\_OBJECT\_H\_}}
+\DoxyCodeLine{00012\ \textcolor{preprocessor}{\#define\ OOC\_OBJECT\_H\_}}
+\DoxyCodeLine{00013\ }
+\DoxyCodeLine{00014\ \textcolor{preprocessor}{\#include\ "{}\mbox{\hyperlink{oocError_8h}{oocError.h}}"{}}}
+\DoxyCodeLine{00015\ \textcolor{preprocessor}{\#include\ <stdarg.h>}}
+\DoxyCodeLine{00016\ \textcolor{preprocessor}{\#include\ <stddef.h>}}
+\DoxyCodeLine{00017\ \textcolor{preprocessor}{\#include\ <stdbool.h>}}
+\DoxyCodeLine{00018\ }
+\DoxyCodeLine{00023\ \textcolor{keywordtype}{void}*\ \mbox{\hyperlink{oocObject_8h_a363a35854fbaef335c09a11f7f0ab89e}{ooc\_objectClass}}();}
+\DoxyCodeLine{00024\ }
+\DoxyCodeLine{00025\ \textcolor{comment}{//\ ============================================================================}}
+\DoxyCodeLine{00026\ \textcolor{comment}{//\ Object\ lifecycle\ management}}
+\DoxyCodeLine{00027\ \textcolor{comment}{//\ ============================================================================}}
+\DoxyCodeLine{00028\ }
+\DoxyCodeLine{00036\ \textcolor{keywordtype}{void}*\ \mbox{\hyperlink{oocObject_8h_ae9e8091deeaae9c959c118973696035a}{ooc\_new}}(\textcolor{keywordtype}{void}*\ \textcolor{keyword}{class},\ ...);}
+\DoxyCodeLine{00037\ }
+\DoxyCodeLine{00043\ \mbox{\hyperlink{oocError_8h_a1effaed6897d01c49b4771abc4185718}{OOC\_Error}}\ \mbox{\hyperlink{oocObject_8h_a6013e8e01ba720797f8640ede5d9adaf}{ooc\_destroy}}(\textcolor{keywordtype}{void}*\ self);}
+\DoxyCodeLine{00044\ }
+\DoxyCodeLine{00045\ \textcolor{comment}{//\ ============================================================================}}
+\DoxyCodeLine{00046\ \textcolor{comment}{//\ Class\ and\ type\ information}}
+\DoxyCodeLine{00047\ \textcolor{comment}{//\ ============================================================================}}
+\DoxyCodeLine{00048\ }
+\DoxyCodeLine{00054\ \textcolor{keyword}{const}\ \textcolor{keywordtype}{void}*\ \mbox{\hyperlink{oocObject_8h_af0fdfd30e57ce4630e6626244befa8e6}{ooc\_classOf}}(\textcolor{keyword}{const}\ \textcolor{keywordtype}{void}*\ self);}
+\DoxyCodeLine{00055\ }
+\DoxyCodeLine{00061\ \textcolor{keywordtype}{size\_t}\ \mbox{\hyperlink{oocObject_8h_a00e2fa94d198a7a7eb20f5578030041d}{ooc\_sizeOf}}(\textcolor{keyword}{const}\ \textcolor{keywordtype}{void}*\ self);}
+\DoxyCodeLine{00062\ }
+\DoxyCodeLine{00069\ \textcolor{keywordtype}{bool}\ \mbox{\hyperlink{oocObject_8h_a6f1a639c80290677ff386ed6a862ae72}{ooc\_isInstanceOf}}(\textcolor{keyword}{const}\ \textcolor{keywordtype}{void}*\ self,\ \textcolor{keyword}{const}\ \textcolor{keywordtype}{void}*\ \textcolor{keyword}{class});}
+\DoxyCodeLine{00070\ }
+\DoxyCodeLine{00076\ \textcolor{keyword}{const}\ \textcolor{keywordtype}{char}*\ \mbox{\hyperlink{oocObject_8h_abb7566a32125dbb612227e54fa6e34c1}{ooc\_getClassName}}(\textcolor{keyword}{const}\ \textcolor{keywordtype}{void}*\ self);}
+\DoxyCodeLine{00077\ }
+\DoxyCodeLine{00083\ \textcolor{keywordtype}{bool}\ \mbox{\hyperlink{oocObject_8h_a294ab2cef66eb273938cb94548a399cc}{ooc\_isAbstract}}(\textcolor{keyword}{const}\ \textcolor{keywordtype}{void}*\ self);}
+\DoxyCodeLine{00084\ }
+\DoxyCodeLine{00090\ \textcolor{keywordtype}{bool}\ \mbox{\hyperlink{oocObject_8h_a300e137f00c19942dcadcbd4e5d7a0be}{ooc\_isFinal}}(\textcolor{keyword}{const}\ \textcolor{keywordtype}{void}*\ self);}
+\DoxyCodeLine{00091\ }
+\DoxyCodeLine{00092\ \textcolor{comment}{//\ ============================================================================}}
+\DoxyCodeLine{00093\ \textcolor{comment}{//\ Object\ comparison\ and\ representation}}
+\DoxyCodeLine{00094\ \textcolor{comment}{//\ ============================================================================}}
+\DoxyCodeLine{00095\ }
+\DoxyCodeLine{00102\ \textcolor{keywordtype}{char}*\ \mbox{\hyperlink{oocObject_8h_ab12239d9429fa6bcf82f96c88c4df764}{ooc\_toString}}(\textcolor{keyword}{const}\ \textcolor{keywordtype}{void}*\ self);}
+\DoxyCodeLine{00103\ }
+\DoxyCodeLine{00110\ \textcolor{keywordtype}{bool}\ \mbox{\hyperlink{oocObject_8h_a7fe6fd26d83f925b82a9b5fecf416d99}{ooc\_equals}}(\textcolor{keyword}{const}\ \textcolor{keywordtype}{void}*\ self,\ \textcolor{keyword}{const}\ \textcolor{keywordtype}{void}*\ other);}
+\DoxyCodeLine{00111\ }
+\DoxyCodeLine{00117\ \textcolor{keywordtype}{size\_t}\ \mbox{\hyperlink{oocObject_8h_a72c349e5effad11d681c70051cde7fe6}{ooc\_hashCode}}(\textcolor{keyword}{const}\ \textcolor{keywordtype}{void}*\ self);}
+\DoxyCodeLine{00118\ }
+\DoxyCodeLine{00125\ \textcolor{keywordtype}{int}\ \mbox{\hyperlink{oocObject_8h_a63014f06a451cb2ec12322c656f4b054}{ooc\_compare}}(\textcolor{keyword}{const}\ \textcolor{keywordtype}{void}*\ self,\ \textcolor{keyword}{const}\ \textcolor{keywordtype}{void}*\ other);}
+\DoxyCodeLine{00126\ }
+\DoxyCodeLine{00133\ \textcolor{keywordtype}{void}*\ \mbox{\hyperlink{oocObject_8h_a15aee75bab1f31523f40bac1cf055a2a}{ooc\_clone}}(\textcolor{keyword}{const}\ \textcolor{keywordtype}{void}*\ self);}
+\DoxyCodeLine{00134\ }
+\DoxyCodeLine{00135\ \textcolor{comment}{//\ ============================================================================}}
+\DoxyCodeLine{00136\ \textcolor{comment}{//\ Interface\ management}}
+\DoxyCodeLine{00137\ \textcolor{comment}{//\ ============================================================================}}
+\DoxyCodeLine{00138\ }
+\DoxyCodeLine{00145\ \textcolor{keyword}{const}\ \textcolor{keywordtype}{void}*\ \mbox{\hyperlink{oocObject_8h_a3feba13e844f80ef375da10262b306ac}{ooc\_getInterfaceVtable}}(\textcolor{keyword}{const}\ \textcolor{keywordtype}{void}*\ self,\ \textcolor{keyword}{const}\ \textcolor{keywordtype}{void}*\ interfaceType);}
+\DoxyCodeLine{00146\ }
+\DoxyCodeLine{00154\ \mbox{\hyperlink{oocError_8h_a1effaed6897d01c49b4771abc4185718}{OOC\_Error}}\ \mbox{\hyperlink{oocObject_8h_a19c82d2b543dd92e0222cd9a35f815cc}{ooc\_setInterface}}(\textcolor{keywordtype}{void}*\ self,\ \textcolor{keyword}{const}\ \textcolor{keywordtype}{void}*\ impls,\ \textcolor{keywordtype}{unsigned}\ \textcolor{keywordtype}{int}\ count);}
+\DoxyCodeLine{00155\ }
+\DoxyCodeLine{00156\ \textcolor{comment}{//\ ============================================================================}}
+\DoxyCodeLine{00157\ \textcolor{comment}{//\ Function\ override\ and\ verification}}
+\DoxyCodeLine{00158\ \textcolor{comment}{//\ ============================================================================}}
+\DoxyCodeLine{00159\ }
+\DoxyCodeLine{00167\ \mbox{\hyperlink{oocError_8h_a1effaed6897d01c49b4771abc4185718}{OOC\_Error}}\ \mbox{\hyperlink{oocObject_8h_af3775b9a77439d661d8ec000e34c13a4}{ooc\_verifyMethods}}(\textcolor{keywordtype}{void}*\ self,\ \textcolor{keywordtype}{size\_t}\ start,\ \textcolor{keywordtype}{size\_t}\ end);}
+\DoxyCodeLine{00168\ }
+\DoxyCodeLine{00175\ \mbox{\hyperlink{oocError_8h_a1effaed6897d01c49b4771abc4185718}{OOC\_Error}}\ \mbox{\hyperlink{oocObject_8h_a4355ea11d39d64b1f78a01e4552b0b12}{ooc\_overrideMethods}}(\textcolor{keywordtype}{void}*\ self,\ va\_list*\ args);}
+\DoxyCodeLine{00176\ }
+\DoxyCodeLine{00183\ \mbox{\hyperlink{oocError_8h_a1effaed6897d01c49b4771abc4185718}{OOC\_Error}}\ \mbox{\hyperlink{oocObject_8h_ab883bc381b9141f77ea43bac8db7ea83}{ooc\_overrideMethodsv}}(\textcolor{keywordtype}{void}*\ self,\ ...);}
+\DoxyCodeLine{00184\ }
+\DoxyCodeLine{00185\ \textcolor{preprocessor}{\#endif}}
+
+\end{DoxyCode}

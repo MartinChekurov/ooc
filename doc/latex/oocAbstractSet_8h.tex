@@ -1,0 +1,44 @@
+\doxysection{src/collection/abstract\+Collection/set/abstract\+Set/ooc\+Abstract\+Set.h File Reference}
+\hypertarget{oocAbstractSet_8h}{}\label{oocAbstractSet_8h}\index{src/collection/abstractCollection/set/abstractSet/oocAbstractSet.h@{src/collection/abstractCollection/set/abstractSet/oocAbstractSet.h}}
+
+
+Abstract base class for unordered Set implementations in the OOC framework.  
+
+
+\doxysubsubsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+void \texorpdfstring{$\ast$}{*} \mbox{\hyperlink{oocAbstractSet_8h_a3af197dac371557e819a94a9f2e2cbf1}{ooc\+\_\+abstract\+Set\+Class}} ()
+\begin{DoxyCompactList}\small\item\em Returns the Abstract\+Set class descriptor. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+Abstract base class for unordered Set implementations in the OOC framework. 
+
+This header defines the Abstract\+Set class, which extends Abstract\+Collection with overrides for equals, hash\+Code, and to\+String to provide proper unordered set semantics\+:
+\begin{DoxyItemize}
+\item equals\+: true if both sets contain the same elements (order-\/insensitive)
+\item hash\+Code\+: commutative sum of element hashes (order-\/insensitive)
+\item to\+String\+: uses curly braces "{}\{elem1, elem2\}"{} instead of square brackets
+\end{DoxyItemize}
+
+Suitable for Hash\+Set. Linked\+Hash\+Set should inherit directly from Abstract\+Collection to preserve insertion-\/order semantics.
+
+This class is abstract and cannot be instantiated directly. 
+
+\label{doc-func-members}
+\Hypertarget{oocAbstractSet_8h_doc-func-members}
+\doxysubsection{Function Documentation}
+\Hypertarget{oocAbstractSet_8h_a3af197dac371557e819a94a9f2e2cbf1}\index{oocAbstractSet.h@{oocAbstractSet.h}!ooc\_abstractSetClass@{ooc\_abstractSetClass}}
+\index{ooc\_abstractSetClass@{ooc\_abstractSetClass}!oocAbstractSet.h@{oocAbstractSet.h}}
+\doxysubsubsection{\texorpdfstring{ooc\_abstractSetClass()}{ooc\_abstractSetClass()}}
+{\footnotesize\ttfamily \label{oocAbstractSet_8h_a3af197dac371557e819a94a9f2e2cbf1} 
+void \texorpdfstring{$\ast$}{*} ooc\+\_\+abstract\+Set\+Class (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})}
+
+
+
+Returns the Abstract\+Set class descriptor. 
+
+\begin{DoxyReturn}{Returns}
+Pointer to the Abstract\+Set class object 
+\end{DoxyReturn}

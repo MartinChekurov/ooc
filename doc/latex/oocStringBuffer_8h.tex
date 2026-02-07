@@ -1,0 +1,1333 @@
+\doxysection{src/string\+Buffer/ooc\+String\+Buffer.h File Reference}
+\hypertarget{oocStringBuffer_8h}{}\label{oocStringBuffer_8h}\index{src/stringBuffer/oocStringBuffer.h@{src/stringBuffer/oocStringBuffer.h}}
+
+
+Object-\/oriented C String\+Buffer class implementation.  
+
+
+{\ttfamily \#include "{}ooc\+Error.\+h"{}}\newline
+{\ttfamily \#include $<$stddef.\+h$>$}\newline
+{\ttfamily \#include $<$stdbool.\+h$>$}\newline
+\doxysubsubsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+void \texorpdfstring{$\ast$}{*} \mbox{\hyperlink{oocStringBuffer_8h_a181ac3a2514fe66f23a79b177ac3def4}{ooc\+\_\+string\+Buffer\+Class}} ()
+\begin{DoxyCompactList}\small\item\em Returns the String\+Buffer class descriptor. \end{DoxyCompactList}\item 
+size\+\_\+t \mbox{\hyperlink{oocStringBuffer_8h_a0d594fb3d9bf097b1c595d036d5c0016}{ooc\+\_\+string\+Buffer\+Length}} (const void \texorpdfstring{$\ast$}{*}self)
+\begin{DoxyCompactList}\small\item\em Returns the length of the String\+Buffer. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{oocError_8h_a1effaed6897d01c49b4771abc4185718}{OOC\+\_\+\+Error}} \mbox{\hyperlink{oocStringBuffer_8h_aa363426f23d79bdb273c356558dd3eb5}{ooc\+\_\+string\+Buffer\+Set\+Length}} (void \texorpdfstring{$\ast$}{*}self, size\+\_\+t new\+Length)
+\begin{DoxyCompactList}\small\item\em Sets the length of the String\+Buffer. \end{DoxyCompactList}\item 
+bool \mbox{\hyperlink{oocStringBuffer_8h_a18333a84d9d28890b164903cb6f14773}{ooc\+\_\+string\+Buffer\+Is\+Empty}} (const void \texorpdfstring{$\ast$}{*}self)
+\begin{DoxyCompactList}\small\item\em Checks if the String\+Buffer is empty. \end{DoxyCompactList}\item 
+size\+\_\+t \mbox{\hyperlink{oocStringBuffer_8h_a6cad69fd448de4879959da504cfe79cf}{ooc\+\_\+string\+Buffer\+Capacity}} (const void \texorpdfstring{$\ast$}{*}self)
+\begin{DoxyCompactList}\small\item\em Returns the current capacity of the String\+Buffer. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{oocError_8h_a1effaed6897d01c49b4771abc4185718}{OOC\+\_\+\+Error}} \mbox{\hyperlink{oocStringBuffer_8h_ab7ab68a1f2311936d16b95d86ff6e1ca}{ooc\+\_\+string\+Buffer\+Ensure\+Capacity}} (void \texorpdfstring{$\ast$}{*}self, size\+\_\+t minimum\+Capacity)
+\begin{DoxyCompactList}\small\item\em Ensures the String\+Buffer has at least the specified capacity. \end{DoxyCompactList}\item 
+char \mbox{\hyperlink{oocStringBuffer_8h_ab74ea180efbfadcf86a83b6df050dfa8}{ooc\+\_\+string\+Buffer\+Char\+At}} (const void \texorpdfstring{$\ast$}{*}self, size\+\_\+t index)
+\begin{DoxyCompactList}\small\item\em Returns the character at the specified index. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{oocError_8h_a1effaed6897d01c49b4771abc4185718}{OOC\+\_\+\+Error}} \mbox{\hyperlink{oocStringBuffer_8h_a412b860ba060ff92c364e6dc01feaa0a}{ooc\+\_\+string\+Buffer\+Set\+Char\+At}} (void \texorpdfstring{$\ast$}{*}self, size\+\_\+t index, char ch)
+\begin{DoxyCompactList}\small\item\em Sets the character at the specified index. \end{DoxyCompactList}\item 
+char \texorpdfstring{$\ast$}{*} \mbox{\hyperlink{oocStringBuffer_8h_aa41fb20c0a81d2eae3f56812b5a2e2c8}{ooc\+\_\+string\+Buffer\+Substring}} (const void \texorpdfstring{$\ast$}{*}self, size\+\_\+t start, size\+\_\+t end)
+\begin{DoxyCompactList}\small\item\em Extracts a substring from the String\+Buffer. \end{DoxyCompactList}\item 
+void \texorpdfstring{$\ast$}{*} \mbox{\hyperlink{oocStringBuffer_8h_abc70fb2c904755430ef06d44b8b74c77}{ooc\+\_\+string\+Buffer\+Concat}} (void \texorpdfstring{$\ast$}{*}self, const void \texorpdfstring{$\ast$}{*}other)
+\begin{DoxyCompactList}\small\item\em Concatenates another String\+Buffer to this String\+Buffer. \end{DoxyCompactList}\item 
+void \texorpdfstring{$\ast$}{*} \mbox{\hyperlink{oocStringBuffer_8h_ad31329cf6710613faa2595774a2cf16e}{ooc\+\_\+string\+Buffer\+Replace\+With\+String}} (void \texorpdfstring{$\ast$}{*}self, size\+\_\+t start, size\+\_\+t end, const void \texorpdfstring{$\ast$}{*}string)
+\begin{DoxyCompactList}\small\item\em Replaces characters in a range with a String object. \end{DoxyCompactList}\item 
+void \texorpdfstring{$\ast$}{*} \mbox{\hyperlink{oocStringBuffer_8h_ae47604746bf7b8375ac9092b8df3c2fb}{ooc\+\_\+string\+Buffer\+Replace\+With\+CString}} (void \texorpdfstring{$\ast$}{*}self, size\+\_\+t start, size\+\_\+t end, const char \texorpdfstring{$\ast$}{*}str)
+\begin{DoxyCompactList}\small\item\em Replaces characters in a range with a C string. \end{DoxyCompactList}\item 
+void \texorpdfstring{$\ast$}{*} \mbox{\hyperlink{oocStringBuffer_8h_a9710929cd1c64cebda107a320011069d}{ooc\+\_\+string\+Buffer\+Replace\+String}} (void \texorpdfstring{$\ast$}{*}self, const void \texorpdfstring{$\ast$}{*}target, const void \texorpdfstring{$\ast$}{*}replacement)
+\begin{DoxyCompactList}\small\item\em Replaces all occurrences of a target String object with another String object. \end{DoxyCompactList}\item 
+void \texorpdfstring{$\ast$}{*} \mbox{\hyperlink{oocStringBuffer_8h_a44be39862530a80ad765f88d0c19caaf}{ooc\+\_\+string\+Buffer\+Replace\+CString}} (void \texorpdfstring{$\ast$}{*}self, const char \texorpdfstring{$\ast$}{*}target, const char \texorpdfstring{$\ast$}{*}replacement)
+\begin{DoxyCompactList}\small\item\em Replaces all occurrences of a target C string with another C string. \end{DoxyCompactList}\item 
+void \texorpdfstring{$\ast$}{*} \mbox{\hyperlink{oocStringBuffer_8h_a73c69074810a47952df03708e6d9985e}{ooc\+\_\+string\+Buffer\+Replace\+First\+String}} (void \texorpdfstring{$\ast$}{*}self, const void \texorpdfstring{$\ast$}{*}target, const void \texorpdfstring{$\ast$}{*}replacement)
+\begin{DoxyCompactList}\small\item\em Replaces the first occurrence of a target String object. \end{DoxyCompactList}\item 
+void \texorpdfstring{$\ast$}{*} \mbox{\hyperlink{oocStringBuffer_8h_aec513a71e4a8db4a8f9738a25ac02dd9}{ooc\+\_\+string\+Buffer\+Replace\+First\+CString}} (void \texorpdfstring{$\ast$}{*}self, const char \texorpdfstring{$\ast$}{*}target, const char \texorpdfstring{$\ast$}{*}replacement)
+\begin{DoxyCompactList}\small\item\em Replaces the first occurrence of a target C string. \end{DoxyCompactList}\item 
+void \texorpdfstring{$\ast$}{*} \mbox{\hyperlink{oocStringBuffer_8h_ab382859e37d7856773021c5dd2cf6a9a}{ooc\+\_\+string\+Buffer\+Replace\+Last\+String}} (void \texorpdfstring{$\ast$}{*}self, const void \texorpdfstring{$\ast$}{*}target, const void \texorpdfstring{$\ast$}{*}replacement)
+\begin{DoxyCompactList}\small\item\em Replaces the last occurrence of a target String object. \end{DoxyCompactList}\item 
+void \texorpdfstring{$\ast$}{*} \mbox{\hyperlink{oocStringBuffer_8h_a18d87e13cf52494234fa5505a812cef5}{ooc\+\_\+string\+Buffer\+Replace\+Last\+CString}} (void \texorpdfstring{$\ast$}{*}self, const char \texorpdfstring{$\ast$}{*}target, const char \texorpdfstring{$\ast$}{*}replacement)
+\begin{DoxyCompactList}\small\item\em Replaces the last occurrence of a target C string. \end{DoxyCompactList}\item 
+void \texorpdfstring{$\ast$}{*} \mbox{\hyperlink{oocStringBuffer_8h_a86edd82a07b833c19a19a244f3902f13}{ooc\+\_\+string\+Buffer\+Replace\+Char}} (void \texorpdfstring{$\ast$}{*}self, char old\+Char, char new\+Char)
+\begin{DoxyCompactList}\small\item\em Replaces all occurrences of a character with another character. \end{DoxyCompactList}\item 
+void \texorpdfstring{$\ast$}{*} \mbox{\hyperlink{oocStringBuffer_8h_a01a57a9d366fa8deac9023c13d8b248d}{ooc\+\_\+string\+Buffer\+To\+Lower\+Case}} (void \texorpdfstring{$\ast$}{*}self)
+\begin{DoxyCompactList}\small\item\em Converts all characters in the String\+Buffer to lowercase. \end{DoxyCompactList}\item 
+void \texorpdfstring{$\ast$}{*} \mbox{\hyperlink{oocStringBuffer_8h_acb1de473d8a1037c8a18e9ad0c413727}{ooc\+\_\+string\+Buffer\+To\+Upper\+Case}} (void \texorpdfstring{$\ast$}{*}self)
+\begin{DoxyCompactList}\small\item\em Converts all characters in the String\+Buffer to uppercase. \end{DoxyCompactList}\item 
+void \texorpdfstring{$\ast$}{*} \mbox{\hyperlink{oocStringBuffer_8h_ac734a43a42cf59e0add649d03e27ef9a}{ooc\+\_\+string\+Buffer\+Trim}} (void \texorpdfstring{$\ast$}{*}self)
+\begin{DoxyCompactList}\small\item\em Trims whitespace from both ends of the String\+Buffer. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{oocError_8h_a1effaed6897d01c49b4771abc4185718}{OOC\+\_\+\+Error}} \mbox{\hyperlink{oocStringBuffer_8h_ad603978f3ec76fe5a782f8ee16203f8a}{ooc\+\_\+string\+Buffer\+Trim\+To\+Size}} (void \texorpdfstring{$\ast$}{*}self)
+\begin{DoxyCompactList}\small\item\em Reduces the capacity to match the current length. \end{DoxyCompactList}\item 
+void \texorpdfstring{$\ast$}{*} \mbox{\hyperlink{oocStringBuffer_8h_a172b5a48945e9a7aa503d1722070d1e0}{ooc\+\_\+string\+Buffer\+Append\+String}} (void \texorpdfstring{$\ast$}{*}self, const void \texorpdfstring{$\ast$}{*}string)
+\begin{DoxyCompactList}\small\item\em Appends a String object to the String\+Buffer. \end{DoxyCompactList}\item 
+void \texorpdfstring{$\ast$}{*} \mbox{\hyperlink{oocStringBuffer_8h_a47e1789aa7dc7abbee208dcb3149f23a}{ooc\+\_\+string\+Buffer\+Append\+CString}} (void \texorpdfstring{$\ast$}{*}self, const char \texorpdfstring{$\ast$}{*}str)
+\begin{DoxyCompactList}\small\item\em Appends a C string to the String\+Buffer. \end{DoxyCompactList}\item 
+void \texorpdfstring{$\ast$}{*} \mbox{\hyperlink{oocStringBuffer_8h_ae95d235cff7296245eafec68d7d8ef78}{ooc\+\_\+string\+Buffer\+Append\+Char}} (void \texorpdfstring{$\ast$}{*}self, char ch)
+\begin{DoxyCompactList}\small\item\em Appends a character to the String\+Buffer. \end{DoxyCompactList}\item 
+void \texorpdfstring{$\ast$}{*} \mbox{\hyperlink{oocStringBuffer_8h_a17e499ea4cd07fe3b3cba38be637c69a}{ooc\+\_\+string\+Buffer\+Append\+Int}} (void \texorpdfstring{$\ast$}{*}self, int value)
+\begin{DoxyCompactList}\small\item\em Appends an integer to the String\+Buffer. \end{DoxyCompactList}\item 
+void \texorpdfstring{$\ast$}{*} \mbox{\hyperlink{oocStringBuffer_8h_a23c345c8c9d59a59782d6083a3ca0215}{ooc\+\_\+string\+Buffer\+Append\+Double}} (void \texorpdfstring{$\ast$}{*}self, double value)
+\begin{DoxyCompactList}\small\item\em Appends a double to the String\+Buffer. \end{DoxyCompactList}\item 
+void \texorpdfstring{$\ast$}{*} \mbox{\hyperlink{oocStringBuffer_8h_a7a51b718b06670ab734a925ecfcbac97}{ooc\+\_\+string\+Buffer\+Append\+Bool}} (void \texorpdfstring{$\ast$}{*}self, bool value)
+\begin{DoxyCompactList}\small\item\em Appends a boolean to the String\+Buffer. \end{DoxyCompactList}\item 
+void \texorpdfstring{$\ast$}{*} \mbox{\hyperlink{oocStringBuffer_8h_a48a8e6155d9f1a51ac18e53d0e60b756}{ooc\+\_\+string\+Buffer\+Append\+Object}} (void \texorpdfstring{$\ast$}{*}self, const void \texorpdfstring{$\ast$}{*}object)
+\begin{DoxyCompactList}\small\item\em Appends any object to the String\+Buffer by calling its to\+String method. \end{DoxyCompactList}\item 
+void \texorpdfstring{$\ast$}{*} \mbox{\hyperlink{oocStringBuffer_8h_ac988bb7c1aa6e1fae7fb262e478b2370}{ooc\+\_\+string\+Buffer\+Append\+Format}} (void \texorpdfstring{$\ast$}{*}self, const char \texorpdfstring{$\ast$}{*}format,...)
+\begin{DoxyCompactList}\small\item\em Appends formatted text (printf-\/style) to the String\+Buffer. \end{DoxyCompactList}\item 
+void \texorpdfstring{$\ast$}{*} \mbox{\hyperlink{oocStringBuffer_8h_af5d61f5382c3499f2c460487acf57ba4}{ooc\+\_\+string\+Buffer\+Insert\+String}} (void \texorpdfstring{$\ast$}{*}self, size\+\_\+t offset, const void \texorpdfstring{$\ast$}{*}string)
+\begin{DoxyCompactList}\small\item\em Inserts a String object at the specified position. \end{DoxyCompactList}\item 
+void \texorpdfstring{$\ast$}{*} \mbox{\hyperlink{oocStringBuffer_8h_af9e572263646dcc0f42863fa9617f1d7}{ooc\+\_\+string\+Buffer\+Insert\+CString}} (void \texorpdfstring{$\ast$}{*}self, size\+\_\+t offset, const char \texorpdfstring{$\ast$}{*}str)
+\begin{DoxyCompactList}\small\item\em Inserts a C string at the specified position. \end{DoxyCompactList}\item 
+void \texorpdfstring{$\ast$}{*} \mbox{\hyperlink{oocStringBuffer_8h_a83568013cc76c4c53096f4922efce2f6}{ooc\+\_\+string\+Buffer\+Insert\+Char}} (void \texorpdfstring{$\ast$}{*}self, size\+\_\+t offset, char ch)
+\begin{DoxyCompactList}\small\item\em Inserts a character at the specified position. \end{DoxyCompactList}\item 
+void \texorpdfstring{$\ast$}{*} \mbox{\hyperlink{oocStringBuffer_8h_ab6e406eb697e30bb1ea96ff589552c6f}{ooc\+\_\+string\+Buffer\+Insert\+Int}} (void \texorpdfstring{$\ast$}{*}self, size\+\_\+t offset, int value)
+\begin{DoxyCompactList}\small\item\em Inserts an integer at the specified position. \end{DoxyCompactList}\item 
+void \texorpdfstring{$\ast$}{*} \mbox{\hyperlink{oocStringBuffer_8h_a4cb7be38fdfbfb0cad0a51c5fc5002e6}{ooc\+\_\+string\+Buffer\+Insert\+Double}} (void \texorpdfstring{$\ast$}{*}self, size\+\_\+t offset, double value)
+\begin{DoxyCompactList}\small\item\em Inserts a double at the specified position. \end{DoxyCompactList}\item 
+void \texorpdfstring{$\ast$}{*} \mbox{\hyperlink{oocStringBuffer_8h_a7d872bfd6cffe115105a0387ca44f72b}{ooc\+\_\+string\+Buffer\+Insert\+Bool}} (void \texorpdfstring{$\ast$}{*}self, size\+\_\+t offset, bool value)
+\begin{DoxyCompactList}\small\item\em Inserts a boolean at the specified position. \end{DoxyCompactList}\item 
+void \texorpdfstring{$\ast$}{*} \mbox{\hyperlink{oocStringBuffer_8h_a56a7ff6f3cece46d9e48bc42bc890ec3}{ooc\+\_\+string\+Buffer\+Insert\+Object}} (void \texorpdfstring{$\ast$}{*}self, size\+\_\+t offset, const void \texorpdfstring{$\ast$}{*}object)
+\begin{DoxyCompactList}\small\item\em Inserts any object at the specified position by calling its to\+String method. \end{DoxyCompactList}\item 
+void \texorpdfstring{$\ast$}{*} \mbox{\hyperlink{oocStringBuffer_8h_a1d5754aad7b3b0f0321fe5e056cc58af}{ooc\+\_\+string\+Buffer\+Insert\+Format}} (void \texorpdfstring{$\ast$}{*}self, size\+\_\+t offset, const char \texorpdfstring{$\ast$}{*}format,...)
+\begin{DoxyCompactList}\small\item\em Inserts formatted text at a specified position. \end{DoxyCompactList}\item 
+void \texorpdfstring{$\ast$}{*} \mbox{\hyperlink{oocStringBuffer_8h_af09e4ee02ff3421230fce400275034fa}{ooc\+\_\+string\+Buffer\+Delete}} (void \texorpdfstring{$\ast$}{*}self, size\+\_\+t start, size\+\_\+t end)
+\begin{DoxyCompactList}\small\item\em Deletes characters from the String\+Buffer. \end{DoxyCompactList}\item 
+void \texorpdfstring{$\ast$}{*} \mbox{\hyperlink{oocStringBuffer_8h_ace9d10535780d3d8269ea2c8021f5a18}{ooc\+\_\+string\+Buffer\+Delete\+Char\+At}} (void \texorpdfstring{$\ast$}{*}self, size\+\_\+t index)
+\begin{DoxyCompactList}\small\item\em Deletes a single character at the specified index. \end{DoxyCompactList}\item 
+void \texorpdfstring{$\ast$}{*} \mbox{\hyperlink{oocStringBuffer_8h_ade5effee3b7834c11f375940117c1953}{ooc\+\_\+string\+Buffer\+Reverse}} (void \texorpdfstring{$\ast$}{*}self)
+\begin{DoxyCompactList}\small\item\em Reverses the character sequence in the String\+Buffer. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{oocError_8h_a1effaed6897d01c49b4771abc4185718}{OOC\+\_\+\+Error}} \mbox{\hyperlink{oocStringBuffer_8h_a7574535c05ca8b3bb0e702012c86b680}{ooc\+\_\+string\+Buffer\+Clear}} (void \texorpdfstring{$\ast$}{*}self)
+\begin{DoxyCompactList}\small\item\em Clears all content from the String\+Buffer. \end{DoxyCompactList}\item 
+int \mbox{\hyperlink{oocStringBuffer_8h_a1a3aad0863f8b6d42fcbee9ed08619cd}{ooc\+\_\+string\+Buffer\+Index\+Of\+Char}} (const void \texorpdfstring{$\ast$}{*}self, char ch)
+\begin{DoxyCompactList}\small\item\em Returns the index of the first occurrence of a character. \end{DoxyCompactList}\item 
+int \mbox{\hyperlink{oocStringBuffer_8h_a293a66c1bc648987215c489032510fde}{ooc\+\_\+string\+Buffer\+Last\+Index\+Of\+Char}} (const void \texorpdfstring{$\ast$}{*}self, char ch)
+\begin{DoxyCompactList}\small\item\em Returns the index of the last occurrence of a character. \end{DoxyCompactList}\item 
+int \mbox{\hyperlink{oocStringBuffer_8h_a3fabb70ae636dd5a65e2f745c86b7263}{ooc\+\_\+string\+Buffer\+Index\+Of\+String}} (const void \texorpdfstring{$\ast$}{*}self, const void \texorpdfstring{$\ast$}{*}str)
+\begin{DoxyCompactList}\small\item\em Returns the index of the first occurrence of a substring (String object) \end{DoxyCompactList}\item 
+int \mbox{\hyperlink{oocStringBuffer_8h_ae8d3f9a4740640c884e96b960d20eacd}{ooc\+\_\+string\+Buffer\+Index\+Of\+CString}} (const void \texorpdfstring{$\ast$}{*}self, const char \texorpdfstring{$\ast$}{*}str)
+\begin{DoxyCompactList}\small\item\em Returns the index of the first occurrence of a C string. \end{DoxyCompactList}\item 
+int \mbox{\hyperlink{oocStringBuffer_8h_a0938b5513105a0f312d8e94864c25c82}{ooc\+\_\+string\+Buffer\+Last\+Index\+Of\+String}} (const void \texorpdfstring{$\ast$}{*}self, const void \texorpdfstring{$\ast$}{*}str)
+\begin{DoxyCompactList}\small\item\em Returns the index of the last occurrence of a substring (String object) \end{DoxyCompactList}\item 
+int \mbox{\hyperlink{oocStringBuffer_8h_ad40a39da08799e13bd40ce27dea5f063}{ooc\+\_\+string\+Buffer\+Last\+Index\+Of\+CString}} (const void \texorpdfstring{$\ast$}{*}self, const char \texorpdfstring{$\ast$}{*}str)
+\begin{DoxyCompactList}\small\item\em Returns the index of the last occurrence of a C string. \end{DoxyCompactList}\item 
+bool \mbox{\hyperlink{oocStringBuffer_8h_ada6546eb6a80a1bff9bc360932cee234}{ooc\+\_\+string\+Buffer\+Starts\+With\+String}} (const void \texorpdfstring{$\ast$}{*}self, const void \texorpdfstring{$\ast$}{*}prefix)
+\begin{DoxyCompactList}\small\item\em Checks if the String\+Buffer starts with a prefix (String object) \end{DoxyCompactList}\item 
+bool \mbox{\hyperlink{oocStringBuffer_8h_a1460f96721b370b8a2b4af7344273935}{ooc\+\_\+string\+Buffer\+Starts\+With\+CString}} (const void \texorpdfstring{$\ast$}{*}self, const char \texorpdfstring{$\ast$}{*}prefix)
+\begin{DoxyCompactList}\small\item\em Checks if the String\+Buffer starts with a C string. \end{DoxyCompactList}\item 
+bool \mbox{\hyperlink{oocStringBuffer_8h_af1ba4530a975ae18a3c30155cbaa2f0e}{ooc\+\_\+string\+Buffer\+Ends\+With\+String}} (const void \texorpdfstring{$\ast$}{*}self, const void \texorpdfstring{$\ast$}{*}suffix)
+\begin{DoxyCompactList}\small\item\em Checks if the String\+Buffer ends with a suffix (String object) \end{DoxyCompactList}\item 
+bool \mbox{\hyperlink{oocStringBuffer_8h_a47bf84c515b086aa331e9e0bb42b47af}{ooc\+\_\+string\+Buffer\+Ends\+With\+CString}} (const void \texorpdfstring{$\ast$}{*}self, const char \texorpdfstring{$\ast$}{*}suffix)
+\begin{DoxyCompactList}\small\item\em Checks if the String\+Buffer ends with a C string. \end{DoxyCompactList}\item 
+bool \mbox{\hyperlink{oocStringBuffer_8h_ac3a3a56d0f169c9379f80a4f5a8d888d}{ooc\+\_\+string\+Buffer\+Contains\+String}} (const void \texorpdfstring{$\ast$}{*}self, const void \texorpdfstring{$\ast$}{*}str)
+\begin{DoxyCompactList}\small\item\em Checks if the String\+Buffer contains a substring (String object) \end{DoxyCompactList}\item 
+bool \mbox{\hyperlink{oocStringBuffer_8h_a54224c4656315699068d3bc4fdc2a542}{ooc\+\_\+string\+Buffer\+Contains\+CString}} (const void \texorpdfstring{$\ast$}{*}self, const char \texorpdfstring{$\ast$}{*}str)
+\begin{DoxyCompactList}\small\item\em Checks if the String\+Buffer contains a C string. \end{DoxyCompactList}\item 
+char \texorpdfstring{$\ast$}{*} \mbox{\hyperlink{oocStringBuffer_8h_a33585d39e090c84b9edd41470c1bbe4a}{ooc\+\_\+string\+Buffer\+To\+CString}} (const void \texorpdfstring{$\ast$}{*}self)
+\begin{DoxyCompactList}\small\item\em Converts the String\+Buffer to a newly allocated C string. \end{DoxyCompactList}\item 
+const char \texorpdfstring{$\ast$}{*} \mbox{\hyperlink{oocStringBuffer_8h_a5ea5ee6783831eed423e1859a8212e28}{ooc\+\_\+string\+Buffer\+Get\+CString}} (const void \texorpdfstring{$\ast$}{*}self)
+\begin{DoxyCompactList}\small\item\em Returns a const pointer to the internal C string (read-\/only access) \end{DoxyCompactList}\item 
+void \texorpdfstring{$\ast$}{*} \mbox{\hyperlink{oocStringBuffer_8h_a8ecfc484c82a13bc2f9e5b0349714844}{ooc\+\_\+string\+Buffer\+To\+String}} (const void \texorpdfstring{$\ast$}{*}self)
+\begin{DoxyCompactList}\small\item\em Converts the String\+Buffer to a String object. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+Object-\/oriented C String\+Buffer class implementation. 
+
+This header defines a String\+Buffer class for the OOC framework, providing a mutable sequence of characters. Unlike String objects which are immutable, String\+Buffer objects can be modified in place, making them more efficient for building strings through multiple operations.
+
+String\+Buffer objects are mutable and automatically grow their capacity as needed. This makes them ideal for string concatenation, building strings in loops, or any scenario where a string is constructed incrementally. 
+
+\label{doc-func-members}
+\Hypertarget{oocStringBuffer_8h_doc-func-members}
+\doxysubsection{Function Documentation}
+\Hypertarget{oocStringBuffer_8h_a7a51b718b06670ab734a925ecfcbac97}\index{oocStringBuffer.h@{oocStringBuffer.h}!ooc\_stringBufferAppendBool@{ooc\_stringBufferAppendBool}}
+\index{ooc\_stringBufferAppendBool@{ooc\_stringBufferAppendBool}!oocStringBuffer.h@{oocStringBuffer.h}}
+\doxysubsubsection{\texorpdfstring{ooc\_stringBufferAppendBool()}{ooc\_stringBufferAppendBool()}}
+{\footnotesize\ttfamily \label{oocStringBuffer_8h_a7a51b718b06670ab734a925ecfcbac97} 
+void \texorpdfstring{$\ast$}{*} ooc\+\_\+string\+Buffer\+Append\+Bool (\begin{DoxyParamCaption}\item[{void \texorpdfstring{$\ast$}{*}}]{self}{, }\item[{bool}]{value}{}\end{DoxyParamCaption})}
+
+
+
+Appends a boolean to the String\+Buffer. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em self} & String\+Buffer object instance \\
+\hline
+{\em value} & Boolean value to append (will append "{}true"{} or "{}false"{}) \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+Pointer to self for method chaining, or NULL on failure 
+\end{DoxyReturn}
+\Hypertarget{oocStringBuffer_8h_ae95d235cff7296245eafec68d7d8ef78}\index{oocStringBuffer.h@{oocStringBuffer.h}!ooc\_stringBufferAppendChar@{ooc\_stringBufferAppendChar}}
+\index{ooc\_stringBufferAppendChar@{ooc\_stringBufferAppendChar}!oocStringBuffer.h@{oocStringBuffer.h}}
+\doxysubsubsection{\texorpdfstring{ooc\_stringBufferAppendChar()}{ooc\_stringBufferAppendChar()}}
+{\footnotesize\ttfamily \label{oocStringBuffer_8h_ae95d235cff7296245eafec68d7d8ef78} 
+void \texorpdfstring{$\ast$}{*} ooc\+\_\+string\+Buffer\+Append\+Char (\begin{DoxyParamCaption}\item[{void \texorpdfstring{$\ast$}{*}}]{self}{, }\item[{char}]{ch}{}\end{DoxyParamCaption})}
+
+
+
+Appends a character to the String\+Buffer. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em self} & String\+Buffer object instance \\
+\hline
+{\em ch} & Character to append \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+Pointer to self for method chaining, or NULL on failure 
+\end{DoxyReturn}
+\Hypertarget{oocStringBuffer_8h_a47e1789aa7dc7abbee208dcb3149f23a}\index{oocStringBuffer.h@{oocStringBuffer.h}!ooc\_stringBufferAppendCString@{ooc\_stringBufferAppendCString}}
+\index{ooc\_stringBufferAppendCString@{ooc\_stringBufferAppendCString}!oocStringBuffer.h@{oocStringBuffer.h}}
+\doxysubsubsection{\texorpdfstring{ooc\_stringBufferAppendCString()}{ooc\_stringBufferAppendCString()}}
+{\footnotesize\ttfamily \label{oocStringBuffer_8h_a47e1789aa7dc7abbee208dcb3149f23a} 
+void \texorpdfstring{$\ast$}{*} ooc\+\_\+string\+Buffer\+Append\+CString (\begin{DoxyParamCaption}\item[{void \texorpdfstring{$\ast$}{*}}]{self}{, }\item[{const char \texorpdfstring{$\ast$}{*}}]{str}{}\end{DoxyParamCaption})}
+
+
+
+Appends a C string to the String\+Buffer. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em self} & String\+Buffer object instance \\
+\hline
+{\em str} & Null-\/terminated C string to append \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+Pointer to self for method chaining, or NULL on failure 
+\end{DoxyReturn}
+\Hypertarget{oocStringBuffer_8h_a23c345c8c9d59a59782d6083a3ca0215}\index{oocStringBuffer.h@{oocStringBuffer.h}!ooc\_stringBufferAppendDouble@{ooc\_stringBufferAppendDouble}}
+\index{ooc\_stringBufferAppendDouble@{ooc\_stringBufferAppendDouble}!oocStringBuffer.h@{oocStringBuffer.h}}
+\doxysubsubsection{\texorpdfstring{ooc\_stringBufferAppendDouble()}{ooc\_stringBufferAppendDouble()}}
+{\footnotesize\ttfamily \label{oocStringBuffer_8h_a23c345c8c9d59a59782d6083a3ca0215} 
+void \texorpdfstring{$\ast$}{*} ooc\+\_\+string\+Buffer\+Append\+Double (\begin{DoxyParamCaption}\item[{void \texorpdfstring{$\ast$}{*}}]{self}{, }\item[{double}]{value}{}\end{DoxyParamCaption})}
+
+
+
+Appends a double to the String\+Buffer. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em self} & String\+Buffer object instance \\
+\hline
+{\em value} & Double value to append \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+Pointer to self for method chaining, or NULL on failure 
+\end{DoxyReturn}
+\Hypertarget{oocStringBuffer_8h_ac988bb7c1aa6e1fae7fb262e478b2370}\index{oocStringBuffer.h@{oocStringBuffer.h}!ooc\_stringBufferAppendFormat@{ooc\_stringBufferAppendFormat}}
+\index{ooc\_stringBufferAppendFormat@{ooc\_stringBufferAppendFormat}!oocStringBuffer.h@{oocStringBuffer.h}}
+\doxysubsubsection{\texorpdfstring{ooc\_stringBufferAppendFormat()}{ooc\_stringBufferAppendFormat()}}
+{\footnotesize\ttfamily \label{oocStringBuffer_8h_ac988bb7c1aa6e1fae7fb262e478b2370} 
+void \texorpdfstring{$\ast$}{*} ooc\+\_\+string\+Buffer\+Append\+Format (\begin{DoxyParamCaption}\item[{void \texorpdfstring{$\ast$}{*}}]{self}{, }\item[{const char \texorpdfstring{$\ast$}{*}}]{format}{, }\item[{}]{...}{}\end{DoxyParamCaption})}
+
+
+
+Appends formatted text (printf-\/style) to the String\+Buffer. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em self} & String\+Buffer object instance \\
+\hline
+{\em format} & printf-\/style format string \\
+\hline
+{\em ...} & Format arguments \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+Pointer to self for method chaining, or NULL on failure 
+\end{DoxyReturn}
+\Hypertarget{oocStringBuffer_8h_a17e499ea4cd07fe3b3cba38be637c69a}\index{oocStringBuffer.h@{oocStringBuffer.h}!ooc\_stringBufferAppendInt@{ooc\_stringBufferAppendInt}}
+\index{ooc\_stringBufferAppendInt@{ooc\_stringBufferAppendInt}!oocStringBuffer.h@{oocStringBuffer.h}}
+\doxysubsubsection{\texorpdfstring{ooc\_stringBufferAppendInt()}{ooc\_stringBufferAppendInt()}}
+{\footnotesize\ttfamily \label{oocStringBuffer_8h_a17e499ea4cd07fe3b3cba38be637c69a} 
+void \texorpdfstring{$\ast$}{*} ooc\+\_\+string\+Buffer\+Append\+Int (\begin{DoxyParamCaption}\item[{void \texorpdfstring{$\ast$}{*}}]{self}{, }\item[{int}]{value}{}\end{DoxyParamCaption})}
+
+
+
+Appends an integer to the String\+Buffer. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em self} & String\+Buffer object instance \\
+\hline
+{\em value} & Integer value to append \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+Pointer to self for method chaining, or NULL on failure 
+\end{DoxyReturn}
+\Hypertarget{oocStringBuffer_8h_a48a8e6155d9f1a51ac18e53d0e60b756}\index{oocStringBuffer.h@{oocStringBuffer.h}!ooc\_stringBufferAppendObject@{ooc\_stringBufferAppendObject}}
+\index{ooc\_stringBufferAppendObject@{ooc\_stringBufferAppendObject}!oocStringBuffer.h@{oocStringBuffer.h}}
+\doxysubsubsection{\texorpdfstring{ooc\_stringBufferAppendObject()}{ooc\_stringBufferAppendObject()}}
+{\footnotesize\ttfamily \label{oocStringBuffer_8h_a48a8e6155d9f1a51ac18e53d0e60b756} 
+void \texorpdfstring{$\ast$}{*} ooc\+\_\+string\+Buffer\+Append\+Object (\begin{DoxyParamCaption}\item[{void \texorpdfstring{$\ast$}{*}}]{self}{, }\item[{const void \texorpdfstring{$\ast$}{*}}]{object}{}\end{DoxyParamCaption})}
+
+
+
+Appends any object to the String\+Buffer by calling its to\+String method. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em self} & String\+Buffer object instance \\
+\hline
+{\em object} & Object to append (must have a to\+String method) \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+Pointer to self for method chaining, or NULL on failure 
+\end{DoxyReturn}
+\Hypertarget{oocStringBuffer_8h_a172b5a48945e9a7aa503d1722070d1e0}\index{oocStringBuffer.h@{oocStringBuffer.h}!ooc\_stringBufferAppendString@{ooc\_stringBufferAppendString}}
+\index{ooc\_stringBufferAppendString@{ooc\_stringBufferAppendString}!oocStringBuffer.h@{oocStringBuffer.h}}
+\doxysubsubsection{\texorpdfstring{ooc\_stringBufferAppendString()}{ooc\_stringBufferAppendString()}}
+{\footnotesize\ttfamily \label{oocStringBuffer_8h_a172b5a48945e9a7aa503d1722070d1e0} 
+void \texorpdfstring{$\ast$}{*} ooc\+\_\+string\+Buffer\+Append\+String (\begin{DoxyParamCaption}\item[{void \texorpdfstring{$\ast$}{*}}]{self}{, }\item[{const void \texorpdfstring{$\ast$}{*}}]{string}{}\end{DoxyParamCaption})}
+
+
+
+Appends a String object to the String\+Buffer. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em self} & String\+Buffer object instance \\
+\hline
+{\em string} & String object to append \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+Pointer to self for method chaining, or NULL on failure 
+\end{DoxyReturn}
+\Hypertarget{oocStringBuffer_8h_a6cad69fd448de4879959da504cfe79cf}\index{oocStringBuffer.h@{oocStringBuffer.h}!ooc\_stringBufferCapacity@{ooc\_stringBufferCapacity}}
+\index{ooc\_stringBufferCapacity@{ooc\_stringBufferCapacity}!oocStringBuffer.h@{oocStringBuffer.h}}
+\doxysubsubsection{\texorpdfstring{ooc\_stringBufferCapacity()}{ooc\_stringBufferCapacity()}}
+{\footnotesize\ttfamily \label{oocStringBuffer_8h_a6cad69fd448de4879959da504cfe79cf} 
+size\+\_\+t ooc\+\_\+string\+Buffer\+Capacity (\begin{DoxyParamCaption}\item[{const void \texorpdfstring{$\ast$}{*}}]{self}{}\end{DoxyParamCaption})}
+
+
+
+Returns the current capacity of the String\+Buffer. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em self} & String\+Buffer object instance \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+Current capacity, or 0 if self is NULL 
+\end{DoxyReturn}
+\Hypertarget{oocStringBuffer_8h_ab74ea180efbfadcf86a83b6df050dfa8}\index{oocStringBuffer.h@{oocStringBuffer.h}!ooc\_stringBufferCharAt@{ooc\_stringBufferCharAt}}
+\index{ooc\_stringBufferCharAt@{ooc\_stringBufferCharAt}!oocStringBuffer.h@{oocStringBuffer.h}}
+\doxysubsubsection{\texorpdfstring{ooc\_stringBufferCharAt()}{ooc\_stringBufferCharAt()}}
+{\footnotesize\ttfamily \label{oocStringBuffer_8h_ab74ea180efbfadcf86a83b6df050dfa8} 
+char ooc\+\_\+string\+Buffer\+Char\+At (\begin{DoxyParamCaption}\item[{const void \texorpdfstring{$\ast$}{*}}]{self}{, }\item[{size\+\_\+t}]{index}{}\end{DoxyParamCaption})}
+
+
+
+Returns the character at the specified index. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em self} & String\+Buffer object instance \\
+\hline
+{\em index} & Zero-\/based index of the character \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+Character at the specified index, or \textquotesingle{}\textbackslash{}0\textquotesingle{} if index is out of bounds or self is NULL 
+\end{DoxyReturn}
+\Hypertarget{oocStringBuffer_8h_a181ac3a2514fe66f23a79b177ac3def4}\index{oocStringBuffer.h@{oocStringBuffer.h}!ooc\_stringBufferClass@{ooc\_stringBufferClass}}
+\index{ooc\_stringBufferClass@{ooc\_stringBufferClass}!oocStringBuffer.h@{oocStringBuffer.h}}
+\doxysubsubsection{\texorpdfstring{ooc\_stringBufferClass()}{ooc\_stringBufferClass()}}
+{\footnotesize\ttfamily \label{oocStringBuffer_8h_a181ac3a2514fe66f23a79b177ac3def4} 
+void \texorpdfstring{$\ast$}{*} ooc\+\_\+string\+Buffer\+Class (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})}
+
+
+
+Returns the String\+Buffer class descriptor. 
+
+\begin{DoxyReturn}{Returns}
+Pointer to the String\+Buffer class object 
+\end{DoxyReturn}
+\Hypertarget{oocStringBuffer_8h_a7574535c05ca8b3bb0e702012c86b680}\index{oocStringBuffer.h@{oocStringBuffer.h}!ooc\_stringBufferClear@{ooc\_stringBufferClear}}
+\index{ooc\_stringBufferClear@{ooc\_stringBufferClear}!oocStringBuffer.h@{oocStringBuffer.h}}
+\doxysubsubsection{\texorpdfstring{ooc\_stringBufferClear()}{ooc\_stringBufferClear()}}
+{\footnotesize\ttfamily \label{oocStringBuffer_8h_a7574535c05ca8b3bb0e702012c86b680} 
+\mbox{\hyperlink{oocError_8h_a1effaed6897d01c49b4771abc4185718}{OOC\+\_\+\+Error}} ooc\+\_\+string\+Buffer\+Clear (\begin{DoxyParamCaption}\item[{void \texorpdfstring{$\ast$}{*}}]{self}{}\end{DoxyParamCaption})}
+
+
+
+Clears all content from the String\+Buffer. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em self} & String\+Buffer object instance \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+OOC\+\_\+\+ERROR\+\_\+\+NONE on success, appropriate error code on failure 
+\end{DoxyReturn}
+\Hypertarget{oocStringBuffer_8h_abc70fb2c904755430ef06d44b8b74c77}\index{oocStringBuffer.h@{oocStringBuffer.h}!ooc\_stringBufferConcat@{ooc\_stringBufferConcat}}
+\index{ooc\_stringBufferConcat@{ooc\_stringBufferConcat}!oocStringBuffer.h@{oocStringBuffer.h}}
+\doxysubsubsection{\texorpdfstring{ooc\_stringBufferConcat()}{ooc\_stringBufferConcat()}}
+{\footnotesize\ttfamily \label{oocStringBuffer_8h_abc70fb2c904755430ef06d44b8b74c77} 
+void \texorpdfstring{$\ast$}{*} ooc\+\_\+string\+Buffer\+Concat (\begin{DoxyParamCaption}\item[{void \texorpdfstring{$\ast$}{*}}]{self}{, }\item[{const void \texorpdfstring{$\ast$}{*}}]{other}{}\end{DoxyParamCaption})}
+
+
+
+Concatenates another String\+Buffer to this String\+Buffer. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em self} & String\+Buffer object instance \\
+\hline
+{\em other} & String\+Buffer object to concatenate \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+Pointer to self for method chaining, or NULL on failure 
+\end{DoxyReturn}
+\Hypertarget{oocStringBuffer_8h_a54224c4656315699068d3bc4fdc2a542}\index{oocStringBuffer.h@{oocStringBuffer.h}!ooc\_stringBufferContainsCString@{ooc\_stringBufferContainsCString}}
+\index{ooc\_stringBufferContainsCString@{ooc\_stringBufferContainsCString}!oocStringBuffer.h@{oocStringBuffer.h}}
+\doxysubsubsection{\texorpdfstring{ooc\_stringBufferContainsCString()}{ooc\_stringBufferContainsCString()}}
+{\footnotesize\ttfamily \label{oocStringBuffer_8h_a54224c4656315699068d3bc4fdc2a542} 
+bool ooc\+\_\+string\+Buffer\+Contains\+CString (\begin{DoxyParamCaption}\item[{const void \texorpdfstring{$\ast$}{*}}]{self}{, }\item[{const char \texorpdfstring{$\ast$}{*}}]{str}{}\end{DoxyParamCaption})}
+
+
+
+Checks if the String\+Buffer contains a C string. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em self} & String\+Buffer object instance \\
+\hline
+{\em str} & Null-\/terminated substring to check \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+true if the substring is present, false otherwise 
+\end{DoxyReturn}
+\Hypertarget{oocStringBuffer_8h_ac3a3a56d0f169c9379f80a4f5a8d888d}\index{oocStringBuffer.h@{oocStringBuffer.h}!ooc\_stringBufferContainsString@{ooc\_stringBufferContainsString}}
+\index{ooc\_stringBufferContainsString@{ooc\_stringBufferContainsString}!oocStringBuffer.h@{oocStringBuffer.h}}
+\doxysubsubsection{\texorpdfstring{ooc\_stringBufferContainsString()}{ooc\_stringBufferContainsString()}}
+{\footnotesize\ttfamily \label{oocStringBuffer_8h_ac3a3a56d0f169c9379f80a4f5a8d888d} 
+bool ooc\+\_\+string\+Buffer\+Contains\+String (\begin{DoxyParamCaption}\item[{const void \texorpdfstring{$\ast$}{*}}]{self}{, }\item[{const void \texorpdfstring{$\ast$}{*}}]{str}{}\end{DoxyParamCaption})}
+
+
+
+Checks if the String\+Buffer contains a substring (String object) 
+
+
+\begin{DoxyParams}{Parameters}
+{\em self} & String\+Buffer object instance \\
+\hline
+{\em str} & Substring to check \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+true if the substring is present, false otherwise 
+\end{DoxyReturn}
+\Hypertarget{oocStringBuffer_8h_af09e4ee02ff3421230fce400275034fa}\index{oocStringBuffer.h@{oocStringBuffer.h}!ooc\_stringBufferDelete@{ooc\_stringBufferDelete}}
+\index{ooc\_stringBufferDelete@{ooc\_stringBufferDelete}!oocStringBuffer.h@{oocStringBuffer.h}}
+\doxysubsubsection{\texorpdfstring{ooc\_stringBufferDelete()}{ooc\_stringBufferDelete()}}
+{\footnotesize\ttfamily \label{oocStringBuffer_8h_af09e4ee02ff3421230fce400275034fa} 
+void \texorpdfstring{$\ast$}{*} ooc\+\_\+string\+Buffer\+Delete (\begin{DoxyParamCaption}\item[{void \texorpdfstring{$\ast$}{*}}]{self}{, }\item[{size\+\_\+t}]{start}{, }\item[{size\+\_\+t}]{end}{}\end{DoxyParamCaption})}
+
+
+
+Deletes characters from the String\+Buffer. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em self} & String\+Buffer object instance \\
+\hline
+{\em start} & Starting index (inclusive) \\
+\hline
+{\em end} & Ending index (exclusive) \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+Pointer to self for method chaining, or NULL on failure 
+\end{DoxyReturn}
+\Hypertarget{oocStringBuffer_8h_ace9d10535780d3d8269ea2c8021f5a18}\index{oocStringBuffer.h@{oocStringBuffer.h}!ooc\_stringBufferDeleteCharAt@{ooc\_stringBufferDeleteCharAt}}
+\index{ooc\_stringBufferDeleteCharAt@{ooc\_stringBufferDeleteCharAt}!oocStringBuffer.h@{oocStringBuffer.h}}
+\doxysubsubsection{\texorpdfstring{ooc\_stringBufferDeleteCharAt()}{ooc\_stringBufferDeleteCharAt()}}
+{\footnotesize\ttfamily \label{oocStringBuffer_8h_ace9d10535780d3d8269ea2c8021f5a18} 
+void \texorpdfstring{$\ast$}{*} ooc\+\_\+string\+Buffer\+Delete\+Char\+At (\begin{DoxyParamCaption}\item[{void \texorpdfstring{$\ast$}{*}}]{self}{, }\item[{size\+\_\+t}]{index}{}\end{DoxyParamCaption})}
+
+
+
+Deletes a single character at the specified index. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em self} & String\+Buffer object instance \\
+\hline
+{\em index} & Index of the character to delete \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+Pointer to self for method chaining, or NULL on failure 
+\end{DoxyReturn}
+\Hypertarget{oocStringBuffer_8h_a47bf84c515b086aa331e9e0bb42b47af}\index{oocStringBuffer.h@{oocStringBuffer.h}!ooc\_stringBufferEndsWithCString@{ooc\_stringBufferEndsWithCString}}
+\index{ooc\_stringBufferEndsWithCString@{ooc\_stringBufferEndsWithCString}!oocStringBuffer.h@{oocStringBuffer.h}}
+\doxysubsubsection{\texorpdfstring{ooc\_stringBufferEndsWithCString()}{ooc\_stringBufferEndsWithCString()}}
+{\footnotesize\ttfamily \label{oocStringBuffer_8h_a47bf84c515b086aa331e9e0bb42b47af} 
+bool ooc\+\_\+string\+Buffer\+Ends\+With\+CString (\begin{DoxyParamCaption}\item[{const void \texorpdfstring{$\ast$}{*}}]{self}{, }\item[{const char \texorpdfstring{$\ast$}{*}}]{suffix}{}\end{DoxyParamCaption})}
+
+
+
+Checks if the String\+Buffer ends with a C string. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em self} & String\+Buffer object instance \\
+\hline
+{\em suffix} & Null-\/terminated suffix string to check \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+true if it ends with the suffix, false otherwise 
+\end{DoxyReturn}
+\Hypertarget{oocStringBuffer_8h_af1ba4530a975ae18a3c30155cbaa2f0e}\index{oocStringBuffer.h@{oocStringBuffer.h}!ooc\_stringBufferEndsWithString@{ooc\_stringBufferEndsWithString}}
+\index{ooc\_stringBufferEndsWithString@{ooc\_stringBufferEndsWithString}!oocStringBuffer.h@{oocStringBuffer.h}}
+\doxysubsubsection{\texorpdfstring{ooc\_stringBufferEndsWithString()}{ooc\_stringBufferEndsWithString()}}
+{\footnotesize\ttfamily \label{oocStringBuffer_8h_af1ba4530a975ae18a3c30155cbaa2f0e} 
+bool ooc\+\_\+string\+Buffer\+Ends\+With\+String (\begin{DoxyParamCaption}\item[{const void \texorpdfstring{$\ast$}{*}}]{self}{, }\item[{const void \texorpdfstring{$\ast$}{*}}]{suffix}{}\end{DoxyParamCaption})}
+
+
+
+Checks if the String\+Buffer ends with a suffix (String object) 
+
+
+\begin{DoxyParams}{Parameters}
+{\em self} & String\+Buffer object instance \\
+\hline
+{\em suffix} & Suffix string to check \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+true if it ends with the suffix, false otherwise 
+\end{DoxyReturn}
+\Hypertarget{oocStringBuffer_8h_ab7ab68a1f2311936d16b95d86ff6e1ca}\index{oocStringBuffer.h@{oocStringBuffer.h}!ooc\_stringBufferEnsureCapacity@{ooc\_stringBufferEnsureCapacity}}
+\index{ooc\_stringBufferEnsureCapacity@{ooc\_stringBufferEnsureCapacity}!oocStringBuffer.h@{oocStringBuffer.h}}
+\doxysubsubsection{\texorpdfstring{ooc\_stringBufferEnsureCapacity()}{ooc\_stringBufferEnsureCapacity()}}
+{\footnotesize\ttfamily \label{oocStringBuffer_8h_ab7ab68a1f2311936d16b95d86ff6e1ca} 
+\mbox{\hyperlink{oocError_8h_a1effaed6897d01c49b4771abc4185718}{OOC\+\_\+\+Error}} ooc\+\_\+string\+Buffer\+Ensure\+Capacity (\begin{DoxyParamCaption}\item[{void \texorpdfstring{$\ast$}{*}}]{self}{, }\item[{size\+\_\+t}]{minimum\+Capacity}{}\end{DoxyParamCaption})}
+
+
+
+Ensures the String\+Buffer has at least the specified capacity. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em self} & String\+Buffer object instance \\
+\hline
+{\em minimum\+Capacity} & Minimum capacity to ensure \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+OOC\+\_\+\+ERROR\+\_\+\+NONE on success, appropriate error code on failure 
+\end{DoxyReturn}
+\Hypertarget{oocStringBuffer_8h_a5ea5ee6783831eed423e1859a8212e28}\index{oocStringBuffer.h@{oocStringBuffer.h}!ooc\_stringBufferGetCString@{ooc\_stringBufferGetCString}}
+\index{ooc\_stringBufferGetCString@{ooc\_stringBufferGetCString}!oocStringBuffer.h@{oocStringBuffer.h}}
+\doxysubsubsection{\texorpdfstring{ooc\_stringBufferGetCString()}{ooc\_stringBufferGetCString()}}
+{\footnotesize\ttfamily \label{oocStringBuffer_8h_a5ea5ee6783831eed423e1859a8212e28} 
+const char \texorpdfstring{$\ast$}{*} ooc\+\_\+string\+Buffer\+Get\+CString (\begin{DoxyParamCaption}\item[{const void \texorpdfstring{$\ast$}{*}}]{self}{}\end{DoxyParamCaption})}
+
+
+
+Returns a const pointer to the internal C string (read-\/only access) 
+
+
+\begin{DoxyParams}{Parameters}
+{\em self} & String\+Buffer object instance \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+Const pointer to the internal C string, or NULL if self is NULL 
+\end{DoxyReturn}
+\begin{DoxyNote}{Note}
+The returned pointer should not be modified or freed. The pointer may become invalid after any operation that modifies the String\+Buffer. 
+\end{DoxyNote}
+\Hypertarget{oocStringBuffer_8h_a1a3aad0863f8b6d42fcbee9ed08619cd}\index{oocStringBuffer.h@{oocStringBuffer.h}!ooc\_stringBufferIndexOfChar@{ooc\_stringBufferIndexOfChar}}
+\index{ooc\_stringBufferIndexOfChar@{ooc\_stringBufferIndexOfChar}!oocStringBuffer.h@{oocStringBuffer.h}}
+\doxysubsubsection{\texorpdfstring{ooc\_stringBufferIndexOfChar()}{ooc\_stringBufferIndexOfChar()}}
+{\footnotesize\ttfamily \label{oocStringBuffer_8h_a1a3aad0863f8b6d42fcbee9ed08619cd} 
+int ooc\+\_\+string\+Buffer\+Index\+Of\+Char (\begin{DoxyParamCaption}\item[{const void \texorpdfstring{$\ast$}{*}}]{self}{, }\item[{char}]{ch}{}\end{DoxyParamCaption})}
+
+
+
+Returns the index of the first occurrence of a character. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em self} & String\+Buffer object instance \\
+\hline
+{\em ch} & Character to search for \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+Zero-\/based index of the first occurrence, or -\/1 if not found 
+\end{DoxyReturn}
+\Hypertarget{oocStringBuffer_8h_ae8d3f9a4740640c884e96b960d20eacd}\index{oocStringBuffer.h@{oocStringBuffer.h}!ooc\_stringBufferIndexOfCString@{ooc\_stringBufferIndexOfCString}}
+\index{ooc\_stringBufferIndexOfCString@{ooc\_stringBufferIndexOfCString}!oocStringBuffer.h@{oocStringBuffer.h}}
+\doxysubsubsection{\texorpdfstring{ooc\_stringBufferIndexOfCString()}{ooc\_stringBufferIndexOfCString()}}
+{\footnotesize\ttfamily \label{oocStringBuffer_8h_ae8d3f9a4740640c884e96b960d20eacd} 
+int ooc\+\_\+string\+Buffer\+Index\+Of\+CString (\begin{DoxyParamCaption}\item[{const void \texorpdfstring{$\ast$}{*}}]{self}{, }\item[{const char \texorpdfstring{$\ast$}{*}}]{str}{}\end{DoxyParamCaption})}
+
+
+
+Returns the index of the first occurrence of a C string. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em self} & String\+Buffer object instance \\
+\hline
+{\em str} & Null-\/terminated C string to search for \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+Zero-\/based index of the first occurrence, or -\/1 if not found 
+\end{DoxyReturn}
+\Hypertarget{oocStringBuffer_8h_a3fabb70ae636dd5a65e2f745c86b7263}\index{oocStringBuffer.h@{oocStringBuffer.h}!ooc\_stringBufferIndexOfString@{ooc\_stringBufferIndexOfString}}
+\index{ooc\_stringBufferIndexOfString@{ooc\_stringBufferIndexOfString}!oocStringBuffer.h@{oocStringBuffer.h}}
+\doxysubsubsection{\texorpdfstring{ooc\_stringBufferIndexOfString()}{ooc\_stringBufferIndexOfString()}}
+{\footnotesize\ttfamily \label{oocStringBuffer_8h_a3fabb70ae636dd5a65e2f745c86b7263} 
+int ooc\+\_\+string\+Buffer\+Index\+Of\+String (\begin{DoxyParamCaption}\item[{const void \texorpdfstring{$\ast$}{*}}]{self}{, }\item[{const void \texorpdfstring{$\ast$}{*}}]{str}{}\end{DoxyParamCaption})}
+
+
+
+Returns the index of the first occurrence of a substring (String object) 
+
+
+\begin{DoxyParams}{Parameters}
+{\em self} & String\+Buffer object instance \\
+\hline
+{\em str} & Substring to search for \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+Zero-\/based index of the first occurrence, or -\/1 if not found 
+\end{DoxyReturn}
+\Hypertarget{oocStringBuffer_8h_a7d872bfd6cffe115105a0387ca44f72b}\index{oocStringBuffer.h@{oocStringBuffer.h}!ooc\_stringBufferInsertBool@{ooc\_stringBufferInsertBool}}
+\index{ooc\_stringBufferInsertBool@{ooc\_stringBufferInsertBool}!oocStringBuffer.h@{oocStringBuffer.h}}
+\doxysubsubsection{\texorpdfstring{ooc\_stringBufferInsertBool()}{ooc\_stringBufferInsertBool()}}
+{\footnotesize\ttfamily \label{oocStringBuffer_8h_a7d872bfd6cffe115105a0387ca44f72b} 
+void \texorpdfstring{$\ast$}{*} ooc\+\_\+string\+Buffer\+Insert\+Bool (\begin{DoxyParamCaption}\item[{void \texorpdfstring{$\ast$}{*}}]{self}{, }\item[{size\+\_\+t}]{offset}{, }\item[{bool}]{value}{}\end{DoxyParamCaption})}
+
+
+
+Inserts a boolean at the specified position. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em self} & String\+Buffer object instance \\
+\hline
+{\em offset} & Position at which to insert \\
+\hline
+{\em value} & Boolean value to insert (will insert "{}true"{} or "{}false"{}) \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+Pointer to self for method chaining, or NULL on failure 
+\end{DoxyReturn}
+\Hypertarget{oocStringBuffer_8h_a83568013cc76c4c53096f4922efce2f6}\index{oocStringBuffer.h@{oocStringBuffer.h}!ooc\_stringBufferInsertChar@{ooc\_stringBufferInsertChar}}
+\index{ooc\_stringBufferInsertChar@{ooc\_stringBufferInsertChar}!oocStringBuffer.h@{oocStringBuffer.h}}
+\doxysubsubsection{\texorpdfstring{ooc\_stringBufferInsertChar()}{ooc\_stringBufferInsertChar()}}
+{\footnotesize\ttfamily \label{oocStringBuffer_8h_a83568013cc76c4c53096f4922efce2f6} 
+void \texorpdfstring{$\ast$}{*} ooc\+\_\+string\+Buffer\+Insert\+Char (\begin{DoxyParamCaption}\item[{void \texorpdfstring{$\ast$}{*}}]{self}{, }\item[{size\+\_\+t}]{offset}{, }\item[{char}]{ch}{}\end{DoxyParamCaption})}
+
+
+
+Inserts a character at the specified position. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em self} & String\+Buffer object instance \\
+\hline
+{\em offset} & Position at which to insert \\
+\hline
+{\em ch} & Character to insert \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+Pointer to self for method chaining, or NULL on failure 
+\end{DoxyReturn}
+\Hypertarget{oocStringBuffer_8h_af9e572263646dcc0f42863fa9617f1d7}\index{oocStringBuffer.h@{oocStringBuffer.h}!ooc\_stringBufferInsertCString@{ooc\_stringBufferInsertCString}}
+\index{ooc\_stringBufferInsertCString@{ooc\_stringBufferInsertCString}!oocStringBuffer.h@{oocStringBuffer.h}}
+\doxysubsubsection{\texorpdfstring{ooc\_stringBufferInsertCString()}{ooc\_stringBufferInsertCString()}}
+{\footnotesize\ttfamily \label{oocStringBuffer_8h_af9e572263646dcc0f42863fa9617f1d7} 
+void \texorpdfstring{$\ast$}{*} ooc\+\_\+string\+Buffer\+Insert\+CString (\begin{DoxyParamCaption}\item[{void \texorpdfstring{$\ast$}{*}}]{self}{, }\item[{size\+\_\+t}]{offset}{, }\item[{const char \texorpdfstring{$\ast$}{*}}]{str}{}\end{DoxyParamCaption})}
+
+
+
+Inserts a C string at the specified position. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em self} & String\+Buffer object instance \\
+\hline
+{\em offset} & Position at which to insert \\
+\hline
+{\em str} & Null-\/terminated C string to insert \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+Pointer to self for method chaining, or NULL on failure 
+\end{DoxyReturn}
+\Hypertarget{oocStringBuffer_8h_a4cb7be38fdfbfb0cad0a51c5fc5002e6}\index{oocStringBuffer.h@{oocStringBuffer.h}!ooc\_stringBufferInsertDouble@{ooc\_stringBufferInsertDouble}}
+\index{ooc\_stringBufferInsertDouble@{ooc\_stringBufferInsertDouble}!oocStringBuffer.h@{oocStringBuffer.h}}
+\doxysubsubsection{\texorpdfstring{ooc\_stringBufferInsertDouble()}{ooc\_stringBufferInsertDouble()}}
+{\footnotesize\ttfamily \label{oocStringBuffer_8h_a4cb7be38fdfbfb0cad0a51c5fc5002e6} 
+void \texorpdfstring{$\ast$}{*} ooc\+\_\+string\+Buffer\+Insert\+Double (\begin{DoxyParamCaption}\item[{void \texorpdfstring{$\ast$}{*}}]{self}{, }\item[{size\+\_\+t}]{offset}{, }\item[{double}]{value}{}\end{DoxyParamCaption})}
+
+
+
+Inserts a double at the specified position. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em self} & String\+Buffer object instance \\
+\hline
+{\em offset} & Position at which to insert \\
+\hline
+{\em value} & Double value to insert \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+Pointer to self for method chaining, or NULL on failure 
+\end{DoxyReturn}
+\Hypertarget{oocStringBuffer_8h_a1d5754aad7b3b0f0321fe5e056cc58af}\index{oocStringBuffer.h@{oocStringBuffer.h}!ooc\_stringBufferInsertFormat@{ooc\_stringBufferInsertFormat}}
+\index{ooc\_stringBufferInsertFormat@{ooc\_stringBufferInsertFormat}!oocStringBuffer.h@{oocStringBuffer.h}}
+\doxysubsubsection{\texorpdfstring{ooc\_stringBufferInsertFormat()}{ooc\_stringBufferInsertFormat()}}
+{\footnotesize\ttfamily \label{oocStringBuffer_8h_a1d5754aad7b3b0f0321fe5e056cc58af} 
+void \texorpdfstring{$\ast$}{*} ooc\+\_\+string\+Buffer\+Insert\+Format (\begin{DoxyParamCaption}\item[{void \texorpdfstring{$\ast$}{*}}]{self}{, }\item[{size\+\_\+t}]{offset}{, }\item[{const char \texorpdfstring{$\ast$}{*}}]{format}{, }\item[{}]{...}{}\end{DoxyParamCaption})}
+
+
+
+Inserts formatted text at a specified position. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em self} & String\+Buffer object instance \\
+\hline
+{\em offset} & Insertion position \\
+\hline
+{\em format} & printf-\/style format string \\
+\hline
+{\em ...} & Format arguments \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+Pointer to self for method chaining, or NULL on failure 
+\end{DoxyReturn}
+\Hypertarget{oocStringBuffer_8h_ab6e406eb697e30bb1ea96ff589552c6f}\index{oocStringBuffer.h@{oocStringBuffer.h}!ooc\_stringBufferInsertInt@{ooc\_stringBufferInsertInt}}
+\index{ooc\_stringBufferInsertInt@{ooc\_stringBufferInsertInt}!oocStringBuffer.h@{oocStringBuffer.h}}
+\doxysubsubsection{\texorpdfstring{ooc\_stringBufferInsertInt()}{ooc\_stringBufferInsertInt()}}
+{\footnotesize\ttfamily \label{oocStringBuffer_8h_ab6e406eb697e30bb1ea96ff589552c6f} 
+void \texorpdfstring{$\ast$}{*} ooc\+\_\+string\+Buffer\+Insert\+Int (\begin{DoxyParamCaption}\item[{void \texorpdfstring{$\ast$}{*}}]{self}{, }\item[{size\+\_\+t}]{offset}{, }\item[{int}]{value}{}\end{DoxyParamCaption})}
+
+
+
+Inserts an integer at the specified position. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em self} & String\+Buffer object instance \\
+\hline
+{\em offset} & Position at which to insert \\
+\hline
+{\em value} & Integer value to insert \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+Pointer to self for method chaining, or NULL on failure 
+\end{DoxyReturn}
+\Hypertarget{oocStringBuffer_8h_a56a7ff6f3cece46d9e48bc42bc890ec3}\index{oocStringBuffer.h@{oocStringBuffer.h}!ooc\_stringBufferInsertObject@{ooc\_stringBufferInsertObject}}
+\index{ooc\_stringBufferInsertObject@{ooc\_stringBufferInsertObject}!oocStringBuffer.h@{oocStringBuffer.h}}
+\doxysubsubsection{\texorpdfstring{ooc\_stringBufferInsertObject()}{ooc\_stringBufferInsertObject()}}
+{\footnotesize\ttfamily \label{oocStringBuffer_8h_a56a7ff6f3cece46d9e48bc42bc890ec3} 
+void \texorpdfstring{$\ast$}{*} ooc\+\_\+string\+Buffer\+Insert\+Object (\begin{DoxyParamCaption}\item[{void \texorpdfstring{$\ast$}{*}}]{self}{, }\item[{size\+\_\+t}]{offset}{, }\item[{const void \texorpdfstring{$\ast$}{*}}]{object}{}\end{DoxyParamCaption})}
+
+
+
+Inserts any object at the specified position by calling its to\+String method. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em self} & String\+Buffer object instance \\
+\hline
+{\em offset} & Position at which to insert \\
+\hline
+{\em object} & Object to insert (must have a to\+String method) \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+Pointer to self for method chaining, or NULL on failure 
+\end{DoxyReturn}
+\Hypertarget{oocStringBuffer_8h_af5d61f5382c3499f2c460487acf57ba4}\index{oocStringBuffer.h@{oocStringBuffer.h}!ooc\_stringBufferInsertString@{ooc\_stringBufferInsertString}}
+\index{ooc\_stringBufferInsertString@{ooc\_stringBufferInsertString}!oocStringBuffer.h@{oocStringBuffer.h}}
+\doxysubsubsection{\texorpdfstring{ooc\_stringBufferInsertString()}{ooc\_stringBufferInsertString()}}
+{\footnotesize\ttfamily \label{oocStringBuffer_8h_af5d61f5382c3499f2c460487acf57ba4} 
+void \texorpdfstring{$\ast$}{*} ooc\+\_\+string\+Buffer\+Insert\+String (\begin{DoxyParamCaption}\item[{void \texorpdfstring{$\ast$}{*}}]{self}{, }\item[{size\+\_\+t}]{offset}{, }\item[{const void \texorpdfstring{$\ast$}{*}}]{string}{}\end{DoxyParamCaption})}
+
+
+
+Inserts a String object at the specified position. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em self} & String\+Buffer object instance \\
+\hline
+{\em offset} & Position at which to insert \\
+\hline
+{\em string} & String object to insert \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+Pointer to self for method chaining, or NULL on failure 
+\end{DoxyReturn}
+\Hypertarget{oocStringBuffer_8h_a18333a84d9d28890b164903cb6f14773}\index{oocStringBuffer.h@{oocStringBuffer.h}!ooc\_stringBufferIsEmpty@{ooc\_stringBufferIsEmpty}}
+\index{ooc\_stringBufferIsEmpty@{ooc\_stringBufferIsEmpty}!oocStringBuffer.h@{oocStringBuffer.h}}
+\doxysubsubsection{\texorpdfstring{ooc\_stringBufferIsEmpty()}{ooc\_stringBufferIsEmpty()}}
+{\footnotesize\ttfamily \label{oocStringBuffer_8h_a18333a84d9d28890b164903cb6f14773} 
+bool ooc\+\_\+string\+Buffer\+Is\+Empty (\begin{DoxyParamCaption}\item[{const void \texorpdfstring{$\ast$}{*}}]{self}{}\end{DoxyParamCaption})}
+
+
+
+Checks if the String\+Buffer is empty. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em self} & String\+Buffer object instance \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+true if the String\+Buffer is NULL or empty, false otherwise 
+\end{DoxyReturn}
+\Hypertarget{oocStringBuffer_8h_a293a66c1bc648987215c489032510fde}\index{oocStringBuffer.h@{oocStringBuffer.h}!ooc\_stringBufferLastIndexOfChar@{ooc\_stringBufferLastIndexOfChar}}
+\index{ooc\_stringBufferLastIndexOfChar@{ooc\_stringBufferLastIndexOfChar}!oocStringBuffer.h@{oocStringBuffer.h}}
+\doxysubsubsection{\texorpdfstring{ooc\_stringBufferLastIndexOfChar()}{ooc\_stringBufferLastIndexOfChar()}}
+{\footnotesize\ttfamily \label{oocStringBuffer_8h_a293a66c1bc648987215c489032510fde} 
+int ooc\+\_\+string\+Buffer\+Last\+Index\+Of\+Char (\begin{DoxyParamCaption}\item[{const void \texorpdfstring{$\ast$}{*}}]{self}{, }\item[{char}]{ch}{}\end{DoxyParamCaption})}
+
+
+
+Returns the index of the last occurrence of a character. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em self} & String\+Buffer object instance \\
+\hline
+{\em ch} & Character to search for \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+Zero-\/based index of the last occurrence, or -\/1 if not found 
+\end{DoxyReturn}
+\Hypertarget{oocStringBuffer_8h_ad40a39da08799e13bd40ce27dea5f063}\index{oocStringBuffer.h@{oocStringBuffer.h}!ooc\_stringBufferLastIndexOfCString@{ooc\_stringBufferLastIndexOfCString}}
+\index{ooc\_stringBufferLastIndexOfCString@{ooc\_stringBufferLastIndexOfCString}!oocStringBuffer.h@{oocStringBuffer.h}}
+\doxysubsubsection{\texorpdfstring{ooc\_stringBufferLastIndexOfCString()}{ooc\_stringBufferLastIndexOfCString()}}
+{\footnotesize\ttfamily \label{oocStringBuffer_8h_ad40a39da08799e13bd40ce27dea5f063} 
+int ooc\+\_\+string\+Buffer\+Last\+Index\+Of\+CString (\begin{DoxyParamCaption}\item[{const void \texorpdfstring{$\ast$}{*}}]{self}{, }\item[{const char \texorpdfstring{$\ast$}{*}}]{str}{}\end{DoxyParamCaption})}
+
+
+
+Returns the index of the last occurrence of a C string. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em self} & String\+Buffer object instance \\
+\hline
+{\em str} & Null-\/terminated C string to search for \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+Zero-\/based index of the last occurrence, or -\/1 if not found 
+\end{DoxyReturn}
+\Hypertarget{oocStringBuffer_8h_a0938b5513105a0f312d8e94864c25c82}\index{oocStringBuffer.h@{oocStringBuffer.h}!ooc\_stringBufferLastIndexOfString@{ooc\_stringBufferLastIndexOfString}}
+\index{ooc\_stringBufferLastIndexOfString@{ooc\_stringBufferLastIndexOfString}!oocStringBuffer.h@{oocStringBuffer.h}}
+\doxysubsubsection{\texorpdfstring{ooc\_stringBufferLastIndexOfString()}{ooc\_stringBufferLastIndexOfString()}}
+{\footnotesize\ttfamily \label{oocStringBuffer_8h_a0938b5513105a0f312d8e94864c25c82} 
+int ooc\+\_\+string\+Buffer\+Last\+Index\+Of\+String (\begin{DoxyParamCaption}\item[{const void \texorpdfstring{$\ast$}{*}}]{self}{, }\item[{const void \texorpdfstring{$\ast$}{*}}]{str}{}\end{DoxyParamCaption})}
+
+
+
+Returns the index of the last occurrence of a substring (String object) 
+
+
+\begin{DoxyParams}{Parameters}
+{\em self} & String\+Buffer object instance \\
+\hline
+{\em str} & Substring to search for \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+Zero-\/based index of the last occurrence, or -\/1 if not found 
+\end{DoxyReturn}
+\Hypertarget{oocStringBuffer_8h_a0d594fb3d9bf097b1c595d036d5c0016}\index{oocStringBuffer.h@{oocStringBuffer.h}!ooc\_stringBufferLength@{ooc\_stringBufferLength}}
+\index{ooc\_stringBufferLength@{ooc\_stringBufferLength}!oocStringBuffer.h@{oocStringBuffer.h}}
+\doxysubsubsection{\texorpdfstring{ooc\_stringBufferLength()}{ooc\_stringBufferLength()}}
+{\footnotesize\ttfamily \label{oocStringBuffer_8h_a0d594fb3d9bf097b1c595d036d5c0016} 
+size\+\_\+t ooc\+\_\+string\+Buffer\+Length (\begin{DoxyParamCaption}\item[{const void \texorpdfstring{$\ast$}{*}}]{self}{}\end{DoxyParamCaption})}
+
+
+
+Returns the length of the String\+Buffer. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em self} & String\+Buffer object instance \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+Length of the string content, or 0 if self is NULL 
+\end{DoxyReturn}
+\Hypertarget{oocStringBuffer_8h_a86edd82a07b833c19a19a244f3902f13}\index{oocStringBuffer.h@{oocStringBuffer.h}!ooc\_stringBufferReplaceChar@{ooc\_stringBufferReplaceChar}}
+\index{ooc\_stringBufferReplaceChar@{ooc\_stringBufferReplaceChar}!oocStringBuffer.h@{oocStringBuffer.h}}
+\doxysubsubsection{\texorpdfstring{ooc\_stringBufferReplaceChar()}{ooc\_stringBufferReplaceChar()}}
+{\footnotesize\ttfamily \label{oocStringBuffer_8h_a86edd82a07b833c19a19a244f3902f13} 
+void \texorpdfstring{$\ast$}{*} ooc\+\_\+string\+Buffer\+Replace\+Char (\begin{DoxyParamCaption}\item[{void \texorpdfstring{$\ast$}{*}}]{self}{, }\item[{char}]{old\+Char}{, }\item[{char}]{new\+Char}{}\end{DoxyParamCaption})}
+
+
+
+Replaces all occurrences of a character with another character. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em self} & String\+Buffer object instance \\
+\hline
+{\em old\+Char} & Character to replace \\
+\hline
+{\em new\+Char} & Character to replace with \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+Pointer to self for method chaining, or NULL on failure 
+\end{DoxyReturn}
+\Hypertarget{oocStringBuffer_8h_a44be39862530a80ad765f88d0c19caaf}\index{oocStringBuffer.h@{oocStringBuffer.h}!ooc\_stringBufferReplaceCString@{ooc\_stringBufferReplaceCString}}
+\index{ooc\_stringBufferReplaceCString@{ooc\_stringBufferReplaceCString}!oocStringBuffer.h@{oocStringBuffer.h}}
+\doxysubsubsection{\texorpdfstring{ooc\_stringBufferReplaceCString()}{ooc\_stringBufferReplaceCString()}}
+{\footnotesize\ttfamily \label{oocStringBuffer_8h_a44be39862530a80ad765f88d0c19caaf} 
+void \texorpdfstring{$\ast$}{*} ooc\+\_\+string\+Buffer\+Replace\+CString (\begin{DoxyParamCaption}\item[{void \texorpdfstring{$\ast$}{*}}]{self}{, }\item[{const char \texorpdfstring{$\ast$}{*}}]{target}{, }\item[{const char \texorpdfstring{$\ast$}{*}}]{replacement}{}\end{DoxyParamCaption})}
+
+
+
+Replaces all occurrences of a target C string with another C string. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em self} & String\+Buffer object instance \\
+\hline
+{\em target} & Substring to search for (C string) \\
+\hline
+{\em replacement} & Replacement string (C string) \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+Pointer to self for method chaining, or NULL on failure 
+\end{DoxyReturn}
+\Hypertarget{oocStringBuffer_8h_aec513a71e4a8db4a8f9738a25ac02dd9}\index{oocStringBuffer.h@{oocStringBuffer.h}!ooc\_stringBufferReplaceFirstCString@{ooc\_stringBufferReplaceFirstCString}}
+\index{ooc\_stringBufferReplaceFirstCString@{ooc\_stringBufferReplaceFirstCString}!oocStringBuffer.h@{oocStringBuffer.h}}
+\doxysubsubsection{\texorpdfstring{ooc\_stringBufferReplaceFirstCString()}{ooc\_stringBufferReplaceFirstCString()}}
+{\footnotesize\ttfamily \label{oocStringBuffer_8h_aec513a71e4a8db4a8f9738a25ac02dd9} 
+void \texorpdfstring{$\ast$}{*} ooc\+\_\+string\+Buffer\+Replace\+First\+CString (\begin{DoxyParamCaption}\item[{void \texorpdfstring{$\ast$}{*}}]{self}{, }\item[{const char \texorpdfstring{$\ast$}{*}}]{target}{, }\item[{const char \texorpdfstring{$\ast$}{*}}]{replacement}{}\end{DoxyParamCaption})}
+
+
+
+Replaces the first occurrence of a target C string. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em self} & String\+Buffer object instance \\
+\hline
+{\em target} & Substring to search for (C string) \\
+\hline
+{\em replacement} & Replacement string (C string) \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+Pointer to self for method chaining, or NULL on failure 
+\end{DoxyReturn}
+\Hypertarget{oocStringBuffer_8h_a73c69074810a47952df03708e6d9985e}\index{oocStringBuffer.h@{oocStringBuffer.h}!ooc\_stringBufferReplaceFirstString@{ooc\_stringBufferReplaceFirstString}}
+\index{ooc\_stringBufferReplaceFirstString@{ooc\_stringBufferReplaceFirstString}!oocStringBuffer.h@{oocStringBuffer.h}}
+\doxysubsubsection{\texorpdfstring{ooc\_stringBufferReplaceFirstString()}{ooc\_stringBufferReplaceFirstString()}}
+{\footnotesize\ttfamily \label{oocStringBuffer_8h_a73c69074810a47952df03708e6d9985e} 
+void \texorpdfstring{$\ast$}{*} ooc\+\_\+string\+Buffer\+Replace\+First\+String (\begin{DoxyParamCaption}\item[{void \texorpdfstring{$\ast$}{*}}]{self}{, }\item[{const void \texorpdfstring{$\ast$}{*}}]{target}{, }\item[{const void \texorpdfstring{$\ast$}{*}}]{replacement}{}\end{DoxyParamCaption})}
+
+
+
+Replaces the first occurrence of a target String object. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em self} & String\+Buffer object instance \\
+\hline
+{\em target} & Substring to search for (String object) \\
+\hline
+{\em replacement} & Replacement string (String object) \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+Pointer to self for method chaining, or NULL on failure 
+\end{DoxyReturn}
+\Hypertarget{oocStringBuffer_8h_a18d87e13cf52494234fa5505a812cef5}\index{oocStringBuffer.h@{oocStringBuffer.h}!ooc\_stringBufferReplaceLastCString@{ooc\_stringBufferReplaceLastCString}}
+\index{ooc\_stringBufferReplaceLastCString@{ooc\_stringBufferReplaceLastCString}!oocStringBuffer.h@{oocStringBuffer.h}}
+\doxysubsubsection{\texorpdfstring{ooc\_stringBufferReplaceLastCString()}{ooc\_stringBufferReplaceLastCString()}}
+{\footnotesize\ttfamily \label{oocStringBuffer_8h_a18d87e13cf52494234fa5505a812cef5} 
+void \texorpdfstring{$\ast$}{*} ooc\+\_\+string\+Buffer\+Replace\+Last\+CString (\begin{DoxyParamCaption}\item[{void \texorpdfstring{$\ast$}{*}}]{self}{, }\item[{const char \texorpdfstring{$\ast$}{*}}]{target}{, }\item[{const char \texorpdfstring{$\ast$}{*}}]{replacement}{}\end{DoxyParamCaption})}
+
+
+
+Replaces the last occurrence of a target C string. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em self} & String\+Buffer object instance \\
+\hline
+{\em target} & Substring to search for (C string) \\
+\hline
+{\em replacement} & Replacement string (C string) \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+Pointer to self for method chaining, or NULL on failure 
+\end{DoxyReturn}
+\Hypertarget{oocStringBuffer_8h_ab382859e37d7856773021c5dd2cf6a9a}\index{oocStringBuffer.h@{oocStringBuffer.h}!ooc\_stringBufferReplaceLastString@{ooc\_stringBufferReplaceLastString}}
+\index{ooc\_stringBufferReplaceLastString@{ooc\_stringBufferReplaceLastString}!oocStringBuffer.h@{oocStringBuffer.h}}
+\doxysubsubsection{\texorpdfstring{ooc\_stringBufferReplaceLastString()}{ooc\_stringBufferReplaceLastString()}}
+{\footnotesize\ttfamily \label{oocStringBuffer_8h_ab382859e37d7856773021c5dd2cf6a9a} 
+void \texorpdfstring{$\ast$}{*} ooc\+\_\+string\+Buffer\+Replace\+Last\+String (\begin{DoxyParamCaption}\item[{void \texorpdfstring{$\ast$}{*}}]{self}{, }\item[{const void \texorpdfstring{$\ast$}{*}}]{target}{, }\item[{const void \texorpdfstring{$\ast$}{*}}]{replacement}{}\end{DoxyParamCaption})}
+
+
+
+Replaces the last occurrence of a target String object. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em self} & String\+Buffer object instance \\
+\hline
+{\em target} & Substring to search for (String object) \\
+\hline
+{\em replacement} & Replacement string (String object) \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+Pointer to self for method chaining, or NULL on failure 
+\end{DoxyReturn}
+\Hypertarget{oocStringBuffer_8h_a9710929cd1c64cebda107a320011069d}\index{oocStringBuffer.h@{oocStringBuffer.h}!ooc\_stringBufferReplaceString@{ooc\_stringBufferReplaceString}}
+\index{ooc\_stringBufferReplaceString@{ooc\_stringBufferReplaceString}!oocStringBuffer.h@{oocStringBuffer.h}}
+\doxysubsubsection{\texorpdfstring{ooc\_stringBufferReplaceString()}{ooc\_stringBufferReplaceString()}}
+{\footnotesize\ttfamily \label{oocStringBuffer_8h_a9710929cd1c64cebda107a320011069d} 
+void \texorpdfstring{$\ast$}{*} ooc\+\_\+string\+Buffer\+Replace\+String (\begin{DoxyParamCaption}\item[{void \texorpdfstring{$\ast$}{*}}]{self}{, }\item[{const void \texorpdfstring{$\ast$}{*}}]{target}{, }\item[{const void \texorpdfstring{$\ast$}{*}}]{replacement}{}\end{DoxyParamCaption})}
+
+
+
+Replaces all occurrences of a target String object with another String object. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em self} & String\+Buffer object instance \\
+\hline
+{\em target} & Substring to search for (String object) \\
+\hline
+{\em replacement} & Replacement string (String object) \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+Pointer to self for method chaining, or NULL on failure 
+\end{DoxyReturn}
+\Hypertarget{oocStringBuffer_8h_ae47604746bf7b8375ac9092b8df3c2fb}\index{oocStringBuffer.h@{oocStringBuffer.h}!ooc\_stringBufferReplaceWithCString@{ooc\_stringBufferReplaceWithCString}}
+\index{ooc\_stringBufferReplaceWithCString@{ooc\_stringBufferReplaceWithCString}!oocStringBuffer.h@{oocStringBuffer.h}}
+\doxysubsubsection{\texorpdfstring{ooc\_stringBufferReplaceWithCString()}{ooc\_stringBufferReplaceWithCString()}}
+{\footnotesize\ttfamily \label{oocStringBuffer_8h_ae47604746bf7b8375ac9092b8df3c2fb} 
+void \texorpdfstring{$\ast$}{*} ooc\+\_\+string\+Buffer\+Replace\+With\+CString (\begin{DoxyParamCaption}\item[{void \texorpdfstring{$\ast$}{*}}]{self}{, }\item[{size\+\_\+t}]{start}{, }\item[{size\+\_\+t}]{end}{, }\item[{const char \texorpdfstring{$\ast$}{*}}]{str}{}\end{DoxyParamCaption})}
+
+
+
+Replaces characters in a range with a C string. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em self} & String\+Buffer object instance \\
+\hline
+{\em start} & Starting index (inclusive) \\
+\hline
+{\em end} & Ending index (exclusive) \\
+\hline
+{\em str} & Null-\/terminated C string to insert \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+Pointer to self for method chaining, or NULL on failure 
+\end{DoxyReturn}
+\Hypertarget{oocStringBuffer_8h_ad31329cf6710613faa2595774a2cf16e}\index{oocStringBuffer.h@{oocStringBuffer.h}!ooc\_stringBufferReplaceWithString@{ooc\_stringBufferReplaceWithString}}
+\index{ooc\_stringBufferReplaceWithString@{ooc\_stringBufferReplaceWithString}!oocStringBuffer.h@{oocStringBuffer.h}}
+\doxysubsubsection{\texorpdfstring{ooc\_stringBufferReplaceWithString()}{ooc\_stringBufferReplaceWithString()}}
+{\footnotesize\ttfamily \label{oocStringBuffer_8h_ad31329cf6710613faa2595774a2cf16e} 
+void \texorpdfstring{$\ast$}{*} ooc\+\_\+string\+Buffer\+Replace\+With\+String (\begin{DoxyParamCaption}\item[{void \texorpdfstring{$\ast$}{*}}]{self}{, }\item[{size\+\_\+t}]{start}{, }\item[{size\+\_\+t}]{end}{, }\item[{const void \texorpdfstring{$\ast$}{*}}]{string}{}\end{DoxyParamCaption})}
+
+
+
+Replaces characters in a range with a String object. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em self} & String\+Buffer object instance \\
+\hline
+{\em start} & Starting index (inclusive) \\
+\hline
+{\em end} & Ending index (exclusive) \\
+\hline
+{\em string} & String object to insert \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+Pointer to self for method chaining, or NULL on failure 
+\end{DoxyReturn}
+\Hypertarget{oocStringBuffer_8h_ade5effee3b7834c11f375940117c1953}\index{oocStringBuffer.h@{oocStringBuffer.h}!ooc\_stringBufferReverse@{ooc\_stringBufferReverse}}
+\index{ooc\_stringBufferReverse@{ooc\_stringBufferReverse}!oocStringBuffer.h@{oocStringBuffer.h}}
+\doxysubsubsection{\texorpdfstring{ooc\_stringBufferReverse()}{ooc\_stringBufferReverse()}}
+{\footnotesize\ttfamily \label{oocStringBuffer_8h_ade5effee3b7834c11f375940117c1953} 
+void \texorpdfstring{$\ast$}{*} ooc\+\_\+string\+Buffer\+Reverse (\begin{DoxyParamCaption}\item[{void \texorpdfstring{$\ast$}{*}}]{self}{}\end{DoxyParamCaption})}
+
+
+
+Reverses the character sequence in the String\+Buffer. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em self} & String\+Buffer object instance \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+Pointer to self for method chaining, or NULL on failure 
+\end{DoxyReturn}
+\Hypertarget{oocStringBuffer_8h_a412b860ba060ff92c364e6dc01feaa0a}\index{oocStringBuffer.h@{oocStringBuffer.h}!ooc\_stringBufferSetCharAt@{ooc\_stringBufferSetCharAt}}
+\index{ooc\_stringBufferSetCharAt@{ooc\_stringBufferSetCharAt}!oocStringBuffer.h@{oocStringBuffer.h}}
+\doxysubsubsection{\texorpdfstring{ooc\_stringBufferSetCharAt()}{ooc\_stringBufferSetCharAt()}}
+{\footnotesize\ttfamily \label{oocStringBuffer_8h_a412b860ba060ff92c364e6dc01feaa0a} 
+\mbox{\hyperlink{oocError_8h_a1effaed6897d01c49b4771abc4185718}{OOC\+\_\+\+Error}} ooc\+\_\+string\+Buffer\+Set\+Char\+At (\begin{DoxyParamCaption}\item[{void \texorpdfstring{$\ast$}{*}}]{self}{, }\item[{size\+\_\+t}]{index}{, }\item[{char}]{ch}{}\end{DoxyParamCaption})}
+
+
+
+Sets the character at the specified index. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em self} & String\+Buffer object instance \\
+\hline
+{\em index} & Zero-\/based index of the character \\
+\hline
+{\em ch} & Character to set \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+OOC\+\_\+\+ERROR\+\_\+\+NONE on success, appropriate error code on failure 
+\end{DoxyReturn}
+\Hypertarget{oocStringBuffer_8h_aa363426f23d79bdb273c356558dd3eb5}\index{oocStringBuffer.h@{oocStringBuffer.h}!ooc\_stringBufferSetLength@{ooc\_stringBufferSetLength}}
+\index{ooc\_stringBufferSetLength@{ooc\_stringBufferSetLength}!oocStringBuffer.h@{oocStringBuffer.h}}
+\doxysubsubsection{\texorpdfstring{ooc\_stringBufferSetLength()}{ooc\_stringBufferSetLength()}}
+{\footnotesize\ttfamily \label{oocStringBuffer_8h_aa363426f23d79bdb273c356558dd3eb5} 
+\mbox{\hyperlink{oocError_8h_a1effaed6897d01c49b4771abc4185718}{OOC\+\_\+\+Error}} ooc\+\_\+string\+Buffer\+Set\+Length (\begin{DoxyParamCaption}\item[{void \texorpdfstring{$\ast$}{*}}]{self}{, }\item[{size\+\_\+t}]{new\+Length}{}\end{DoxyParamCaption})}
+
+
+
+Sets the length of the String\+Buffer. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em self} & String\+Buffer object instance \\
+\hline
+{\em new\+Length} & New length to set \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+OOC\+\_\+\+ERROR\+\_\+\+NONE on success, appropriate error code on failure 
+\end{DoxyReturn}
+\begin{DoxyNote}{Note}
+If new\+Length is less than current length, the buffer is truncated. If greater, null characters are appended. 
+\end{DoxyNote}
+\Hypertarget{oocStringBuffer_8h_a1460f96721b370b8a2b4af7344273935}\index{oocStringBuffer.h@{oocStringBuffer.h}!ooc\_stringBufferStartsWithCString@{ooc\_stringBufferStartsWithCString}}
+\index{ooc\_stringBufferStartsWithCString@{ooc\_stringBufferStartsWithCString}!oocStringBuffer.h@{oocStringBuffer.h}}
+\doxysubsubsection{\texorpdfstring{ooc\_stringBufferStartsWithCString()}{ooc\_stringBufferStartsWithCString()}}
+{\footnotesize\ttfamily \label{oocStringBuffer_8h_a1460f96721b370b8a2b4af7344273935} 
+bool ooc\+\_\+string\+Buffer\+Starts\+With\+CString (\begin{DoxyParamCaption}\item[{const void \texorpdfstring{$\ast$}{*}}]{self}{, }\item[{const char \texorpdfstring{$\ast$}{*}}]{prefix}{}\end{DoxyParamCaption})}
+
+
+
+Checks if the String\+Buffer starts with a C string. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em self} & String\+Buffer object instance \\
+\hline
+{\em prefix} & Null-\/terminated prefix string to check \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+true if it starts with the prefix, false otherwise 
+\end{DoxyReturn}
+\Hypertarget{oocStringBuffer_8h_ada6546eb6a80a1bff9bc360932cee234}\index{oocStringBuffer.h@{oocStringBuffer.h}!ooc\_stringBufferStartsWithString@{ooc\_stringBufferStartsWithString}}
+\index{ooc\_stringBufferStartsWithString@{ooc\_stringBufferStartsWithString}!oocStringBuffer.h@{oocStringBuffer.h}}
+\doxysubsubsection{\texorpdfstring{ooc\_stringBufferStartsWithString()}{ooc\_stringBufferStartsWithString()}}
+{\footnotesize\ttfamily \label{oocStringBuffer_8h_ada6546eb6a80a1bff9bc360932cee234} 
+bool ooc\+\_\+string\+Buffer\+Starts\+With\+String (\begin{DoxyParamCaption}\item[{const void \texorpdfstring{$\ast$}{*}}]{self}{, }\item[{const void \texorpdfstring{$\ast$}{*}}]{prefix}{}\end{DoxyParamCaption})}
+
+
+
+Checks if the String\+Buffer starts with a prefix (String object) 
+
+
+\begin{DoxyParams}{Parameters}
+{\em self} & String\+Buffer object instance \\
+\hline
+{\em prefix} & Prefix string to check \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+true if it starts with the prefix, false otherwise 
+\end{DoxyReturn}
+\Hypertarget{oocStringBuffer_8h_aa41fb20c0a81d2eae3f56812b5a2e2c8}\index{oocStringBuffer.h@{oocStringBuffer.h}!ooc\_stringBufferSubstring@{ooc\_stringBufferSubstring}}
+\index{ooc\_stringBufferSubstring@{ooc\_stringBufferSubstring}!oocStringBuffer.h@{oocStringBuffer.h}}
+\doxysubsubsection{\texorpdfstring{ooc\_stringBufferSubstring()}{ooc\_stringBufferSubstring()}}
+{\footnotesize\ttfamily \label{oocStringBuffer_8h_aa41fb20c0a81d2eae3f56812b5a2e2c8} 
+char \texorpdfstring{$\ast$}{*} ooc\+\_\+string\+Buffer\+Substring (\begin{DoxyParamCaption}\item[{const void \texorpdfstring{$\ast$}{*}}]{self}{, }\item[{size\+\_\+t}]{start}{, }\item[{size\+\_\+t}]{end}{}\end{DoxyParamCaption})}
+
+
+
+Extracts a substring from the String\+Buffer. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em self} & String\+Buffer object instance \\
+\hline
+{\em start} & Starting index (inclusive) \\
+\hline
+{\em end} & Ending index (exclusive) \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+Newly allocated C string containing the substring, or NULL on failure 
+\end{DoxyReturn}
+\begin{DoxyNote}{Note}
+Caller is responsible for freeing the returned string 
+\end{DoxyNote}
+\Hypertarget{oocStringBuffer_8h_a33585d39e090c84b9edd41470c1bbe4a}\index{oocStringBuffer.h@{oocStringBuffer.h}!ooc\_stringBufferToCString@{ooc\_stringBufferToCString}}
+\index{ooc\_stringBufferToCString@{ooc\_stringBufferToCString}!oocStringBuffer.h@{oocStringBuffer.h}}
+\doxysubsubsection{\texorpdfstring{ooc\_stringBufferToCString()}{ooc\_stringBufferToCString()}}
+{\footnotesize\ttfamily \label{oocStringBuffer_8h_a33585d39e090c84b9edd41470c1bbe4a} 
+char \texorpdfstring{$\ast$}{*} ooc\+\_\+string\+Buffer\+To\+CString (\begin{DoxyParamCaption}\item[{const void \texorpdfstring{$\ast$}{*}}]{self}{}\end{DoxyParamCaption})}
+
+
+
+Converts the String\+Buffer to a newly allocated C string. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em self} & String\+Buffer object instance \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+Newly allocated C string copy, or NULL on failure 
+\end{DoxyReturn}
+\begin{DoxyNote}{Note}
+Caller is responsible for freeing the returned string 
+\end{DoxyNote}
+\Hypertarget{oocStringBuffer_8h_a01a57a9d366fa8deac9023c13d8b248d}\index{oocStringBuffer.h@{oocStringBuffer.h}!ooc\_stringBufferToLowerCase@{ooc\_stringBufferToLowerCase}}
+\index{ooc\_stringBufferToLowerCase@{ooc\_stringBufferToLowerCase}!oocStringBuffer.h@{oocStringBuffer.h}}
+\doxysubsubsection{\texorpdfstring{ooc\_stringBufferToLowerCase()}{ooc\_stringBufferToLowerCase()}}
+{\footnotesize\ttfamily \label{oocStringBuffer_8h_a01a57a9d366fa8deac9023c13d8b248d} 
+void \texorpdfstring{$\ast$}{*} ooc\+\_\+string\+Buffer\+To\+Lower\+Case (\begin{DoxyParamCaption}\item[{void \texorpdfstring{$\ast$}{*}}]{self}{}\end{DoxyParamCaption})}
+
+
+
+Converts all characters in the String\+Buffer to lowercase. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em self} & String\+Buffer object instance \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+Pointer to self for method chaining, or NULL on failure 
+\end{DoxyReturn}
+\Hypertarget{oocStringBuffer_8h_a8ecfc484c82a13bc2f9e5b0349714844}\index{oocStringBuffer.h@{oocStringBuffer.h}!ooc\_stringBufferToString@{ooc\_stringBufferToString}}
+\index{ooc\_stringBufferToString@{ooc\_stringBufferToString}!oocStringBuffer.h@{oocStringBuffer.h}}
+\doxysubsubsection{\texorpdfstring{ooc\_stringBufferToString()}{ooc\_stringBufferToString()}}
+{\footnotesize\ttfamily \label{oocStringBuffer_8h_a8ecfc484c82a13bc2f9e5b0349714844} 
+void \texorpdfstring{$\ast$}{*} ooc\+\_\+string\+Buffer\+To\+String (\begin{DoxyParamCaption}\item[{const void \texorpdfstring{$\ast$}{*}}]{self}{}\end{DoxyParamCaption})}
+
+
+
+Converts the String\+Buffer to a String object. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em self} & String\+Buffer object instance \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+New String object, or NULL on failure 
+\end{DoxyReturn}
+\begin{DoxyNote}{Note}
+Caller is responsible for destroying the returned String object with ooc\+\_\+destroy 
+\end{DoxyNote}
+\Hypertarget{oocStringBuffer_8h_acb1de473d8a1037c8a18e9ad0c413727}\index{oocStringBuffer.h@{oocStringBuffer.h}!ooc\_stringBufferToUpperCase@{ooc\_stringBufferToUpperCase}}
+\index{ooc\_stringBufferToUpperCase@{ooc\_stringBufferToUpperCase}!oocStringBuffer.h@{oocStringBuffer.h}}
+\doxysubsubsection{\texorpdfstring{ooc\_stringBufferToUpperCase()}{ooc\_stringBufferToUpperCase()}}
+{\footnotesize\ttfamily \label{oocStringBuffer_8h_acb1de473d8a1037c8a18e9ad0c413727} 
+void \texorpdfstring{$\ast$}{*} ooc\+\_\+string\+Buffer\+To\+Upper\+Case (\begin{DoxyParamCaption}\item[{void \texorpdfstring{$\ast$}{*}}]{self}{}\end{DoxyParamCaption})}
+
+
+
+Converts all characters in the String\+Buffer to uppercase. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em self} & String\+Buffer object instance \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+Pointer to self for method chaining, or NULL on failure 
+\end{DoxyReturn}
+\Hypertarget{oocStringBuffer_8h_ac734a43a42cf59e0add649d03e27ef9a}\index{oocStringBuffer.h@{oocStringBuffer.h}!ooc\_stringBufferTrim@{ooc\_stringBufferTrim}}
+\index{ooc\_stringBufferTrim@{ooc\_stringBufferTrim}!oocStringBuffer.h@{oocStringBuffer.h}}
+\doxysubsubsection{\texorpdfstring{ooc\_stringBufferTrim()}{ooc\_stringBufferTrim()}}
+{\footnotesize\ttfamily \label{oocStringBuffer_8h_ac734a43a42cf59e0add649d03e27ef9a} 
+void \texorpdfstring{$\ast$}{*} ooc\+\_\+string\+Buffer\+Trim (\begin{DoxyParamCaption}\item[{void \texorpdfstring{$\ast$}{*}}]{self}{}\end{DoxyParamCaption})}
+
+
+
+Trims whitespace from both ends of the String\+Buffer. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em self} & String\+Buffer object instance \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+Pointer to self for method chaining, or NULL on failure 
+\end{DoxyReturn}
+\Hypertarget{oocStringBuffer_8h_ad603978f3ec76fe5a782f8ee16203f8a}\index{oocStringBuffer.h@{oocStringBuffer.h}!ooc\_stringBufferTrimToSize@{ooc\_stringBufferTrimToSize}}
+\index{ooc\_stringBufferTrimToSize@{ooc\_stringBufferTrimToSize}!oocStringBuffer.h@{oocStringBuffer.h}}
+\doxysubsubsection{\texorpdfstring{ooc\_stringBufferTrimToSize()}{ooc\_stringBufferTrimToSize()}}
+{\footnotesize\ttfamily \label{oocStringBuffer_8h_ad603978f3ec76fe5a782f8ee16203f8a} 
+\mbox{\hyperlink{oocError_8h_a1effaed6897d01c49b4771abc4185718}{OOC\+\_\+\+Error}} ooc\+\_\+string\+Buffer\+Trim\+To\+Size (\begin{DoxyParamCaption}\item[{void \texorpdfstring{$\ast$}{*}}]{self}{}\end{DoxyParamCaption})}
+
+
+
+Reduces the capacity to match the current length. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em self} & String\+Buffer object instance \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+OOC\+\_\+\+ERROR\+\_\+\+NONE on success, appropriate error code on failure 
+\end{DoxyReturn}

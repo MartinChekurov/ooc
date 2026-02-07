@@ -1,0 +1,1302 @@
+\doxysection{src/string/ooc\+String.h File Reference}
+\hypertarget{oocString_8h}{}\label{oocString_8h}\index{src/string/oocString.h@{src/string/oocString.h}}
+
+
+Object-\/oriented C String class implementation.  
+
+
+{\ttfamily \#include $<$stdarg.\+h$>$}\newline
+{\ttfamily \#include $<$stddef.\+h$>$}\newline
+{\ttfamily \#include $<$stdbool.\+h$>$}\newline
+{\ttfamily \#include "{}ooc\+Error.\+h"{}}\newline
+\doxysubsubsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+void \texorpdfstring{$\ast$}{*} \mbox{\hyperlink{oocString_8h_aea2f5aef6271a66133f63fee3e42a161}{ooc\+\_\+string\+Class}} ()
+\begin{DoxyCompactList}\small\item\em Returns the String class descriptor. \end{DoxyCompactList}\item 
+char \texorpdfstring{$\ast$}{*} \mbox{\hyperlink{oocString_8h_a78525fbc15bef46f5ad6dca36f021554}{ooc\+\_\+\+String\+Formatv}} (const char \texorpdfstring{$\ast$}{*}format, va\+\_\+list \texorpdfstring{$\ast$}{*}args)
+\begin{DoxyCompactList}\small\item\em Creates a formatted string using a va\+\_\+list. \end{DoxyCompactList}\item 
+char \texorpdfstring{$\ast$}{*} \mbox{\hyperlink{oocString_8h_a80072b4fca6bb716f3c6e4ec39a212d2}{ooc\+\_\+\+String\+Format}} (const char \texorpdfstring{$\ast$}{*}format,...)
+\begin{DoxyCompactList}\small\item\em Creates a formatted string using printf-\/style formatting. \end{DoxyCompactList}\item 
+char \texorpdfstring{$\ast$}{*} \mbox{\hyperlink{oocString_8h_ae6395e3b37c39b4fcde5e2fa74634eaa}{ooc\+\_\+\+String\+From\+Int}} (int value)
+\begin{DoxyCompactList}\small\item\em Converts an integer to its string representation. \end{DoxyCompactList}\item 
+char \texorpdfstring{$\ast$}{*} \mbox{\hyperlink{oocString_8h_a72f6a9b714374f695564baa3973aafbf}{ooc\+\_\+\+String\+From\+Double}} (double value)
+\begin{DoxyCompactList}\small\item\em Converts a double to its string representation. \end{DoxyCompactList}\item 
+char \texorpdfstring{$\ast$}{*} \mbox{\hyperlink{oocString_8h_a17d515cb6a356854716db41a8c61565b}{ooc\+\_\+\+String\+From\+Char}} (char value)
+\begin{DoxyCompactList}\small\item\em Converts a character to its string representation. \end{DoxyCompactList}\item 
+char \texorpdfstring{$\ast$}{*} \mbox{\hyperlink{oocString_8h_afd230a01dd517a8c5dd6efd42efdad70}{ooc\+\_\+\+String\+From\+Bool}} (bool value)
+\begin{DoxyCompactList}\small\item\em Converts a boolean to its string representation. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{oocError_8h_a1effaed6897d01c49b4771abc4185718}{OOC\+\_\+\+Error}} \mbox{\hyperlink{oocString_8h_a9352ece494ff0642032cf6f4d7d39b89}{ooc\+\_\+\+String\+Format\+At}} (char \texorpdfstring{$\ast$}{*}buffer, size\+\_\+t buffer\+Size, const char \texorpdfstring{$\ast$}{*}format,...)
+\begin{DoxyCompactList}\small\item\em Creates a formatted string in a provided buffer. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{oocError_8h_a1effaed6897d01c49b4771abc4185718}{OOC\+\_\+\+Error}} \mbox{\hyperlink{oocString_8h_acf5decf816f5febdbeb084e85a9882ab}{ooc\+\_\+\+String\+From\+Int\+At}} (char \texorpdfstring{$\ast$}{*}buffer, size\+\_\+t buffer\+Size, int value)
+\begin{DoxyCompactList}\small\item\em Converts an integer to string in a provided buffer. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{oocError_8h_a1effaed6897d01c49b4771abc4185718}{OOC\+\_\+\+Error}} \mbox{\hyperlink{oocString_8h_a820ebe722b3b58151c5b1de806c90b74}{ooc\+\_\+\+String\+From\+Double\+At}} (char \texorpdfstring{$\ast$}{*}buffer, size\+\_\+t buffer\+Size, double value)
+\begin{DoxyCompactList}\small\item\em Converts a double to string in a provided buffer. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{oocError_8h_a1effaed6897d01c49b4771abc4185718}{OOC\+\_\+\+Error}} \mbox{\hyperlink{oocString_8h_a18cbe6a8ab657444bc93eded0eeee18f}{ooc\+\_\+\+String\+From\+Char\+At}} (char \texorpdfstring{$\ast$}{*}buffer, size\+\_\+t buffer\+Size, char value)
+\begin{DoxyCompactList}\small\item\em Converts a character to string in a provided buffer. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{oocError_8h_a1effaed6897d01c49b4771abc4185718}{OOC\+\_\+\+Error}} \mbox{\hyperlink{oocString_8h_a2d41235a9cd48dd9b05d6a3b4864f3a9}{ooc\+\_\+\+String\+From\+Bool\+At}} (char \texorpdfstring{$\ast$}{*}buffer, size\+\_\+t buffer\+Size, bool value)
+\begin{DoxyCompactList}\small\item\em Converts a boolean to string in a provided buffer. \end{DoxyCompactList}\item 
+size\+\_\+t \mbox{\hyperlink{oocString_8h_aba49bd50e02e4ef50b944a4a84fd1e97}{ooc\+\_\+\+String\+Length}} (const char \texorpdfstring{$\ast$}{*}str)
+\begin{DoxyCompactList}\small\item\em Returns the length of a C string. \end{DoxyCompactList}\item 
+char \mbox{\hyperlink{oocString_8h_a56eec88363dba4feda3bb24d94850f1a}{ooc\+\_\+\+String\+Char\+At}} (const char \texorpdfstring{$\ast$}{*}str, size\+\_\+t index)
+\begin{DoxyCompactList}\small\item\em Returns the character at the specified index. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{oocError_8h_a1effaed6897d01c49b4771abc4185718}{OOC\+\_\+\+Error}} \mbox{\hyperlink{oocString_8h_ab874cb81f84e11ef2804f302d0af0ded}{ooc\+\_\+\+String\+Set\+Char\+At}} (char \texorpdfstring{$\ast$}{*}str, size\+\_\+t index, char ch)
+\begin{DoxyCompactList}\small\item\em Sets a character at the specified index in a C string. \end{DoxyCompactList}\item 
+char \texorpdfstring{$\ast$}{*} \mbox{\hyperlink{oocString_8h_ad818415562ed339e2919b03554c76ff5}{ooc\+\_\+\+String\+Substring}} (const char \texorpdfstring{$\ast$}{*}str, size\+\_\+t start, size\+\_\+t end)
+\begin{DoxyCompactList}\small\item\em Extracts a substring from the given string. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{oocError_8h_a1effaed6897d01c49b4771abc4185718}{OOC\+\_\+\+Error}} \mbox{\hyperlink{oocString_8h_ab3f1995be93d174381812108a1e8a22b}{ooc\+\_\+\+String\+Substring\+At}} (char \texorpdfstring{$\ast$}{*}buffer, size\+\_\+t buffer\+Size, const char \texorpdfstring{$\ast$}{*}str, size\+\_\+t start, size\+\_\+t end)
+\begin{DoxyCompactList}\small\item\em Extracts a substring into a provided buffer. \end{DoxyCompactList}\item 
+char \texorpdfstring{$\ast$}{*} \mbox{\hyperlink{oocString_8h_ac7404b816ae80360f481b6fae968c0cd}{ooc\+\_\+\+String\+Concat}} (const char \texorpdfstring{$\ast$}{*}str1, const char \texorpdfstring{$\ast$}{*}str2)
+\begin{DoxyCompactList}\small\item\em Concatenates two C strings. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{oocError_8h_a1effaed6897d01c49b4771abc4185718}{OOC\+\_\+\+Error}} \mbox{\hyperlink{oocString_8h_a667bb68a7540b88beec1073797095fef}{ooc\+\_\+\+String\+Concat\+At}} (char \texorpdfstring{$\ast$}{*}buffer, size\+\_\+t buffer\+Size, const char \texorpdfstring{$\ast$}{*}str1, const char \texorpdfstring{$\ast$}{*}str2)
+\begin{DoxyCompactList}\small\item\em Concatenates two C strings into a provided buffer. \end{DoxyCompactList}\item 
+bool \mbox{\hyperlink{oocString_8h_a94a12e7dd9a1c84dc13be224946efdcb}{ooc\+\_\+\+String\+Starts\+With\+String}} (const char \texorpdfstring{$\ast$}{*}str, const char \texorpdfstring{$\ast$}{*}prefix)
+\begin{DoxyCompactList}\small\item\em Checks if a string starts with the specified prefix. \end{DoxyCompactList}\item 
+bool \mbox{\hyperlink{oocString_8h_a89c86788d6812a3e65324a37e468920c}{ooc\+\_\+\+String\+Ends\+With\+String}} (const char \texorpdfstring{$\ast$}{*}str, const char \texorpdfstring{$\ast$}{*}suffix)
+\begin{DoxyCompactList}\small\item\em Checks if a string ends with the specified suffix. \end{DoxyCompactList}\item 
+int \mbox{\hyperlink{oocString_8h_a38c8f1544697744af6294da788f23928}{ooc\+\_\+\+String\+Index\+Of\+Char}} (const char \texorpdfstring{$\ast$}{*}str, char ch)
+\begin{DoxyCompactList}\small\item\em Finds the first occurrence of a character in the string. \end{DoxyCompactList}\item 
+int \mbox{\hyperlink{oocString_8h_aa67f6a358272dac5292d423f123340c2}{ooc\+\_\+\+String\+Last\+Index\+Of\+Char}} (const char \texorpdfstring{$\ast$}{*}str, char ch)
+\begin{DoxyCompactList}\small\item\em Finds the last occurrence of a character in the string. \end{DoxyCompactList}\item 
+int \mbox{\hyperlink{oocString_8h_a1ac6f1cfd325a5c69bb3c86849ebbf93}{ooc\+\_\+\+String\+Index\+Of\+String}} (const char \texorpdfstring{$\ast$}{*}str, const char \texorpdfstring{$\ast$}{*}sub)
+\begin{DoxyCompactList}\small\item\em Finds the first occurrence of a substring in a string. \end{DoxyCompactList}\item 
+int \mbox{\hyperlink{oocString_8h_a8cfff8e6ec133b0d1b609dd477b4b9e0}{ooc\+\_\+\+String\+Last\+Index\+Of\+String}} (const char \texorpdfstring{$\ast$}{*}str, const char \texorpdfstring{$\ast$}{*}sub)
+\begin{DoxyCompactList}\small\item\em Finds the last occurrence of a substring in a string. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{oocError_8h_a1effaed6897d01c49b4771abc4185718}{OOC\+\_\+\+Error}} \mbox{\hyperlink{oocString_8h_aa841c49548995ec90d1bf2b1b37df442}{ooc\+\_\+\+String\+Replace\+Char}} (char \texorpdfstring{$\ast$}{*}str, char old\+Char, char new\+Char)
+\begin{DoxyCompactList}\small\item\em Replaces all occurrences of a character with another character. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{oocError_8h_a1effaed6897d01c49b4771abc4185718}{OOC\+\_\+\+Error}} \mbox{\hyperlink{oocString_8h_a005562a64a2251a9772a34e1552c6edf}{ooc\+\_\+\+String\+To\+Lower\+Case}} (char \texorpdfstring{$\ast$}{*}str)
+\begin{DoxyCompactList}\small\item\em Converts all characters in the string to lowercase. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{oocError_8h_a1effaed6897d01c49b4771abc4185718}{OOC\+\_\+\+Error}} \mbox{\hyperlink{oocString_8h_a1003abe16958bc3b10257008a5607837}{ooc\+\_\+\+String\+To\+Upper\+Case}} (char \texorpdfstring{$\ast$}{*}str)
+\begin{DoxyCompactList}\small\item\em Converts all characters in the string to uppercase. \end{DoxyCompactList}\item 
+char \texorpdfstring{$\ast$}{*} \mbox{\hyperlink{oocString_8h_ab14d94ee4c6bba161d0019c64544f199}{ooc\+\_\+\+String\+Trim}} (char \texorpdfstring{$\ast$}{*}str)
+\begin{DoxyCompactList}\small\item\em Removes leading and trailing whitespace from the string. \end{DoxyCompactList}\item 
+bool \mbox{\hyperlink{oocString_8h_a8cbeb88c2dc093b5adbcf3b9efebedc7}{ooc\+\_\+\+String\+Is\+Empty}} (const char \texorpdfstring{$\ast$}{*}str)
+\begin{DoxyCompactList}\small\item\em Checks if a string is empty (NULL or zero length) \end{DoxyCompactList}\item 
+\mbox{\hyperlink{oocError_8h_a1effaed6897d01c49b4771abc4185718}{OOC\+\_\+\+Error}} \mbox{\hyperlink{oocString_8h_a2877816592382d26363c8425620244f5}{ooc\+\_\+\+String\+Reverse}} (char \texorpdfstring{$\ast$}{*}str)
+\begin{DoxyCompactList}\small\item\em Reverses a C string in place. \end{DoxyCompactList}\item 
+bool \mbox{\hyperlink{oocString_8h_a9afb4494a3c103afa7a9e3d32026de4d}{ooc\+\_\+\+String\+Contains\+String}} (const char \texorpdfstring{$\ast$}{*}str, const char \texorpdfstring{$\ast$}{*}sub)
+\begin{DoxyCompactList}\small\item\em Checks if a string contains a substring. \end{DoxyCompactList}\item 
+size\+\_\+t \mbox{\hyperlink{oocString_8h_ade72c9acfd666d40cdd9d39515268328}{ooc\+\_\+string\+Length}} (const void \texorpdfstring{$\ast$}{*}self)
+\begin{DoxyCompactList}\small\item\em Returns the length of a String object. \end{DoxyCompactList}\item 
+char \mbox{\hyperlink{oocString_8h_a9f5fd2be436f1666f4f80db9efe386e7}{ooc\+\_\+string\+Char\+At}} (const void \texorpdfstring{$\ast$}{*}self, size\+\_\+t index)
+\begin{DoxyCompactList}\small\item\em Returns the character at the specified index in a String object. \end{DoxyCompactList}\item 
+void \texorpdfstring{$\ast$}{*} \mbox{\hyperlink{oocString_8h_aa0ba02aa71b2eff5a0e9635639387167}{ooc\+\_\+string\+Substring}} (const void \texorpdfstring{$\ast$}{*}self, size\+\_\+t start, size\+\_\+t end)
+\begin{DoxyCompactList}\small\item\em Extracts a substring from a String object. \end{DoxyCompactList}\item 
+void \texorpdfstring{$\ast$}{*} \mbox{\hyperlink{oocString_8h_a7fcd5d28707507bfdb3c82020d47b7aa}{ooc\+\_\+string\+Concat}} (const void \texorpdfstring{$\ast$}{*}self, const void \texorpdfstring{$\ast$}{*}other)
+\begin{DoxyCompactList}\small\item\em Concatenates two String objects. \end{DoxyCompactList}\item 
+bool \mbox{\hyperlink{oocString_8h_a24c638f7974166c6cb52a3180b413bb4}{ooc\+\_\+string\+Starts\+With\+String}} (const void \texorpdfstring{$\ast$}{*}self, const void \texorpdfstring{$\ast$}{*}prefix)
+\begin{DoxyCompactList}\small\item\em Checks if a String object starts with another String object. \end{DoxyCompactList}\item 
+bool \mbox{\hyperlink{oocString_8h_affe2682dfe6836511c11872af413e6f8}{ooc\+\_\+string\+Starts\+With\+CString}} (const void \texorpdfstring{$\ast$}{*}self, const char \texorpdfstring{$\ast$}{*}prefix)
+\begin{DoxyCompactList}\small\item\em Checks if a String object starts with a C string. \end{DoxyCompactList}\item 
+bool \mbox{\hyperlink{oocString_8h_ac6ba0dfc209f591c47967aad9dd24194}{ooc\+\_\+string\+Ends\+With\+String}} (const void \texorpdfstring{$\ast$}{*}self, const void \texorpdfstring{$\ast$}{*}suffix)
+\begin{DoxyCompactList}\small\item\em Checks if a String object ends with another String object. \end{DoxyCompactList}\item 
+bool \mbox{\hyperlink{oocString_8h_a4e6da84fe313fc8165852a52ede878fd}{ooc\+\_\+string\+Ends\+With\+CString}} (const void \texorpdfstring{$\ast$}{*}self, const char \texorpdfstring{$\ast$}{*}suffix)
+\begin{DoxyCompactList}\small\item\em Checks if a String object ends with a C string. \end{DoxyCompactList}\item 
+int \mbox{\hyperlink{oocString_8h_a59f9caff2af8fd0225c31404dffed58d}{ooc\+\_\+string\+Index\+Of\+Char}} (const void \texorpdfstring{$\ast$}{*}self, char ch)
+\begin{DoxyCompactList}\small\item\em Finds the first occurrence of a character in a String object. \end{DoxyCompactList}\item 
+int \mbox{\hyperlink{oocString_8h_a79796666f0e30f40db0dd99631452b57}{ooc\+\_\+string\+Last\+Index\+Of\+Char}} (const void \texorpdfstring{$\ast$}{*}self, char ch)
+\begin{DoxyCompactList}\small\item\em Finds the last occurrence of a character in a String object. \end{DoxyCompactList}\item 
+int \mbox{\hyperlink{oocString_8h_a33fa13e3f2366f83595863dea772278e}{ooc\+\_\+string\+Index\+Of\+String}} (const void \texorpdfstring{$\ast$}{*}self, const void \texorpdfstring{$\ast$}{*}sub)
+\begin{DoxyCompactList}\small\item\em Finds the first occurrence of a substring in a String object. \end{DoxyCompactList}\item 
+int \mbox{\hyperlink{oocString_8h_a78463fd3531155e4da195b09aea24227}{ooc\+\_\+string\+Index\+Of\+CString}} (const void \texorpdfstring{$\ast$}{*}self, const char \texorpdfstring{$\ast$}{*}sub)
+\begin{DoxyCompactList}\small\item\em Finds the first occurrence of a C string in a String object. \end{DoxyCompactList}\item 
+int \mbox{\hyperlink{oocString_8h_ac767aa5ce0840aa8b56dc191d5d80180}{ooc\+\_\+string\+Last\+Index\+Of\+String}} (const void \texorpdfstring{$\ast$}{*}self, const void \texorpdfstring{$\ast$}{*}sub)
+\begin{DoxyCompactList}\small\item\em Finds the last occurrence of a substring in a String object. \end{DoxyCompactList}\item 
+int \mbox{\hyperlink{oocString_8h_af853b520ecdd6fc4750c72a449d69cc2}{ooc\+\_\+string\+Last\+Index\+Of\+CString}} (const void \texorpdfstring{$\ast$}{*}self, const char \texorpdfstring{$\ast$}{*}sub)
+\begin{DoxyCompactList}\small\item\em Finds the last occurrence of a C string in a String object. \end{DoxyCompactList}\item 
+void \texorpdfstring{$\ast$}{*} \mbox{\hyperlink{oocString_8h_a96ac5fa1d220247be60a7bf566201dcc}{ooc\+\_\+string\+Replace\+Char}} (const void \texorpdfstring{$\ast$}{*}self, char old\+Char, char new\+Char)
+\begin{DoxyCompactList}\small\item\em Replaces all occurrences of a character in a String object. \end{DoxyCompactList}\item 
+void \texorpdfstring{$\ast$}{*} \mbox{\hyperlink{oocString_8h_afbf31031c4c17d56849e6980de0bfeb5}{ooc\+\_\+string\+To\+Lower\+Case}} (const void \texorpdfstring{$\ast$}{*}self)
+\begin{DoxyCompactList}\small\item\em Converts all characters in a String object to lowercase. \end{DoxyCompactList}\item 
+void \texorpdfstring{$\ast$}{*} \mbox{\hyperlink{oocString_8h_ad8392975b7d930a99c313019613cb9b3}{ooc\+\_\+string\+To\+Upper\+Case}} (const void \texorpdfstring{$\ast$}{*}self)
+\begin{DoxyCompactList}\small\item\em Converts all characters in a String object to uppercase. \end{DoxyCompactList}\item 
+void \texorpdfstring{$\ast$}{*} \mbox{\hyperlink{oocString_8h_a6aecb32d85f2b0033eb5475e9327ac6e}{ooc\+\_\+string\+Trim}} (const void \texorpdfstring{$\ast$}{*}self)
+\begin{DoxyCompactList}\small\item\em Removes leading and trailing whitespace from a String object. \end{DoxyCompactList}\item 
+bool \mbox{\hyperlink{oocString_8h_a0d8b1c13708b334527dd1c8509e35dff}{ooc\+\_\+string\+Is\+Empty}} (const void \texorpdfstring{$\ast$}{*}self)
+\begin{DoxyCompactList}\small\item\em Checks if a String object is empty. \end{DoxyCompactList}\item 
+bool \mbox{\hyperlink{oocString_8h_a944617e0d8c0d3752f49ec65268e16bf}{ooc\+\_\+string\+Contains\+String}} (const void \texorpdfstring{$\ast$}{*}self, const void \texorpdfstring{$\ast$}{*}sub)
+\begin{DoxyCompactList}\small\item\em Checks if a String object contains another String object. \end{DoxyCompactList}\item 
+bool \mbox{\hyperlink{oocString_8h_a575d71c13c44348669be8456324fe1ef}{ooc\+\_\+string\+Contains\+CString}} (const void \texorpdfstring{$\ast$}{*}self, const char \texorpdfstring{$\ast$}{*}sub)
+\begin{DoxyCompactList}\small\item\em Checks if a String object contains a C string. \end{DoxyCompactList}\item 
+char \texorpdfstring{$\ast$}{*} \mbox{\hyperlink{oocString_8h_af94c334fc13c2a50224ea05cc180174e}{ooc\+\_\+string\+To\+CString}} (const void \texorpdfstring{$\ast$}{*}self)
+\begin{DoxyCompactList}\small\item\em Returns the C string representation of a String object. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{oocError_8h_a1effaed6897d01c49b4771abc4185718}{OOC\+\_\+\+Error}} \mbox{\hyperlink{oocString_8h_a9efdd52e1938f1c34f58415341037924}{ooc\+\_\+string\+To\+CString\+At}} (const void \texorpdfstring{$\ast$}{*}self, char \texorpdfstring{$\ast$}{*}buffer, size\+\_\+t buffer\+Size)
+\begin{DoxyCompactList}\small\item\em Copies the string content to a provided buffer. \end{DoxyCompactList}\item 
+const char \texorpdfstring{$\ast$}{*} \mbox{\hyperlink{oocString_8h_a5e9bc8aceeedffce4a9eff6e7bafeba5}{ooc\+\_\+string\+Get\+CString}} (const void \texorpdfstring{$\ast$}{*}self)
+\begin{DoxyCompactList}\small\item\em Returns a const pointer to the internal C string (read-\/only access) \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+Object-\/oriented C String class implementation. 
+
+This header defines a comprehensive String class for the OOC framework, providing both static utility functions for C strings and instance methods for String objects. The implementation follows object-\/oriented principles adapted for C.
+
+String objects are immutable. All instance methods that appear to modify a String object actually return a new String object with the modifications, leaving the original String object unchanged. This ensures thread-\/safety and prevents unintended side effects. 
+
+\label{doc-func-members}
+\Hypertarget{oocString_8h_doc-func-members}
+\doxysubsection{Function Documentation}
+\Hypertarget{oocString_8h_a56eec88363dba4feda3bb24d94850f1a}\index{oocString.h@{oocString.h}!ooc\_StringCharAt@{ooc\_StringCharAt}}
+\index{ooc\_StringCharAt@{ooc\_StringCharAt}!oocString.h@{oocString.h}}
+\doxysubsubsection{\texorpdfstring{ooc\_StringCharAt()}{ooc\_StringCharAt()}}
+{\footnotesize\ttfamily \label{oocString_8h_a56eec88363dba4feda3bb24d94850f1a} 
+char ooc\+\_\+\+String\+Char\+At (\begin{DoxyParamCaption}\item[{const char \texorpdfstring{$\ast$}{*}}]{str}{, }\item[{size\+\_\+t}]{index}{}\end{DoxyParamCaption})}
+
+
+
+Returns the character at the specified index. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em str} & Null-\/terminated C string \\
+\hline
+{\em index} & Zero-\/based index of the character \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+Character at the specified index. Returns \textquotesingle{}\textbackslash{}0\textquotesingle{} if index is out of bounds or str is NULL. 
+\end{DoxyReturn}
+\Hypertarget{oocString_8h_a9f5fd2be436f1666f4f80db9efe386e7}\index{oocString.h@{oocString.h}!ooc\_stringCharAt@{ooc\_stringCharAt}}
+\index{ooc\_stringCharAt@{ooc\_stringCharAt}!oocString.h@{oocString.h}}
+\doxysubsubsection{\texorpdfstring{ooc\_stringCharAt()}{ooc\_stringCharAt()}}
+{\footnotesize\ttfamily \label{oocString_8h_a9f5fd2be436f1666f4f80db9efe386e7} 
+char ooc\+\_\+string\+Char\+At (\begin{DoxyParamCaption}\item[{const void \texorpdfstring{$\ast$}{*}}]{self}{, }\item[{size\+\_\+t}]{index}{}\end{DoxyParamCaption})}
+
+
+
+Returns the character at the specified index in a String object. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em self} & String object instance \\
+\hline
+{\em index} & Zero-\/based index of the character \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+Character at the specified index. Returns \textquotesingle{}\textbackslash{}0\textquotesingle{} if index is out of bounds or self is NULL. 
+\end{DoxyReturn}
+\Hypertarget{oocString_8h_aea2f5aef6271a66133f63fee3e42a161}\index{oocString.h@{oocString.h}!ooc\_stringClass@{ooc\_stringClass}}
+\index{ooc\_stringClass@{ooc\_stringClass}!oocString.h@{oocString.h}}
+\doxysubsubsection{\texorpdfstring{ooc\_stringClass()}{ooc\_stringClass()}}
+{\footnotesize\ttfamily \label{oocString_8h_aea2f5aef6271a66133f63fee3e42a161} 
+void \texorpdfstring{$\ast$}{*} ooc\+\_\+string\+Class (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})}
+
+
+
+Returns the String class descriptor. 
+
+\begin{DoxyReturn}{Returns}
+Pointer to the String class object 
+\end{DoxyReturn}
+\Hypertarget{oocString_8h_ac7404b816ae80360f481b6fae968c0cd}\index{oocString.h@{oocString.h}!ooc\_StringConcat@{ooc\_StringConcat}}
+\index{ooc\_StringConcat@{ooc\_StringConcat}!oocString.h@{oocString.h}}
+\doxysubsubsection{\texorpdfstring{ooc\_StringConcat()}{ooc\_StringConcat()}}
+{\footnotesize\ttfamily \label{oocString_8h_ac7404b816ae80360f481b6fae968c0cd} 
+char \texorpdfstring{$\ast$}{*} ooc\+\_\+\+String\+Concat (\begin{DoxyParamCaption}\item[{const char \texorpdfstring{$\ast$}{*}}]{str1}{, }\item[{const char \texorpdfstring{$\ast$}{*}}]{str2}{}\end{DoxyParamCaption})}
+
+
+
+Concatenates two C strings. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em str1} & First null-\/terminated C string \\
+\hline
+{\em str2} & Second null-\/terminated C string \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+Newly allocated concatenated string, or NULL on failure 
+\end{DoxyReturn}
+\begin{DoxyNote}{Note}
+Caller is responsible for freeing the returned string 
+\end{DoxyNote}
+\Hypertarget{oocString_8h_a7fcd5d28707507bfdb3c82020d47b7aa}\index{oocString.h@{oocString.h}!ooc\_stringConcat@{ooc\_stringConcat}}
+\index{ooc\_stringConcat@{ooc\_stringConcat}!oocString.h@{oocString.h}}
+\doxysubsubsection{\texorpdfstring{ooc\_stringConcat()}{ooc\_stringConcat()}}
+{\footnotesize\ttfamily \label{oocString_8h_a7fcd5d28707507bfdb3c82020d47b7aa} 
+void \texorpdfstring{$\ast$}{*} ooc\+\_\+string\+Concat (\begin{DoxyParamCaption}\item[{const void \texorpdfstring{$\ast$}{*}}]{self}{, }\item[{const void \texorpdfstring{$\ast$}{*}}]{other}{}\end{DoxyParamCaption})}
+
+
+
+Concatenates two String objects. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em self} & First String object instance \\
+\hline
+{\em other} & Second String object instance \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+New String object containing the concatenated result, or NULL on failure 
+\end{DoxyReturn}
+\begin{DoxyNote}{Note}
+Caller is responsible for destroying the returned String object with ooc\+\_\+destroy 
+\end{DoxyNote}
+\Hypertarget{oocString_8h_a667bb68a7540b88beec1073797095fef}\index{oocString.h@{oocString.h}!ooc\_StringConcatAt@{ooc\_StringConcatAt}}
+\index{ooc\_StringConcatAt@{ooc\_StringConcatAt}!oocString.h@{oocString.h}}
+\doxysubsubsection{\texorpdfstring{ooc\_StringConcatAt()}{ooc\_StringConcatAt()}}
+{\footnotesize\ttfamily \label{oocString_8h_a667bb68a7540b88beec1073797095fef} 
+\mbox{\hyperlink{oocError_8h_a1effaed6897d01c49b4771abc4185718}{OOC\+\_\+\+Error}} ooc\+\_\+\+String\+Concat\+At (\begin{DoxyParamCaption}\item[{char \texorpdfstring{$\ast$}{*}}]{buffer}{, }\item[{size\+\_\+t}]{buffer\+Size}{, }\item[{const char \texorpdfstring{$\ast$}{*}}]{str1}{, }\item[{const char \texorpdfstring{$\ast$}{*}}]{str2}{}\end{DoxyParamCaption})}
+
+
+
+Concatenates two C strings into a provided buffer. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em buffer} & Destination buffer for the concatenated string \\
+\hline
+{\em buffer\+Size} & Size of the destination buffer \\
+\hline
+{\em str1} & First null-\/terminated C string \\
+\hline
+{\em str2} & Second null-\/terminated C string \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+OOC\+\_\+\+ERROR\+\_\+\+NONE on success, appropriate error code on failure 
+\end{DoxyReturn}
+\Hypertarget{oocString_8h_a575d71c13c44348669be8456324fe1ef}\index{oocString.h@{oocString.h}!ooc\_stringContainsCString@{ooc\_stringContainsCString}}
+\index{ooc\_stringContainsCString@{ooc\_stringContainsCString}!oocString.h@{oocString.h}}
+\doxysubsubsection{\texorpdfstring{ooc\_stringContainsCString()}{ooc\_stringContainsCString()}}
+{\footnotesize\ttfamily \label{oocString_8h_a575d71c13c44348669be8456324fe1ef} 
+bool ooc\+\_\+string\+Contains\+CString (\begin{DoxyParamCaption}\item[{const void \texorpdfstring{$\ast$}{*}}]{self}{, }\item[{const char \texorpdfstring{$\ast$}{*}}]{sub}{}\end{DoxyParamCaption})}
+
+
+
+Checks if a String object contains a C string. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em self} & String object instance to search in \\
+\hline
+{\em sub} & Null-\/terminated C string containing the substring to search for \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+true if the substring is found, false otherwise 
+\end{DoxyReturn}
+\Hypertarget{oocString_8h_a9afb4494a3c103afa7a9e3d32026de4d}\index{oocString.h@{oocString.h}!ooc\_StringContainsString@{ooc\_StringContainsString}}
+\index{ooc\_StringContainsString@{ooc\_StringContainsString}!oocString.h@{oocString.h}}
+\doxysubsubsection{\texorpdfstring{ooc\_StringContainsString()}{ooc\_StringContainsString()}}
+{\footnotesize\ttfamily \label{oocString_8h_a9afb4494a3c103afa7a9e3d32026de4d} 
+bool ooc\+\_\+\+String\+Contains\+String (\begin{DoxyParamCaption}\item[{const char \texorpdfstring{$\ast$}{*}}]{str}{, }\item[{const char \texorpdfstring{$\ast$}{*}}]{sub}{}\end{DoxyParamCaption})}
+
+
+
+Checks if a string contains a substring. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em str} & Null-\/terminated C string to search in \\
+\hline
+{\em sub} & Null-\/terminated substring to search for \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+true if the substring is found, false otherwise 
+\end{DoxyReturn}
+\Hypertarget{oocString_8h_a944617e0d8c0d3752f49ec65268e16bf}\index{oocString.h@{oocString.h}!ooc\_stringContainsString@{ooc\_stringContainsString}}
+\index{ooc\_stringContainsString@{ooc\_stringContainsString}!oocString.h@{oocString.h}}
+\doxysubsubsection{\texorpdfstring{ooc\_stringContainsString()}{ooc\_stringContainsString()}}
+{\footnotesize\ttfamily \label{oocString_8h_a944617e0d8c0d3752f49ec65268e16bf} 
+bool ooc\+\_\+string\+Contains\+String (\begin{DoxyParamCaption}\item[{const void \texorpdfstring{$\ast$}{*}}]{self}{, }\item[{const void \texorpdfstring{$\ast$}{*}}]{sub}{}\end{DoxyParamCaption})}
+
+
+
+Checks if a String object contains another String object. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em self} & String object instance to search in \\
+\hline
+{\em sub} & String object instance containing the substring to search for \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+true if the substring is found, false otherwise 
+\end{DoxyReturn}
+\Hypertarget{oocString_8h_a4e6da84fe313fc8165852a52ede878fd}\index{oocString.h@{oocString.h}!ooc\_stringEndsWithCString@{ooc\_stringEndsWithCString}}
+\index{ooc\_stringEndsWithCString@{ooc\_stringEndsWithCString}!oocString.h@{oocString.h}}
+\doxysubsubsection{\texorpdfstring{ooc\_stringEndsWithCString()}{ooc\_stringEndsWithCString()}}
+{\footnotesize\ttfamily \label{oocString_8h_a4e6da84fe313fc8165852a52ede878fd} 
+bool ooc\+\_\+string\+Ends\+With\+CString (\begin{DoxyParamCaption}\item[{const void \texorpdfstring{$\ast$}{*}}]{self}{, }\item[{const char \texorpdfstring{$\ast$}{*}}]{suffix}{}\end{DoxyParamCaption})}
+
+
+
+Checks if a String object ends with a C string. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em self} & String object instance to check \\
+\hline
+{\em suffix} & Null-\/terminated C string containing the suffix \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+true if self ends with suffix, false otherwise 
+\end{DoxyReturn}
+\Hypertarget{oocString_8h_a89c86788d6812a3e65324a37e468920c}\index{oocString.h@{oocString.h}!ooc\_StringEndsWithString@{ooc\_StringEndsWithString}}
+\index{ooc\_StringEndsWithString@{ooc\_StringEndsWithString}!oocString.h@{oocString.h}}
+\doxysubsubsection{\texorpdfstring{ooc\_StringEndsWithString()}{ooc\_StringEndsWithString()}}
+{\footnotesize\ttfamily \label{oocString_8h_a89c86788d6812a3e65324a37e468920c} 
+bool ooc\+\_\+\+String\+Ends\+With\+String (\begin{DoxyParamCaption}\item[{const char \texorpdfstring{$\ast$}{*}}]{str}{, }\item[{const char \texorpdfstring{$\ast$}{*}}]{suffix}{}\end{DoxyParamCaption})}
+
+
+
+Checks if a string ends with the specified suffix. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em str} & Null-\/terminated C string to check \\
+\hline
+{\em suffix} & Null-\/terminated suffix string \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+true if str ends with suffix, false otherwise 
+\end{DoxyReturn}
+\Hypertarget{oocString_8h_ac6ba0dfc209f591c47967aad9dd24194}\index{oocString.h@{oocString.h}!ooc\_stringEndsWithString@{ooc\_stringEndsWithString}}
+\index{ooc\_stringEndsWithString@{ooc\_stringEndsWithString}!oocString.h@{oocString.h}}
+\doxysubsubsection{\texorpdfstring{ooc\_stringEndsWithString()}{ooc\_stringEndsWithString()}}
+{\footnotesize\ttfamily \label{oocString_8h_ac6ba0dfc209f591c47967aad9dd24194} 
+bool ooc\+\_\+string\+Ends\+With\+String (\begin{DoxyParamCaption}\item[{const void \texorpdfstring{$\ast$}{*}}]{self}{, }\item[{const void \texorpdfstring{$\ast$}{*}}]{suffix}{}\end{DoxyParamCaption})}
+
+
+
+Checks if a String object ends with another String object. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em self} & String object instance to check \\
+\hline
+{\em suffix} & String object instance containing the suffix \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+true if self ends with suffix, false otherwise 
+\end{DoxyReturn}
+\Hypertarget{oocString_8h_a80072b4fca6bb716f3c6e4ec39a212d2}\index{oocString.h@{oocString.h}!ooc\_StringFormat@{ooc\_StringFormat}}
+\index{ooc\_StringFormat@{ooc\_StringFormat}!oocString.h@{oocString.h}}
+\doxysubsubsection{\texorpdfstring{ooc\_StringFormat()}{ooc\_StringFormat()}}
+{\footnotesize\ttfamily \label{oocString_8h_a80072b4fca6bb716f3c6e4ec39a212d2} 
+char \texorpdfstring{$\ast$}{*} ooc\+\_\+\+String\+Format (\begin{DoxyParamCaption}\item[{const char \texorpdfstring{$\ast$}{*}}]{format}{, }\item[{}]{...}{}\end{DoxyParamCaption})}
+
+
+
+Creates a formatted string using printf-\/style formatting. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em format} & Printf-\/style format string \\
+\hline
+{\em ...} & Variable arguments for the format string \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+Newly allocated formatted string, or NULL on failure 
+\end{DoxyReturn}
+\begin{DoxyNote}{Note}
+Caller is responsible for freeing the returned string 
+\end{DoxyNote}
+\Hypertarget{oocString_8h_a9352ece494ff0642032cf6f4d7d39b89}\index{oocString.h@{oocString.h}!ooc\_StringFormatAt@{ooc\_StringFormatAt}}
+\index{ooc\_StringFormatAt@{ooc\_StringFormatAt}!oocString.h@{oocString.h}}
+\doxysubsubsection{\texorpdfstring{ooc\_StringFormatAt()}{ooc\_StringFormatAt()}}
+{\footnotesize\ttfamily \label{oocString_8h_a9352ece494ff0642032cf6f4d7d39b89} 
+\mbox{\hyperlink{oocError_8h_a1effaed6897d01c49b4771abc4185718}{OOC\+\_\+\+Error}} ooc\+\_\+\+String\+Format\+At (\begin{DoxyParamCaption}\item[{char \texorpdfstring{$\ast$}{*}}]{buffer}{, }\item[{size\+\_\+t}]{buffer\+Size}{, }\item[{const char \texorpdfstring{$\ast$}{*}}]{format}{, }\item[{}]{...}{}\end{DoxyParamCaption})}
+
+
+
+Creates a formatted string in a provided buffer. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em buffer} & Destination buffer for the formatted string \\
+\hline
+{\em buffer\+Size} & Size of the destination buffer \\
+\hline
+{\em format} & Printf-\/style format string \\
+\hline
+{\em ...} & Variable arguments for the format string \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+OOC\+\_\+\+ERROR\+\_\+\+NONE on success, appropriate error code on failure 
+\end{DoxyReturn}
+\Hypertarget{oocString_8h_a78525fbc15bef46f5ad6dca36f021554}\index{oocString.h@{oocString.h}!ooc\_StringFormatv@{ooc\_StringFormatv}}
+\index{ooc\_StringFormatv@{ooc\_StringFormatv}!oocString.h@{oocString.h}}
+\doxysubsubsection{\texorpdfstring{ooc\_StringFormatv()}{ooc\_StringFormatv()}}
+{\footnotesize\ttfamily \label{oocString_8h_a78525fbc15bef46f5ad6dca36f021554} 
+char \texorpdfstring{$\ast$}{*} ooc\+\_\+\+String\+Formatv (\begin{DoxyParamCaption}\item[{const char \texorpdfstring{$\ast$}{*}}]{format}{, }\item[{va\+\_\+list \texorpdfstring{$\ast$}{*}}]{args}{}\end{DoxyParamCaption})}
+
+
+
+Creates a formatted string using a va\+\_\+list. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em format} & Printf-\/style format string \\
+\hline
+{\em args} & Pointer to an initialized va\+\_\+list \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+Newly allocated formatted string, or NULL on failure 
+\end{DoxyReturn}
+\begin{DoxyNote}{Note}
+Caller is responsible for freeing the returned string 
+\end{DoxyNote}
+\Hypertarget{oocString_8h_afd230a01dd517a8c5dd6efd42efdad70}\index{oocString.h@{oocString.h}!ooc\_StringFromBool@{ooc\_StringFromBool}}
+\index{ooc\_StringFromBool@{ooc\_StringFromBool}!oocString.h@{oocString.h}}
+\doxysubsubsection{\texorpdfstring{ooc\_StringFromBool()}{ooc\_StringFromBool()}}
+{\footnotesize\ttfamily \label{oocString_8h_afd230a01dd517a8c5dd6efd42efdad70} 
+char \texorpdfstring{$\ast$}{*} ooc\+\_\+\+String\+From\+Bool (\begin{DoxyParamCaption}\item[{bool}]{value}{}\end{DoxyParamCaption})}
+
+
+
+Converts a boolean to its string representation. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em value} & Boolean value to convert \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+Newly allocated string representation ("{}true"{} or "{}false"{}), or NULL on failure 
+\end{DoxyReturn}
+\begin{DoxyNote}{Note}
+Caller is responsible for freeing the returned string 
+\end{DoxyNote}
+\Hypertarget{oocString_8h_a2d41235a9cd48dd9b05d6a3b4864f3a9}\index{oocString.h@{oocString.h}!ooc\_StringFromBoolAt@{ooc\_StringFromBoolAt}}
+\index{ooc\_StringFromBoolAt@{ooc\_StringFromBoolAt}!oocString.h@{oocString.h}}
+\doxysubsubsection{\texorpdfstring{ooc\_StringFromBoolAt()}{ooc\_StringFromBoolAt()}}
+{\footnotesize\ttfamily \label{oocString_8h_a2d41235a9cd48dd9b05d6a3b4864f3a9} 
+\mbox{\hyperlink{oocError_8h_a1effaed6897d01c49b4771abc4185718}{OOC\+\_\+\+Error}} ooc\+\_\+\+String\+From\+Bool\+At (\begin{DoxyParamCaption}\item[{char \texorpdfstring{$\ast$}{*}}]{buffer}{, }\item[{size\+\_\+t}]{buffer\+Size}{, }\item[{bool}]{value}{}\end{DoxyParamCaption})}
+
+
+
+Converts a boolean to string in a provided buffer. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em buffer} & Destination buffer for the string \\
+\hline
+{\em buffer\+Size} & Size of the destination buffer \\
+\hline
+{\em value} & Boolean value to convert \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+OOC\+\_\+\+ERROR\+\_\+\+NONE on success, appropriate error code on failure 
+\end{DoxyReturn}
+\Hypertarget{oocString_8h_a17d515cb6a356854716db41a8c61565b}\index{oocString.h@{oocString.h}!ooc\_StringFromChar@{ooc\_StringFromChar}}
+\index{ooc\_StringFromChar@{ooc\_StringFromChar}!oocString.h@{oocString.h}}
+\doxysubsubsection{\texorpdfstring{ooc\_StringFromChar()}{ooc\_StringFromChar()}}
+{\footnotesize\ttfamily \label{oocString_8h_a17d515cb6a356854716db41a8c61565b} 
+char \texorpdfstring{$\ast$}{*} ooc\+\_\+\+String\+From\+Char (\begin{DoxyParamCaption}\item[{char}]{value}{}\end{DoxyParamCaption})}
+
+
+
+Converts a character to its string representation. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em value} & Character value to convert \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+Newly allocated string representation, or NULL on failure 
+\end{DoxyReturn}
+\begin{DoxyNote}{Note}
+Caller is responsible for freeing the returned string 
+\end{DoxyNote}
+\Hypertarget{oocString_8h_a18cbe6a8ab657444bc93eded0eeee18f}\index{oocString.h@{oocString.h}!ooc\_StringFromCharAt@{ooc\_StringFromCharAt}}
+\index{ooc\_StringFromCharAt@{ooc\_StringFromCharAt}!oocString.h@{oocString.h}}
+\doxysubsubsection{\texorpdfstring{ooc\_StringFromCharAt()}{ooc\_StringFromCharAt()}}
+{\footnotesize\ttfamily \label{oocString_8h_a18cbe6a8ab657444bc93eded0eeee18f} 
+\mbox{\hyperlink{oocError_8h_a1effaed6897d01c49b4771abc4185718}{OOC\+\_\+\+Error}} ooc\+\_\+\+String\+From\+Char\+At (\begin{DoxyParamCaption}\item[{char \texorpdfstring{$\ast$}{*}}]{buffer}{, }\item[{size\+\_\+t}]{buffer\+Size}{, }\item[{char}]{value}{}\end{DoxyParamCaption})}
+
+
+
+Converts a character to string in a provided buffer. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em buffer} & Destination buffer for the string \\
+\hline
+{\em buffer\+Size} & Size of the destination buffer \\
+\hline
+{\em value} & Character value to convert \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+OOC\+\_\+\+ERROR\+\_\+\+NONE on success, appropriate error code on failure 
+\end{DoxyReturn}
+\Hypertarget{oocString_8h_a72f6a9b714374f695564baa3973aafbf}\index{oocString.h@{oocString.h}!ooc\_StringFromDouble@{ooc\_StringFromDouble}}
+\index{ooc\_StringFromDouble@{ooc\_StringFromDouble}!oocString.h@{oocString.h}}
+\doxysubsubsection{\texorpdfstring{ooc\_StringFromDouble()}{ooc\_StringFromDouble()}}
+{\footnotesize\ttfamily \label{oocString_8h_a72f6a9b714374f695564baa3973aafbf} 
+char \texorpdfstring{$\ast$}{*} ooc\+\_\+\+String\+From\+Double (\begin{DoxyParamCaption}\item[{double}]{value}{}\end{DoxyParamCaption})}
+
+
+
+Converts a double to its string representation. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em value} & Double value to convert \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+Newly allocated string representation, or NULL on failure 
+\end{DoxyReturn}
+\begin{DoxyNote}{Note}
+Caller is responsible for freeing the returned string 
+\end{DoxyNote}
+\Hypertarget{oocString_8h_a820ebe722b3b58151c5b1de806c90b74}\index{oocString.h@{oocString.h}!ooc\_StringFromDoubleAt@{ooc\_StringFromDoubleAt}}
+\index{ooc\_StringFromDoubleAt@{ooc\_StringFromDoubleAt}!oocString.h@{oocString.h}}
+\doxysubsubsection{\texorpdfstring{ooc\_StringFromDoubleAt()}{ooc\_StringFromDoubleAt()}}
+{\footnotesize\ttfamily \label{oocString_8h_a820ebe722b3b58151c5b1de806c90b74} 
+\mbox{\hyperlink{oocError_8h_a1effaed6897d01c49b4771abc4185718}{OOC\+\_\+\+Error}} ooc\+\_\+\+String\+From\+Double\+At (\begin{DoxyParamCaption}\item[{char \texorpdfstring{$\ast$}{*}}]{buffer}{, }\item[{size\+\_\+t}]{buffer\+Size}{, }\item[{double}]{value}{}\end{DoxyParamCaption})}
+
+
+
+Converts a double to string in a provided buffer. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em buffer} & Destination buffer for the string \\
+\hline
+{\em buffer\+Size} & Size of the destination buffer \\
+\hline
+{\em value} & Double value to convert \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+OOC\+\_\+\+ERROR\+\_\+\+NONE on success, appropriate error code on failure 
+\end{DoxyReturn}
+\Hypertarget{oocString_8h_ae6395e3b37c39b4fcde5e2fa74634eaa}\index{oocString.h@{oocString.h}!ooc\_StringFromInt@{ooc\_StringFromInt}}
+\index{ooc\_StringFromInt@{ooc\_StringFromInt}!oocString.h@{oocString.h}}
+\doxysubsubsection{\texorpdfstring{ooc\_StringFromInt()}{ooc\_StringFromInt()}}
+{\footnotesize\ttfamily \label{oocString_8h_ae6395e3b37c39b4fcde5e2fa74634eaa} 
+char \texorpdfstring{$\ast$}{*} ooc\+\_\+\+String\+From\+Int (\begin{DoxyParamCaption}\item[{int}]{value}{}\end{DoxyParamCaption})}
+
+
+
+Converts an integer to its string representation. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em value} & Integer value to convert \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+Newly allocated string representation, or NULL on failure 
+\end{DoxyReturn}
+\begin{DoxyNote}{Note}
+Caller is responsible for freeing the returned string 
+\end{DoxyNote}
+\Hypertarget{oocString_8h_acf5decf816f5febdbeb084e85a9882ab}\index{oocString.h@{oocString.h}!ooc\_StringFromIntAt@{ooc\_StringFromIntAt}}
+\index{ooc\_StringFromIntAt@{ooc\_StringFromIntAt}!oocString.h@{oocString.h}}
+\doxysubsubsection{\texorpdfstring{ooc\_StringFromIntAt()}{ooc\_StringFromIntAt()}}
+{\footnotesize\ttfamily \label{oocString_8h_acf5decf816f5febdbeb084e85a9882ab} 
+\mbox{\hyperlink{oocError_8h_a1effaed6897d01c49b4771abc4185718}{OOC\+\_\+\+Error}} ooc\+\_\+\+String\+From\+Int\+At (\begin{DoxyParamCaption}\item[{char \texorpdfstring{$\ast$}{*}}]{buffer}{, }\item[{size\+\_\+t}]{buffer\+Size}{, }\item[{int}]{value}{}\end{DoxyParamCaption})}
+
+
+
+Converts an integer to string in a provided buffer. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em buffer} & Destination buffer for the string \\
+\hline
+{\em buffer\+Size} & Size of the destination buffer \\
+\hline
+{\em value} & Integer value to convert \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+OOC\+\_\+\+ERROR\+\_\+\+NONE on success, appropriate error code on failure 
+\end{DoxyReturn}
+\Hypertarget{oocString_8h_a5e9bc8aceeedffce4a9eff6e7bafeba5}\index{oocString.h@{oocString.h}!ooc\_stringGetCString@{ooc\_stringGetCString}}
+\index{ooc\_stringGetCString@{ooc\_stringGetCString}!oocString.h@{oocString.h}}
+\doxysubsubsection{\texorpdfstring{ooc\_stringGetCString()}{ooc\_stringGetCString()}}
+{\footnotesize\ttfamily \label{oocString_8h_a5e9bc8aceeedffce4a9eff6e7bafeba5} 
+const char \texorpdfstring{$\ast$}{*} ooc\+\_\+string\+Get\+CString (\begin{DoxyParamCaption}\item[{const void \texorpdfstring{$\ast$}{*}}]{self}{}\end{DoxyParamCaption})}
+
+
+
+Returns a const pointer to the internal C string (read-\/only access) 
+
+
+\begin{DoxyParams}{Parameters}
+{\em self} & String object instance \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+Const pointer to the internal C string, or NULL if self is NULL 
+\end{DoxyReturn}
+\begin{DoxyNote}{Note}
+The returned pointer must not be modified or freed. The pointer remains valid for the lifetime of the String object. 
+\end{DoxyNote}
+\Hypertarget{oocString_8h_a38c8f1544697744af6294da788f23928}\index{oocString.h@{oocString.h}!ooc\_StringIndexOfChar@{ooc\_StringIndexOfChar}}
+\index{ooc\_StringIndexOfChar@{ooc\_StringIndexOfChar}!oocString.h@{oocString.h}}
+\doxysubsubsection{\texorpdfstring{ooc\_StringIndexOfChar()}{ooc\_StringIndexOfChar()}}
+{\footnotesize\ttfamily \label{oocString_8h_a38c8f1544697744af6294da788f23928} 
+int ooc\+\_\+\+String\+Index\+Of\+Char (\begin{DoxyParamCaption}\item[{const char \texorpdfstring{$\ast$}{*}}]{str}{, }\item[{char}]{ch}{}\end{DoxyParamCaption})}
+
+
+
+Finds the first occurrence of a character in the string. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em str} & Null-\/terminated C string to search in \\
+\hline
+{\em ch} & Character to search for \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+Index of the first occurrence, or -\/1 if not found 
+\end{DoxyReturn}
+\Hypertarget{oocString_8h_a59f9caff2af8fd0225c31404dffed58d}\index{oocString.h@{oocString.h}!ooc\_stringIndexOfChar@{ooc\_stringIndexOfChar}}
+\index{ooc\_stringIndexOfChar@{ooc\_stringIndexOfChar}!oocString.h@{oocString.h}}
+\doxysubsubsection{\texorpdfstring{ooc\_stringIndexOfChar()}{ooc\_stringIndexOfChar()}}
+{\footnotesize\ttfamily \label{oocString_8h_a59f9caff2af8fd0225c31404dffed58d} 
+int ooc\+\_\+string\+Index\+Of\+Char (\begin{DoxyParamCaption}\item[{const void \texorpdfstring{$\ast$}{*}}]{self}{, }\item[{char}]{ch}{}\end{DoxyParamCaption})}
+
+
+
+Finds the first occurrence of a character in a String object. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em self} & String object instance to search in \\
+\hline
+{\em ch} & Character to search for \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+Index of the first occurrence, or -\/1 if not found 
+\end{DoxyReturn}
+\Hypertarget{oocString_8h_a78463fd3531155e4da195b09aea24227}\index{oocString.h@{oocString.h}!ooc\_stringIndexOfCString@{ooc\_stringIndexOfCString}}
+\index{ooc\_stringIndexOfCString@{ooc\_stringIndexOfCString}!oocString.h@{oocString.h}}
+\doxysubsubsection{\texorpdfstring{ooc\_stringIndexOfCString()}{ooc\_stringIndexOfCString()}}
+{\footnotesize\ttfamily \label{oocString_8h_a78463fd3531155e4da195b09aea24227} 
+int ooc\+\_\+string\+Index\+Of\+CString (\begin{DoxyParamCaption}\item[{const void \texorpdfstring{$\ast$}{*}}]{self}{, }\item[{const char \texorpdfstring{$\ast$}{*}}]{sub}{}\end{DoxyParamCaption})}
+
+
+
+Finds the first occurrence of a C string in a String object. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em self} & String object instance to search in \\
+\hline
+{\em sub} & Null-\/terminated C string containing the substring to search for \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+Zero-\/based index of the first occurrence, or -\/1 if not found 
+\end{DoxyReturn}
+\Hypertarget{oocString_8h_a1ac6f1cfd325a5c69bb3c86849ebbf93}\index{oocString.h@{oocString.h}!ooc\_StringIndexOfString@{ooc\_StringIndexOfString}}
+\index{ooc\_StringIndexOfString@{ooc\_StringIndexOfString}!oocString.h@{oocString.h}}
+\doxysubsubsection{\texorpdfstring{ooc\_StringIndexOfString()}{ooc\_StringIndexOfString()}}
+{\footnotesize\ttfamily \label{oocString_8h_a1ac6f1cfd325a5c69bb3c86849ebbf93} 
+int ooc\+\_\+\+String\+Index\+Of\+String (\begin{DoxyParamCaption}\item[{const char \texorpdfstring{$\ast$}{*}}]{str}{, }\item[{const char \texorpdfstring{$\ast$}{*}}]{sub}{}\end{DoxyParamCaption})}
+
+
+
+Finds the first occurrence of a substring in a string. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em str} & Null-\/terminated C string to search in \\
+\hline
+{\em sub} & Null-\/terminated substring to search for \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+Zero-\/based index of the first occurrence, or -\/1 if not found 
+\end{DoxyReturn}
+\Hypertarget{oocString_8h_a33fa13e3f2366f83595863dea772278e}\index{oocString.h@{oocString.h}!ooc\_stringIndexOfString@{ooc\_stringIndexOfString}}
+\index{ooc\_stringIndexOfString@{ooc\_stringIndexOfString}!oocString.h@{oocString.h}}
+\doxysubsubsection{\texorpdfstring{ooc\_stringIndexOfString()}{ooc\_stringIndexOfString()}}
+{\footnotesize\ttfamily \label{oocString_8h_a33fa13e3f2366f83595863dea772278e} 
+int ooc\+\_\+string\+Index\+Of\+String (\begin{DoxyParamCaption}\item[{const void \texorpdfstring{$\ast$}{*}}]{self}{, }\item[{const void \texorpdfstring{$\ast$}{*}}]{sub}{}\end{DoxyParamCaption})}
+
+
+
+Finds the first occurrence of a substring in a String object. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em self} & String object instance to search in \\
+\hline
+{\em sub} & String object instance containing the substring to search for \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+Zero-\/based index of the first occurrence, or -\/1 if not found 
+\end{DoxyReturn}
+\Hypertarget{oocString_8h_a8cbeb88c2dc093b5adbcf3b9efebedc7}\index{oocString.h@{oocString.h}!ooc\_StringIsEmpty@{ooc\_StringIsEmpty}}
+\index{ooc\_StringIsEmpty@{ooc\_StringIsEmpty}!oocString.h@{oocString.h}}
+\doxysubsubsection{\texorpdfstring{ooc\_StringIsEmpty()}{ooc\_StringIsEmpty()}}
+{\footnotesize\ttfamily \label{oocString_8h_a8cbeb88c2dc093b5adbcf3b9efebedc7} 
+bool ooc\+\_\+\+String\+Is\+Empty (\begin{DoxyParamCaption}\item[{const char \texorpdfstring{$\ast$}{*}}]{str}{}\end{DoxyParamCaption})}
+
+
+
+Checks if a string is empty (NULL or zero length) 
+
+
+\begin{DoxyParams}{Parameters}
+{\em str} & Null-\/terminated C string to check \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+true if the string is NULL or empty, false otherwise 
+\end{DoxyReturn}
+\Hypertarget{oocString_8h_a0d8b1c13708b334527dd1c8509e35dff}\index{oocString.h@{oocString.h}!ooc\_stringIsEmpty@{ooc\_stringIsEmpty}}
+\index{ooc\_stringIsEmpty@{ooc\_stringIsEmpty}!oocString.h@{oocString.h}}
+\doxysubsubsection{\texorpdfstring{ooc\_stringIsEmpty()}{ooc\_stringIsEmpty()}}
+{\footnotesize\ttfamily \label{oocString_8h_a0d8b1c13708b334527dd1c8509e35dff} 
+bool ooc\+\_\+string\+Is\+Empty (\begin{DoxyParamCaption}\item[{const void \texorpdfstring{$\ast$}{*}}]{self}{}\end{DoxyParamCaption})}
+
+
+
+Checks if a String object is empty. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em self} & String object instance to check \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+true if the string is NULL or empty, false otherwise 
+\end{DoxyReturn}
+\Hypertarget{oocString_8h_aa67f6a358272dac5292d423f123340c2}\index{oocString.h@{oocString.h}!ooc\_StringLastIndexOfChar@{ooc\_StringLastIndexOfChar}}
+\index{ooc\_StringLastIndexOfChar@{ooc\_StringLastIndexOfChar}!oocString.h@{oocString.h}}
+\doxysubsubsection{\texorpdfstring{ooc\_StringLastIndexOfChar()}{ooc\_StringLastIndexOfChar()}}
+{\footnotesize\ttfamily \label{oocString_8h_aa67f6a358272dac5292d423f123340c2} 
+int ooc\+\_\+\+String\+Last\+Index\+Of\+Char (\begin{DoxyParamCaption}\item[{const char \texorpdfstring{$\ast$}{*}}]{str}{, }\item[{char}]{ch}{}\end{DoxyParamCaption})}
+
+
+
+Finds the last occurrence of a character in the string. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em str} & Null-\/terminated C string to search in \\
+\hline
+{\em ch} & Character to search for \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+Index of the last occurrence, or -\/1 if not found 
+\end{DoxyReturn}
+\Hypertarget{oocString_8h_a79796666f0e30f40db0dd99631452b57}\index{oocString.h@{oocString.h}!ooc\_stringLastIndexOfChar@{ooc\_stringLastIndexOfChar}}
+\index{ooc\_stringLastIndexOfChar@{ooc\_stringLastIndexOfChar}!oocString.h@{oocString.h}}
+\doxysubsubsection{\texorpdfstring{ooc\_stringLastIndexOfChar()}{ooc\_stringLastIndexOfChar()}}
+{\footnotesize\ttfamily \label{oocString_8h_a79796666f0e30f40db0dd99631452b57} 
+int ooc\+\_\+string\+Last\+Index\+Of\+Char (\begin{DoxyParamCaption}\item[{const void \texorpdfstring{$\ast$}{*}}]{self}{, }\item[{char}]{ch}{}\end{DoxyParamCaption})}
+
+
+
+Finds the last occurrence of a character in a String object. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em self} & String object instance to search in \\
+\hline
+{\em ch} & Character to search for \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+Index of the last occurrence, or -\/1 if not found 
+\end{DoxyReturn}
+\Hypertarget{oocString_8h_af853b520ecdd6fc4750c72a449d69cc2}\index{oocString.h@{oocString.h}!ooc\_stringLastIndexOfCString@{ooc\_stringLastIndexOfCString}}
+\index{ooc\_stringLastIndexOfCString@{ooc\_stringLastIndexOfCString}!oocString.h@{oocString.h}}
+\doxysubsubsection{\texorpdfstring{ooc\_stringLastIndexOfCString()}{ooc\_stringLastIndexOfCString()}}
+{\footnotesize\ttfamily \label{oocString_8h_af853b520ecdd6fc4750c72a449d69cc2} 
+int ooc\+\_\+string\+Last\+Index\+Of\+CString (\begin{DoxyParamCaption}\item[{const void \texorpdfstring{$\ast$}{*}}]{self}{, }\item[{const char \texorpdfstring{$\ast$}{*}}]{sub}{}\end{DoxyParamCaption})}
+
+
+
+Finds the last occurrence of a C string in a String object. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em self} & String object instance to search in \\
+\hline
+{\em sub} & Null-\/terminated C string containing the substring to search for \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+Zero-\/based index of the last occurrence, or -\/1 if not found 
+\end{DoxyReturn}
+\Hypertarget{oocString_8h_a8cfff8e6ec133b0d1b609dd477b4b9e0}\index{oocString.h@{oocString.h}!ooc\_StringLastIndexOfString@{ooc\_StringLastIndexOfString}}
+\index{ooc\_StringLastIndexOfString@{ooc\_StringLastIndexOfString}!oocString.h@{oocString.h}}
+\doxysubsubsection{\texorpdfstring{ooc\_StringLastIndexOfString()}{ooc\_StringLastIndexOfString()}}
+{\footnotesize\ttfamily \label{oocString_8h_a8cfff8e6ec133b0d1b609dd477b4b9e0} 
+int ooc\+\_\+\+String\+Last\+Index\+Of\+String (\begin{DoxyParamCaption}\item[{const char \texorpdfstring{$\ast$}{*}}]{str}{, }\item[{const char \texorpdfstring{$\ast$}{*}}]{sub}{}\end{DoxyParamCaption})}
+
+
+
+Finds the last occurrence of a substring in a string. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em str} & Null-\/terminated C string to search in \\
+\hline
+{\em sub} & Null-\/terminated substring to search for \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+Zero-\/based index of the last occurrence, or -\/1 if not found 
+\end{DoxyReturn}
+\Hypertarget{oocString_8h_ac767aa5ce0840aa8b56dc191d5d80180}\index{oocString.h@{oocString.h}!ooc\_stringLastIndexOfString@{ooc\_stringLastIndexOfString}}
+\index{ooc\_stringLastIndexOfString@{ooc\_stringLastIndexOfString}!oocString.h@{oocString.h}}
+\doxysubsubsection{\texorpdfstring{ooc\_stringLastIndexOfString()}{ooc\_stringLastIndexOfString()}}
+{\footnotesize\ttfamily \label{oocString_8h_ac767aa5ce0840aa8b56dc191d5d80180} 
+int ooc\+\_\+string\+Last\+Index\+Of\+String (\begin{DoxyParamCaption}\item[{const void \texorpdfstring{$\ast$}{*}}]{self}{, }\item[{const void \texorpdfstring{$\ast$}{*}}]{sub}{}\end{DoxyParamCaption})}
+
+
+
+Finds the last occurrence of a substring in a String object. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em self} & String object instance to search in \\
+\hline
+{\em sub} & String object instance containing the substring to search for \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+Zero-\/based index of the last occurrence, or -\/1 if not found 
+\end{DoxyReturn}
+\Hypertarget{oocString_8h_aba49bd50e02e4ef50b944a4a84fd1e97}\index{oocString.h@{oocString.h}!ooc\_StringLength@{ooc\_StringLength}}
+\index{ooc\_StringLength@{ooc\_StringLength}!oocString.h@{oocString.h}}
+\doxysubsubsection{\texorpdfstring{ooc\_StringLength()}{ooc\_StringLength()}}
+{\footnotesize\ttfamily \label{oocString_8h_aba49bd50e02e4ef50b944a4a84fd1e97} 
+size\+\_\+t ooc\+\_\+\+String\+Length (\begin{DoxyParamCaption}\item[{const char \texorpdfstring{$\ast$}{*}}]{str}{}\end{DoxyParamCaption})}
+
+
+
+Returns the length of a C string. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em str} & Null-\/terminated C string \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+Length of the string, or 0 if str is NULL 
+\end{DoxyReturn}
+\Hypertarget{oocString_8h_ade72c9acfd666d40cdd9d39515268328}\index{oocString.h@{oocString.h}!ooc\_stringLength@{ooc\_stringLength}}
+\index{ooc\_stringLength@{ooc\_stringLength}!oocString.h@{oocString.h}}
+\doxysubsubsection{\texorpdfstring{ooc\_stringLength()}{ooc\_stringLength()}}
+{\footnotesize\ttfamily \label{oocString_8h_ade72c9acfd666d40cdd9d39515268328} 
+size\+\_\+t ooc\+\_\+string\+Length (\begin{DoxyParamCaption}\item[{const void \texorpdfstring{$\ast$}{*}}]{self}{}\end{DoxyParamCaption})}
+
+
+
+Returns the length of a String object. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em self} & String object instance \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+Length of the string, or 0 if self is NULL 
+\end{DoxyReturn}
+\Hypertarget{oocString_8h_aa841c49548995ec90d1bf2b1b37df442}\index{oocString.h@{oocString.h}!ooc\_StringReplaceChar@{ooc\_StringReplaceChar}}
+\index{ooc\_StringReplaceChar@{ooc\_StringReplaceChar}!oocString.h@{oocString.h}}
+\doxysubsubsection{\texorpdfstring{ooc\_StringReplaceChar()}{ooc\_StringReplaceChar()}}
+{\footnotesize\ttfamily \label{oocString_8h_aa841c49548995ec90d1bf2b1b37df442} 
+\mbox{\hyperlink{oocError_8h_a1effaed6897d01c49b4771abc4185718}{OOC\+\_\+\+Error}} ooc\+\_\+\+String\+Replace\+Char (\begin{DoxyParamCaption}\item[{char \texorpdfstring{$\ast$}{*}}]{str}{, }\item[{char}]{old\+Char}{, }\item[{char}]{new\+Char}{}\end{DoxyParamCaption})}
+
+
+
+Replaces all occurrences of a character with another character. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em str} & Null-\/terminated C string to modify (modified in place) \\
+\hline
+{\em old\+Char} & Character to replace \\
+\hline
+{\em new\+Char} & Replacement character \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+OOC\+\_\+\+ERROR\+\_\+\+NONE on success, appropriate error code on failure 
+\end{DoxyReturn}
+\Hypertarget{oocString_8h_a96ac5fa1d220247be60a7bf566201dcc}\index{oocString.h@{oocString.h}!ooc\_stringReplaceChar@{ooc\_stringReplaceChar}}
+\index{ooc\_stringReplaceChar@{ooc\_stringReplaceChar}!oocString.h@{oocString.h}}
+\doxysubsubsection{\texorpdfstring{ooc\_stringReplaceChar()}{ooc\_stringReplaceChar()}}
+{\footnotesize\ttfamily \label{oocString_8h_a96ac5fa1d220247be60a7bf566201dcc} 
+void \texorpdfstring{$\ast$}{*} ooc\+\_\+string\+Replace\+Char (\begin{DoxyParamCaption}\item[{const void \texorpdfstring{$\ast$}{*}}]{self}{, }\item[{char}]{old\+Char}{, }\item[{char}]{new\+Char}{}\end{DoxyParamCaption})}
+
+
+
+Replaces all occurrences of a character in a String object. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em self} & String object instance \\
+\hline
+{\em old\+Char} & Character to replace \\
+\hline
+{\em new\+Char} & Replacement character \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+New String object with characters replaced, or NULL on failure 
+\end{DoxyReturn}
+\begin{DoxyNote}{Note}
+Caller is responsible for destroying the returned String object with ooc\+\_\+destroy 
+\end{DoxyNote}
+\Hypertarget{oocString_8h_a2877816592382d26363c8425620244f5}\index{oocString.h@{oocString.h}!ooc\_StringReverse@{ooc\_StringReverse}}
+\index{ooc\_StringReverse@{ooc\_StringReverse}!oocString.h@{oocString.h}}
+\doxysubsubsection{\texorpdfstring{ooc\_StringReverse()}{ooc\_StringReverse()}}
+{\footnotesize\ttfamily \label{oocString_8h_a2877816592382d26363c8425620244f5} 
+\mbox{\hyperlink{oocError_8h_a1effaed6897d01c49b4771abc4185718}{OOC\+\_\+\+Error}} ooc\+\_\+\+String\+Reverse (\begin{DoxyParamCaption}\item[{char \texorpdfstring{$\ast$}{*}}]{str}{}\end{DoxyParamCaption})}
+
+
+
+Reverses a C string in place. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em str} & Null-\/terminated C string to reverse \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+OOC\+\_\+\+ERROR\+\_\+\+NONE on success, appropriate error code on failure 
+\end{DoxyReturn}
+\Hypertarget{oocString_8h_ab874cb81f84e11ef2804f302d0af0ded}\index{oocString.h@{oocString.h}!ooc\_StringSetCharAt@{ooc\_StringSetCharAt}}
+\index{ooc\_StringSetCharAt@{ooc\_StringSetCharAt}!oocString.h@{oocString.h}}
+\doxysubsubsection{\texorpdfstring{ooc\_StringSetCharAt()}{ooc\_StringSetCharAt()}}
+{\footnotesize\ttfamily \label{oocString_8h_ab874cb81f84e11ef2804f302d0af0ded} 
+\mbox{\hyperlink{oocError_8h_a1effaed6897d01c49b4771abc4185718}{OOC\+\_\+\+Error}} ooc\+\_\+\+String\+Set\+Char\+At (\begin{DoxyParamCaption}\item[{char \texorpdfstring{$\ast$}{*}}]{str}{, }\item[{size\+\_\+t}]{index}{, }\item[{char}]{ch}{}\end{DoxyParamCaption})}
+
+
+
+Sets a character at the specified index in a C string. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em str} & Null-\/terminated C string to modify \\
+\hline
+{\em index} & Zero-\/based index \\
+\hline
+{\em ch} & Character to set \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+OOC\+\_\+\+ERROR\+\_\+\+NONE on success, appropriate error code on failure 
+\end{DoxyReturn}
+\begin{DoxyNote}{Note}
+The string must be mutable and large enough 
+\end{DoxyNote}
+\Hypertarget{oocString_8h_affe2682dfe6836511c11872af413e6f8}\index{oocString.h@{oocString.h}!ooc\_stringStartsWithCString@{ooc\_stringStartsWithCString}}
+\index{ooc\_stringStartsWithCString@{ooc\_stringStartsWithCString}!oocString.h@{oocString.h}}
+\doxysubsubsection{\texorpdfstring{ooc\_stringStartsWithCString()}{ooc\_stringStartsWithCString()}}
+{\footnotesize\ttfamily \label{oocString_8h_affe2682dfe6836511c11872af413e6f8} 
+bool ooc\+\_\+string\+Starts\+With\+CString (\begin{DoxyParamCaption}\item[{const void \texorpdfstring{$\ast$}{*}}]{self}{, }\item[{const char \texorpdfstring{$\ast$}{*}}]{prefix}{}\end{DoxyParamCaption})}
+
+
+
+Checks if a String object starts with a C string. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em self} & String object instance to check \\
+\hline
+{\em prefix} & Null-\/terminated C string containing the prefix \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+true if self starts with prefix, false otherwise 
+\end{DoxyReturn}
+\Hypertarget{oocString_8h_a94a12e7dd9a1c84dc13be224946efdcb}\index{oocString.h@{oocString.h}!ooc\_StringStartsWithString@{ooc\_StringStartsWithString}}
+\index{ooc\_StringStartsWithString@{ooc\_StringStartsWithString}!oocString.h@{oocString.h}}
+\doxysubsubsection{\texorpdfstring{ooc\_StringStartsWithString()}{ooc\_StringStartsWithString()}}
+{\footnotesize\ttfamily \label{oocString_8h_a94a12e7dd9a1c84dc13be224946efdcb} 
+bool ooc\+\_\+\+String\+Starts\+With\+String (\begin{DoxyParamCaption}\item[{const char \texorpdfstring{$\ast$}{*}}]{str}{, }\item[{const char \texorpdfstring{$\ast$}{*}}]{prefix}{}\end{DoxyParamCaption})}
+
+
+
+Checks if a string starts with the specified prefix. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em str} & Null-\/terminated C string to check \\
+\hline
+{\em prefix} & Null-\/terminated prefix string \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+true if str starts with prefix, false otherwise 
+\end{DoxyReturn}
+\Hypertarget{oocString_8h_a24c638f7974166c6cb52a3180b413bb4}\index{oocString.h@{oocString.h}!ooc\_stringStartsWithString@{ooc\_stringStartsWithString}}
+\index{ooc\_stringStartsWithString@{ooc\_stringStartsWithString}!oocString.h@{oocString.h}}
+\doxysubsubsection{\texorpdfstring{ooc\_stringStartsWithString()}{ooc\_stringStartsWithString()}}
+{\footnotesize\ttfamily \label{oocString_8h_a24c638f7974166c6cb52a3180b413bb4} 
+bool ooc\+\_\+string\+Starts\+With\+String (\begin{DoxyParamCaption}\item[{const void \texorpdfstring{$\ast$}{*}}]{self}{, }\item[{const void \texorpdfstring{$\ast$}{*}}]{prefix}{}\end{DoxyParamCaption})}
+
+
+
+Checks if a String object starts with another String object. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em self} & String object instance to check \\
+\hline
+{\em prefix} & String object instance containing the prefix \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+true if self starts with prefix, false otherwise 
+\end{DoxyReturn}
+\Hypertarget{oocString_8h_ad818415562ed339e2919b03554c76ff5}\index{oocString.h@{oocString.h}!ooc\_StringSubstring@{ooc\_StringSubstring}}
+\index{ooc\_StringSubstring@{ooc\_StringSubstring}!oocString.h@{oocString.h}}
+\doxysubsubsection{\texorpdfstring{ooc\_StringSubstring()}{ooc\_StringSubstring()}}
+{\footnotesize\ttfamily \label{oocString_8h_ad818415562ed339e2919b03554c76ff5} 
+char \texorpdfstring{$\ast$}{*} ooc\+\_\+\+String\+Substring (\begin{DoxyParamCaption}\item[{const char \texorpdfstring{$\ast$}{*}}]{str}{, }\item[{size\+\_\+t}]{start}{, }\item[{size\+\_\+t}]{end}{}\end{DoxyParamCaption})}
+
+
+
+Extracts a substring from the given string. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em str} & Source null-\/terminated C string \\
+\hline
+{\em start} & Starting index (inclusive) \\
+\hline
+{\em end} & Ending index (exclusive) \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+Newly allocated substring, or NULL on failure 
+\end{DoxyReturn}
+\begin{DoxyNote}{Note}
+Caller is responsible for freeing the returned string 
+\end{DoxyNote}
+\Hypertarget{oocString_8h_aa0ba02aa71b2eff5a0e9635639387167}\index{oocString.h@{oocString.h}!ooc\_stringSubstring@{ooc\_stringSubstring}}
+\index{ooc\_stringSubstring@{ooc\_stringSubstring}!oocString.h@{oocString.h}}
+\doxysubsubsection{\texorpdfstring{ooc\_stringSubstring()}{ooc\_stringSubstring()}}
+{\footnotesize\ttfamily \label{oocString_8h_aa0ba02aa71b2eff5a0e9635639387167} 
+void \texorpdfstring{$\ast$}{*} ooc\+\_\+string\+Substring (\begin{DoxyParamCaption}\item[{const void \texorpdfstring{$\ast$}{*}}]{self}{, }\item[{size\+\_\+t}]{start}{, }\item[{size\+\_\+t}]{end}{}\end{DoxyParamCaption})}
+
+
+
+Extracts a substring from a String object. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em self} & String object instance \\
+\hline
+{\em start} & Starting index (inclusive) \\
+\hline
+{\em end} & Ending index (exclusive) \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+New String object containing the substring, or NULL on failure 
+\end{DoxyReturn}
+\begin{DoxyNote}{Note}
+Caller is responsible for destroying the returned String object with ooc\+\_\+destroy 
+\end{DoxyNote}
+\Hypertarget{oocString_8h_ab3f1995be93d174381812108a1e8a22b}\index{oocString.h@{oocString.h}!ooc\_StringSubstringAt@{ooc\_StringSubstringAt}}
+\index{ooc\_StringSubstringAt@{ooc\_StringSubstringAt}!oocString.h@{oocString.h}}
+\doxysubsubsection{\texorpdfstring{ooc\_StringSubstringAt()}{ooc\_StringSubstringAt()}}
+{\footnotesize\ttfamily \label{oocString_8h_ab3f1995be93d174381812108a1e8a22b} 
+\mbox{\hyperlink{oocError_8h_a1effaed6897d01c49b4771abc4185718}{OOC\+\_\+\+Error}} ooc\+\_\+\+String\+Substring\+At (\begin{DoxyParamCaption}\item[{char \texorpdfstring{$\ast$}{*}}]{buffer}{, }\item[{size\+\_\+t}]{buffer\+Size}{, }\item[{const char \texorpdfstring{$\ast$}{*}}]{str}{, }\item[{size\+\_\+t}]{start}{, }\item[{size\+\_\+t}]{end}{}\end{DoxyParamCaption})}
+
+
+
+Extracts a substring into a provided buffer. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em buffer} & Destination buffer for the substring \\
+\hline
+{\em buffer\+Size} & Size of the destination buffer \\
+\hline
+{\em str} & Source null-\/terminated C string \\
+\hline
+{\em start} & Starting index (inclusive) \\
+\hline
+{\em end} & Ending index (exclusive) \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+OOC\+\_\+\+ERROR\+\_\+\+NONE on success, appropriate error code on failure 
+\end{DoxyReturn}
+\Hypertarget{oocString_8h_af94c334fc13c2a50224ea05cc180174e}\index{oocString.h@{oocString.h}!ooc\_stringToCString@{ooc\_stringToCString}}
+\index{ooc\_stringToCString@{ooc\_stringToCString}!oocString.h@{oocString.h}}
+\doxysubsubsection{\texorpdfstring{ooc\_stringToCString()}{ooc\_stringToCString()}}
+{\footnotesize\ttfamily \label{oocString_8h_af94c334fc13c2a50224ea05cc180174e} 
+char \texorpdfstring{$\ast$}{*} ooc\+\_\+string\+To\+CString (\begin{DoxyParamCaption}\item[{const void \texorpdfstring{$\ast$}{*}}]{self}{}\end{DoxyParamCaption})}
+
+
+
+Returns the C string representation of a String object. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em self} & String object instance \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+Newly allocated C string, or NULL if self is NULL 
+\end{DoxyReturn}
+\begin{DoxyNote}{Note}
+Caller is responsible for freeing the returned string 
+\end{DoxyNote}
+\Hypertarget{oocString_8h_a9efdd52e1938f1c34f58415341037924}\index{oocString.h@{oocString.h}!ooc\_stringToCStringAt@{ooc\_stringToCStringAt}}
+\index{ooc\_stringToCStringAt@{ooc\_stringToCStringAt}!oocString.h@{oocString.h}}
+\doxysubsubsection{\texorpdfstring{ooc\_stringToCStringAt()}{ooc\_stringToCStringAt()}}
+{\footnotesize\ttfamily \label{oocString_8h_a9efdd52e1938f1c34f58415341037924} 
+\mbox{\hyperlink{oocError_8h_a1effaed6897d01c49b4771abc4185718}{OOC\+\_\+\+Error}} ooc\+\_\+string\+To\+CString\+At (\begin{DoxyParamCaption}\item[{const void \texorpdfstring{$\ast$}{*}}]{self}{, }\item[{char \texorpdfstring{$\ast$}{*}}]{buffer}{, }\item[{size\+\_\+t}]{buffer\+Size}{}\end{DoxyParamCaption})}
+
+
+
+Copies the string content to a provided buffer. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em buffer} & Destination buffer for the string content \\
+\hline
+{\em buffer\+Size} & Size of the destination buffer \\
+\hline
+{\em self} & String object instance \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+OOC\+\_\+\+ERROR\+\_\+\+NONE on success, appropriate error code on failure 
+\end{DoxyReturn}
+\Hypertarget{oocString_8h_a005562a64a2251a9772a34e1552c6edf}\index{oocString.h@{oocString.h}!ooc\_StringToLowerCase@{ooc\_StringToLowerCase}}
+\index{ooc\_StringToLowerCase@{ooc\_StringToLowerCase}!oocString.h@{oocString.h}}
+\doxysubsubsection{\texorpdfstring{ooc\_StringToLowerCase()}{ooc\_StringToLowerCase()}}
+{\footnotesize\ttfamily \label{oocString_8h_a005562a64a2251a9772a34e1552c6edf} 
+\mbox{\hyperlink{oocError_8h_a1effaed6897d01c49b4771abc4185718}{OOC\+\_\+\+Error}} ooc\+\_\+\+String\+To\+Lower\+Case (\begin{DoxyParamCaption}\item[{char \texorpdfstring{$\ast$}{*}}]{str}{}\end{DoxyParamCaption})}
+
+
+
+Converts all characters in the string to lowercase. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em str} & Null-\/terminated C string to modify (modified in place) \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+OOC\+\_\+\+ERROR\+\_\+\+NONE on success, appropriate error code on failure 
+\end{DoxyReturn}
+\Hypertarget{oocString_8h_afbf31031c4c17d56849e6980de0bfeb5}\index{oocString.h@{oocString.h}!ooc\_stringToLowerCase@{ooc\_stringToLowerCase}}
+\index{ooc\_stringToLowerCase@{ooc\_stringToLowerCase}!oocString.h@{oocString.h}}
+\doxysubsubsection{\texorpdfstring{ooc\_stringToLowerCase()}{ooc\_stringToLowerCase()}}
+{\footnotesize\ttfamily \label{oocString_8h_afbf31031c4c17d56849e6980de0bfeb5} 
+void \texorpdfstring{$\ast$}{*} ooc\+\_\+string\+To\+Lower\+Case (\begin{DoxyParamCaption}\item[{const void \texorpdfstring{$\ast$}{*}}]{self}{}\end{DoxyParamCaption})}
+
+
+
+Converts all characters in a String object to lowercase. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em self} & String object instance \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+New String object with lowercase characters, or NULL on failure 
+\end{DoxyReturn}
+\begin{DoxyNote}{Note}
+Caller is responsible for destroying the returned String object with ooc\+\_\+destroy 
+\end{DoxyNote}
+\Hypertarget{oocString_8h_a1003abe16958bc3b10257008a5607837}\index{oocString.h@{oocString.h}!ooc\_StringToUpperCase@{ooc\_StringToUpperCase}}
+\index{ooc\_StringToUpperCase@{ooc\_StringToUpperCase}!oocString.h@{oocString.h}}
+\doxysubsubsection{\texorpdfstring{ooc\_StringToUpperCase()}{ooc\_StringToUpperCase()}}
+{\footnotesize\ttfamily \label{oocString_8h_a1003abe16958bc3b10257008a5607837} 
+\mbox{\hyperlink{oocError_8h_a1effaed6897d01c49b4771abc4185718}{OOC\+\_\+\+Error}} ooc\+\_\+\+String\+To\+Upper\+Case (\begin{DoxyParamCaption}\item[{char \texorpdfstring{$\ast$}{*}}]{str}{}\end{DoxyParamCaption})}
+
+
+
+Converts all characters in the string to uppercase. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em str} & Null-\/terminated C string to modify (modified in place) \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+OOC\+\_\+\+ERROR\+\_\+\+NONE on success, appropriate error code on failure 
+\end{DoxyReturn}
+\Hypertarget{oocString_8h_ad8392975b7d930a99c313019613cb9b3}\index{oocString.h@{oocString.h}!ooc\_stringToUpperCase@{ooc\_stringToUpperCase}}
+\index{ooc\_stringToUpperCase@{ooc\_stringToUpperCase}!oocString.h@{oocString.h}}
+\doxysubsubsection{\texorpdfstring{ooc\_stringToUpperCase()}{ooc\_stringToUpperCase()}}
+{\footnotesize\ttfamily \label{oocString_8h_ad8392975b7d930a99c313019613cb9b3} 
+void \texorpdfstring{$\ast$}{*} ooc\+\_\+string\+To\+Upper\+Case (\begin{DoxyParamCaption}\item[{const void \texorpdfstring{$\ast$}{*}}]{self}{}\end{DoxyParamCaption})}
+
+
+
+Converts all characters in a String object to uppercase. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em self} & String object instance \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+New String object with uppercase characters, or NULL on failure 
+\end{DoxyReturn}
+\begin{DoxyNote}{Note}
+Caller is responsible for destroying the returned String object with ooc\+\_\+destroy 
+\end{DoxyNote}
+\Hypertarget{oocString_8h_ab14d94ee4c6bba161d0019c64544f199}\index{oocString.h@{oocString.h}!ooc\_StringTrim@{ooc\_StringTrim}}
+\index{ooc\_StringTrim@{ooc\_StringTrim}!oocString.h@{oocString.h}}
+\doxysubsubsection{\texorpdfstring{ooc\_StringTrim()}{ooc\_StringTrim()}}
+{\footnotesize\ttfamily \label{oocString_8h_ab14d94ee4c6bba161d0019c64544f199} 
+char \texorpdfstring{$\ast$}{*} ooc\+\_\+\+String\+Trim (\begin{DoxyParamCaption}\item[{char \texorpdfstring{$\ast$}{*}}]{str}{}\end{DoxyParamCaption})}
+
+
+
+Removes leading and trailing whitespace from the string. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em str} & Null-\/terminated C string to trim (modified in place) \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+Pointer to the trimmed string (same as input), or NULL if str is NULL 
+\end{DoxyReturn}
+\Hypertarget{oocString_8h_a6aecb32d85f2b0033eb5475e9327ac6e}\index{oocString.h@{oocString.h}!ooc\_stringTrim@{ooc\_stringTrim}}
+\index{ooc\_stringTrim@{ooc\_stringTrim}!oocString.h@{oocString.h}}
+\doxysubsubsection{\texorpdfstring{ooc\_stringTrim()}{ooc\_stringTrim()}}
+{\footnotesize\ttfamily \label{oocString_8h_a6aecb32d85f2b0033eb5475e9327ac6e} 
+void \texorpdfstring{$\ast$}{*} ooc\+\_\+string\+Trim (\begin{DoxyParamCaption}\item[{const void \texorpdfstring{$\ast$}{*}}]{self}{}\end{DoxyParamCaption})}
+
+
+
+Removes leading and trailing whitespace from a String object. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em self} & String object instance \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+New String object with whitespace removed, or NULL on failure 
+\end{DoxyReturn}
+\begin{DoxyNote}{Note}
+Caller is responsible for destroying the returned String object with ooc\+\_\+destroy 
+\end{DoxyNote}

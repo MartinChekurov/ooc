@@ -1,0 +1,226 @@
+\doxysection{src/interface/iterable/collection/ooc\+Collection.h File Reference}
+\hypertarget{oocCollection_8h}{}\label{oocCollection_8h}\index{src/interface/iterable/collection/oocCollection.h@{src/interface/iterable/collection/oocCollection.h}}
+
+
+Collection interface for the OOC (Object-\/\+Oriented C) framework.  
+
+
+{\ttfamily \#include "{}ooc\+Error.\+h"{}}\newline
+{\ttfamily \#include $<$stddef.\+h$>$}\newline
+{\ttfamily \#include $<$stdbool.\+h$>$}\newline
+\doxysubsubsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+void \texorpdfstring{$\ast$}{*} \mbox{\hyperlink{oocCollection_8h_aa826bbcb8616bebafaccbcfcab78421e}{ooc\+\_\+collection\+Class}} ()
+\begin{DoxyCompactList}\small\item\em Returns the Collection interface class descriptor. \end{DoxyCompactList}\item 
+void \texorpdfstring{$\ast$}{*} \mbox{\hyperlink{oocCollection_8h_a7af12cfdb5100b7ce2033d82fa15b380}{ooc\+\_\+collection\+Get\+Iterator}} (void \texorpdfstring{$\ast$}{*}self)
+\begin{DoxyCompactList}\small\item\em Returns an Iterator over the elements in this collection. \end{DoxyCompactList}\item 
+size\+\_\+t \mbox{\hyperlink{oocCollection_8h_adaad569c4a054c3a3534d4ad462d1448}{ooc\+\_\+collection\+Size}} (void \texorpdfstring{$\ast$}{*}self)
+\begin{DoxyCompactList}\small\item\em Returns the number of elements in the collection. \end{DoxyCompactList}\item 
+bool \mbox{\hyperlink{oocCollection_8h_a89a1b4a0fcb9abdd1df030ed42b04ebf}{ooc\+\_\+collection\+Is\+Empty}} (void \texorpdfstring{$\ast$}{*}self)
+\begin{DoxyCompactList}\small\item\em Checks if the collection is empty. \end{DoxyCompactList}\item 
+bool \mbox{\hyperlink{oocCollection_8h_a74589a2eaf1fd9bebd5eff509977a617}{ooc\+\_\+collection\+Contains}} (void \texorpdfstring{$\ast$}{*}self, void \texorpdfstring{$\ast$}{*}element)
+\begin{DoxyCompactList}\small\item\em Checks if the collection contains the specified element. \end{DoxyCompactList}\item 
+bool \mbox{\hyperlink{oocCollection_8h_ac0ec291ba7918488727abb52725d0c90}{ooc\+\_\+collection\+Contains\+All}} (void \texorpdfstring{$\ast$}{*}self, void \texorpdfstring{$\ast$}{*}other)
+\begin{DoxyCompactList}\small\item\em Checks if this collection contains all elements from another collection. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{oocError_8h_a1effaed6897d01c49b4771abc4185718}{OOC\+\_\+\+Error}} \mbox{\hyperlink{oocCollection_8h_aa99ce286778300657b8e4a44160f5e84}{ooc\+\_\+collection\+Add}} (void \texorpdfstring{$\ast$}{*}self, void \texorpdfstring{$\ast$}{*}element)
+\begin{DoxyCompactList}\small\item\em Adds an element to the collection. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{oocError_8h_a1effaed6897d01c49b4771abc4185718}{OOC\+\_\+\+Error}} \mbox{\hyperlink{oocCollection_8h_acce4710b5c79029cf983b7ce1e51ec48}{ooc\+\_\+collection\+Remove}} (void \texorpdfstring{$\ast$}{*}self, void \texorpdfstring{$\ast$}{*}element)
+\begin{DoxyCompactList}\small\item\em Removes the specified element from the collection. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{oocError_8h_a1effaed6897d01c49b4771abc4185718}{OOC\+\_\+\+Error}} \mbox{\hyperlink{oocCollection_8h_a4a3221a0ac3949d307598f55b404aa9e}{ooc\+\_\+collection\+Clear}} (void \texorpdfstring{$\ast$}{*}self)
+\begin{DoxyCompactList}\small\item\em Removes all elements from the collection. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+Collection interface for the OOC (Object-\/\+Oriented C) framework. 
+
+This header defines the Collection interface that represents a group of objects. Collections extend the Iterable interface, allowing iteration over elements. This interface provides the foundation for various collection types like lists, sets, and other data structures. 
+
+\label{doc-func-members}
+\Hypertarget{oocCollection_8h_doc-func-members}
+\doxysubsection{Function Documentation}
+\Hypertarget{oocCollection_8h_aa99ce286778300657b8e4a44160f5e84}\index{oocCollection.h@{oocCollection.h}!ooc\_collectionAdd@{ooc\_collectionAdd}}
+\index{ooc\_collectionAdd@{ooc\_collectionAdd}!oocCollection.h@{oocCollection.h}}
+\doxysubsubsection{\texorpdfstring{ooc\_collectionAdd()}{ooc\_collectionAdd()}}
+{\footnotesize\ttfamily \label{oocCollection_8h_aa99ce286778300657b8e4a44160f5e84} 
+\mbox{\hyperlink{oocError_8h_a1effaed6897d01c49b4771abc4185718}{OOC\+\_\+\+Error}} ooc\+\_\+collection\+Add (\begin{DoxyParamCaption}\item[{void \texorpdfstring{$\ast$}{*}}]{self}{, }\item[{void \texorpdfstring{$\ast$}{*}}]{element}{}\end{DoxyParamCaption})}
+
+
+
+Adds an element to the collection. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em self} & Collection object instance \\
+\hline
+{\em element} & Element to add \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+OOC\+\_\+\+ERROR\+\_\+\+NONE on success, appropriate error code on failure 
+\end{DoxyReturn}
+\begin{DoxyNote}{Note}
+Behavior may vary by implementation (e.\+g., Sets reject duplicates) 
+\end{DoxyNote}
+\Hypertarget{oocCollection_8h_aa826bbcb8616bebafaccbcfcab78421e}\index{oocCollection.h@{oocCollection.h}!ooc\_collectionClass@{ooc\_collectionClass}}
+\index{ooc\_collectionClass@{ooc\_collectionClass}!oocCollection.h@{oocCollection.h}}
+\doxysubsubsection{\texorpdfstring{ooc\_collectionClass()}{ooc\_collectionClass()}}
+{\footnotesize\ttfamily \label{oocCollection_8h_aa826bbcb8616bebafaccbcfcab78421e} 
+void \texorpdfstring{$\ast$}{*} ooc\+\_\+collection\+Class (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})}
+
+
+
+Returns the Collection interface class descriptor. 
+
+\begin{DoxyReturn}{Returns}
+Pointer to the Collection interface class object
+\end{DoxyReturn}
+This function returns the class descriptor for the Collection interface, which extends Iterable and adds collection-\/specific operations. \Hypertarget{oocCollection_8h_a4a3221a0ac3949d307598f55b404aa9e}\index{oocCollection.h@{oocCollection.h}!ooc\_collectionClear@{ooc\_collectionClear}}
+\index{ooc\_collectionClear@{ooc\_collectionClear}!oocCollection.h@{oocCollection.h}}
+\doxysubsubsection{\texorpdfstring{ooc\_collectionClear()}{ooc\_collectionClear()}}
+{\footnotesize\ttfamily \label{oocCollection_8h_a4a3221a0ac3949d307598f55b404aa9e} 
+\mbox{\hyperlink{oocError_8h_a1effaed6897d01c49b4771abc4185718}{OOC\+\_\+\+Error}} ooc\+\_\+collection\+Clear (\begin{DoxyParamCaption}\item[{void \texorpdfstring{$\ast$}{*}}]{self}{}\end{DoxyParamCaption})}
+
+
+
+Removes all elements from the collection. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em self} & Collection object instance \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+OOC\+\_\+\+ERROR\+\_\+\+NONE on success, appropriate error code on failure 
+\end{DoxyReturn}
+\Hypertarget{oocCollection_8h_a74589a2eaf1fd9bebd5eff509977a617}\index{oocCollection.h@{oocCollection.h}!ooc\_collectionContains@{ooc\_collectionContains}}
+\index{ooc\_collectionContains@{ooc\_collectionContains}!oocCollection.h@{oocCollection.h}}
+\doxysubsubsection{\texorpdfstring{ooc\_collectionContains()}{ooc\_collectionContains()}}
+{\footnotesize\ttfamily \label{oocCollection_8h_a74589a2eaf1fd9bebd5eff509977a617} 
+bool ooc\+\_\+collection\+Contains (\begin{DoxyParamCaption}\item[{void \texorpdfstring{$\ast$}{*}}]{self}{, }\item[{void \texorpdfstring{$\ast$}{*}}]{element}{}\end{DoxyParamCaption})}
+
+
+
+Checks if the collection contains the specified element. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em self} & Collection object instance \\
+\hline
+{\em element} & Element to check for presence \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+true if the collection contains the element, false otherwise 
+\end{DoxyReturn}
+\Hypertarget{oocCollection_8h_ac0ec291ba7918488727abb52725d0c90}\index{oocCollection.h@{oocCollection.h}!ooc\_collectionContainsAll@{ooc\_collectionContainsAll}}
+\index{ooc\_collectionContainsAll@{ooc\_collectionContainsAll}!oocCollection.h@{oocCollection.h}}
+\doxysubsubsection{\texorpdfstring{ooc\_collectionContainsAll()}{ooc\_collectionContainsAll()}}
+{\footnotesize\ttfamily \label{oocCollection_8h_ac0ec291ba7918488727abb52725d0c90} 
+bool ooc\+\_\+collection\+Contains\+All (\begin{DoxyParamCaption}\item[{void \texorpdfstring{$\ast$}{*}}]{self}{, }\item[{void \texorpdfstring{$\ast$}{*}}]{other}{}\end{DoxyParamCaption})}
+
+
+
+Checks if this collection contains all elements from another collection. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em self} & Collection object instance \\
+\hline
+{\em other} & Collection to be checked for containment \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+true if this collection contains all elements of the specified collection 
+\end{DoxyReturn}
+\Hypertarget{oocCollection_8h_a7af12cfdb5100b7ce2033d82fa15b380}\index{oocCollection.h@{oocCollection.h}!ooc\_collectionGetIterator@{ooc\_collectionGetIterator}}
+\index{ooc\_collectionGetIterator@{ooc\_collectionGetIterator}!oocCollection.h@{oocCollection.h}}
+\doxysubsubsection{\texorpdfstring{ooc\_collectionGetIterator()}{ooc\_collectionGetIterator()}}
+{\footnotesize\ttfamily \label{oocCollection_8h_a7af12cfdb5100b7ce2033d82fa15b380} 
+void \texorpdfstring{$\ast$}{*} ooc\+\_\+collection\+Get\+Iterator (\begin{DoxyParamCaption}\item[{void \texorpdfstring{$\ast$}{*}}]{self}{}\end{DoxyParamCaption})}
+
+
+
+Returns an Iterator over the elements in this collection. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em self} & Iterable object instance \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+Pointer to a new Iterator object, or NULL on failure 
+\end{DoxyReturn}
+\begin{DoxyNote}{Note}
+Caller is responsible for calling ooc\+\_\+destroy() on the returned iterator 
+
+Multiple iterators can be obtained and used concurrently, each maintaining its own iteration state
+\end{DoxyNote}
+This method creates a new Iterator that can be used to traverse the elements of the collection. The Iterator interface provides has\+Next() and next() methods for sequential access.
+
+Example usage\+: 
+\begin{DoxyCode}{0}
+\DoxyCodeLine{\textcolor{keywordtype}{void}*\ iter\ =\ ooc\_iterableGetIterator(collection);}
+\DoxyCodeLine{\textcolor{keywordflow}{while}\ (ooc\_iteratorHasNext(iter))\ \{}
+\DoxyCodeLine{\ \ \ \ \textcolor{keywordtype}{void}*\ element\ =\ ooc\_iteratorNext(iter);}
+\DoxyCodeLine{\ \ \ \ \textcolor{comment}{//\ process\ element}}
+\DoxyCodeLine{\}}
+\DoxyCodeLine{ooc\_destroy(iter);}
+
+\end{DoxyCode}
+ \Hypertarget{oocCollection_8h_a89a1b4a0fcb9abdd1df030ed42b04ebf}\index{oocCollection.h@{oocCollection.h}!ooc\_collectionIsEmpty@{ooc\_collectionIsEmpty}}
+\index{ooc\_collectionIsEmpty@{ooc\_collectionIsEmpty}!oocCollection.h@{oocCollection.h}}
+\doxysubsubsection{\texorpdfstring{ooc\_collectionIsEmpty()}{ooc\_collectionIsEmpty()}}
+{\footnotesize\ttfamily \label{oocCollection_8h_a89a1b4a0fcb9abdd1df030ed42b04ebf} 
+bool ooc\+\_\+collection\+Is\+Empty (\begin{DoxyParamCaption}\item[{void \texorpdfstring{$\ast$}{*}}]{self}{}\end{DoxyParamCaption})}
+
+
+
+Checks if the collection is empty. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em self} & Collection object instance \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+true if the collection contains no elements, false otherwise 
+\end{DoxyReturn}
+\Hypertarget{oocCollection_8h_acce4710b5c79029cf983b7ce1e51ec48}\index{oocCollection.h@{oocCollection.h}!ooc\_collectionRemove@{ooc\_collectionRemove}}
+\index{ooc\_collectionRemove@{ooc\_collectionRemove}!oocCollection.h@{oocCollection.h}}
+\doxysubsubsection{\texorpdfstring{ooc\_collectionRemove()}{ooc\_collectionRemove()}}
+{\footnotesize\ttfamily \label{oocCollection_8h_acce4710b5c79029cf983b7ce1e51ec48} 
+\mbox{\hyperlink{oocError_8h_a1effaed6897d01c49b4771abc4185718}{OOC\+\_\+\+Error}} ooc\+\_\+collection\+Remove (\begin{DoxyParamCaption}\item[{void \texorpdfstring{$\ast$}{*}}]{self}{, }\item[{void \texorpdfstring{$\ast$}{*}}]{element}{}\end{DoxyParamCaption})}
+
+
+
+Removes the specified element from the collection. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em self} & Collection object instance \\
+\hline
+{\em element} & Element to remove \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+OOC\+\_\+\+ERROR\+\_\+\+NONE on success, appropriate error code on failure 
+\end{DoxyReturn}
+\Hypertarget{oocCollection_8h_adaad569c4a054c3a3534d4ad462d1448}\index{oocCollection.h@{oocCollection.h}!ooc\_collectionSize@{ooc\_collectionSize}}
+\index{ooc\_collectionSize@{ooc\_collectionSize}!oocCollection.h@{oocCollection.h}}
+\doxysubsubsection{\texorpdfstring{ooc\_collectionSize()}{ooc\_collectionSize()}}
+{\footnotesize\ttfamily \label{oocCollection_8h_adaad569c4a054c3a3534d4ad462d1448} 
+size\+\_\+t ooc\+\_\+collection\+Size (\begin{DoxyParamCaption}\item[{void \texorpdfstring{$\ast$}{*}}]{self}{}\end{DoxyParamCaption})}
+
+
+
+Returns the number of elements in the collection. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em self} & Collection object instance \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+Number of elements, or 0 if self is NULL 
+\end{DoxyReturn}

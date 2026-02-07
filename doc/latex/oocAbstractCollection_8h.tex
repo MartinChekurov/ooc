@@ -1,0 +1,64 @@
+\doxysection{src/collection/abstract\+Collection/ooc\+Abstract\+Collection.h File Reference}
+\hypertarget{oocAbstractCollection_8h}{}\label{oocAbstractCollection_8h}\index{src/collection/abstractCollection/oocAbstractCollection.h@{src/collection/abstractCollection/oocAbstractCollection.h}}
+
+
+Abstract base class for collections in the OOC framework.  
+
+
+{\ttfamily \#include "{}ooc\+Error.\+h"{}}\newline
+{\ttfamily \#include $<$stddef.\+h$>$}\newline
+{\ttfamily \#include $<$stdbool.\+h$>$}\newline
+\doxysubsubsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+void \texorpdfstring{$\ast$}{*} \mbox{\hyperlink{oocAbstractCollection_8h_aa91335014ddb227176fed4b17f1a0f3a}{ooc\+\_\+abstract\+Collection\+Class}} ()
+\begin{DoxyCompactList}\small\item\em Returns the Abstract\+Collection class descriptor. \end{DoxyCompactList}\item 
+\Hypertarget{oocAbstractCollection_8h_a5c50ee33abaf20899b4539793d62dc33}\label{oocAbstractCollection_8h_a5c50ee33abaf20899b4539793d62dc33} 
+\mbox{\hyperlink{oocError_8h_a1effaed6897d01c49b4771abc4185718}{OOC\+\_\+\+Error}} {\bfseries ooc\+\_\+abstract\+Collection\+Set\+Size} (void \texorpdfstring{$\ast$}{*}self, size\+\_\+t size)
+\item 
+\Hypertarget{oocAbstractCollection_8h_ae4e108d4c75a226c0f9f6217f7097e3c}\label{oocAbstractCollection_8h_ae4e108d4c75a226c0f9f6217f7097e3c} 
+size\+\_\+t {\bfseries ooc\+\_\+abstract\+Collection\+Size} (void \texorpdfstring{$\ast$}{*}self)
+\item 
+\Hypertarget{oocAbstractCollection_8h_a242ba95e032c3a046d57366e8a09fed4}\label{oocAbstractCollection_8h_a242ba95e032c3a046d57366e8a09fed4} 
+bool {\bfseries ooc\+\_\+abstract\+Collection\+Is\+Empty} (void \texorpdfstring{$\ast$}{*}self)
+\item 
+\Hypertarget{oocAbstractCollection_8h_a1109c8ec97da0289d29d2d44d3412bae}\label{oocAbstractCollection_8h_a1109c8ec97da0289d29d2d44d3412bae} 
+bool {\bfseries ooc\+\_\+abstract\+Collection\+Contains} (void \texorpdfstring{$\ast$}{*}self, void \texorpdfstring{$\ast$}{*}object)
+\item 
+\Hypertarget{oocAbstractCollection_8h_ae82f5e1bc96122d0e82a7cb2ce504f7e}\label{oocAbstractCollection_8h_ae82f5e1bc96122d0e82a7cb2ce504f7e} 
+bool {\bfseries ooc\+\_\+abstract\+Collection\+Contains\+All} (void \texorpdfstring{$\ast$}{*}self, void \texorpdfstring{$\ast$}{*}other)
+\item 
+\Hypertarget{oocAbstractCollection_8h_a2f9b2308a520d486768630e8b804a100}\label{oocAbstractCollection_8h_a2f9b2308a520d486768630e8b804a100} 
+\mbox{\hyperlink{oocError_8h_a1effaed6897d01c49b4771abc4185718}{OOC\+\_\+\+Error}} {\bfseries ooc\+\_\+abstract\+Collection\+Add} (void \texorpdfstring{$\ast$}{*}self, void \texorpdfstring{$\ast$}{*}element)
+\item 
+\Hypertarget{oocAbstractCollection_8h_a1a592469f8dc1815d4cb677ba8a72bec}\label{oocAbstractCollection_8h_a1a592469f8dc1815d4cb677ba8a72bec} 
+bool {\bfseries ooc\+\_\+abstract\+Collection\+Remove} (void \texorpdfstring{$\ast$}{*}self, void \texorpdfstring{$\ast$}{*}object)
+\item 
+\Hypertarget{oocAbstractCollection_8h_abe29f3cc9e9697d5e7e5a775d14e942a}\label{oocAbstractCollection_8h_abe29f3cc9e9697d5e7e5a775d14e942a} 
+\mbox{\hyperlink{oocError_8h_a1effaed6897d01c49b4771abc4185718}{OOC\+\_\+\+Error}} {\bfseries ooc\+\_\+abstract\+Collection\+Clear} (void \texorpdfstring{$\ast$}{*}self)
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+Abstract base class for collections in the OOC framework. 
+
+This header defines the Abstract\+Collection class, which provides default implementations for common Object methods (to\+String, equals, hash\+Code, compare\+To, clone) using the Iterable interface. It serves as a base for concrete collection classes to avoid code duplication.
+
+This class is abstract and cannot be instantiated directly. Subclasses must implement the required interfaces (e.\+g., Collection, Iterable) and may override the provided methods if needed (e.\+g., for ordered vs. unordered semantics). 
+
+\label{doc-func-members}
+\Hypertarget{oocAbstractCollection_8h_doc-func-members}
+\doxysubsection{Function Documentation}
+\Hypertarget{oocAbstractCollection_8h_aa91335014ddb227176fed4b17f1a0f3a}\index{oocAbstractCollection.h@{oocAbstractCollection.h}!ooc\_abstractCollectionClass@{ooc\_abstractCollectionClass}}
+\index{ooc\_abstractCollectionClass@{ooc\_abstractCollectionClass}!oocAbstractCollection.h@{oocAbstractCollection.h}}
+\doxysubsubsection{\texorpdfstring{ooc\_abstractCollectionClass()}{ooc\_abstractCollectionClass()}}
+{\footnotesize\ttfamily \label{oocAbstractCollection_8h_aa91335014ddb227176fed4b17f1a0f3a} 
+void \texorpdfstring{$\ast$}{*} ooc\+\_\+abstract\+Collection\+Class (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})}
+
+
+
+Returns the Abstract\+Collection class descriptor. 
+
+\begin{DoxyReturn}{Returns}
+Pointer to the Abstract\+Collection class object 
+\end{DoxyReturn}

@@ -1,0 +1,430 @@
+\doxysection{src/object/ooc\+Object.h File Reference}
+\hypertarget{oocObject_8h}{}\label{oocObject_8h}\index{src/object/oocObject.h@{src/object/oocObject.h}}
+
+
+Base Object class for the OOC (Object-\/\+Oriented C) framework.  
+
+
+{\ttfamily \#include "{}ooc\+Error.\+h"{}}\newline
+{\ttfamily \#include $<$stdarg.\+h$>$}\newline
+{\ttfamily \#include $<$stddef.\+h$>$}\newline
+{\ttfamily \#include $<$stdbool.\+h$>$}\newline
+\doxysubsubsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+void \texorpdfstring{$\ast$}{*} \mbox{\hyperlink{oocObject_8h_a363a35854fbaef335c09a11f7f0ab89e}{ooc\+\_\+object\+Class}} ()
+\begin{DoxyCompactList}\small\item\em Returns the Object class descriptor. \end{DoxyCompactList}\item 
+void \texorpdfstring{$\ast$}{*} \mbox{\hyperlink{oocObject_8h_ae9e8091deeaae9c959c118973696035a}{ooc\+\_\+new}} (void \texorpdfstring{$\ast$}{*}class,...)
+\begin{DoxyCompactList}\small\item\em Creates a new instance of the specified class. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{oocError_8h_a1effaed6897d01c49b4771abc4185718}{OOC\+\_\+\+Error}} \mbox{\hyperlink{oocObject_8h_a6013e8e01ba720797f8640ede5d9adaf}{ooc\+\_\+destroy}} (void \texorpdfstring{$\ast$}{*}self)
+\begin{DoxyCompactList}\small\item\em Destroys an object and frees its memory. \end{DoxyCompactList}\item 
+const void \texorpdfstring{$\ast$}{*} \mbox{\hyperlink{oocObject_8h_af0fdfd30e57ce4630e6626244befa8e6}{ooc\+\_\+class\+Of}} (const void \texorpdfstring{$\ast$}{*}self)
+\begin{DoxyCompactList}\small\item\em Returns the class descriptor of the given object. \end{DoxyCompactList}\item 
+size\+\_\+t \mbox{\hyperlink{oocObject_8h_a00e2fa94d198a7a7eb20f5578030041d}{ooc\+\_\+size\+Of}} (const void \texorpdfstring{$\ast$}{*}self)
+\begin{DoxyCompactList}\small\item\em Returns the size in bytes of the given object. \end{DoxyCompactList}\item 
+bool \mbox{\hyperlink{oocObject_8h_a6f1a639c80290677ff386ed6a862ae72}{ooc\+\_\+is\+Instance\+Of}} (const void \texorpdfstring{$\ast$}{*}self, const void \texorpdfstring{$\ast$}{*}class)
+\begin{DoxyCompactList}\small\item\em Checks if an object is an instance of the specified class. \end{DoxyCompactList}\item 
+const char \texorpdfstring{$\ast$}{*} \mbox{\hyperlink{oocObject_8h_abb7566a32125dbb612227e54fa6e34c1}{ooc\+\_\+get\+Class\+Name}} (const void \texorpdfstring{$\ast$}{*}self)
+\begin{DoxyCompactList}\small\item\em Returns the class name of the given object. \end{DoxyCompactList}\item 
+bool \mbox{\hyperlink{oocObject_8h_a294ab2cef66eb273938cb94548a399cc}{ooc\+\_\+is\+Abstract}} (const void \texorpdfstring{$\ast$}{*}self)
+\begin{DoxyCompactList}\small\item\em Checks if the given object\textquotesingle{}s class is abstract. \end{DoxyCompactList}\item 
+bool \mbox{\hyperlink{oocObject_8h_a300e137f00c19942dcadcbd4e5d7a0be}{ooc\+\_\+is\+Final}} (const void \texorpdfstring{$\ast$}{*}self)
+\begin{DoxyCompactList}\small\item\em Checks if the given object\textquotesingle{}s class is final. \end{DoxyCompactList}\item 
+char \texorpdfstring{$\ast$}{*} \mbox{\hyperlink{oocObject_8h_ab12239d9429fa6bcf82f96c88c4df764}{ooc\+\_\+to\+String}} (const void \texorpdfstring{$\ast$}{*}self)
+\begin{DoxyCompactList}\small\item\em Returns a string representation of the given object. \end{DoxyCompactList}\item 
+bool \mbox{\hyperlink{oocObject_8h_a7fe6fd26d83f925b82a9b5fecf416d99}{ooc\+\_\+equals}} (const void \texorpdfstring{$\ast$}{*}self, const void \texorpdfstring{$\ast$}{*}other)
+\begin{DoxyCompactList}\small\item\em Checks if two objects are equal. \end{DoxyCompactList}\item 
+size\+\_\+t \mbox{\hyperlink{oocObject_8h_a72c349e5effad11d681c70051cde7fe6}{ooc\+\_\+hash\+Code}} (const void \texorpdfstring{$\ast$}{*}self)
+\begin{DoxyCompactList}\small\item\em Computes the hash code for the given object. \end{DoxyCompactList}\item 
+int \mbox{\hyperlink{oocObject_8h_a63014f06a451cb2ec12322c656f4b054}{ooc\+\_\+compare}} (const void \texorpdfstring{$\ast$}{*}self, const void \texorpdfstring{$\ast$}{*}other)
+\begin{DoxyCompactList}\small\item\em Compares two objects. \end{DoxyCompactList}\item 
+void \texorpdfstring{$\ast$}{*} \mbox{\hyperlink{oocObject_8h_a15aee75bab1f31523f40bac1cf055a2a}{ooc\+\_\+clone}} (const void \texorpdfstring{$\ast$}{*}self)
+\begin{DoxyCompactList}\small\item\em Creates a copy of the given object. \end{DoxyCompactList}\item 
+const void \texorpdfstring{$\ast$}{*} \mbox{\hyperlink{oocObject_8h_a3feba13e844f80ef375da10262b306ac}{ooc\+\_\+get\+Interface\+Vtable}} (const void \texorpdfstring{$\ast$}{*}self, const void \texorpdfstring{$\ast$}{*}interface\+Type)
+\begin{DoxyCompactList}\small\item\em Retrieves an interface vtable implementation from the object. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{oocError_8h_a1effaed6897d01c49b4771abc4185718}{OOC\+\_\+\+Error}} \mbox{\hyperlink{oocObject_8h_a19c82d2b543dd92e0222cd9a35f815cc}{ooc\+\_\+set\+Interface}} (void \texorpdfstring{$\ast$}{*}self, const void \texorpdfstring{$\ast$}{*}impls, unsigned int count)
+\begin{DoxyCompactList}\small\item\em Sets interfaces to an object. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{oocError_8h_a1effaed6897d01c49b4771abc4185718}{OOC\+\_\+\+Error}} \mbox{\hyperlink{oocObject_8h_af3775b9a77439d661d8ec000e34c13a4}{ooc\+\_\+verify\+Methods}} (void \texorpdfstring{$\ast$}{*}self, size\+\_\+t start, size\+\_\+t end)
+\begin{DoxyCompactList}\small\item\em Verifies that all function pointers in a class range are implemented. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{oocError_8h_a1effaed6897d01c49b4771abc4185718}{OOC\+\_\+\+Error}} \mbox{\hyperlink{oocObject_8h_a4355ea11d39d64b1f78a01e4552b0b12}{ooc\+\_\+override\+Methods}} (void \texorpdfstring{$\ast$}{*}self, va\+\_\+list \texorpdfstring{$\ast$}{*}args)
+\begin{DoxyCompactList}\small\item\em Overrides class method implementations using a va\+\_\+list. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{oocError_8h_a1effaed6897d01c49b4771abc4185718}{OOC\+\_\+\+Error}} \mbox{\hyperlink{oocObject_8h_ab883bc381b9141f77ea43bac8db7ea83}{ooc\+\_\+override\+Methodsv}} (void \texorpdfstring{$\ast$}{*}self,...)
+\begin{DoxyCompactList}\small\item\em Overrides class method implementations using variable arguments. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+Base Object class for the OOC (Object-\/\+Oriented C) framework. 
+
+This header defines the fundamental Object class that serves as the root of the class hierarchy in the OOC framework. It provides basic object operations such as construction, destruction, comparison, hashing, and interface management. 
+
+\label{doc-func-members}
+\Hypertarget{oocObject_8h_doc-func-members}
+\doxysubsection{Function Documentation}
+\Hypertarget{oocObject_8h_af0fdfd30e57ce4630e6626244befa8e6}\index{oocObject.h@{oocObject.h}!ooc\_classOf@{ooc\_classOf}}
+\index{ooc\_classOf@{ooc\_classOf}!oocObject.h@{oocObject.h}}
+\doxysubsubsection{\texorpdfstring{ooc\_classOf()}{ooc\_classOf()}}
+{\footnotesize\ttfamily \label{oocObject_8h_af0fdfd30e57ce4630e6626244befa8e6} 
+const void \texorpdfstring{$\ast$}{*} ooc\+\_\+class\+Of (\begin{DoxyParamCaption}\item[{const void \texorpdfstring{$\ast$}{*}}]{self}{}\end{DoxyParamCaption})}
+
+
+
+Returns the class descriptor of the given object. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em self} & Object instance \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+Pointer to the class descriptor, or NULL if self is NULL 
+\end{DoxyReturn}
+\Hypertarget{oocObject_8h_a15aee75bab1f31523f40bac1cf055a2a}\index{oocObject.h@{oocObject.h}!ooc\_clone@{ooc\_clone}}
+\index{ooc\_clone@{ooc\_clone}!oocObject.h@{oocObject.h}}
+\doxysubsubsection{\texorpdfstring{ooc\_clone()}{ooc\_clone()}}
+{\footnotesize\ttfamily \label{oocObject_8h_a15aee75bab1f31523f40bac1cf055a2a} 
+void \texorpdfstring{$\ast$}{*} ooc\+\_\+clone (\begin{DoxyParamCaption}\item[{const void \texorpdfstring{$\ast$}{*}}]{self}{}\end{DoxyParamCaption})}
+
+
+
+Creates a copy of the given object. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em self} & Object instance to clone \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+Pointer to the cloned object, or NULL on failure 
+\end{DoxyReturn}
+\begin{DoxyNote}{Note}
+Caller is responsible for calling \doxylink{oocObject_8h_a6013e8e01ba720797f8640ede5d9adaf}{ooc\+\_\+destroy()} on the clone 
+\end{DoxyNote}
+\Hypertarget{oocObject_8h_a63014f06a451cb2ec12322c656f4b054}\index{oocObject.h@{oocObject.h}!ooc\_compare@{ooc\_compare}}
+\index{ooc\_compare@{ooc\_compare}!oocObject.h@{oocObject.h}}
+\doxysubsubsection{\texorpdfstring{ooc\_compare()}{ooc\_compare()}}
+{\footnotesize\ttfamily \label{oocObject_8h_a63014f06a451cb2ec12322c656f4b054} 
+int ooc\+\_\+compare (\begin{DoxyParamCaption}\item[{const void \texorpdfstring{$\ast$}{*}}]{self}{, }\item[{const void \texorpdfstring{$\ast$}{*}}]{other}{}\end{DoxyParamCaption})}
+
+
+
+Compares two objects. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em self} & First object instance \\
+\hline
+{\em other} & Second object instance \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+Negative value if self \texorpdfstring{$<$}{<} other, 0 if equal, positive if self \texorpdfstring{$>$}{>} other 
+\end{DoxyReturn}
+\Hypertarget{oocObject_8h_a6013e8e01ba720797f8640ede5d9adaf}\index{oocObject.h@{oocObject.h}!ooc\_destroy@{ooc\_destroy}}
+\index{ooc\_destroy@{ooc\_destroy}!oocObject.h@{oocObject.h}}
+\doxysubsubsection{\texorpdfstring{ooc\_destroy()}{ooc\_destroy()}}
+{\footnotesize\ttfamily \label{oocObject_8h_a6013e8e01ba720797f8640ede5d9adaf} 
+\mbox{\hyperlink{oocError_8h_a1effaed6897d01c49b4771abc4185718}{OOC\+\_\+\+Error}} ooc\+\_\+destroy (\begin{DoxyParamCaption}\item[{void \texorpdfstring{$\ast$}{*}}]{self}{}\end{DoxyParamCaption})}
+
+
+
+Destroys an object and frees its memory. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em self} & Object instance to destroy \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+OOC\+\_\+\+ERROR\+\_\+\+NONE on success, appropriate error code on failure 
+\end{DoxyReturn}
+\Hypertarget{oocObject_8h_a7fe6fd26d83f925b82a9b5fecf416d99}\index{oocObject.h@{oocObject.h}!ooc\_equals@{ooc\_equals}}
+\index{ooc\_equals@{ooc\_equals}!oocObject.h@{oocObject.h}}
+\doxysubsubsection{\texorpdfstring{ooc\_equals()}{ooc\_equals()}}
+{\footnotesize\ttfamily \label{oocObject_8h_a7fe6fd26d83f925b82a9b5fecf416d99} 
+bool ooc\+\_\+equals (\begin{DoxyParamCaption}\item[{const void \texorpdfstring{$\ast$}{*}}]{self}{, }\item[{const void \texorpdfstring{$\ast$}{*}}]{other}{}\end{DoxyParamCaption})}
+
+
+
+Checks if two objects are equal. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em self} & First object instance \\
+\hline
+{\em other} & Second object instance \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+true if the objects are equal, false otherwise 
+\end{DoxyReturn}
+\Hypertarget{oocObject_8h_abb7566a32125dbb612227e54fa6e34c1}\index{oocObject.h@{oocObject.h}!ooc\_getClassName@{ooc\_getClassName}}
+\index{ooc\_getClassName@{ooc\_getClassName}!oocObject.h@{oocObject.h}}
+\doxysubsubsection{\texorpdfstring{ooc\_getClassName()}{ooc\_getClassName()}}
+{\footnotesize\ttfamily \label{oocObject_8h_abb7566a32125dbb612227e54fa6e34c1} 
+const char \texorpdfstring{$\ast$}{*} ooc\+\_\+get\+Class\+Name (\begin{DoxyParamCaption}\item[{const void \texorpdfstring{$\ast$}{*}}]{self}{}\end{DoxyParamCaption})}
+
+
+
+Returns the class name of the given object. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em self} & Object instance \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+Pointer to the class name string, or NULL if self is NULL 
+\end{DoxyReturn}
+\Hypertarget{oocObject_8h_a3feba13e844f80ef375da10262b306ac}\index{oocObject.h@{oocObject.h}!ooc\_getInterfaceVtable@{ooc\_getInterfaceVtable}}
+\index{ooc\_getInterfaceVtable@{ooc\_getInterfaceVtable}!oocObject.h@{oocObject.h}}
+\doxysubsubsection{\texorpdfstring{ooc\_getInterfaceVtable()}{ooc\_getInterfaceVtable()}}
+{\footnotesize\ttfamily \label{oocObject_8h_a3feba13e844f80ef375da10262b306ac} 
+const void \texorpdfstring{$\ast$}{*} ooc\+\_\+get\+Interface\+Vtable (\begin{DoxyParamCaption}\item[{const void \texorpdfstring{$\ast$}{*}}]{self}{, }\item[{const void \texorpdfstring{$\ast$}{*}}]{interface\+Type}{}\end{DoxyParamCaption})}
+
+
+
+Retrieves an interface vtable implementation from the object. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em self} & Object instance \\
+\hline
+{\em interface\+Type} & Interface class descriptor \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+Pointer to the interface vtable implementation, or NULL if not found 
+\end{DoxyReturn}
+\Hypertarget{oocObject_8h_a72c349e5effad11d681c70051cde7fe6}\index{oocObject.h@{oocObject.h}!ooc\_hashCode@{ooc\_hashCode}}
+\index{ooc\_hashCode@{ooc\_hashCode}!oocObject.h@{oocObject.h}}
+\doxysubsubsection{\texorpdfstring{ooc\_hashCode()}{ooc\_hashCode()}}
+{\footnotesize\ttfamily \label{oocObject_8h_a72c349e5effad11d681c70051cde7fe6} 
+size\+\_\+t ooc\+\_\+hash\+Code (\begin{DoxyParamCaption}\item[{const void \texorpdfstring{$\ast$}{*}}]{self}{}\end{DoxyParamCaption})}
+
+
+
+Computes the hash code for the given object. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em self} & Object instance \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+Hash code value for the object 
+\end{DoxyReturn}
+\Hypertarget{oocObject_8h_a294ab2cef66eb273938cb94548a399cc}\index{oocObject.h@{oocObject.h}!ooc\_isAbstract@{ooc\_isAbstract}}
+\index{ooc\_isAbstract@{ooc\_isAbstract}!oocObject.h@{oocObject.h}}
+\doxysubsubsection{\texorpdfstring{ooc\_isAbstract()}{ooc\_isAbstract()}}
+{\footnotesize\ttfamily \label{oocObject_8h_a294ab2cef66eb273938cb94548a399cc} 
+bool ooc\+\_\+is\+Abstract (\begin{DoxyParamCaption}\item[{const void \texorpdfstring{$\ast$}{*}}]{self}{}\end{DoxyParamCaption})}
+
+
+
+Checks if the given object\textquotesingle{}s class is abstract. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em self} & Object instance \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+true if the class is abstract, false otherwise 
+\end{DoxyReturn}
+\Hypertarget{oocObject_8h_a300e137f00c19942dcadcbd4e5d7a0be}\index{oocObject.h@{oocObject.h}!ooc\_isFinal@{ooc\_isFinal}}
+\index{ooc\_isFinal@{ooc\_isFinal}!oocObject.h@{oocObject.h}}
+\doxysubsubsection{\texorpdfstring{ooc\_isFinal()}{ooc\_isFinal()}}
+{\footnotesize\ttfamily \label{oocObject_8h_a300e137f00c19942dcadcbd4e5d7a0be} 
+bool ooc\+\_\+is\+Final (\begin{DoxyParamCaption}\item[{const void \texorpdfstring{$\ast$}{*}}]{self}{}\end{DoxyParamCaption})}
+
+
+
+Checks if the given object\textquotesingle{}s class is final. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em self} & Object instance \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+true if the class is final, false otherwise 
+\end{DoxyReturn}
+\Hypertarget{oocObject_8h_a6f1a639c80290677ff386ed6a862ae72}\index{oocObject.h@{oocObject.h}!ooc\_isInstanceOf@{ooc\_isInstanceOf}}
+\index{ooc\_isInstanceOf@{ooc\_isInstanceOf}!oocObject.h@{oocObject.h}}
+\doxysubsubsection{\texorpdfstring{ooc\_isInstanceOf()}{ooc\_isInstanceOf()}}
+{\footnotesize\ttfamily \label{oocObject_8h_a6f1a639c80290677ff386ed6a862ae72} 
+bool ooc\+\_\+is\+Instance\+Of (\begin{DoxyParamCaption}\item[{const void \texorpdfstring{$\ast$}{*}}]{self}{, }\item[{const void \texorpdfstring{$\ast$}{*}}]{class}{}\end{DoxyParamCaption})}
+
+
+
+Checks if an object is an instance of the specified class. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em self} & Object instance to check \\
+\hline
+{\em class} & Class descriptor to check against \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+true if self is an instance of class (or a subclass), false otherwise 
+\end{DoxyReturn}
+\Hypertarget{oocObject_8h_ae9e8091deeaae9c959c118973696035a}\index{oocObject.h@{oocObject.h}!ooc\_new@{ooc\_new}}
+\index{ooc\_new@{ooc\_new}!oocObject.h@{oocObject.h}}
+\doxysubsubsection{\texorpdfstring{ooc\_new()}{ooc\_new()}}
+{\footnotesize\ttfamily \label{oocObject_8h_ae9e8091deeaae9c959c118973696035a} 
+void \texorpdfstring{$\ast$}{*} ooc\+\_\+new (\begin{DoxyParamCaption}\item[{void \texorpdfstring{$\ast$}{*}}]{class}{, }\item[{}]{...}{}\end{DoxyParamCaption})}
+
+
+
+Creates a new instance of the specified class. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em class} & Class descriptor for the object to create \\
+\hline
+{\em ...} & Variable arguments passed to the constructor \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+Pointer to the newly created object, or NULL on failure 
+\end{DoxyReturn}
+\begin{DoxyNote}{Note}
+The caller is responsible for calling \doxylink{oocObject_8h_a6013e8e01ba720797f8640ede5d9adaf}{ooc\+\_\+destroy()} when done 
+\end{DoxyNote}
+\Hypertarget{oocObject_8h_a363a35854fbaef335c09a11f7f0ab89e}\index{oocObject.h@{oocObject.h}!ooc\_objectClass@{ooc\_objectClass}}
+\index{ooc\_objectClass@{ooc\_objectClass}!oocObject.h@{oocObject.h}}
+\doxysubsubsection{\texorpdfstring{ooc\_objectClass()}{ooc\_objectClass()}}
+{\footnotesize\ttfamily \label{oocObject_8h_a363a35854fbaef335c09a11f7f0ab89e} 
+void \texorpdfstring{$\ast$}{*} ooc\+\_\+object\+Class (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})}
+
+
+
+Returns the Object class descriptor. 
+
+\begin{DoxyReturn}{Returns}
+Pointer to the Object class object 
+\end{DoxyReturn}
+\Hypertarget{oocObject_8h_a4355ea11d39d64b1f78a01e4552b0b12}\index{oocObject.h@{oocObject.h}!ooc\_overrideMethods@{ooc\_overrideMethods}}
+\index{ooc\_overrideMethods@{ooc\_overrideMethods}!oocObject.h@{oocObject.h}}
+\doxysubsubsection{\texorpdfstring{ooc\_overrideMethods()}{ooc\_overrideMethods()}}
+{\footnotesize\ttfamily \label{oocObject_8h_a4355ea11d39d64b1f78a01e4552b0b12} 
+\mbox{\hyperlink{oocError_8h_a1effaed6897d01c49b4771abc4185718}{OOC\+\_\+\+Error}} ooc\+\_\+override\+Methods (\begin{DoxyParamCaption}\item[{void \texorpdfstring{$\ast$}{*}}]{self}{, }\item[{va\+\_\+list \texorpdfstring{$\ast$}{*}}]{args}{}\end{DoxyParamCaption})}
+
+
+
+Overrides class method implementations using a va\+\_\+list. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em self} & Object instance whose class will be modified \\
+\hline
+{\em args} & Variable argument list of offset/function pointer pairs \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+OOC\+\_\+\+ERROR\+\_\+\+NONE on success, appropriate error code on failure 
+\end{DoxyReturn}
+\Hypertarget{oocObject_8h_ab883bc381b9141f77ea43bac8db7ea83}\index{oocObject.h@{oocObject.h}!ooc\_overrideMethodsv@{ooc\_overrideMethodsv}}
+\index{ooc\_overrideMethodsv@{ooc\_overrideMethodsv}!oocObject.h@{oocObject.h}}
+\doxysubsubsection{\texorpdfstring{ooc\_overrideMethodsv()}{ooc\_overrideMethodsv()}}
+{\footnotesize\ttfamily \label{oocObject_8h_ab883bc381b9141f77ea43bac8db7ea83} 
+\mbox{\hyperlink{oocError_8h_a1effaed6897d01c49b4771abc4185718}{OOC\+\_\+\+Error}} ooc\+\_\+override\+Methodsv (\begin{DoxyParamCaption}\item[{void \texorpdfstring{$\ast$}{*}}]{self}{, }\item[{}]{...}{}\end{DoxyParamCaption})}
+
+
+
+Overrides class method implementations using variable arguments. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em self} & Object instance whose class will be modified \\
+\hline
+{\em ...} & Offset/function pointer pairs terminated by 0 \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+OOC\+\_\+\+ERROR\+\_\+\+NONE on success, appropriate error code on failure 
+\end{DoxyReturn}
+\Hypertarget{oocObject_8h_a19c82d2b543dd92e0222cd9a35f815cc}\index{oocObject.h@{oocObject.h}!ooc\_setInterface@{ooc\_setInterface}}
+\index{ooc\_setInterface@{ooc\_setInterface}!oocObject.h@{oocObject.h}}
+\doxysubsubsection{\texorpdfstring{ooc\_setInterface()}{ooc\_setInterface()}}
+{\footnotesize\ttfamily \label{oocObject_8h_a19c82d2b543dd92e0222cd9a35f815cc} 
+\mbox{\hyperlink{oocError_8h_a1effaed6897d01c49b4771abc4185718}{OOC\+\_\+\+Error}} ooc\+\_\+set\+Interface (\begin{DoxyParamCaption}\item[{void \texorpdfstring{$\ast$}{*}}]{self}{, }\item[{const void \texorpdfstring{$\ast$}{*}}]{impls}{, }\item[{unsigned int}]{count}{}\end{DoxyParamCaption})}
+
+
+
+Sets interfaces to an object. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em self} & Object instance \\
+\hline
+{\em impls} & Array of interface implementation descriptors. \\
+\hline
+{\em count} & Number of interface implementations. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+OOC\+\_\+\+ERROR\+\_\+\+NONE on success, appropriate error code on failure 
+\end{DoxyReturn}
+\Hypertarget{oocObject_8h_a00e2fa94d198a7a7eb20f5578030041d}\index{oocObject.h@{oocObject.h}!ooc\_sizeOf@{ooc\_sizeOf}}
+\index{ooc\_sizeOf@{ooc\_sizeOf}!oocObject.h@{oocObject.h}}
+\doxysubsubsection{\texorpdfstring{ooc\_sizeOf()}{ooc\_sizeOf()}}
+{\footnotesize\ttfamily \label{oocObject_8h_a00e2fa94d198a7a7eb20f5578030041d} 
+size\+\_\+t ooc\+\_\+size\+Of (\begin{DoxyParamCaption}\item[{const void \texorpdfstring{$\ast$}{*}}]{self}{}\end{DoxyParamCaption})}
+
+
+
+Returns the size in bytes of the given object. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em self} & Object instance \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+Size of the object in bytes, or 0 if self is NULL 
+\end{DoxyReturn}
+\Hypertarget{oocObject_8h_ab12239d9429fa6bcf82f96c88c4df764}\index{oocObject.h@{oocObject.h}!ooc\_toString@{ooc\_toString}}
+\index{ooc\_toString@{ooc\_toString}!oocObject.h@{oocObject.h}}
+\doxysubsubsection{\texorpdfstring{ooc\_toString()}{ooc\_toString()}}
+{\footnotesize\ttfamily \label{oocObject_8h_ab12239d9429fa6bcf82f96c88c4df764} 
+char \texorpdfstring{$\ast$}{*} ooc\+\_\+to\+String (\begin{DoxyParamCaption}\item[{const void \texorpdfstring{$\ast$}{*}}]{self}{}\end{DoxyParamCaption})}
+
+
+
+Returns a string representation of the given object. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em self} & Object instance \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+Pointer to a newly allocated string representation, or NULL on failure 
+\end{DoxyReturn}
+\begin{DoxyNote}{Note}
+Caller is responsible for freeing the returned string 
+\end{DoxyNote}
+\Hypertarget{oocObject_8h_af3775b9a77439d661d8ec000e34c13a4}\index{oocObject.h@{oocObject.h}!ooc\_verifyMethods@{ooc\_verifyMethods}}
+\index{ooc\_verifyMethods@{ooc\_verifyMethods}!oocObject.h@{oocObject.h}}
+\doxysubsubsection{\texorpdfstring{ooc\_verifyMethods()}{ooc\_verifyMethods()}}
+{\footnotesize\ttfamily \label{oocObject_8h_af3775b9a77439d661d8ec000e34c13a4} 
+\mbox{\hyperlink{oocError_8h_a1effaed6897d01c49b4771abc4185718}{OOC\+\_\+\+Error}} ooc\+\_\+verify\+Methods (\begin{DoxyParamCaption}\item[{void \texorpdfstring{$\ast$}{*}}]{self}{, }\item[{size\+\_\+t}]{start}{, }\item[{size\+\_\+t}]{end}{}\end{DoxyParamCaption})}
+
+
+
+Verifies that all function pointers in a class range are implemented. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em self} & Object instance to verify \\
+\hline
+{\em start} & Start offset in the class structure \\
+\hline
+{\em end} & End offset in the class structure \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+OOC\+\_\+\+ERROR\+\_\+\+NONE if all functions are implemented, error otherwise 
+\end{DoxyReturn}

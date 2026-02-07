@@ -1,0 +1,20 @@
+var searchData=
+[
+  ['ooc_5ferror_5fbuffer_5ftoo_5fsmall_0',['OOC_ERROR_BUFFER_TOO_SMALL',['../oocError_8h.html#a1effaed6897d01c49b4771abc4185718a9ba4c03af1b2a082708e1bd66d5d567b',1,'oocError.h']]],
+  ['ooc_5ferror_5fcount_1',['OOC_ERROR_COUNT',['../oocError_8h.html#a1effaed6897d01c49b4771abc4185718aaeeb54efa54c17a1bf3cd44fb79823fa',1,'oocError.h']]],
+  ['ooc_5ferror_5fduplicate_5finterface_2',['OOC_ERROR_DUPLICATE_INTERFACE',['../oocError_8h.html#a1effaed6897d01c49b4771abc4185718aab9cc3713ead5591a717e80502318aa9',1,'oocError.h']]],
+  ['ooc_5ferror_5ffinal_5fclass_5finheritance_3',['OOC_ERROR_FINAL_CLASS_INHERITANCE',['../oocError_8h.html#a1effaed6897d01c49b4771abc4185718af6f6342c736ab5489f0c2e58d757046e',1,'oocError.h']]],
+  ['ooc_5ferror_5finterface_5fnot_5ffound_4',['OOC_ERROR_INTERFACE_NOT_FOUND',['../oocError_8h.html#a1effaed6897d01c49b4771abc4185718a47b23346e1097fc1503fb7e0d6a1b4f4',1,'oocError.h']]],
+  ['ooc_5ferror_5finvalid_5fargument_5',['OOC_ERROR_INVALID_ARGUMENT',['../oocError_8h.html#a1effaed6897d01c49b4771abc4185718a5bb8180d5d0eebdcb0d4523152c371e3',1,'oocError.h']]],
+  ['ooc_5ferror_5finvalid_5fobject_6',['OOC_ERROR_INVALID_OBJECT',['../oocError_8h.html#a1effaed6897d01c49b4771abc4185718a3274f792def1637e24478eb4b6f355b5',1,'oocError.h']]],
+  ['ooc_5ferror_5fno_5fclass_7',['OOC_ERROR_NO_CLASS',['../oocError_8h.html#a1effaed6897d01c49b4771abc4185718a206f097a4d002209f0f5c798f6fd113c',1,'oocError.h']]],
+  ['ooc_5ferror_5fnone_8',['OOC_ERROR_NONE',['../oocError_8h.html#a1effaed6897d01c49b4771abc4185718ace916a88c6b27c1dae6fbec2e5c11d41',1,'oocError.h']]],
+  ['ooc_5ferror_5fnot_5fimplemented_9',['OOC_ERROR_NOT_IMPLEMENTED',['../oocError_8h.html#a1effaed6897d01c49b4771abc4185718ae5d211375355575073261021f6294bb8',1,'oocError.h']]],
+  ['ooc_5ferror_5fnull_5fpointer_10',['OOC_ERROR_NULL_POINTER',['../oocError_8h.html#a1effaed6897d01c49b4771abc4185718a739f64cf16d81af9f2b658b8f3f5ea59',1,'oocError.h']]],
+  ['ooc_5ferror_5fout_5fof_5fmemory_11',['OOC_ERROR_OUT_OF_MEMORY',['../oocError_8h.html#a1effaed6897d01c49b4771abc4185718a92b75dd49361355ad7bf8b4486e44f08',1,'oocError.h']]],
+  ['ooc_5ferror_5fstandard_12',['OOC_ERROR_STANDARD',['../oocError_8h.html#a1effaed6897d01c49b4771abc4185718a4e99e3568bd0e6ece38433b32209513a',1,'oocError.h']]],
+  ['ooc_5ferror_5funsupported_13',['OOC_ERROR_UNSUPPORTED',['../oocError_8h.html#a1effaed6897d01c49b4771abc4185718aad6c7f594d20e75ea8e7a9af00c2e565',1,'oocError.h']]],
+  ['ooc_5fmodifier_5fabstract_14',['OOC_MODIFIER_ABSTRACT',['../oocModifiers_8h.html#a55c7c3b6f63fc242720430a4fd709dd2a7255816a550670468db9d8d299c41733',1,'oocModifiers.h']]],
+  ['ooc_5fmodifier_5ffinal_15',['OOC_MODIFIER_FINAL',['../oocModifiers_8h.html#a55c7c3b6f63fc242720430a4fd709dd2a9038ca6af77436cf615f468acc2f6c06',1,'oocModifiers.h']]],
+  ['ooc_5fmodifier_5fnone_16',['OOC_MODIFIER_NONE',['../oocModifiers_8h.html#a55c7c3b6f63fc242720430a4fd709dd2acb8a3fe22374f49d32bb56830a0b2a34',1,'oocModifiers.h']]]
+];

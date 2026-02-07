@@ -1,0 +1,46 @@
+\doxysection{src/collection/abstract\+Collection/set/abstract\+Set/linked\+Hash\+Set/ooc\+Linked\+Hash\+Set.h File Reference}
+\hypertarget{oocLinkedHashSet_8h}{}\label{oocLinkedHashSet_8h}\index{src/collection/abstractCollection/set/abstractSet/linkedHashSet/oocLinkedHashSet.h@{src/collection/abstractCollection/set/abstractSet/linkedHashSet/oocLinkedHashSet.h}}
+
+
+Linked\+Hash\+Set implementation for the OOC (Object-\/\+Oriented C) framework.  
+
+
+\doxysubsubsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+void \texorpdfstring{$\ast$}{*} \mbox{\hyperlink{oocLinkedHashSet_8h_a31857a7f5a1f7f0b48631c315f1a887c}{ooc\+\_\+linked\+Hash\+Set\+Class}} ()
+\begin{DoxyCompactList}\small\item\em Returns the Linked\+Hash\+Set class descriptor. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+Linked\+Hash\+Set implementation for the OOC (Object-\/\+Oriented C) framework. 
+
+This header defines the Linked\+Hash\+Set class that implements the Set interface using a hash table with separate chaining and a doubly-\/linked list running through all entries to maintain insertion order. This implementation permits the null element. Performance\+: O(1) average case for add, remove, and contains operations. Iteration order\+: Elements are returned in the order they were inserted. 
+
+\label{doc-func-members}
+\Hypertarget{oocLinkedHashSet_8h_doc-func-members}
+\doxysubsection{Function Documentation}
+\Hypertarget{oocLinkedHashSet_8h_a31857a7f5a1f7f0b48631c315f1a887c}\index{oocLinkedHashSet.h@{oocLinkedHashSet.h}!ooc\_linkedHashSetClass@{ooc\_linkedHashSetClass}}
+\index{ooc\_linkedHashSetClass@{ooc\_linkedHashSetClass}!oocLinkedHashSet.h@{oocLinkedHashSet.h}}
+\doxysubsubsection{\texorpdfstring{ooc\_linkedHashSetClass()}{ooc\_linkedHashSetClass()}}
+{\footnotesize\ttfamily \label{oocLinkedHashSet_8h_a31857a7f5a1f7f0b48631c315f1a887c} 
+void \texorpdfstring{$\ast$}{*} ooc\+\_\+linked\+Hash\+Set\+Class (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})}
+
+
+
+Returns the Linked\+Hash\+Set class descriptor. 
+
+\begin{DoxyReturn}{Returns}
+Pointer to the Linked\+Hash\+Set class object
+\end{DoxyReturn}
+Constructor parameters\+:
+\begin{DoxyItemize}
+\item initial\+Capacity (size\+\_\+t)\+: Initial capacity for the hash table, or 0 for default (16)
+\end{DoxyItemize}
+
+Example\+: 
+\begin{DoxyCode}{0}
+\DoxyCodeLine{\textcolor{keywordtype}{void}*\ set\ =\ ooc\_new(\mbox{\hyperlink{oocLinkedHashSet_8h_a31857a7f5a1f7f0b48631c315f1a887c}{ooc\_linkedHashSetClass}}(),\ 16);}
+
+\end{DoxyCode}
+ 

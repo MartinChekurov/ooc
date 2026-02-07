@@ -1,0 +1,60 @@
+\doxysection{src/modifiers/ooc\+Modifiers.h File Reference}
+\hypertarget{oocModifiers_8h}{}\label{oocModifiers_8h}\index{src/modifiers/oocModifiers.h@{src/modifiers/oocModifiers.h}}
+
+
+Class modifier definitions for the OOC (Object-\/\+Oriented C) framework.  
+
+
+\doxysubsubsection*{Typedefs}
+\begin{DoxyCompactItemize}
+\item 
+\Hypertarget{oocModifiers_8h_ae6e73ca9a252363aaf5ef67b699a0cb2}\label{oocModifiers_8h_ae6e73ca9a252363aaf5ef67b699a0cb2} 
+typedef enum \mbox{\hyperlink{oocModifiers_8h_a55c7c3b6f63fc242720430a4fd709dd2}{OOC\+\_\+\+Modifier}} {\bfseries OOC\+\_\+\+Modifier}
+\begin{DoxyCompactList}\small\item\em Class modifier enumeration for OOC framework classes. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsubsection*{Enumerations}
+\begin{DoxyCompactItemize}
+\item 
+enum \mbox{\hyperlink{oocModifiers_8h_a55c7c3b6f63fc242720430a4fd709dd2}{OOC\+\_\+\+Modifier}} \{ \mbox{\hyperlink{oocModifiers_8h_a55c7c3b6f63fc242720430a4fd709dd2acb8a3fe22374f49d32bb56830a0b2a34}{OOC\+\_\+\+MODIFIER\+\_\+\+NONE}} = 0
+, \mbox{\hyperlink{oocModifiers_8h_a55c7c3b6f63fc242720430a4fd709dd2a9038ca6af77436cf615f468acc2f6c06}{OOC\+\_\+\+MODIFIER\+\_\+\+FINAL}} = 1
+, \mbox{\hyperlink{oocModifiers_8h_a55c7c3b6f63fc242720430a4fd709dd2a7255816a550670468db9d8d299c41733}{OOC\+\_\+\+MODIFIER\+\_\+\+ABSTRACT}} = 2
+ \}
+\begin{DoxyCompactList}\small\item\em Enumeration of class modifiers that can be applied to OOC classes. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+Class modifier definitions for the OOC (Object-\/\+Oriented C) framework. 
+
+This header defines modifier flags that can be applied to classes in the OOC framework, similar to access modifiers and class modifiers in object-\/oriented languages like Java. 
+
+\label{doc-enum-members}
+\Hypertarget{oocModifiers_8h_doc-enum-members}
+\doxysubsection{Enumeration Type Documentation}
+\Hypertarget{oocModifiers_8h_a55c7c3b6f63fc242720430a4fd709dd2}\index{oocModifiers.h@{oocModifiers.h}!OOC\_Modifier@{OOC\_Modifier}}
+\index{OOC\_Modifier@{OOC\_Modifier}!oocModifiers.h@{oocModifiers.h}}
+\doxysubsubsection{\texorpdfstring{OOC\_Modifier}{OOC\_Modifier}}
+{\footnotesize\ttfamily \label{oocModifiers_8h_a55c7c3b6f63fc242720430a4fd709dd2} 
+enum \mbox{\hyperlink{oocModifiers_8h_a55c7c3b6f63fc242720430a4fd709dd2}{OOC\+\_\+\+Modifier}}}
+
+
+
+Enumeration of class modifiers that can be applied to OOC classes. 
+
+These modifiers control class behavior and inheritance rules\+:
+\begin{DoxyItemize}
+\item NONE\+: Default modifier, no special restrictions
+\item FINAL\+: Class cannot be inherited from
+\item ABSTRACT\+: Class cannot be instantiated directly 
+\end{DoxyItemize}\begin{DoxyEnumFields}[2]{Enumerator}
+\raisebox{\heightof{T}}[0pt][0pt]{\index{OOC\_MODIFIER\_NONE@{OOC\_MODIFIER\_NONE}!oocModifiers.h@{oocModifiers.h}}\index{oocModifiers.h@{oocModifiers.h}!OOC\_MODIFIER\_NONE@{OOC\_MODIFIER\_NONE}}}\Hypertarget{oocModifiers_8h_a55c7c3b6f63fc242720430a4fd709dd2acb8a3fe22374f49d32bb56830a0b2a34}\label{oocModifiers_8h_a55c7c3b6f63fc242720430a4fd709dd2acb8a3fe22374f49d32bb56830a0b2a34} 
+OOC\+\_\+\+MODIFIER\+\_\+\+NONE&No special modifiers applied to the class. \\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{OOC\_MODIFIER\_FINAL@{OOC\_MODIFIER\_FINAL}!oocModifiers.h@{oocModifiers.h}}\index{oocModifiers.h@{oocModifiers.h}!OOC\_MODIFIER\_FINAL@{OOC\_MODIFIER\_FINAL}}}\Hypertarget{oocModifiers_8h_a55c7c3b6f63fc242720430a4fd709dd2a9038ca6af77436cf615f468acc2f6c06}\label{oocModifiers_8h_a55c7c3b6f63fc242720430a4fd709dd2a9038ca6af77436cf615f468acc2f6c06} 
+OOC\+\_\+\+MODIFIER\+\_\+\+FINAL&Class is final and cannot be inherited from. \\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{OOC\_MODIFIER\_ABSTRACT@{OOC\_MODIFIER\_ABSTRACT}!oocModifiers.h@{oocModifiers.h}}\index{oocModifiers.h@{oocModifiers.h}!OOC\_MODIFIER\_ABSTRACT@{OOC\_MODIFIER\_ABSTRACT}}}\Hypertarget{oocModifiers_8h_a55c7c3b6f63fc242720430a4fd709dd2a7255816a550670468db9d8d299c41733}\label{oocModifiers_8h_a55c7c3b6f63fc242720430a4fd709dd2a7255816a550670468db9d8d299c41733} 
+OOC\+\_\+\+MODIFIER\+\_\+\+ABSTRACT&Class is abstract and cannot be instantiated directly. \\
+\hline
+
+\end{DoxyEnumFields}

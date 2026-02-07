@@ -1,0 +1,46 @@
+\doxysection{src/collection/abstract\+Collection/set/abstract\+Set/hash\+Set/ooc\+Hash\+Set.h File Reference}
+\hypertarget{oocHashSet_8h}{}\label{oocHashSet_8h}\index{src/collection/abstractCollection/set/abstractSet/hashSet/oocHashSet.h@{src/collection/abstractCollection/set/abstractSet/hashSet/oocHashSet.h}}
+
+
+Hash\+Set implementation for the OOC (Object-\/\+Oriented C) framework.  
+
+
+\doxysubsubsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+void \texorpdfstring{$\ast$}{*} \mbox{\hyperlink{oocHashSet_8h_ad87fe0e1999fc8f89a1952457e63de6e}{ooc\+\_\+hash\+Set\+Class}} ()
+\begin{DoxyCompactList}\small\item\em Returns the Hash\+Set class descriptor. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+Hash\+Set implementation for the OOC (Object-\/\+Oriented C) framework. 
+
+This header defines the Hash\+Set class that implements the Set interface using a hash table with separate chaining. It makes no guarantees about the iteration order of elements. This implementation permits the null element. Performance\+: O(1) average case for add, remove, and contains operations. 
+
+\label{doc-func-members}
+\Hypertarget{oocHashSet_8h_doc-func-members}
+\doxysubsection{Function Documentation}
+\Hypertarget{oocHashSet_8h_ad87fe0e1999fc8f89a1952457e63de6e}\index{oocHashSet.h@{oocHashSet.h}!ooc\_hashSetClass@{ooc\_hashSetClass}}
+\index{ooc\_hashSetClass@{ooc\_hashSetClass}!oocHashSet.h@{oocHashSet.h}}
+\doxysubsubsection{\texorpdfstring{ooc\_hashSetClass()}{ooc\_hashSetClass()}}
+{\footnotesize\ttfamily \label{oocHashSet_8h_ad87fe0e1999fc8f89a1952457e63de6e} 
+void \texorpdfstring{$\ast$}{*} ooc\+\_\+hash\+Set\+Class (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})}
+
+
+
+Returns the Hash\+Set class descriptor. 
+
+\begin{DoxyReturn}{Returns}
+Pointer to the Hash\+Set class object
+\end{DoxyReturn}
+Constructor parameters\+:
+\begin{DoxyItemize}
+\item initial\+Capacity (size\+\_\+t)\+: Initial capacity for the hash table, or 0 for default (16)
+\end{DoxyItemize}
+
+Example\+: 
+\begin{DoxyCode}{0}
+\DoxyCodeLine{\textcolor{keywordtype}{void}*\ set\ =\ ooc\_new(\mbox{\hyperlink{oocHashSet_8h_ad87fe0e1999fc8f89a1952457e63de6e}{ooc\_hashSetClass}}(),\ 16);}
+
+\end{DoxyCode}
+ 

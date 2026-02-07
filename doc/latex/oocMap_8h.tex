@@ -1,0 +1,256 @@
+\doxysection{src/interface/map/ooc\+Map.h File Reference}
+\hypertarget{oocMap_8h}{}\label{oocMap_8h}\index{src/interface/map/oocMap.h@{src/interface/map/oocMap.h}}
+
+
+Map interface for the OOC (Object-\/\+Oriented C) framework.  
+
+
+{\ttfamily \#include "{}ooc\+Error.\+h"{}}\newline
+{\ttfamily \#include $<$stddef.\+h$>$}\newline
+{\ttfamily \#include $<$stdbool.\+h$>$}\newline
+\doxysubsubsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+void \texorpdfstring{$\ast$}{*} \mbox{\hyperlink{oocMap_8h_a56a94bbbc157a037f2ce7e5939736735}{ooc\+\_\+map\+Class}} ()
+\begin{DoxyCompactList}\small\item\em Returns the Map interface class descriptor. \end{DoxyCompactList}\item 
+size\+\_\+t \mbox{\hyperlink{oocMap_8h_a878ffb97274f828f7dd0d6d3774a5e11}{ooc\+\_\+map\+Size}} (void \texorpdfstring{$\ast$}{*}self)
+\begin{DoxyCompactList}\small\item\em Returns the number of key-\/value mappings in the map. \end{DoxyCompactList}\item 
+bool \mbox{\hyperlink{oocMap_8h_a51440432c5bccbda3ab91e8cb522621f}{ooc\+\_\+map\+Is\+Empty}} (void \texorpdfstring{$\ast$}{*}self)
+\begin{DoxyCompactList}\small\item\em Checks if the map is empty. \end{DoxyCompactList}\item 
+bool \mbox{\hyperlink{oocMap_8h_a83844a09983fd1a6f276192da71f769a}{ooc\+\_\+map\+Contains\+Key}} (void \texorpdfstring{$\ast$}{*}self, void \texorpdfstring{$\ast$}{*}key)
+\begin{DoxyCompactList}\small\item\em Checks if the map contains a mapping for the specified key. \end{DoxyCompactList}\item 
+bool \mbox{\hyperlink{oocMap_8h_a76086f5391f9c21dddb756bc6411107e}{ooc\+\_\+map\+Contains\+Value}} (void \texorpdfstring{$\ast$}{*}self, void \texorpdfstring{$\ast$}{*}value)
+\begin{DoxyCompactList}\small\item\em Checks if the map contains one or more keys mapping to the specified value. \end{DoxyCompactList}\item 
+void \texorpdfstring{$\ast$}{*} \mbox{\hyperlink{oocMap_8h_a1497b9d81cec535c79a03e7309e6f79a}{ooc\+\_\+map\+Get}} (void \texorpdfstring{$\ast$}{*}self, void \texorpdfstring{$\ast$}{*}key)
+\begin{DoxyCompactList}\small\item\em Returns the value to which the specified key is mapped. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{oocError_8h_a1effaed6897d01c49b4771abc4185718}{OOC\+\_\+\+Error}} \mbox{\hyperlink{oocMap_8h_a42fe3fff73293f5bef103e52059cb22e}{ooc\+\_\+map\+Put}} (void \texorpdfstring{$\ast$}{*}self, void \texorpdfstring{$\ast$}{*}key, void \texorpdfstring{$\ast$}{*}value)
+\begin{DoxyCompactList}\small\item\em Associates the specified value with the specified key in the map. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{oocError_8h_a1effaed6897d01c49b4771abc4185718}{OOC\+\_\+\+Error}} \mbox{\hyperlink{oocMap_8h_a60f383149342d5d22ede9082e6c882e5}{ooc\+\_\+map\+Remove}} (void \texorpdfstring{$\ast$}{*}self, void \texorpdfstring{$\ast$}{*}key)
+\begin{DoxyCompactList}\small\item\em Removes the mapping for a key from the map if it is present. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{oocError_8h_a1effaed6897d01c49b4771abc4185718}{OOC\+\_\+\+Error}} \mbox{\hyperlink{oocMap_8h_a99d711546193057efed67ad9399f0b44}{ooc\+\_\+map\+Clear}} (void \texorpdfstring{$\ast$}{*}self)
+\begin{DoxyCompactList}\small\item\em Removes all of the mappings from the map. \end{DoxyCompactList}\item 
+void \texorpdfstring{$\ast$}{*} \mbox{\hyperlink{oocMap_8h_a41042a92706d7e41eec9b69a30bd7f2f}{ooc\+\_\+map\+Key\+Set}} (void \texorpdfstring{$\ast$}{*}self)
+\begin{DoxyCompactList}\small\item\em Returns a Set view of the keys contained in the map. \end{DoxyCompactList}\item 
+void \texorpdfstring{$\ast$}{*} \mbox{\hyperlink{oocMap_8h_a2f109628628c088d8f417b2b78f51400}{ooc\+\_\+map\+Values}} (void \texorpdfstring{$\ast$}{*}self)
+\begin{DoxyCompactList}\small\item\em Returns a Collection view of the values contained in the map. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+Map interface for the OOC (Object-\/\+Oriented C) framework. 
+
+This header defines the Map interface that represents a collection of key-\/value pairs. Maps cannot contain duplicate keys; each key can map to at most one value. 
+
+\label{doc-func-members}
+\Hypertarget{oocMap_8h_doc-func-members}
+\doxysubsection{Function Documentation}
+\Hypertarget{oocMap_8h_a56a94bbbc157a037f2ce7e5939736735}\index{oocMap.h@{oocMap.h}!ooc\_mapClass@{ooc\_mapClass}}
+\index{ooc\_mapClass@{ooc\_mapClass}!oocMap.h@{oocMap.h}}
+\doxysubsubsection{\texorpdfstring{ooc\_mapClass()}{ooc\_mapClass()}}
+{\footnotesize\ttfamily \label{oocMap_8h_a56a94bbbc157a037f2ce7e5939736735} 
+void \texorpdfstring{$\ast$}{*} ooc\+\_\+map\+Class (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})}
+
+
+
+Returns the Map interface class descriptor. 
+
+\begin{DoxyReturn}{Returns}
+Pointer to the Map interface class object 
+\end{DoxyReturn}
+\Hypertarget{oocMap_8h_a99d711546193057efed67ad9399f0b44}\index{oocMap.h@{oocMap.h}!ooc\_mapClear@{ooc\_mapClear}}
+\index{ooc\_mapClear@{ooc\_mapClear}!oocMap.h@{oocMap.h}}
+\doxysubsubsection{\texorpdfstring{ooc\_mapClear()}{ooc\_mapClear()}}
+{\footnotesize\ttfamily \label{oocMap_8h_a99d711546193057efed67ad9399f0b44} 
+\mbox{\hyperlink{oocError_8h_a1effaed6897d01c49b4771abc4185718}{OOC\+\_\+\+Error}} ooc\+\_\+map\+Clear (\begin{DoxyParamCaption}\item[{void \texorpdfstring{$\ast$}{*}}]{self}{}\end{DoxyParamCaption})}
+
+
+
+Removes all of the mappings from the map. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em self} & Map object instance \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+OOC\+\_\+\+ERROR\+\_\+\+NONE on success, appropriate error code on failure 
+\end{DoxyReturn}
+\Hypertarget{oocMap_8h_a83844a09983fd1a6f276192da71f769a}\index{oocMap.h@{oocMap.h}!ooc\_mapContainsKey@{ooc\_mapContainsKey}}
+\index{ooc\_mapContainsKey@{ooc\_mapContainsKey}!oocMap.h@{oocMap.h}}
+\doxysubsubsection{\texorpdfstring{ooc\_mapContainsKey()}{ooc\_mapContainsKey()}}
+{\footnotesize\ttfamily \label{oocMap_8h_a83844a09983fd1a6f276192da71f769a} 
+bool ooc\+\_\+map\+Contains\+Key (\begin{DoxyParamCaption}\item[{void \texorpdfstring{$\ast$}{*}}]{self}{, }\item[{void \texorpdfstring{$\ast$}{*}}]{key}{}\end{DoxyParamCaption})}
+
+
+
+Checks if the map contains a mapping for the specified key. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em self} & Map object instance \\
+\hline
+{\em key} & Key whose presence in the map is to be tested \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+true if the map contains a mapping for the key, false otherwise 
+\end{DoxyReturn}
+\Hypertarget{oocMap_8h_a76086f5391f9c21dddb756bc6411107e}\index{oocMap.h@{oocMap.h}!ooc\_mapContainsValue@{ooc\_mapContainsValue}}
+\index{ooc\_mapContainsValue@{ooc\_mapContainsValue}!oocMap.h@{oocMap.h}}
+\doxysubsubsection{\texorpdfstring{ooc\_mapContainsValue()}{ooc\_mapContainsValue()}}
+{\footnotesize\ttfamily \label{oocMap_8h_a76086f5391f9c21dddb756bc6411107e} 
+bool ooc\+\_\+map\+Contains\+Value (\begin{DoxyParamCaption}\item[{void \texorpdfstring{$\ast$}{*}}]{self}{, }\item[{void \texorpdfstring{$\ast$}{*}}]{value}{}\end{DoxyParamCaption})}
+
+
+
+Checks if the map contains one or more keys mapping to the specified value. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em self} & Map object instance \\
+\hline
+{\em value} & Value whose presence in the map is to be tested \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+true if the map maps one or more keys to the value, false otherwise 
+\end{DoxyReturn}
+\Hypertarget{oocMap_8h_a1497b9d81cec535c79a03e7309e6f79a}\index{oocMap.h@{oocMap.h}!ooc\_mapGet@{ooc\_mapGet}}
+\index{ooc\_mapGet@{ooc\_mapGet}!oocMap.h@{oocMap.h}}
+\doxysubsubsection{\texorpdfstring{ooc\_mapGet()}{ooc\_mapGet()}}
+{\footnotesize\ttfamily \label{oocMap_8h_a1497b9d81cec535c79a03e7309e6f79a} 
+void \texorpdfstring{$\ast$}{*} ooc\+\_\+map\+Get (\begin{DoxyParamCaption}\item[{void \texorpdfstring{$\ast$}{*}}]{self}{, }\item[{void \texorpdfstring{$\ast$}{*}}]{key}{}\end{DoxyParamCaption})}
+
+
+
+Returns the value to which the specified key is mapped. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em self} & Map object instance \\
+\hline
+{\em key} & Key whose associated value is to be returned \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+The value to which the key is mapped, or NULL if the map contains no mapping for the key 
+\end{DoxyReturn}
+\Hypertarget{oocMap_8h_a51440432c5bccbda3ab91e8cb522621f}\index{oocMap.h@{oocMap.h}!ooc\_mapIsEmpty@{ooc\_mapIsEmpty}}
+\index{ooc\_mapIsEmpty@{ooc\_mapIsEmpty}!oocMap.h@{oocMap.h}}
+\doxysubsubsection{\texorpdfstring{ooc\_mapIsEmpty()}{ooc\_mapIsEmpty()}}
+{\footnotesize\ttfamily \label{oocMap_8h_a51440432c5bccbda3ab91e8cb522621f} 
+bool ooc\+\_\+map\+Is\+Empty (\begin{DoxyParamCaption}\item[{void \texorpdfstring{$\ast$}{*}}]{self}{}\end{DoxyParamCaption})}
+
+
+
+Checks if the map is empty. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em self} & Map object instance \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+true if the map contains no key-\/value mappings, false otherwise 
+\end{DoxyReturn}
+\Hypertarget{oocMap_8h_a41042a92706d7e41eec9b69a30bd7f2f}\index{oocMap.h@{oocMap.h}!ooc\_mapKeySet@{ooc\_mapKeySet}}
+\index{ooc\_mapKeySet@{ooc\_mapKeySet}!oocMap.h@{oocMap.h}}
+\doxysubsubsection{\texorpdfstring{ooc\_mapKeySet()}{ooc\_mapKeySet()}}
+{\footnotesize\ttfamily \label{oocMap_8h_a41042a92706d7e41eec9b69a30bd7f2f} 
+void \texorpdfstring{$\ast$}{*} ooc\+\_\+map\+Key\+Set (\begin{DoxyParamCaption}\item[{void \texorpdfstring{$\ast$}{*}}]{self}{}\end{DoxyParamCaption})}
+
+
+
+Returns a Set view of the keys contained in the map. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em self} & Map object instance \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+Set object containing all keys, or NULL on failure 
+\end{DoxyReturn}
+\begin{DoxyNote}{Note}
+Caller is responsible for destroying the returned Set object with ooc\+\_\+destroy 
+\end{DoxyNote}
+\Hypertarget{oocMap_8h_a42fe3fff73293f5bef103e52059cb22e}\index{oocMap.h@{oocMap.h}!ooc\_mapPut@{ooc\_mapPut}}
+\index{ooc\_mapPut@{ooc\_mapPut}!oocMap.h@{oocMap.h}}
+\doxysubsubsection{\texorpdfstring{ooc\_mapPut()}{ooc\_mapPut()}}
+{\footnotesize\ttfamily \label{oocMap_8h_a42fe3fff73293f5bef103e52059cb22e} 
+\mbox{\hyperlink{oocError_8h_a1effaed6897d01c49b4771abc4185718}{OOC\+\_\+\+Error}} ooc\+\_\+map\+Put (\begin{DoxyParamCaption}\item[{void \texorpdfstring{$\ast$}{*}}]{self}{, }\item[{void \texorpdfstring{$\ast$}{*}}]{key}{, }\item[{void \texorpdfstring{$\ast$}{*}}]{value}{}\end{DoxyParamCaption})}
+
+
+
+Associates the specified value with the specified key in the map. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em self} & Map object instance \\
+\hline
+{\em key} & Key with which the value is to be associated \\
+\hline
+{\em value} & Value to be associated with the key \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+OOC\+\_\+\+ERROR\+\_\+\+NONE on success, appropriate error code on failure 
+\end{DoxyReturn}
+\Hypertarget{oocMap_8h_a60f383149342d5d22ede9082e6c882e5}\index{oocMap.h@{oocMap.h}!ooc\_mapRemove@{ooc\_mapRemove}}
+\index{ooc\_mapRemove@{ooc\_mapRemove}!oocMap.h@{oocMap.h}}
+\doxysubsubsection{\texorpdfstring{ooc\_mapRemove()}{ooc\_mapRemove()}}
+{\footnotesize\ttfamily \label{oocMap_8h_a60f383149342d5d22ede9082e6c882e5} 
+\mbox{\hyperlink{oocError_8h_a1effaed6897d01c49b4771abc4185718}{OOC\+\_\+\+Error}} ooc\+\_\+map\+Remove (\begin{DoxyParamCaption}\item[{void \texorpdfstring{$\ast$}{*}}]{self}{, }\item[{void \texorpdfstring{$\ast$}{*}}]{key}{}\end{DoxyParamCaption})}
+
+
+
+Removes the mapping for a key from the map if it is present. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em self} & Map object instance \\
+\hline
+{\em key} & Key whose mapping is to be removed from the map \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+OOC\+\_\+\+ERROR\+\_\+\+NONE on success, appropriate error code on failure 
+\end{DoxyReturn}
+\Hypertarget{oocMap_8h_a878ffb97274f828f7dd0d6d3774a5e11}\index{oocMap.h@{oocMap.h}!ooc\_mapSize@{ooc\_mapSize}}
+\index{ooc\_mapSize@{ooc\_mapSize}!oocMap.h@{oocMap.h}}
+\doxysubsubsection{\texorpdfstring{ooc\_mapSize()}{ooc\_mapSize()}}
+{\footnotesize\ttfamily \label{oocMap_8h_a878ffb97274f828f7dd0d6d3774a5e11} 
+size\+\_\+t ooc\+\_\+map\+Size (\begin{DoxyParamCaption}\item[{void \texorpdfstring{$\ast$}{*}}]{self}{}\end{DoxyParamCaption})}
+
+
+
+Returns the number of key-\/value mappings in the map. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em self} & Map object instance \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+Number of mappings, or 0 if self is NULL 
+\end{DoxyReturn}
+\Hypertarget{oocMap_8h_a2f109628628c088d8f417b2b78f51400}\index{oocMap.h@{oocMap.h}!ooc\_mapValues@{ooc\_mapValues}}
+\index{ooc\_mapValues@{ooc\_mapValues}!oocMap.h@{oocMap.h}}
+\doxysubsubsection{\texorpdfstring{ooc\_mapValues()}{ooc\_mapValues()}}
+{\footnotesize\ttfamily \label{oocMap_8h_a2f109628628c088d8f417b2b78f51400} 
+void \texorpdfstring{$\ast$}{*} ooc\+\_\+map\+Values (\begin{DoxyParamCaption}\item[{void \texorpdfstring{$\ast$}{*}}]{self}{}\end{DoxyParamCaption})}
+
+
+
+Returns a Collection view of the values contained in the map. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em self} & Map object instance \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+Collection object containing all values, or NULL on failure 
+\end{DoxyReturn}
+\begin{DoxyNote}{Note}
+Caller is responsible for destroying the returned Collection object with ooc\+\_\+destroy 
+\end{DoxyNote}

@@ -1,0 +1,50 @@
+\doxysection{ooc\+Deque.\+h}
+\hypertarget{oocDeque_8h_source}{}\label{oocDeque_8h_source}\index{src/interface/iterable/collection/queue/deque/oocDeque.h@{src/interface/iterable/collection/queue/deque/oocDeque.h}}
+\mbox{\hyperlink{oocDeque_8h}{Go to the documentation of this file.}}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00001\ }
+\DoxyCodeLine{00012\ }
+\DoxyCodeLine{00013\ \textcolor{preprocessor}{\#ifndef\ OOC\_DEQUE\_H\_}}
+\DoxyCodeLine{00014\ \textcolor{preprocessor}{\#define\ OOC\_DEQUE\_H\_}}
+\DoxyCodeLine{00015\ }
+\DoxyCodeLine{00016\ \textcolor{preprocessor}{\#include\ "{}\mbox{\hyperlink{oocError_8h}{oocError.h}}"{}}}
+\DoxyCodeLine{00017\ \textcolor{preprocessor}{\#include\ <stddef.h>}}
+\DoxyCodeLine{00018\ \textcolor{preprocessor}{\#include\ <stdbool.h>}}
+\DoxyCodeLine{00019\ }
+\DoxyCodeLine{00027\ \textcolor{keywordtype}{void}*\ \mbox{\hyperlink{oocDeque_8h_a15d241a8f5a443f69cbb0f6c1c99b537}{ooc\_dequeClass}}();}
+\DoxyCodeLine{00028\ }
+\DoxyCodeLine{00051\ \textcolor{keywordtype}{void}*\ \mbox{\hyperlink{oocDeque_8h_ad5e115ec7d7d8f675f98c3b7191cc119}{ooc\_dequeGetIterator}}(\textcolor{keywordtype}{void}*\ self);}
+\DoxyCodeLine{00052\ }
+\DoxyCodeLine{00058\ \textcolor{keywordtype}{size\_t}\ \mbox{\hyperlink{oocDeque_8h_a7695bba11077db2be3e6062fe9a72f1f}{ooc\_dequeSize}}(\textcolor{keywordtype}{void}*\ self);}
+\DoxyCodeLine{00059\ }
+\DoxyCodeLine{00065\ \textcolor{keywordtype}{bool}\ \mbox{\hyperlink{oocDeque_8h_a68ccebeb9f237fb9bdf5884e7c1eeb0c}{ooc\_dequeIsEmpty}}(\textcolor{keywordtype}{void}*\ self);}
+\DoxyCodeLine{00066\ }
+\DoxyCodeLine{00073\ \textcolor{keywordtype}{bool}\ \mbox{\hyperlink{oocDeque_8h_ac4299e7444667fc6f5a09f6213040441}{ooc\_dequeContains}}(\textcolor{keywordtype}{void}*\ self,\ \textcolor{keywordtype}{void}*\ element);}
+\DoxyCodeLine{00074\ }
+\DoxyCodeLine{00082\ \mbox{\hyperlink{oocError_8h_a1effaed6897d01c49b4771abc4185718}{OOC\_Error}}\ \mbox{\hyperlink{oocDeque_8h_aeeb36cfae5303da7cd8e12497d3b346d}{ooc\_dequeAdd}}(\textcolor{keywordtype}{void}*\ self,\ \textcolor{keywordtype}{void}*\ element);}
+\DoxyCodeLine{00083\ }
+\DoxyCodeLine{00091\ \mbox{\hyperlink{oocError_8h_a1effaed6897d01c49b4771abc4185718}{OOC\_Error}}\ \mbox{\hyperlink{oocDeque_8h_a83d99e9dd8196842c6ea187dd3ae8824}{ooc\_dequeRemove}}(\textcolor{keywordtype}{void}*\ self,\ \textcolor{keywordtype}{void}*\ element);}
+\DoxyCodeLine{00092\ }
+\DoxyCodeLine{00098\ \mbox{\hyperlink{oocError_8h_a1effaed6897d01c49b4771abc4185718}{OOC\_Error}}\ \mbox{\hyperlink{oocDeque_8h_a5ed5aeccbab1364f8d0b6e9162d78614}{ooc\_dequeClear}}(\textcolor{keywordtype}{void}*\ self);}
+\DoxyCodeLine{00099\ }
+\DoxyCodeLine{00107\ \mbox{\hyperlink{oocError_8h_a1effaed6897d01c49b4771abc4185718}{OOC\_Error}}\ \mbox{\hyperlink{oocDeque_8h_afdb3f3343c7373f09d4323a0d2a12bbe}{ooc\_dequePush}}(\textcolor{keywordtype}{void}*\ self,\ \textcolor{keywordtype}{void}*\ element);}
+\DoxyCodeLine{00108\ }
+\DoxyCodeLine{00115\ \textcolor{keywordtype}{void}*\ \mbox{\hyperlink{oocDeque_8h_ae43872a10db0951c6a2149581c62129a}{ooc\_dequePop}}(\textcolor{keywordtype}{void}*\ self);}
+\DoxyCodeLine{00116\ }
+\DoxyCodeLine{00123\ \textcolor{keywordtype}{void}*\ \mbox{\hyperlink{oocDeque_8h_aae437e5b3d6df575571f99097d17be9c}{ooc\_dequePeek}}(\textcolor{keywordtype}{void}*\ self);}
+\DoxyCodeLine{00124\ }
+\DoxyCodeLine{00132\ \mbox{\hyperlink{oocError_8h_a1effaed6897d01c49b4771abc4185718}{OOC\_Error}}\ \mbox{\hyperlink{oocDeque_8h_a6fe865c1aad1a2277d24b0c81b1d163f}{ooc\_dequeAddFirst}}(\textcolor{keywordtype}{void}*\ self,\ \textcolor{keywordtype}{void}*\ element);}
+\DoxyCodeLine{00133\ }
+\DoxyCodeLine{00141\ \mbox{\hyperlink{oocError_8h_a1effaed6897d01c49b4771abc4185718}{OOC\_Error}}\ \mbox{\hyperlink{oocDeque_8h_affde1540e617ed6ff6aa191a5370d7e3}{ooc\_dequeAddLast}}(\textcolor{keywordtype}{void}*\ self,\ \textcolor{keywordtype}{void}*\ element);}
+\DoxyCodeLine{00142\ }
+\DoxyCodeLine{00149\ \textcolor{keywordtype}{void}*\ \mbox{\hyperlink{oocDeque_8h_a5a2d7d5596a46466d93c93c9871f8314}{ooc\_dequeRemoveFirst}}(\textcolor{keywordtype}{void}*\ self);}
+\DoxyCodeLine{00150\ }
+\DoxyCodeLine{00157\ \textcolor{keywordtype}{void}*\ \mbox{\hyperlink{oocDeque_8h_af462b88cc392bfb2080b09ba4be3e80e}{ooc\_dequeRemoveLast}}(\textcolor{keywordtype}{void}*\ self);}
+\DoxyCodeLine{00158\ }
+\DoxyCodeLine{00165\ \textcolor{keywordtype}{void}*\ \mbox{\hyperlink{oocDeque_8h_ac525a4030c8017d3cbabcd2b7aaeb9c1}{ooc\_dequeGetFirst}}(\textcolor{keywordtype}{void}*\ self);}
+\DoxyCodeLine{00166\ }
+\DoxyCodeLine{00173\ \textcolor{keywordtype}{void}*\ \mbox{\hyperlink{oocDeque_8h_af85b8e27c2122c5edd9602444c1dc4be}{ooc\_dequeGetLast}}(\textcolor{keywordtype}{void}*\ self);}
+\DoxyCodeLine{00174\ }
+\DoxyCodeLine{00175\ \textcolor{preprocessor}{\#endif}}
+
+\end{DoxyCode}

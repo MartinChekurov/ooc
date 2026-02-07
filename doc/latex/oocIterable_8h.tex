@@ -1,0 +1,75 @@
+\doxysection{src/interface/iterable/ooc\+Iterable.h File Reference}
+\hypertarget{oocIterable_8h}{}\label{oocIterable_8h}\index{src/interface/iterable/oocIterable.h@{src/interface/iterable/oocIterable.h}}
+
+
+Iterable interface for the OOC (Object-\/\+Oriented C) framework.  
+
+
+{\ttfamily \#include "{}ooc\+Error.\+h"{}}\newline
+{\ttfamily \#include $<$stdbool.\+h$>$}\newline
+\doxysubsubsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+void \texorpdfstring{$\ast$}{*} \mbox{\hyperlink{oocIterable_8h_a5e4edc6afba4223b6b54a7d05ffc0d09}{ooc\+\_\+iterable\+Class}} ()
+\begin{DoxyCompactList}\small\item\em Returns the Iterable interface class descriptor. \end{DoxyCompactList}\item 
+void \texorpdfstring{$\ast$}{*} \mbox{\hyperlink{oocIterable_8h_a0cca3be8519c51cca2b5bf8a3a29f364}{ooc\+\_\+iterable\+Get\+Iterator}} (void \texorpdfstring{$\ast$}{*}self)
+\begin{DoxyCompactList}\small\item\em Returns an Iterator over the elements in this collection. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+Iterable interface for the OOC (Object-\/\+Oriented C) framework. 
+
+This header defines the Iterable interface that provides a way to obtain an Iterator for sequential access to elements in a collection. 
+
+\label{doc-func-members}
+\Hypertarget{oocIterable_8h_doc-func-members}
+\doxysubsection{Function Documentation}
+\Hypertarget{oocIterable_8h_a5e4edc6afba4223b6b54a7d05ffc0d09}\index{oocIterable.h@{oocIterable.h}!ooc\_iterableClass@{ooc\_iterableClass}}
+\index{ooc\_iterableClass@{ooc\_iterableClass}!oocIterable.h@{oocIterable.h}}
+\doxysubsubsection{\texorpdfstring{ooc\_iterableClass()}{ooc\_iterableClass()}}
+{\footnotesize\ttfamily \label{oocIterable_8h_a5e4edc6afba4223b6b54a7d05ffc0d09} 
+void \texorpdfstring{$\ast$}{*} ooc\+\_\+iterable\+Class (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})}
+
+
+
+Returns the Iterable interface class descriptor. 
+
+\begin{DoxyReturn}{Returns}
+Pointer to the Iterable interface class object
+\end{DoxyReturn}
+This function returns the class descriptor for the Iterable interface, which can be used to check if an object implements the iterable protocol. \Hypertarget{oocIterable_8h_a0cca3be8519c51cca2b5bf8a3a29f364}\index{oocIterable.h@{oocIterable.h}!ooc\_iterableGetIterator@{ooc\_iterableGetIterator}}
+\index{ooc\_iterableGetIterator@{ooc\_iterableGetIterator}!oocIterable.h@{oocIterable.h}}
+\doxysubsubsection{\texorpdfstring{ooc\_iterableGetIterator()}{ooc\_iterableGetIterator()}}
+{\footnotesize\ttfamily \label{oocIterable_8h_a0cca3be8519c51cca2b5bf8a3a29f364} 
+void \texorpdfstring{$\ast$}{*} ooc\+\_\+iterable\+Get\+Iterator (\begin{DoxyParamCaption}\item[{void \texorpdfstring{$\ast$}{*}}]{self}{}\end{DoxyParamCaption})}
+
+
+
+Returns an Iterator over the elements in this collection. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em self} & Iterable object instance \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+Pointer to a new Iterator object, or NULL on failure 
+\end{DoxyReturn}
+\begin{DoxyNote}{Note}
+Caller is responsible for calling ooc\+\_\+destroy() on the returned iterator 
+
+Multiple iterators can be obtained and used concurrently, each maintaining its own iteration state
+\end{DoxyNote}
+This method creates a new Iterator that can be used to traverse the elements of the collection. The Iterator interface provides has\+Next() and next() methods for sequential access.
+
+Example usage\+: 
+\begin{DoxyCode}{0}
+\DoxyCodeLine{\textcolor{keywordtype}{void}*\ iter\ =\ ooc\_iterableGetIterator(collection);}
+\DoxyCodeLine{\textcolor{keywordflow}{while}\ (ooc\_iteratorHasNext(iter))\ \{}
+\DoxyCodeLine{\ \ \ \ \textcolor{keywordtype}{void}*\ element\ =\ ooc\_iteratorNext(iter);}
+\DoxyCodeLine{\ \ \ \ \textcolor{comment}{//\ process\ element}}
+\DoxyCodeLine{\}}
+\DoxyCodeLine{ooc\_destroy(iter);}
+
+\end{DoxyCode}
+ 

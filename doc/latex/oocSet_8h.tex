@@ -1,0 +1,204 @@
+\doxysection{src/interface/iterable/collection/set/ooc\+Set.h File Reference}
+\hypertarget{oocSet_8h}{}\label{oocSet_8h}\index{src/interface/iterable/collection/set/oocSet.h@{src/interface/iterable/collection/set/oocSet.h}}
+
+
+Set interface for the OOC (Object-\/\+Oriented C) framework.  
+
+
+{\ttfamily \#include "{}ooc\+Error.\+h"{}}\newline
+{\ttfamily \#include $<$stddef.\+h$>$}\newline
+{\ttfamily \#include $<$stdbool.\+h$>$}\newline
+\doxysubsubsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+void \texorpdfstring{$\ast$}{*} \mbox{\hyperlink{oocSet_8h_a7d635a4c4559c769cc5d69b485cb38b4}{ooc\+\_\+set\+Class}} ()
+\begin{DoxyCompactList}\small\item\em Returns the Set interface class descriptor. \end{DoxyCompactList}\item 
+void \texorpdfstring{$\ast$}{*} \mbox{\hyperlink{oocSet_8h_acff9f832f0772206d3dcc76736f841e0}{ooc\+\_\+set\+Get\+Iterator}} (void \texorpdfstring{$\ast$}{*}self)
+\begin{DoxyCompactList}\small\item\em Returns an Iterator over the elements in this set. \end{DoxyCompactList}\item 
+size\+\_\+t \mbox{\hyperlink{oocSet_8h_a470508113d0f49f67d89755c52f0847e}{ooc\+\_\+set\+Size}} (void \texorpdfstring{$\ast$}{*}self)
+\begin{DoxyCompactList}\small\item\em Returns the number of elements in the set. \end{DoxyCompactList}\item 
+bool \mbox{\hyperlink{oocSet_8h_a0a96090814504c58174136919240513f}{ooc\+\_\+set\+Is\+Empty}} (void \texorpdfstring{$\ast$}{*}self)
+\begin{DoxyCompactList}\small\item\em Checks if the set is empty. \end{DoxyCompactList}\item 
+bool \mbox{\hyperlink{oocSet_8h_a165434961138e9ef6528b253258f48a5}{ooc\+\_\+set\+Contains}} (void \texorpdfstring{$\ast$}{*}self, void \texorpdfstring{$\ast$}{*}element)
+\begin{DoxyCompactList}\small\item\em Checks if the set contains the specified element. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{oocError_8h_a1effaed6897d01c49b4771abc4185718}{OOC\+\_\+\+Error}} \mbox{\hyperlink{oocSet_8h_af4b506449327599a61547f961a166333}{ooc\+\_\+set\+Add}} (void \texorpdfstring{$\ast$}{*}self, void \texorpdfstring{$\ast$}{*}element)
+\begin{DoxyCompactList}\small\item\em Adds an element to the set. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{oocError_8h_a1effaed6897d01c49b4771abc4185718}{OOC\+\_\+\+Error}} \mbox{\hyperlink{oocSet_8h_a263e28f76b58e943b3ea7f81daf6b121}{ooc\+\_\+set\+Remove}} (void \texorpdfstring{$\ast$}{*}self, void \texorpdfstring{$\ast$}{*}element)
+\begin{DoxyCompactList}\small\item\em Removes the specified element from the set. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{oocError_8h_a1effaed6897d01c49b4771abc4185718}{OOC\+\_\+\+Error}} \mbox{\hyperlink{oocSet_8h_aa960fdde65cb33f868d761bc5740ff12}{ooc\+\_\+set\+Clear}} (void \texorpdfstring{$\ast$}{*}self)
+\begin{DoxyCompactList}\small\item\em Removes all elements from the set. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+Set interface for the OOC (Object-\/\+Oriented C) framework. 
+
+This header defines the Set interface that represents a collection containing no duplicate elements. Sets extend the Collection interface and ensure that no two elements e1 and e2 exist such that e1.\+equals(e2) returns true. At most one null element is allowed. 
+
+\label{doc-func-members}
+\Hypertarget{oocSet_8h_doc-func-members}
+\doxysubsection{Function Documentation}
+\Hypertarget{oocSet_8h_af4b506449327599a61547f961a166333}\index{oocSet.h@{oocSet.h}!ooc\_setAdd@{ooc\_setAdd}}
+\index{ooc\_setAdd@{ooc\_setAdd}!oocSet.h@{oocSet.h}}
+\doxysubsubsection{\texorpdfstring{ooc\_setAdd()}{ooc\_setAdd()}}
+{\footnotesize\ttfamily \label{oocSet_8h_af4b506449327599a61547f961a166333} 
+\mbox{\hyperlink{oocError_8h_a1effaed6897d01c49b4771abc4185718}{OOC\+\_\+\+Error}} ooc\+\_\+set\+Add (\begin{DoxyParamCaption}\item[{void \texorpdfstring{$\ast$}{*}}]{self}{, }\item[{void \texorpdfstring{$\ast$}{*}}]{element}{}\end{DoxyParamCaption})}
+
+
+
+Adds an element to the set. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em self} & Set object instance \\
+\hline
+{\em element} & Element to add \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+OOC\+\_\+\+ERROR\+\_\+\+NONE on success, appropriate error code on failure 
+\end{DoxyReturn}
+\begin{DoxyNote}{Note}
+If the element already exists, no duplicate is added 
+\end{DoxyNote}
+\Hypertarget{oocSet_8h_a7d635a4c4559c769cc5d69b485cb38b4}\index{oocSet.h@{oocSet.h}!ooc\_setClass@{ooc\_setClass}}
+\index{ooc\_setClass@{ooc\_setClass}!oocSet.h@{oocSet.h}}
+\doxysubsubsection{\texorpdfstring{ooc\_setClass()}{ooc\_setClass()}}
+{\footnotesize\ttfamily \label{oocSet_8h_a7d635a4c4559c769cc5d69b485cb38b4} 
+void \texorpdfstring{$\ast$}{*} ooc\+\_\+set\+Class (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})}
+
+
+
+Returns the Set interface class descriptor. 
+
+\begin{DoxyReturn}{Returns}
+Pointer to the Set interface class object
+\end{DoxyReturn}
+This function returns the class descriptor for the Set interface, which extends Collection and enforces uniqueness of elements. \Hypertarget{oocSet_8h_aa960fdde65cb33f868d761bc5740ff12}\index{oocSet.h@{oocSet.h}!ooc\_setClear@{ooc\_setClear}}
+\index{ooc\_setClear@{ooc\_setClear}!oocSet.h@{oocSet.h}}
+\doxysubsubsection{\texorpdfstring{ooc\_setClear()}{ooc\_setClear()}}
+{\footnotesize\ttfamily \label{oocSet_8h_aa960fdde65cb33f868d761bc5740ff12} 
+\mbox{\hyperlink{oocError_8h_a1effaed6897d01c49b4771abc4185718}{OOC\+\_\+\+Error}} ooc\+\_\+set\+Clear (\begin{DoxyParamCaption}\item[{void \texorpdfstring{$\ast$}{*}}]{self}{}\end{DoxyParamCaption})}
+
+
+
+Removes all elements from the set. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em self} & Set object instance \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+OOC\+\_\+\+ERROR\+\_\+\+NONE on success, appropriate error code on failure 
+\end{DoxyReturn}
+\Hypertarget{oocSet_8h_a165434961138e9ef6528b253258f48a5}\index{oocSet.h@{oocSet.h}!ooc\_setContains@{ooc\_setContains}}
+\index{ooc\_setContains@{ooc\_setContains}!oocSet.h@{oocSet.h}}
+\doxysubsubsection{\texorpdfstring{ooc\_setContains()}{ooc\_setContains()}}
+{\footnotesize\ttfamily \label{oocSet_8h_a165434961138e9ef6528b253258f48a5} 
+bool ooc\+\_\+set\+Contains (\begin{DoxyParamCaption}\item[{void \texorpdfstring{$\ast$}{*}}]{self}{, }\item[{void \texorpdfstring{$\ast$}{*}}]{element}{}\end{DoxyParamCaption})}
+
+
+
+Checks if the set contains the specified element. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em self} & Set object instance \\
+\hline
+{\em element} & Element to check for presence \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+true if the set contains the element, false otherwise 
+\end{DoxyReturn}
+\Hypertarget{oocSet_8h_acff9f832f0772206d3dcc76736f841e0}\index{oocSet.h@{oocSet.h}!ooc\_setGetIterator@{ooc\_setGetIterator}}
+\index{ooc\_setGetIterator@{ooc\_setGetIterator}!oocSet.h@{oocSet.h}}
+\doxysubsubsection{\texorpdfstring{ooc\_setGetIterator()}{ooc\_setGetIterator()}}
+{\footnotesize\ttfamily \label{oocSet_8h_acff9f832f0772206d3dcc76736f841e0} 
+void \texorpdfstring{$\ast$}{*} ooc\+\_\+set\+Get\+Iterator (\begin{DoxyParamCaption}\item[{void \texorpdfstring{$\ast$}{*}}]{self}{}\end{DoxyParamCaption})}
+
+
+
+Returns an Iterator over the elements in this set. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em self} & Iterable object instance \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+Pointer to a new Iterator object, or NULL on failure 
+\end{DoxyReturn}
+\begin{DoxyNote}{Note}
+Caller is responsible for calling ooc\+\_\+destroy() on the returned iterator 
+
+Multiple iterators can be obtained and used concurrently, each maintaining its own iteration state
+\end{DoxyNote}
+This method creates a new Iterator that can be used to traverse the elements of the set. The Iterator interface provides has\+Next() and next() methods for sequential access.
+
+Example usage\+: 
+\begin{DoxyCode}{0}
+\DoxyCodeLine{\textcolor{keywordtype}{void}*\ iter\ =\ \mbox{\hyperlink{oocSet_8h_acff9f832f0772206d3dcc76736f841e0}{ooc\_setGetIterator}}(collection);}
+\DoxyCodeLine{\textcolor{keywordflow}{while}\ (ooc\_iteratorHasNext(iter))\ \{}
+\DoxyCodeLine{\ \ \ \ \textcolor{keywordtype}{void}*\ element\ =\ ooc\_iteratorNext(iter);}
+\DoxyCodeLine{\ \ \ \ \textcolor{comment}{//\ process\ element}}
+\DoxyCodeLine{\}}
+\DoxyCodeLine{ooc\_destroy(iter);}
+
+\end{DoxyCode}
+ \Hypertarget{oocSet_8h_a0a96090814504c58174136919240513f}\index{oocSet.h@{oocSet.h}!ooc\_setIsEmpty@{ooc\_setIsEmpty}}
+\index{ooc\_setIsEmpty@{ooc\_setIsEmpty}!oocSet.h@{oocSet.h}}
+\doxysubsubsection{\texorpdfstring{ooc\_setIsEmpty()}{ooc\_setIsEmpty()}}
+{\footnotesize\ttfamily \label{oocSet_8h_a0a96090814504c58174136919240513f} 
+bool ooc\+\_\+set\+Is\+Empty (\begin{DoxyParamCaption}\item[{void \texorpdfstring{$\ast$}{*}}]{self}{}\end{DoxyParamCaption})}
+
+
+
+Checks if the set is empty. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em self} & Set object instance \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+true if the set contains no elements, false otherwise 
+\end{DoxyReturn}
+\Hypertarget{oocSet_8h_a263e28f76b58e943b3ea7f81daf6b121}\index{oocSet.h@{oocSet.h}!ooc\_setRemove@{ooc\_setRemove}}
+\index{ooc\_setRemove@{ooc\_setRemove}!oocSet.h@{oocSet.h}}
+\doxysubsubsection{\texorpdfstring{ooc\_setRemove()}{ooc\_setRemove()}}
+{\footnotesize\ttfamily \label{oocSet_8h_a263e28f76b58e943b3ea7f81daf6b121} 
+\mbox{\hyperlink{oocError_8h_a1effaed6897d01c49b4771abc4185718}{OOC\+\_\+\+Error}} ooc\+\_\+set\+Remove (\begin{DoxyParamCaption}\item[{void \texorpdfstring{$\ast$}{*}}]{self}{, }\item[{void \texorpdfstring{$\ast$}{*}}]{element}{}\end{DoxyParamCaption})}
+
+
+
+Removes the specified element from the set. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em self} & Set object instance \\
+\hline
+{\em element} & Element to remove \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+OOC\+\_\+\+ERROR\+\_\+\+NONE on success, appropriate error code on failure 
+\end{DoxyReturn}
+\Hypertarget{oocSet_8h_a470508113d0f49f67d89755c52f0847e}\index{oocSet.h@{oocSet.h}!ooc\_setSize@{ooc\_setSize}}
+\index{ooc\_setSize@{ooc\_setSize}!oocSet.h@{oocSet.h}}
+\doxysubsubsection{\texorpdfstring{ooc\_setSize()}{ooc\_setSize()}}
+{\footnotesize\ttfamily \label{oocSet_8h_a470508113d0f49f67d89755c52f0847e} 
+size\+\_\+t ooc\+\_\+set\+Size (\begin{DoxyParamCaption}\item[{void \texorpdfstring{$\ast$}{*}}]{self}{}\end{DoxyParamCaption})}
+
+
+
+Returns the number of elements in the set. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em self} & Set object instance \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+Number of elements, or 0 if self is NULL 
+\end{DoxyReturn}
