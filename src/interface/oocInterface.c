@@ -1,6 +1,5 @@
 #include "oocInterface.h"
 #include "oocInterface.r"
-#include "oocObject.h"
 
 static OOC_InterfaceClass* InterfaceClass;
 static OOC_InterfaceClass InterfaceClassInstance;

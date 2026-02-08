@@ -1,22 +1,19 @@
 #include "oocAbstractCollection.h"
 #include "oocAbstractCollection.r"
+#include "oocError.h"
 #include "oocObject.h"
 #include "oocObject.r"
 #include "oocIterable.h"
-#include "oocIterable.r"
 #include "oocCollection.h"
-#include "oocCollection.r"
 #include "oocIterator.h"
-#include "oocIterator.r"
 #include "oocStringBuffer.h"
-#include "oocStringBuffer.r"
-#include "oocString.h"
-#include "oocString.r"
 #include <stdlib.h>
 #include <string.h>
 
 static OOC_AbstractCollectionClass* AbstractCollectionClass;
 static OOC_AbstractCollectionClass AbstractCollectionClassInstance;
+
+static OOC_InterfaceImpl AbstractCollectiionInterfaces[1];
 
 static char* ooc_abstractCollectionToString(const void* self) {
     OOC_TYPE_CHECK(self, ooc_abstractCollectionClass(), NULL);
@@ -135,30 +132,22 @@ static void* ooc_abstractCollectionClone(const void* self) {
     return clone;
 }
 
-OOC_Error ooc_abstractCollectionSetSize(void* self, size_t size) {
-    if (!self) {
-        return OOC_ERROR_INVALID_ARGUMENT;
-    }
-    OOC_TYPE_CHECK(self, ooc_abstractCollectionClass(), OOC_ERROR_INVALID_OBJECT);
-    OOC_AbstractCollection* collection = self;
-    collection->size = size;
-    return OOC_ERROR_NONE;
+void* ooc_abstractCollectionGetIterator(void* self) {
+    return ooc_collectionGetIterator(self);
 }
 
 size_t ooc_abstractCollectionSize(void* self) {
-    OOC_TYPE_CHECK(self, ooc_abstractCollectionClass(), 0);
-    OOC_AbstractCollection* collection = self;
-    return collection->size;
+    return ooc_collectionSize(self);
 }
 
 bool ooc_abstractCollectionIsEmpty(void* self) {
-    return ooc_abstractCollectionSize(self) == 0;
+    return ooc_collectionSize(self) == 0;
 }
 
 bool ooc_abstractCollectionContains(void* self, void* object) {
     OOC_TYPE_CHECK(self, ooc_abstractCollectionClass(), false);
     bool found = false;
-    void* it = ooc_iterableGetIterator((void*)self);
+    void* it = ooc_iterableGetIterator(self);
     while (ooc_iteratorHasNext(it)) {
         void* elem = ooc_iteratorNext(it);
         if (ooc_equals(elem, object)) {
@@ -194,8 +183,11 @@ OOC_Error ooc_abstractCollectionAdd(void* self, void* element) {
     return OOC_ERROR_NOT_SUPPORTED;
 }
 
-bool ooc_abstractCollectionRemove(void* self, void* object) {
-    OOC_TYPE_CHECK(self, ooc_abstractCollectionClass(), false);
+OOC_Error ooc_abstractCollectionRemove(void* self, void* object) {
+    if (!self) {
+        return OOC_ERROR_INVALID_ARGUMENT;
+    }
+    OOC_TYPE_CHECK(self, ooc_abstractCollectionClass(), OOC_ERROR_INVALID_OBJECT);
     bool found = false;
     void* it = ooc_iterableGetIterator(self);
     while (ooc_iteratorHasNext(it)) {
@@ -207,7 +199,7 @@ bool ooc_abstractCollectionRemove(void* self, void* object) {
         }
     }
     ooc_destroy(it);
-    return found;
+    return found ? OOC_ERROR_NONE : OOC_ERROR_NOT_FOUND;
 }
 
 OOC_Error ooc_abstractCollectionClear(void* self) {
@@ -215,12 +207,12 @@ OOC_Error ooc_abstractCollectionClear(void* self) {
         return OOC_ERROR_INVALID_ARGUMENT;
     }
     OOC_TYPE_CHECK(self, ooc_abstractCollectionClass(), OOC_ERROR_INVALID_OBJECT);
-    void* it = ooc_iterableGetIterator(self);
-    while (ooc_iteratorHasNext(it)) {
-        ooc_iteratorNext(it);
-        ooc_iteratorRemove(it);
+    void* iterator = ooc_iterableGetIterator(self);
+    while (ooc_iteratorHasNext(iterator)) {
+        ooc_iteratorNext(iterator);
+        ooc_iteratorRemove(iterator);
     }
-    ooc_destroy(it);
+    ooc_destroy(iterator);
     return OOC_ERROR_NONE;
 }
 
@@ -234,21 +226,6 @@ static OOC_Error ooc_abstractCollectionCtor(void* self, va_list* args) {
     if (error != OOC_ERROR_NONE) {
         return error;
     }
-    void* collectionInterface = ooc_new(ooc_collectionClass(),
-                                          OOC_COLLECTION_METHOD_SIZE, ooc_abstractCollectionSize,
-                                          OOC_COLLECTION_METHOD_IS_EMPTY, ooc_abstractCollectionIsEmpty,
-                                          OOC_COLLECTION_METHOD_CONTAINS, ooc_abstractCollectionContains,
-                                          OOC_COLLECTION_METHOD_CONTAINS_ALL, ooc_abstractCollectionContainsAll,
-                                          OOC_COLLECTION_METHOD_ADD, ooc_abstractCollectionAdd,
-                                          OOC_COLLECTION_METHOD_REMOVE, ooc_abstractCollectionRemove,
-                                          OOC_COLLECTION_METHOD_CLEAR, ooc_abstractCollectionClear,
-                                          0);
-    error = ooc_addInterface(collection, collectionInterface);
-    if (error != OOC_ERROR_NONE) {
-        ooc_destroy(collectionInterface);
-        return error;
-    }
-    collection->size = 0;
     return OOC_ERROR_NONE;
 }
 
@@ -265,7 +242,22 @@ static void* ooc_abstractCollectionClassInit(void) {
                     OOC_METHOD_HASH, ooc_abstractCollectionHash,
                     OOC_METHOD_COMPARE, ooc_abstractCollectionCompare,
                     OOC_METHOD_CLONE, ooc_abstractCollectionClone,
+                    OOC_ABSTRACT_COLLECTION_METHOD_IS_EMPTY, ooc_abstractCollectionIsEmpty,
+                    OOC_ABSTRACT_COLLECTION_METHOD_CONTAINS, ooc_abstractCollectionContains,
+                    OOC_ABSTRACT_COLLECTION_METHOD_CONTAINS_ALL, ooc_abstractCollectionContainsAll,
+                    OOC_ABSTRACT_COLLECTION_METHOD_ADD, ooc_abstractCollectionAdd,
+                    OOC_ABSTRACT_COLLECTION_METHOD_REMOVE, ooc_abstractCollectionRemove,
+                    OOC_ABSTRACT_COLLECTION_METHOD_CLEAR, ooc_abstractCollectionClear,
                     0) != OOC_ERROR_NONE) {
+        ooc_classDestroy(&AbstractCollectionClassInstance);
+        return NULL;
+    }
+    AbstractCollectiionInterfaces[0].interfaceClass = ooc_collectionClass();
+    AbstractCollectiionInterfaces[0].vtableOffset = offsetof(OOC_AbstractCollectionClass, collectionVtable);
+    if (ooc_classSetInterface(&AbstractCollectionClassInstance,
+                        AbstractCollectiionInterfaces,
+                        1) != OOC_ERROR_NONE) {
+        ooc_classDestroy(&AbstractCollectionClassInstance);
         return NULL;
     }
     return &AbstractCollectionClassInstance;

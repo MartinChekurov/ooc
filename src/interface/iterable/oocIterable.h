@@ -9,7 +9,6 @@
 #ifndef OOC_ITERABLE_H_
 #define OOC_ITERABLE_H_
 
-#include "oocError.h"
 #include <stdbool.h>
 
 /**

@@ -44,6 +44,10 @@ bool ooc_listContains(void* self, void* element) {
     return ooc_collectionContains(self, element);
 }
 
+bool ooc_listContainsAll(void* self, void* other) {
+    return ooc_collectionContainsAll(self, other);
+}
+
 OOC_Error ooc_listAdd(void* self, void* element) {
     return ooc_collectionAdd(self, element);
 }
@@ -138,4 +142,32 @@ int ooc_listLastIndexOf(void* self, void* element) {
         return -1;
     }
     return vtable->lastIndexOf(self, element);
+}
+
+void* ooc_listGetListIterator(void* self) {
+    if (!self) {
+        return NULL;
+    }
+    const OOC_ListVtable* vtable = ooc_getInterfaceVtable(self, ooc_listClass());
+    if (!vtable) {
+        return NULL;
+    }
+    if (!vtable->getListIterator) {
+        return NULL;
+    }
+    return vtable->getListIterator(self);
+}
+
+void* ooc_listGetListIteratorAt(void* self, size_t index) {
+    if (!self) {
+        return NULL;
+    }
+    const OOC_ListVtable* vtable = ooc_getInterfaceVtable(self, ooc_listClass());
+    if (!vtable) {
+        return NULL;
+    }
+    if (!vtable->getListIteratorAt) {
+        return NULL;
+    }
+    return vtable->getListIteratorAt(self, index);
 }

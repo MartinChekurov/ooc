@@ -11,6 +11,7 @@
 #define OOC_ARRAY_LIST_H_
 
 #include "oocError.h"
+#include <stdbool.h>
 #include <stddef.h>
 
 /**
@@ -48,5 +49,22 @@ OOC_Error ooc_arrayListEnsureCapacity(void* self, size_t minCapacity);
  * @return OOC_ERROR_NONE on success, appropriate error code on failure
  */
 OOC_Error ooc_arrayListTrimToSize(void* self);
+
+void* ooc_arrayListGetIterator(void* self);
+size_t ooc_arrayListSize(void* self);
+bool ooc_arrayListIsEmpty(void* self);
+bool ooc_arrayListContains(void* self, void* element);
+bool ooc_arrayListContainsAll(void* self, void* other);
+OOC_Error ooc_arrayListAdd(void* self, void* element);
+OOC_Error ooc_arrayListRemove(void* self, void* element);
+OOC_Error ooc_arrayListClear(void* self);
+void* ooc_arrayListGetAt(void* self, size_t index);
+OOC_Error ooc_arrayListSetAt(void* self, size_t index, void* element);
+OOC_Error ooc_arrayListInsertAt(void* self, size_t index, void* element);
+OOC_Error ooc_arrayListRemoveAt(void* self, size_t index);
+int ooc_arrayListIndexOf(void* self, void* element);
+int ooc_arrayListLastIndexOf(void* self, void* element);
+void* ooc_arrayListGetListIterator(void* self);
+void* ooc_arrayListGetListIteratorAt(void* self, size_t index);
 
 #endif

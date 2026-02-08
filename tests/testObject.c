@@ -21,7 +21,7 @@ void test_object_class_info(void) {
     void* obj = ooc_new(ooc_objectClass());
     TEST_ASSERT_NOT_NULL(obj);
 
-    void* objClass = ooc_classOf(obj);
+    const void* objClass = ooc_classOf(obj);
     TEST_ASSERT_NOT_NULL(objClass);
     TEST_ASSERT_EQUAL_PTR(objClass, ooc_objectClass());
 

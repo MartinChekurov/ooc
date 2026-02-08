@@ -70,6 +70,14 @@ bool ooc_listIsEmpty(void* self);
 bool ooc_listContains(void* self, void* element);
 
 /**
+ * @brief Checks if this list contains all elements from another list
+ * @param self List object instance
+ * @param other List to be checked for containment
+ * @return true if this list contains all elements of the specified list
+ */
+bool ooc_listContainsAll(void* self, void* other);
+
+/**
  * @brief Adds an element to the list
  * @param self list object instance
  * @param element Element to add
@@ -143,5 +151,8 @@ int ooc_listIndexOf(void* self, void* element);
  * @return Index of the last occurrence, or -1 if not found
  */
 int ooc_listLastIndexOf(void* self, void* element);
+
+void* ooc_listGetListIterator(void* self);
+void* ooc_listGetListIteratorAt(void* self, size_t index);
 
 #endif

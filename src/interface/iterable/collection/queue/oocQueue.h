@@ -73,6 +73,14 @@ bool ooc_queueIsEmpty(void* self);
 bool ooc_queueContains(void* self, void* element);
 
 /**
+ * @brief Checks if this queue contains all elements from another queue
+ * @param self Queue object instance
+ * @param other Queue to be checked for containment
+ * @return true if this queue contains all elements of the specified queue
+ */
+bool ooc_queueContainsAll(void* self, void* other);
+
+/**
  * @brief Adds an element to the queue
  * @param self queue object instance
  * @param element Element to add

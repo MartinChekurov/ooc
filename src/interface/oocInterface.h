@@ -10,8 +10,6 @@
 #ifndef OOC_INTERFACE_H_
 #define OOC_INTERFACE_H_
 
-#include "oocError.h"
-
 /**
  * @brief Returns the Interface class descriptor
  * @return Pointer to the Interface class object

@@ -1,8 +1,6 @@
 #include "oocMap.h"
 #include "oocMap.r"
 #include "oocInterface.h"
-#include "oocInterface.r"
-#include "oocIterable.h"
 #include "oocObject.h"
 
 static OOC_MapClass* MapClass;

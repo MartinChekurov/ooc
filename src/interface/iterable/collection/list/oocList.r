@@ -16,6 +16,8 @@ struct OOC_ListVtable {
     OOC_Error (*removeAt)(void* self, size_t index);
     int (*indexOf)(void* self, void* element);
     int (*lastIndexOf)(void* self, void* element);
+    void* (*getListIterator)(void* self);
+    void* (*getListIteratorAt)(void* self, size_t index);
 };
 
 struct OOC_ListClass {
@@ -29,5 +31,7 @@ struct OOC_ListClass {
 #define OOC_LIST_METHOD_REMOVE_AT       OOC_METHOD(OOC_ListClass, vtable.removeAt)
 #define OOC_LIST_METHOD_INDEX_OF        OOC_METHOD(OOC_ListClass, vtable.indexOf)
 #define OOC_LIST_METHOD_LAST_INDEX_OF   OOC_METHOD(OOC_ListClass, vtable.lastIndexOf)
+#define OOC_LIST_METHOD_GET_LIST_ITERATOR OOC_METHOD(OOC_ListClass, vtable.getListIterator)
+#define OOC_LIST_METHOD_GET_LIST_ITERATOR_AT OOC_METHOD(OOC_ListClass, vtable.getListIteratorAt)
 
 #endif

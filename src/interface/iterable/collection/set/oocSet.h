@@ -71,6 +71,14 @@ bool ooc_setIsEmpty(void* self);
 bool ooc_setContains(void* self, void* element);
 
 /**
+ * @brief Checks if the set contains all elements from another set
+ * @param self Set object instance
+ * @param other Set to be checked for containment
+ * @return true if this set contains all elements of the specified set
+ */
+bool ooc_setContainsAll(void* self, void* other);
+
+/**
  * @brief Adds an element to the set
  * @param self Set object instance
  * @param element Element to add

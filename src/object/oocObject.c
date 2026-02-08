@@ -133,12 +133,7 @@ static void* ooc_objectClone(const void* self) {
     if (!size) {
         return NULL;
     }
-    void* clone = malloc(size);
-    if (!clone) {
-        return NULL;
-    }
-    memcpy(clone, self, size);
-    return clone;
+    return malloc(size);
 }
 
 static void* ooc_objectClassInit(void) {
@@ -207,12 +202,6 @@ OOC_Error ooc_classNew(void* class, ...) {
     if (abstractCount && !(c->modifiers & OOC_MODIFIER_ABSTRACT)) {
         error = OOC_ERROR_INVALID_MODIFIER;
         goto end;
-    }
-    if (c->super && ooc_classIsAbstract(c->super)) {
-        if (!(c->modifiers & OOC_MODIFIER_ABSTRACT) && abstractCount) {
-            error = OOC_ERROR_ABSTRACT_METHOD_NOT_IMPLEMENTED;
-            goto end;
-        }
     }
 end:
     va_end(args);

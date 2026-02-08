@@ -1,7 +1,6 @@
 #include "oocSet.h"
 #include "oocSet.r"
 #include "oocCollection.h"
-#include "oocCollection.r"
 #include "oocObject.r"
 #include "oocIterable.h"
 #include <stddef.h>
@@ -43,6 +42,10 @@ bool ooc_setIsEmpty(void* self) {
 
 bool ooc_setContains(void* self, void* element) {
     return ooc_collectionContains(self, element);
+}
+
+bool ooc_setContainsAll(void* self, void* other) {
+    return ooc_collectionContainsAll(self, other);
 }
 
 OOC_Error ooc_setAdd(void* self, void* element) {

@@ -38,6 +38,10 @@ bool ooc_dequeContains(void* self, void* element) {
     return ooc_collectionContains(self, element);
 }
 
+bool ooc_dequeContainsAll(void* self, void* other) {
+    return ooc_collectionContainsAll(self, other);
+}
+
 OOC_Error ooc_dequeAdd(void* self, void* element) {
     return ooc_collectionAdd(self, element);
 }

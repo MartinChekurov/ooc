@@ -10,6 +10,10 @@ static OOC_BaseIteratorClass BaseIteratorClassInstance;
 
 static OOC_InterfaceImpl BaseIteratorInterfaces[1];
 
+bool ooc_baseIteratorHasNext(void* self) {
+    return ooc_iteratorHasNext(self);
+}
+
 void* ooc_baseIteratorNext(void* self) {
     if (!self) {
         return NULL;
@@ -41,6 +45,10 @@ OOC_Error ooc_superBaseIteratorRemove(void* self) {
     return ooc_baseIteratorRemove(self);
 }
 
+bool ooc_superBaseIteratorHasNext(void* self) {
+    return ooc_baseIteratorHasNext(self);
+}
+
 static OOC_Error ooc_baseIteratorCtor(void* self, va_list* args) {
     if (!self || !args) {
         return OOC_ERROR_INVALID_ARGUMENT;
@@ -63,14 +71,14 @@ static void* ooc_baseIteratorClassInit(void) {
                     ooc_objectClass(),
                     OOC_MODIFIER_ABSTRACT,
                     OOC_METHOD_CTOR, ooc_baseIteratorCtor,
+                    OOC_BASE_ITERATOR_METHOD_NEXT, ooc_baseIteratorNext,
+                    OOC_BASE_ITERATOR_METHOD_REMOVE, ooc_baseIteratorRemove,
                     0) != OOC_ERROR_NONE) {
         ooc_classDestroy(&BaseIteratorClassInstance);
         return NULL;
     }
     BaseIteratorInterfaces[0].interfaceClass = ooc_iteratorClass();
     BaseIteratorInterfaces[0].vtableOffset = offsetof(OOC_BaseIteratorClass, iterator);
-    BaseIteratorClassInstance.iterator.next = ooc_baseIteratorNext;
-    BaseIteratorClassInstance.iterator.remove = ooc_baseIteratorRemove;
     if (ooc_classSetInterface(&BaseIteratorClassInstance,
                         BaseIteratorInterfaces,
                         1) != OOC_ERROR_NONE) {

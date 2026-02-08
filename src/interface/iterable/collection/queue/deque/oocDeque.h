@@ -73,6 +73,14 @@ bool ooc_dequeIsEmpty(void* self);
 bool ooc_dequeContains(void* self, void* element);
 
 /**
+ * @brief Checks if this deque contains all elements from another deque
+ * @param self Deque object instance
+ * @param other Deque to be checked for containment
+ * @return true if this deque contains all elements of the specified deque
+ */
+bool ooc_dequeContainsAll(void* self, void* other);
+
+/**
  * @brief Adds an element to the tail (back/end) of the deque
  * @param self deque object instance
  * @param element Element to add

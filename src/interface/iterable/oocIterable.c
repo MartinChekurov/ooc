@@ -29,11 +29,11 @@ void* ooc_iterableClass() {
 
 void* ooc_iterableGetIterator(void* self) {
     if (!self) {
-        return false;
+        return NULL;
     }
     const OOC_IterableVtable* vtable = ooc_getInterfaceVtable(self, ooc_iterableClass());
     if (!vtable || !vtable->iterator(self)) {
-        return false;
+        return NULL;
     }
     return vtable->iterator(self);
 }

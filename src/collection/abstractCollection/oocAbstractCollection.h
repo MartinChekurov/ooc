@@ -25,13 +25,13 @@
  */
 void* ooc_abstractCollectionClass();
 
-OOC_Error ooc_abstractCollectionSetSize(void* self, size_t size);
+void* ooc_abstractCollectionGetIterator(void* self);
 size_t ooc_abstractCollectionSize(void* self);
 bool ooc_abstractCollectionIsEmpty(void* self);
 bool ooc_abstractCollectionContains(void* self, void* object);
 bool ooc_abstractCollectionContainsAll(void* self, void* other);
 OOC_Error ooc_abstractCollectionAdd(void* self, void* element);
-bool ooc_abstractCollectionRemove(void* self, void* object);
+OOC_Error ooc_abstractCollectionRemove(void* self, void* object);
 OOC_Error ooc_abstractCollectionClear(void* self);
 
 #endif /* OOC_ABSTRACT_COLLECTION_H_ */

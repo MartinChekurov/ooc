@@ -44,6 +44,10 @@ bool ooc_queueContains(void* self, void* element) {
     return ooc_collectionContains(self, element);
 }
 
+bool ooc_queueContainsAll(void* self, void* other) {
+    return ooc_collectionContainsAll(self, other);
+}
+
 OOC_Error ooc_queueAdd(void* self, void* element) {
     return ooc_collectionAdd(self, element);
 }
