@@ -66,6 +66,7 @@ enum OOC_Error {
     OOC_ERROR_INVALID_MODIFIER,
     OOC_ERROR_NO_PARENT,
     OOC_ERROR_ABSTRACT_METHOD_NOT_IMPLEMENTED,
+    OOC_ERROR_OUT_OF_BOUNDS,
     /** @brief Total count of error codes (must be last) */
     OOC_ERROR_COUNT
 };

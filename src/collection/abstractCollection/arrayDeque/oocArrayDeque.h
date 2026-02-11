@@ -1,27 +1,46 @@
 /**
  * @file oocArrayDeque.h
- * @brief ArrayDeque implementation for the OOC (Object-Oriented C) framework
+ * @brief ArrayDeque concrete class for OOC.
  *
- * This header defines the ArrayDeque class, a resizable array implementation
- * of the Deque interface. It provides efficient O(1) insertion and deletion
- * operations at both ends using a circular buffer.
+ * Java-style design:
+ * - ArrayDeque extends AbstractCollection
+ * - Implements Deque (and therefore Queue/Collection/Iterable)
+ * - Backed by a circular resizable array
+ *
+ * Notes aligned with java.util.ArrayDeque semantics:
+ * - null elements are not allowed
+ * - add/addLast append at tail
+ * - addFirst prepends at head
+ * - remove(Object) removes first matching occurrence
  */
 
 #ifndef OOC_ARRAY_DEQUE_H_
 #define OOC_ARRAY_DEQUE_H_
 
-/**
- * @brief Returns the ArrayDeque class descriptor
- * @return Pointer to the ArrayDeque class object
- *
- * Constructor parameters:
- * - initialCapacity (size_t): Initial capacity for the circular buffer, or 0 for default (16)
- *
- * Example:
- * @code
- *   void* deque = ooc_new(ooc_arrayDequeClass(), 32);  // Create with capacity 32
- * @endcode
- */
-void* ooc_arrayDequeClass();
+#include "oocError.h"
+#include <stdbool.h>
+#include <stddef.h>
 
-#endif
+void* ooc_arrayDequeClass(void);
+
+void* ooc_arrayDequeGetIterator(void* self);
+size_t ooc_arrayDequeSize(void* self);
+bool ooc_arrayDequeIsEmpty(void* self);
+bool ooc_arrayDequeContains(void* self, void* element);
+bool ooc_arrayDequeContainsAll(void* self, void* other);
+OOC_Error ooc_arrayDequeAdd(void* self, void* element);
+OOC_Error ooc_arrayDequeRemove(void* self, void* element);
+OOC_Error ooc_arrayDequeClear(void* self);
+
+OOC_Error ooc_arrayDequePush(void* self, void* element);
+void* ooc_arrayDequePop(void* self);
+void* ooc_arrayDequePeek(void* self);
+
+OOC_Error ooc_arrayDequeAddFirst(void* self, void* element);
+OOC_Error ooc_arrayDequeAddLast(void* self, void* element);
+void* ooc_arrayDequeRemoveFirst(void* self);
+void* ooc_arrayDequeRemoveLast(void* self);
+void* ooc_arrayDequeGetFirst(void* self);
+void* ooc_arrayDequeGetLast(void* self);
+
+#endif /* OOC_ARRAY_DEQUE_H_ */

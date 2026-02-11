@@ -216,19 +216,6 @@ OOC_Error ooc_abstractCollectionClear(void* self) {
     return OOC_ERROR_NONE;
 }
 
-static OOC_Error ooc_abstractCollectionCtor(void* self, va_list* args) {
-    if (!self || !args) {
-        return OOC_ERROR_INVALID_ARGUMENT;
-    }
-    OOC_TYPE_CHECK(self, ooc_abstractCollectionClass(), OOC_ERROR_INVALID_OBJECT);
-    OOC_AbstractCollection* collection = self;
-    OOC_Error error = ooc_superCtor(collection, args);
-    if (error != OOC_ERROR_NONE) {
-        return error;
-    }
-    return OOC_ERROR_NONE;
-}
-
 static void* ooc_abstractCollectionClassInit(void) {
     if (ooc_classNew(&AbstractCollectionClassInstance,
                     "AbstractCollection",
@@ -236,7 +223,6 @@ static void* ooc_abstractCollectionClassInit(void) {
                     sizeof(OOC_AbstractCollectionClass),
                     ooc_objectClass(),
                     OOC_MODIFIER_ABSTRACT,
-                    OOC_METHOD_CTOR, ooc_abstractCollectionCtor,
                     OOC_METHOD_TO_STRING, ooc_abstractCollectionToString,
                     OOC_METHOD_EQUALS, ooc_abstractCollectionEquals,
                     OOC_METHOD_HASH, ooc_abstractCollectionHash,

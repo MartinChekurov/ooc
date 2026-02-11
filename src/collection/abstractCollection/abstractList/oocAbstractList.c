@@ -1,5 +1,6 @@
 #include "oocAbstractList.h"
 #include "oocAbstractList.r"
+
 #include "oocAbstractCollection.h"
 #include "oocCollection.h"
 #include "oocError.h"
@@ -10,6 +11,7 @@
 #include "oocObject.r"
 #include "oocBaseIterator.h"
 #include "oocBaseIterator.r"
+
 #include <stddef.h>
 
 typedef struct OOC_AbstractSequentialListIterator OOC_AbstractListIterator;

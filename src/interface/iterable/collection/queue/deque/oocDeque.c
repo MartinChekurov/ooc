@@ -55,7 +55,7 @@ OOC_Error ooc_dequeClear(void* self) {
 }
 
 OOC_Error ooc_dequePush(void* self, void* element) {
-    return ooc_queuePush(self, element);
+    return ooc_queueAdd(self, element);
 }
 
 void* ooc_dequePop(void* self) {
