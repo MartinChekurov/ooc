@@ -188,7 +188,7 @@ static bool ooc_linkedListIteratorHasNext(void* self) {
         return false;
     }
     OOC_LinkedListIterator* iterator = self;
-    return iterator->next != NULL;
+    return iterator->nextIndex < iterator->list->size;
 }
 
 static void* ooc_linkedListIteratorNext(void* self) {
@@ -220,13 +220,24 @@ static OOC_Error ooc_linkedListIteratorRemove(void* self) {
     if (!iterator->lastReturned) {
         return OOC_ERROR_NOT_FOUND;
     }
+    // Determine if last operation was next() or previous()
+    // After next(): lastReturned != next
+    // After previous(): lastReturned == next
+    if (iterator->lastReturned == iterator->next) {
+        // Last operation was previous()
+        // next points to the node being removed, so update it
+        iterator->next = iterator->lastReturned->next;
+    } else {
+        // Last operation was next()
+        // Decrement nextIndex as elements shift down
+        iterator->nextIndex--;
+    }
     error = ooc_linkedListUnlink(iterator->list, iterator->lastReturned);
     if (error != OOC_ERROR_NONE) {
         return error;
     }
     ooc_linkedListNodeDestroy(iterator->lastReturned);
     iterator->lastReturned = NULL;
-    iterator->nextIndex--;
     return OOC_ERROR_NONE;
 }
 
@@ -267,13 +278,12 @@ static int ooc_linkedListIteratorNextIndex(void* self) {
     return (int)iterator->nextIndex;
 }
 
-
 static int ooc_linkedListIteratorPreviousIndex(void* self) {
     if (!self) {
         return -1;
     }
     OOC_LinkedListIterator* iterator = self;
-    return (iterator->nextIndex == 0) ? -1 : (int)(iterator->nextIndex - 1);
+    return (int)(iterator->nextIndex - 1);
 }
 
 static OOC_Error ooc_linkedListIteratorSet(void* self, void* element) {
@@ -284,8 +294,10 @@ static OOC_Error ooc_linkedListIteratorSet(void* self, void* element) {
     if (!iterator->lastReturned) {
         return OOC_ERROR_NOT_FOUND;
     }
-    ooc_destroy(iterator->lastReturned->data);
-    iterator->lastReturned->data = element;
+    if (iterator->lastReturned->data != element) {
+        ooc_destroy(iterator->lastReturned->data);
+        iterator->lastReturned->data = element;
+    }
     return OOC_ERROR_NONE;
 }
 
