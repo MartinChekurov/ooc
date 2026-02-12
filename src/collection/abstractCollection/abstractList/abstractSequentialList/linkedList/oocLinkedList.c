@@ -539,10 +539,18 @@ void* ooc_linkedListRemoveLast(void* self) {
 }
 
 OOC_Error ooc_linkedListPush(void* self, void* element) {
-    return ooc_linkedListAddLast(self, element);
+    return ooc_linkedListAddFirst(self, element);
 }
 
 void* ooc_linkedListPop(void* self) {
+    return ooc_linkedListRemoveFirst(self);
+}
+
+OOC_Error ooc_linkedListOffer(void* self, void* element) {
+    return ooc_linkedListAddLast(self, element);
+}
+
+void* ooc_linkedListPoll(void* self) {
     return ooc_linkedListRemoveFirst(self);
 }
 
@@ -593,8 +601,8 @@ static void* ooc_linkedListClassInit(void) {
                      OOC_METHOD_DTOR, ooc_linkedListDtor,
                      OOC_ABSTRACT_COLLECTION_METHOD_SIZE, ooc_linkedListSize,
                      OOC_ABSTRACT_LIST_METHOD_GET_LIST_ITERATOR_AT, ooc_linkedListGetListIteratorAt,
-                     OOC_LINKED_LIST_METHOD_PUSH, ooc_linkedListPush,
-                     OOC_LINKED_LIST_METHOD_POP, ooc_linkedListPop,
+                     OOC_LINKED_LIST_METHOD_OFFER, ooc_linkedListOffer,
+                     OOC_LINKED_LIST_METHOD_POLL, ooc_linkedListPoll,
                      OOC_LINKED_LIST_METHOD_PEEK, ooc_linkedListPeek,
                      OOC_LINKED_LIST_METHOD_ADD_FIRST, ooc_linkedListAddFirst,
                      OOC_LINKED_LIST_METHOD_ADD_LAST, ooc_linkedListAddLast,
@@ -602,6 +610,8 @@ static void* ooc_linkedListClassInit(void) {
                      OOC_LINKED_LIST_METHOD_REMOVE_LAST, ooc_linkedListRemoveLast,
                      OOC_LINKED_LIST_METHOD_GET_FIRST, ooc_linkedListGetFirst,
                      OOC_LINKED_LIST_METHOD_GET_LAST, ooc_linkedListGetLast,
+                     OOC_LINKED_LIST_METHOD_PUSH, ooc_linkedListPush,
+                     OOC_LINKED_LIST_METHOD_POP, ooc_linkedListPop,
                      0) != OOC_ERROR_NONE) {
         ooc_classDestroy(&LinkedListClassInstance);
         return NULL;

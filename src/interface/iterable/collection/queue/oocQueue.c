@@ -60,7 +60,7 @@ OOC_Error ooc_queueClear(void* self) {
     return ooc_collectionClear(self);
 }
 
-OOC_Error ooc_queuePush(void* self, void* element) {
+OOC_Error ooc_queueOffer(void* self, void* element) {
     if (!self) {
         return OOC_ERROR_NULL_POINTER;
     }
@@ -68,13 +68,13 @@ OOC_Error ooc_queuePush(void* self, void* element) {
     if (!vtable) {
         return OOC_ERROR_NO_CLASS;
     }
-    if (!vtable->push) {
+    if (!vtable->offer) {
         return OOC_ERROR_NOT_IMPLEMENTED;
     }
-    return vtable->push(self, element);
+    return vtable->offer(self, element);
 }
 
-void* ooc_queuePop(void* self) {
+void* ooc_queuePoll(void* self) {
     if (!self) {
         return NULL;
     }
@@ -82,10 +82,10 @@ void* ooc_queuePop(void* self) {
     if (!vtable) {
         return NULL;
     }
-    if (!vtable->pop) {
+    if (!vtable->poll) {
         return NULL;
     }
-    return vtable->pop(self);
+    return vtable->poll(self);
 }
 
 void* ooc_queuePeek(void* self) {

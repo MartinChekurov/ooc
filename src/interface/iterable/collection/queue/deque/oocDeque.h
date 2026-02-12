@@ -112,7 +112,7 @@ OOC_Error ooc_dequeClear(void* self);
  * @return OOC_ERROR_NONE on success, appropriate error code on failure
  * @note Inherited from Queue interface. Equivalent to addLast()
  */
-OOC_Error ooc_dequePush(void* self, void* element);
+OOC_Error ooc_dequeOffer(void* self, void* element);
 
 /**
  * @brief Retrieves and removes the head (front) element of the deque
@@ -120,7 +120,7 @@ OOC_Error ooc_dequePush(void* self, void* element);
  * @return Pointer to the removed element, or NULL if deque is empty
  * @note Inherited from Queue interface. Equivalent to removeFirst()
  */
-void* ooc_dequePop(void* self);
+void* ooc_dequePoll(void* self);
 
 /**
  * @brief Retrieves, but does not remove, the head (front) element of the deque
@@ -179,5 +179,8 @@ void* ooc_dequeGetFirst(void* self);
  * @note Returns the back element
  */
 void* ooc_dequeGetLast(void* self);
+
+OOC_Error ooc_dequePush(void* self, void* element);
+void* ooc_dequeGetPop(void* self);
 
 #endif

@@ -15,6 +15,8 @@ struct OOC_DequeVtable {
     void* (*removeLast)(void* self);
     void* (*getFirst)(void* self);
     void* (*getLast)(void* self);
+    OOC_Error (*push)(void* self, void* element);
+    void* (*pop)(void* self);
 };
 
 struct OOC_DequeClass {
@@ -28,5 +30,7 @@ struct OOC_DequeClass {
 #define OOC_DEQUE_METHOD_REMOVE_LAST    OOC_METHOD(OOC_DequeClass, vtable.removeLast)
 #define OOC_DEQUE_METHOD_GET_FIRST      OOC_METHOD(OOC_DequeClass, vtable.getFirst)
 #define OOC_DEQUE_METHOD_GET_LAST       OOC_METHOD(OOC_DequeClass, vtable.getLast)
+#define OOC_DEQUE_METHOD_GET_PUSH       OOC_METHOD(OOC_DequeClass, vtable.push)
+#define OOC_DEQUE_METHOD_GET_POP        OOC_METHOD(OOC_DequeClass, vtable.pop)
 
 #endif

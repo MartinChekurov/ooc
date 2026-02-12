@@ -32,8 +32,8 @@ OOC_Error ooc_arrayDequeAdd(void* self, void* element);
 OOC_Error ooc_arrayDequeRemove(void* self, void* element);
 OOC_Error ooc_arrayDequeClear(void* self);
 
-OOC_Error ooc_arrayDequePush(void* self, void* element);
-void* ooc_arrayDequePop(void* self);
+OOC_Error ooc_arrayDequeOffer(void* self, void* element);
+void* ooc_arrayDequePoll(void* self);
 void* ooc_arrayDequePeek(void* self);
 
 OOC_Error ooc_arrayDequeAddFirst(void* self, void* element);
@@ -42,5 +42,7 @@ void* ooc_arrayDequeRemoveFirst(void* self);
 void* ooc_arrayDequeRemoveLast(void* self);
 void* ooc_arrayDequeGetFirst(void* self);
 void* ooc_arrayDequeGetLast(void* self);
+OOC_Error ooc_arrayDequePush(void* self, void* element);
+void* ooc_arrayDequePop(void* self);
 
 #endif /* OOC_ARRAY_DEQUE_H_ */

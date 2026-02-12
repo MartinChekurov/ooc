@@ -112,7 +112,7 @@ OOC_Error ooc_queueClear(void* self);
  * @return OOC_ERROR_NONE on success, appropriate error code on failure
  * @note Equivalent to add(). Ordering depends on implementation (FIFO, LIFO, priority, etc.)
  */
-OOC_Error ooc_queueAdd(void* self, void* element);
+OOC_Error ooc_queueOffer(void* self, void* element);
 
 /**
  * @brief Retrieves and removes an element from the queue
@@ -120,7 +120,7 @@ OOC_Error ooc_queueAdd(void* self, void* element);
  * @return Pointer to the removed element, or NULL if queue is empty
  * @note Which element is removed depends on implementation (FIFO, LIFO, priority, etc.)
  */
-void* ooc_queuePop(void* self);
+void* ooc_queuePoll(void* self);
 
 /**
  * @brief Retrieves, but does not remove, an element from the queue

@@ -1,5 +1,6 @@
 #include "oocDeque.h"
 #include "oocDeque.r"
+#include "oocError.h"
 #include "oocQueue.h"
 #include "oocObject.h"
 #include "oocCollection.h"
@@ -54,12 +55,12 @@ OOC_Error ooc_dequeClear(void* self) {
     return ooc_collectionClear(self);
 }
 
-OOC_Error ooc_dequePush(void* self, void* element) {
-    return ooc_queueAdd(self, element);
+OOC_Error ooc_dequeOffer(void* self, void* element) {
+    return ooc_queueOffer(self, element);
 }
 
-void* ooc_dequePop(void* self) {
-    return ooc_queuePop(self);
+void* ooc_dequePoll(void* self) {
+    return ooc_queuePoll(self);
 }
 
 void* ooc_dequePeek(void* self) {
@@ -155,4 +156,32 @@ void* ooc_dequeGetLast(void* self) {
         return NULL;
     }
     return vtable->getLast(self);
+}
+
+OOC_Error ooc_dequePush(void* self, void* element) {
+    if (!self) {
+        return OOC_ERROR_INVALID_ARGUMENT;
+    }
+    const OOC_DequeVtable* vtable = ooc_getInterfaceVtable(self, ooc_dequeClass());
+    if (!vtable) {
+        return OOC_ERROR_NO_CLASS;
+    }
+    if (!vtable->push) {
+        return OOC_ERROR_NOT_IMPLEMENTED;
+    }
+    return vtable->push(self, element);
+}
+
+void* ooc_dequeGetPop(void* self) {
+    if (!self) {
+        return NULL;
+    }
+    const OOC_DequeVtable* vtable = ooc_getInterfaceVtable(self, ooc_dequeClass());
+    if (!vtable) {
+        return NULL;
+    }
+    if (!vtable->pop) {
+        return NULL;
+    }
+    return vtable->pop(self);
 }

@@ -224,11 +224,11 @@ OOC_Error ooc_arrayDequeClear(void* self) {
     return ooc_collectionClear(self);
 }
 
-OOC_Error ooc_arrayDequePush(void* self, void* element) {
+OOC_Error ooc_arrayDequeOffer(void* self, void* element) {
     return ooc_arrayDequeAddLast(self, element);
 }
 
-void* ooc_arrayDequePop(void* self) {
+void* ooc_arrayDequePoll(void* self) {
     return ooc_arrayDequeRemoveFirst(self);
 }
 
@@ -323,6 +323,14 @@ void* ooc_arrayDequeRemoveLast(void* self) {
     return value;
 }
 
+OOC_Error ooc_arrayDequePush(void* self, void* element) {
+    return ooc_arrayDequeAddFirst(self, element);
+}
+
+void* ooc_arrayDequePop(void* self) {
+    return ooc_arrayDequeRemoveFirst(self);
+}
+
 static OOC_Error ooc_arrayDequeCtor(void* self, va_list* args) {
     if (!self || !args) {
         return OOC_ERROR_INVALID_ARGUMENT;
@@ -379,8 +387,8 @@ static void* ooc_arrayDequeClassInit(void) {
                      OOC_ABSTRACT_COLLECTION_METHOD_ITERATOR, ooc_arrayDequeGetIterator,
                      OOC_ABSTRACT_COLLECTION_METHOD_SIZE, ooc_arrayDequeSize,
                      OOC_ABSTRACT_COLLECTION_METHOD_ADD, ooc_arrayDequeAdd,
-                     OOC_ARRAY_DEQUE_METHOD_PUSH, ooc_arrayDequePush,
-                     OOC_ARRAY_DEQUE_METHOD_POP, ooc_arrayDequePop,
+                     OOC_ARRAY_DEQUE_METHOD_OFFER, ooc_arrayDequeOffer,
+                     OOC_ARRAY_DEQUE_METHOD_POP, ooc_arrayDequePoll,
                      OOC_ARRAY_DEQUE_METHOD_PEEK, ooc_arrayDequePeek,
                      OOC_ARRAY_DEQUE_METHOD_ADD_FIRST, ooc_arrayDequeAddFirst,
                      OOC_ARRAY_DEQUE_METHOD_ADD_LAST, ooc_arrayDequeAddLast,
@@ -388,6 +396,8 @@ static void* ooc_arrayDequeClassInit(void) {
                      OOC_ARRAY_DEQUE_METHOD_REMOVE_LAST, ooc_arrayDequeRemoveLast,
                      OOC_ARRAY_DEQUE_METHOD_GET_FIRST, ooc_arrayDequeGetFirst,
                      OOC_ARRAY_DEQUE_METHOD_GET_LAST, ooc_arrayDequeGetLast,
+                     OOC_ARRAY_DEQUE_METHOD_PUSH, ooc_arrayDequePush,
+                     OOC_ARRAY_DEQUE_METHOD_POP, ooc_arrayDequePop,
                      0) != OOC_ERROR_NONE) {
         ooc_classDestroy(&ArrayDequeClassInstance);
         return NULL;

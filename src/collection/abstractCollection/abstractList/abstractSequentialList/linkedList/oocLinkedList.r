@@ -28,8 +28,8 @@ struct OOC_LinkedListClass {
     OOC_DequeVtable dequeVtable;
 };
 
-#define OOC_LINKED_LIST_METHOD_PUSH         offsetof(OOC_LinkedListClass, dequeVtable.queueVtable.push)
-#define OOC_LINKED_LIST_METHOD_POP          offsetof(OOC_LinkedListClass, dequeVtable.queueVtable.pop)
+#define OOC_LINKED_LIST_METHOD_OFFER        offsetof(OOC_LinkedListClass, dequeVtable.queueVtable.offer)
+#define OOC_LINKED_LIST_METHOD_POLL         offsetof(OOC_LinkedListClass, dequeVtable.queueVtable.poll)
 #define OOC_LINKED_LIST_METHOD_PEEK         offsetof(OOC_LinkedListClass, dequeVtable.queueVtable.peek)
 #define OOC_LINKED_LIST_METHOD_ADD_FIRST    offsetof(OOC_LinkedListClass, dequeVtable.addFirst)
 #define OOC_LINKED_LIST_METHOD_ADD_LAST     offsetof(OOC_LinkedListClass, dequeVtable.addLast)
@@ -37,5 +37,7 @@ struct OOC_LinkedListClass {
 #define OOC_LINKED_LIST_METHOD_REMOVE_LAST  offsetof(OOC_LinkedListClass, dequeVtable.removeLast)
 #define OOC_LINKED_LIST_METHOD_GET_FIRST    offsetof(OOC_LinkedListClass, dequeVtable.getFirst)
 #define OOC_LINKED_LIST_METHOD_GET_LAST     offsetof(OOC_LinkedListClass, dequeVtable.getLast)
+#define OOC_LINKED_LIST_METHOD_PUSH         offsetof(OOC_LinkedListClass, dequeVtable.push)
+#define OOC_LINKED_LIST_METHOD_POP          offsetof(OOC_LinkedListClass, dequeVtable.pop)
 
 #endif /* OOC_LINKED_LIST_R_ */
