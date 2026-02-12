@@ -93,8 +93,10 @@ OOC_Error ooc_arrayListSetAt(void* self, size_t index, void* element) {
     if (index >= list->size) {
         return OOC_ERROR_INVALID_ARGUMENT;
     }
-    ooc_destroy(list->elements[index]);
-    list->elements[index] = element;
+    if (list->elements[index] != element) {
+        ooc_destroy(list->elements[index]);
+        list->elements[index] = element;
+    }
     return OOC_ERROR_NONE;
 }
 
