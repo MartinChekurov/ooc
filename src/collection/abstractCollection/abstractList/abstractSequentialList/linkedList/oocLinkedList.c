@@ -1,5 +1,7 @@
 #include "oocLinkedList.h"
 #include "oocCollection.h"
+
+#include "oocError.h"
 #include "oocLinkedList.r"
 #include "oocAbstractSequentialList.h"
 #include "oocDeque.h"
@@ -39,115 +41,143 @@ static OOC_LinkedListIteratorClass LinkedListIteratorClassInstance;
 static OOC_InterfaceImpl LinkedListInterfaces[1];
 static OOC_InterfaceImpl LinkedListIteratorInterfaces[1];
 
+static OOC_Error ooc_linkedListNodeDestroy(OOC_LinkedListNode* node) {
+    if (!node) {
+        return OOC_ERROR_INVALID_ARGUMENT;
+    }
+    ooc_destroy(node->data);
+    free(node);
+    return OOC_ERROR_NONE;
+}
+
 static OOC_LinkedListNode* ooc_linkedListCreateNode(void* element) {
-    OOC_LinkedListNode* node = (OOC_LinkedListNode*)malloc(sizeof(OOC_LinkedListNode));
+    OOC_LinkedListNode* node = calloc(1, sizeof(OOC_LinkedListNode));
     if (!node) {
         return NULL;
     }
     node->data = element;
-    node->next = NULL;
-    node->prev = NULL;
     return node;
 }
 
-static void ooc_linkedListLinkFirst(OOC_LinkedList* list, OOC_LinkedListNode* node) {
+static OOC_Error ooc_linkedListLinkFirst(OOC_LinkedList* list, OOC_LinkedListNode* node) {
+    if (!list || !node) {
+        return OOC_ERROR_INVALID_ARGUMENT;
+    }
     node->prev = NULL;
     node->next = list->head;
-
-    if (list->head) {
-        list->head->prev = node;
+    list->head = node;
+    if (node->next) {
+        node->next->prev = node;
     } else {
         list->tail = node;
     }
-
-    list->head = node;
     list->size++;
+    return OOC_ERROR_NONE;
 }
 
-static void ooc_linkedListLinkLast(OOC_LinkedList* list, OOC_LinkedListNode* node) {
+static OOC_Error ooc_linkedListLinkLast(OOC_LinkedList* list, OOC_LinkedListNode* node) {
+    if (!list || !node) {
+        return OOC_ERROR_INVALID_ARGUMENT;
+    }
     node->next = NULL;
     node->prev = list->tail;
-
-    if (list->tail) {
-        list->tail->next = node;
-    } else {
-        list->head = node;
-    }
-
     list->tail = node;
-    list->size++;
-}
-
-static void ooc_linkedListLinkBefore(OOC_LinkedList* list,
-                                     OOC_LinkedListNode* succ,
-                                     OOC_LinkedListNode* node) {
-    node->next = succ;
-    node->prev = succ ? succ->prev : NULL;
-
     if (node->prev) {
         node->prev->next = node;
     } else {
         list->head = node;
     }
-
-    if (succ) {
-        succ->prev = node;
-    } else {
-        list->tail = node;
-    }
-
     list->size++;
+    return OOC_ERROR_NONE;
 }
 
-static void* ooc_linkedListUnlink(OOC_LinkedList* list,
-                                  OOC_LinkedListNode* node,
-                                  bool destroyElement) {
-    if (!list || !node) {
+static OOC_Error ooc_linkedListLinkBefore(OOC_LinkedList* list,
+                                          OOC_LinkedListNode* succ,
+                                          OOC_LinkedListNode* node) {
+    if (!list || !succ || !node) {
+        return OOC_ERROR_INVALID_ARGUMENT;
+    }
+    node->next = succ;
+    node->prev = succ->prev;
+    if (succ->prev) {
+        succ->prev->next = node;
+    } else {
+        list->head = node;
+    }
+    succ->prev = node;
+    list->size++;
+    return OOC_ERROR_NONE;
+}
+
+static void* ooc_linkedListUnlinkFirst(OOC_LinkedList* list) {
+    if (!list || !list->head) {
         return NULL;
     }
+    OOC_LinkedListNode* firstNode = list->head;
+    list->head = firstNode->next;
+    if (list->head) {
+        list->head->prev = NULL;
+    } else {
+        list->tail = NULL;
+    }
+    firstNode->next = NULL;
+    firstNode->prev = NULL;
+    list->size--;
+    return firstNode;
+}
 
-    void* data = node->data;
+static void* ooc_linkedListUnlinkLast(OOC_LinkedList* list) {
+    if (!list || !list->tail) {
+        return NULL;
+    }
+    OOC_LinkedListNode* lastNode = list->tail;
+    list->tail = lastNode->prev;
+    if (list->tail) {
+        list->tail->next = NULL;
+    } else {
+        list->head = NULL;
+    }
+    lastNode->next = NULL;
+    lastNode->prev = NULL;
+    list->size--;
+    return lastNode;
+}
 
+static OOC_Error ooc_linkedListUnlink(OOC_LinkedList* list, OOC_LinkedListNode* node) {
+    if (!list || !node) {
+        return OOC_ERROR_INVALID_ARGUMENT;
+    }
     if (node->prev) {
         node->prev->next = node->next;
     } else {
         list->head = node->next;
     }
-
     if (node->next) {
         node->next->prev = node->prev;
     } else {
         list->tail = node->prev;
     }
-
-    free(node);
-    if (list->size > 0) {
+    node->next = NULL;
+    node->prev = NULL;
+    if (list->size) {
         list->size--;
     }
-
-    if (destroyElement) {
-        ooc_destroy(data);
-        return NULL;
-    }
-
-    return data;
+    return OOC_ERROR_NONE;
 }
 
 static OOC_LinkedListNode* ooc_linkedListNodeAt(OOC_LinkedList* list, size_t index) {
     if (!list || index >= list->size) {
         return NULL;
     }
-
     if (index < (list->size >> 1)) {
         OOC_LinkedListNode* x = list->head;
-        for (size_t i = 0; i < index; ++i) {
+        for (size_t i = 0; i < index; i++) {
             x = x->next;
         }
         return x;
     }
-
     OOC_LinkedListNode* x = list->tail;
-    for (size_t i = list->size - 1; i > index; --i) {
+    for (size_t i = list->size - 1; i > index; i++) {
         x = x->prev;
     }
     return x;
@@ -157,61 +187,46 @@ static bool ooc_linkedListIteratorHasNext(void* self) {
     if (!self) {
         return false;
     }
-
-    OOC_LinkedListIterator* it = (OOC_LinkedListIterator*)self;
-    return it->nextIndex < it->list->size;
+    OOC_LinkedListIterator* iterator = self;
+    return iterator->next != NULL;
 }
 
 static void* ooc_linkedListIteratorNext(void* self) {
     if (!self) {
         return NULL;
     }
-
-    OOC_LinkedListIterator* it = (OOC_LinkedListIterator*)self;
-    if (it->nextIndex >= it->list->size || !it->next) {
+    OOC_LinkedListIterator* iterator = self;
+    if (!iterator->next) {
         return NULL;
     }
-
-    ooc_superBaseIteratorNext(it);
-
-    it->lastReturned = it->next;
-    it->next = it->next->next;
-    it->nextIndex++;
-
-    return it->lastReturned->data;
+    if (!ooc_superBaseIteratorNext(iterator)) {
+        return NULL;
+    }
+    iterator->lastReturned = iterator->next;
+    iterator->next = iterator->next->next;
+    iterator->nextIndex++;
+    return iterator->lastReturned->data;
 }
 
 static OOC_Error ooc_linkedListIteratorRemove(void* self) {
     if (!self) {
         return OOC_ERROR_INVALID_ARGUMENT;
     }
-
-    OOC_LinkedListIterator* it = (OOC_LinkedListIterator*)self;
-
-    OOC_Error e = ooc_superBaseIteratorRemove(it);
-    if (e != OOC_ERROR_NONE) {
-        return e;
+    OOC_LinkedListIterator* iterator = self;
+    OOC_Error error = ooc_superBaseIteratorRemove(iterator);
+    if (error != OOC_ERROR_NONE) {
+        return error;
     }
-
-    if (!it->lastReturned) {
+    if (!iterator->lastReturned) {
         return OOC_ERROR_NOT_FOUND;
     }
-
-    OOC_LinkedListNode* node = it->lastReturned;
-
-    /* If last op was previous(), next points to lastReturned.
-       After removal cursor should point to successor. */
-    if (node == it->next) {
-        it->next = it->next->next;
-    } else {
-        /* last op was next(); cursor had advanced past removed node */
-        if (it->nextIndex > 0) {
-            it->nextIndex--;
-        }
+    error = ooc_linkedListUnlink(iterator->list, iterator->lastReturned);
+    if (error != OOC_ERROR_NONE) {
+        return error;
     }
-
-    (void)ooc_linkedListUnlink(it->list, node, true);
-    it->lastReturned = NULL;
+    ooc_linkedListNodeDestroy(iterator->lastReturned);
+    iterator->lastReturned = NULL;
+    iterator->nextIndex--;
     return OOC_ERROR_NONE;
 }
 
@@ -219,65 +234,58 @@ static bool ooc_linkedListIteratorHasPrevious(void* self) {
     if (!self) {
         return false;
     }
-
-    OOC_LinkedListIterator* it = (OOC_LinkedListIterator*)self;
-    return it->nextIndex > 0;
+    OOC_LinkedListIterator* iterator = self;
+    return iterator->nextIndex > 0;
 }
 
 static void* ooc_linkedListIteratorPrevious(void* self) {
     if (!self) {
         return NULL;
     }
-
-    OOC_LinkedListIterator* it = (OOC_LinkedListIterator*)self;
-    if (it->nextIndex == 0) {
+    OOC_LinkedListIterator* iterator = self;
+    if (iterator->nextIndex == 0) {
         return NULL;
     }
-
-    ooc_superBaseIteratorNext(it);
-
-    if (it->next == NULL) {
-        it->next = it->list->tail;
+    // If at the end (next is NULL), move to the tail
+    if (iterator->next == NULL) {
+        iterator->lastReturned = iterator->list->tail;
+        iterator->next = iterator->list->tail;
     } else {
-        it->next = it->next->prev;
+        // Move backwards to the previous node
+        iterator->lastReturned = iterator->next->prev;
+        iterator->next = iterator->next->prev;
     }
-
-    it->lastReturned = it->next;
-    it->nextIndex--;
-
-    return it->lastReturned ? it->lastReturned->data : NULL;
+    iterator->nextIndex--;
+    return iterator->lastReturned ? iterator->lastReturned->data : NULL;
 }
 
 static int ooc_linkedListIteratorNextIndex(void* self) {
     if (!self) {
         return -1;
     }
-
-    OOC_LinkedListIterator* it = (OOC_LinkedListIterator*)self;
-    return (int)it->nextIndex;
+    OOC_LinkedListIterator* iterator = self;
+    return (int)iterator->nextIndex;
 }
+
 
 static int ooc_linkedListIteratorPreviousIndex(void* self) {
     if (!self) {
         return -1;
     }
-
-    OOC_LinkedListIterator* it = (OOC_LinkedListIterator*)self;
-    return (it->nextIndex == 0) ? -1 : (int)(it->nextIndex - 1);
+    OOC_LinkedListIterator* iterator = self;
+    return (iterator->nextIndex == 0) ? -1 : (int)(iterator->nextIndex - 1);
 }
 
 static OOC_Error ooc_linkedListIteratorSet(void* self, void* element) {
     if (!self) {
         return OOC_ERROR_INVALID_ARGUMENT;
     }
-
-    OOC_LinkedListIterator* it = (OOC_LinkedListIterator*)self;
-    if (!it->lastReturned) {
+    OOC_LinkedListIterator* iterator = self;
+    if (!iterator->lastReturned) {
         return OOC_ERROR_NOT_FOUND;
     }
-
-    ooc_destroy(it->lastReturned->data);
-    it->lastReturned->data = element;
+    ooc_destroy(iterator->lastReturned->data);
+    iterator->lastReturned->data = element;
     return OOC_ERROR_NONE;
 }
 
@@ -285,21 +293,23 @@ static OOC_Error ooc_linkedListIteratorAdd(void* self, void* element) {
     if (!self) {
         return OOC_ERROR_INVALID_ARGUMENT;
     }
-
-    OOC_LinkedListIterator* it = (OOC_LinkedListIterator*)self;
+    OOC_LinkedListIterator* iterator = self;
     OOC_LinkedListNode* node = ooc_linkedListCreateNode(element);
     if (!node) {
         return OOC_ERROR_OUT_OF_MEMORY;
     }
-
-    if (it->next == NULL) {
-        ooc_linkedListLinkLast(it->list, node);
+    OOC_Error error = OOC_ERROR_NONE;
+    if (iterator->next == NULL) {
+        error = ooc_linkedListLinkLast(iterator->list, node);
     } else {
-        ooc_linkedListLinkBefore(it->list, it->next, node);
+        error = ooc_linkedListLinkBefore(iterator->list, iterator->next, node);
     }
-
-    it->nextIndex++;
-    it->lastReturned = NULL;
+    if (error != OOC_ERROR_NONE) {
+        free(node);
+        return error;
+    }
+    iterator->nextIndex++;
+    iterator->lastReturned = NULL;
     return OOC_ERROR_NONE;
 }
 
@@ -307,29 +317,22 @@ static OOC_Error ooc_linkedListIteratorCtor(void* self, va_list* args) {
     if (!self || !args) {
         return OOC_ERROR_INVALID_ARGUMENT;
     }
-
-    OOC_LinkedListIterator* it = (OOC_LinkedListIterator*)self;
-    OOC_Error e = ooc_superCtor(it, args);
-    if (e != OOC_ERROR_NONE) {
-        return e;
+    OOC_LinkedListIterator* iterator = self;
+    OOC_Error error = ooc_superCtor(iterator, args);
+    if (error != OOC_ERROR_NONE) {
+        return error;
     }
-
-    it->list = va_arg(*args, OOC_LinkedList*);
-    size_t index = va_arg(*args, size_t);
-
-    if (!it->list) {
+    iterator->list = va_arg(*args, OOC_LinkedList*);
+    if (!iterator->list) {
         return OOC_ERROR_INVALID_ARGUMENT;
     }
-    OOC_TYPE_CHECK(it->list, ooc_linkedListClass(), OOC_ERROR_INVALID_OBJECT);
-
-    if (index > it->list->size) {
+    OOC_TYPE_CHECK(iterator->list, ooc_linkedListClass(), OOC_ERROR_INVALID_OBJECT);
+    iterator->nextIndex = va_arg(*args, size_t);
+    if (iterator->nextIndex > iterator->list->size) {
         return OOC_ERROR_INVALID_ARGUMENT;
     }
-
-    it->nextIndex = index;
-    it->lastReturned = NULL;
-    it->next = (index == it->list->size) ? NULL : ooc_linkedListNodeAt(it->list, index);
-
+    iterator->lastReturned = NULL;
+    iterator->next = ooc_linkedListNodeAt(iterator->list, iterator->nextIndex);
     return OOC_ERROR_NONE;
 }
 
@@ -385,7 +388,7 @@ size_t ooc_linkedListSize(void* self) {
         return 0;
     }
     OOC_TYPE_CHECK(self, ooc_linkedListClass(), 0);
-    OOC_LinkedList* list = (OOC_LinkedList*)self;
+    OOC_LinkedList* list = self;
     return list->size;
 }
 
@@ -446,12 +449,10 @@ void* ooc_linkedListGetListIteratorAt(void* self, size_t index) {
         return NULL;
     }
     OOC_TYPE_CHECK(self, ooc_linkedListClass(), NULL);
-
     OOC_LinkedList* list = (OOC_LinkedList*)self;
     if (index > list->size) {
         return NULL;
     }
-
     return ooc_new(ooc_linkedListIteratorClass(), list, index, 0);
 }
 
@@ -460,14 +461,16 @@ OOC_Error ooc_linkedListAddFirst(void* self, void* element) {
         return OOC_ERROR_INVALID_ARGUMENT;
     }
     OOC_TYPE_CHECK(self, ooc_linkedListClass(), OOC_ERROR_INVALID_OBJECT);
-
-    OOC_LinkedList* list = (OOC_LinkedList*)self;
+    OOC_LinkedList* list = self;
     OOC_LinkedListNode* node = ooc_linkedListCreateNode(element);
     if (!node) {
         return OOC_ERROR_OUT_OF_MEMORY;
     }
-
-    ooc_linkedListLinkFirst(list, node);
+    OOC_Error error = ooc_linkedListLinkFirst(list, node);
+    if (error != OOC_ERROR_NONE) {
+        free(node);
+        return error;
+    }
     return OOC_ERROR_NONE;
 }
 
@@ -480,8 +483,7 @@ void* ooc_linkedListGetFirst(void* self) {
         return NULL;
     }
     OOC_TYPE_CHECK(self, ooc_linkedListClass(), NULL);
-
-    OOC_LinkedList* list = (OOC_LinkedList*)self;
+    OOC_LinkedList* list = self;
     return list->head ? list->head->data : NULL;
 }
 
@@ -490,8 +492,7 @@ void* ooc_linkedListGetLast(void* self) {
         return NULL;
     }
     OOC_TYPE_CHECK(self, ooc_linkedListClass(), NULL);
-
-    OOC_LinkedList* list = (OOC_LinkedList*)self;
+    OOC_LinkedList* list = self;
     return list->tail ? list->tail->data : NULL;
 }
 
@@ -500,13 +501,14 @@ void* ooc_linkedListRemoveFirst(void* self) {
         return NULL;
     }
     OOC_TYPE_CHECK(self, ooc_linkedListClass(), NULL);
-
-    OOC_LinkedList* list = (OOC_LinkedList*)self;
-    if (!list->head) {
-        return NULL;
+    OOC_LinkedList* list = self;
+    OOC_LinkedListNode* node = ooc_linkedListUnlinkFirst(list);
+    void* data = NULL;
+    if (node) {
+        data = node->data;
+        free(node);
     }
-
-    return ooc_linkedListUnlink(list, list->head, false);
+    return data;
 }
 
 void* ooc_linkedListRemoveLast(void* self) {
@@ -514,13 +516,14 @@ void* ooc_linkedListRemoveLast(void* self) {
         return NULL;
     }
     OOC_TYPE_CHECK(self, ooc_linkedListClass(), NULL);
-
-    OOC_LinkedList* list = (OOC_LinkedList*)self;
-    if (!list->tail) {
-        return NULL;
+    OOC_LinkedList* list = self;
+    OOC_LinkedListNode* node = ooc_linkedListUnlinkLast(list);
+    void* data = NULL;
+    if (node) {
+        data = node->data;
+        free(node);
     }
-
-    return ooc_linkedListUnlink(list, list->tail, false);
+    return data;
 }
 
 OOC_Error ooc_linkedListPush(void* self, void* element) {
@@ -540,13 +543,11 @@ static OOC_Error ooc_linkedListCtor(void* self, va_list* args) {
         return OOC_ERROR_INVALID_ARGUMENT;
     }
     OOC_TYPE_CHECK(self, ooc_linkedListClass(), OOC_ERROR_INVALID_OBJECT);
-
-    OOC_LinkedList* list = (OOC_LinkedList*)self;
-    OOC_Error e = ooc_superCtor(list, args);
-    if (e != OOC_ERROR_NONE) {
-        return e;
+    OOC_LinkedList* list = self;
+    OOC_Error error = ooc_superCtor(list, args);
+    if (error != OOC_ERROR_NONE) {
+        return error;
     }
-
     list->head = NULL;
     list->tail = NULL;
     list->size = 0;
@@ -558,12 +559,14 @@ static OOC_Error ooc_linkedListDtor(void* self) {
         return OOC_ERROR_INVALID_ARGUMENT;
     }
     OOC_TYPE_CHECK(self, ooc_linkedListClass(), OOC_ERROR_INVALID_OBJECT);
-
-    OOC_Error e = ooc_linkedListClear(self);
-    if (e != OOC_ERROR_NONE) {
-        return e;
+    OOC_Error error = ooc_collectionClear(self);
+    if (error != OOC_ERROR_NONE) {
+        return error;
     }
-
+    OOC_LinkedList* list = self;
+    list->head = NULL;
+    list->tail = NULL;
+    list->size = 0;
     return ooc_superDtor(self);
 }
 

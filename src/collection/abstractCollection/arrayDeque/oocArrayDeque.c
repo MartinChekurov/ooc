@@ -100,7 +100,7 @@ static bool ooc_arrayDequeIteratorHasNext(void* self) {
     if (!self) {
         return false;
     }
-    OOC_ArrayDequeIterator* iterator = (OOC_ArrayDequeIterator*)self;
+    OOC_ArrayDequeIterator* iterator = self;
     return iterator->index < iterator->deque->size;
 }
 
@@ -108,7 +108,7 @@ static void* ooc_arrayDequeIteratorNext(void* self) {
     if (!self) {
         return NULL;
     }
-    OOC_ArrayDequeIterator* iterator = (OOC_ArrayDequeIterator*)self;
+    OOC_ArrayDequeIterator* iterator = self;
     if (iterator->index >= iterator->deque->size) {
         return NULL;
     }
@@ -126,7 +126,7 @@ static OOC_Error ooc_arrayDequeIteratorRemove(void* self) {
     if (!self) {
         return OOC_ERROR_INVALID_ARGUMENT;
     }
-    OOC_ArrayDequeIterator* iterator = (OOC_ArrayDequeIterator*)self;
+    OOC_ArrayDequeIterator* iterator = self;
     OOC_Error error = ooc_superBaseIteratorRemove(iterator);
     if (error != OOC_ERROR_NONE) {
         return error;
@@ -143,7 +143,7 @@ static OOC_Error ooc_arrayDequeIteratorCtor(void* self, va_list* args) {
     if (!self || !args) {
         return OOC_ERROR_INVALID_ARGUMENT;
     }
-    OOC_ArrayDequeIterator* iterator = (OOC_ArrayDequeIterator*)self;
+    OOC_ArrayDequeIterator* iterator = self;
     OOC_Error error = ooc_superCtor(iterator, args);
     if (error != OOC_ERROR_NONE) {
         return error;
