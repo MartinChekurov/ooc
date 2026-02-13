@@ -6,11 +6,11 @@
 #include "oocError.h"
 #include "oocList.h"
 #include "oocListIterator.h"
-#include "oocListIterator.r"
 #include "oocObject.h"
 #include "oocObject.r"
-#include "oocBaseIterator.h"
 #include "oocBaseIterator.r"
+#include "oocBaseListIterator.h"
+#include "oocBaseListIterator.r"
 
 #include <stddef.h>
 
@@ -18,15 +18,14 @@ typedef struct OOC_AbstractSequentialListIterator OOC_AbstractListIterator;
 typedef struct OOC_AbstractListIteratorClass OOC_AbstractListIteratorClass;
 
 struct OOC_AbstractSequentialListIterator {
-    OOC_BaseIterator baseIterator;
+    OOC_BaseListIterator baseListIterator;
     void* list;
     size_t nextIndex;
     int lastReturnedIndex;
 };
 
 struct OOC_AbstractListIteratorClass {
-    OOC_BaseIteratorClass class;
-    OOC_ListIteratorVtable listIteratorVtable;
+    OOC_BaseListIteratorClass class;
 };
 
 static OOC_AbstractListClass* AbstractListClass;
@@ -35,7 +34,6 @@ static OOC_InterfaceImpl AbstractListInterfaces[1];
 
 static OOC_AbstractListIteratorClass* AbstractListIteratorClass;
 static OOC_AbstractListIteratorClass AbstractListIteratorClassInstance;
-static OOC_InterfaceImpl AbstractListIteratorInterfaces[1];
 
 size_t ooc_abstractListSize(void* self) {
     return ooc_collectionSize(self);
@@ -246,32 +244,23 @@ static void* ooc_abstractListIteratorClassInit(void) {
                      "AbstractListIterator",
                      sizeof(OOC_AbstractListIterator),
                      sizeof(OOC_AbstractListIteratorClass),
-                     ooc_baseIteratorClass(),
+                     ooc_baseListIteratorClass(),
                      OOC_MODIFIER_FINAL,
                      OOC_METHOD_CTOR, ooc_abstractListIteratorCtor,
                      OOC_BASE_ITERATOR_METHOD_HAS_NEXT, ooc_abstractListIteratorHasNext,
                      OOC_BASE_ITERATOR_METHOD_NEXT, ooc_abstractListIteratorNext,
                      OOC_BASE_ITERATOR_METHOD_REMOVE, ooc_abstractListIteratorRemove,
-                     offsetof(OOC_AbstractListIteratorClass, listIteratorVtable.hasPrevious), ooc_abstractListIteratorHasPrevious,
-                     offsetof(OOC_AbstractListIteratorClass, listIteratorVtable.previous), ooc_abstractListIteratorPrevious,
-                     offsetof(OOC_AbstractListIteratorClass, listIteratorVtable.nextIndex), ooc_abstractListIteratorNextIndex,
-                     offsetof(OOC_AbstractListIteratorClass, listIteratorVtable.previousIndex), ooc_abstractListIteratorPreviousIndex,
-                     offsetof(OOC_AbstractListIteratorClass, listIteratorVtable.set), ooc_abstractListIteratorSet,
-                     offsetof(OOC_AbstractListIteratorClass, listIteratorVtable.add), ooc_abstractListIteratorAdd,
+                     OOC_BASE_LIST_ITERATOR_METHOD_HAS_PREVIOUS, ooc_abstractListIteratorHasPrevious,
+                     OOC_BASE_LIST_ITERATOR_METHOD_PREVIOUS, ooc_abstractListIteratorPrevious,
+                     OOC_BASE_LIST_ITERATOR_METHOD_NEXT_INDEX, ooc_abstractListIteratorNextIndex,
+                     OOC_BASE_LIST_ITERATOR_METHOD_PREVIOUS_INDEX, ooc_abstractListIteratorPreviousIndex,
+                     OOC_BASE_LIST_ITERATOR_METHOD_SET, ooc_abstractListIteratorSet,
+                     OOC_BASE_LIST_ITERATOR_METHOD_ADD, ooc_abstractListIteratorAdd,
                      0) != OOC_ERROR_NONE) {
         ooc_classDestroy(&AbstractListIteratorClassInstance);
         return NULL;
     }
 
-    AbstractListIteratorInterfaces[0].interfaceClass = ooc_listIteratorClass();
-    AbstractListIteratorInterfaces[0].vtableOffset = offsetof(OOC_AbstractListIteratorClass, listIteratorVtable);
-
-    if (ooc_classSetInterface(&AbstractListIteratorClassInstance,
-                              AbstractListIteratorInterfaces,
-                              1) != OOC_ERROR_NONE) {
-        ooc_classDestroy(&AbstractListIteratorClassInstance);
-        return NULL;
-    }
     return &AbstractListIteratorClassInstance;
 }
 

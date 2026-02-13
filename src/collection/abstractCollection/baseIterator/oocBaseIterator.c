@@ -65,7 +65,7 @@ static OOC_Error ooc_baseIteratorCtor(void* self, va_list* args) {
 
 static void* ooc_baseIteratorClassInit(void) {
     if (ooc_classNew(&BaseIteratorClassInstance,
-                    "BaseIterator",
+                    "AbstractIterator",
                     sizeof(OOC_BaseIterator),
                     sizeof(OOC_BaseIteratorClass),
                     ooc_objectClass(),

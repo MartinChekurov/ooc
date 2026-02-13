@@ -7,11 +7,11 @@
 #include "oocDeque.h"
 #include "oocList.h"
 #include "oocListIterator.h"
-#include "oocListIterator.r"
 #include "oocObject.h"
 #include "oocObject.r"
-#include "oocBaseIterator.h"
 #include "oocBaseIterator.r"
+#include "oocBaseListIterator.h"
+#include "oocBaseListIterator.r"
 
 #include <stdlib.h>
 #include <stddef.h>
@@ -20,7 +20,7 @@ typedef struct OOC_LinkedListIterator OOC_LinkedListIterator;
 typedef struct OOC_LinkedListIteratorClass OOC_LinkedListIteratorClass;
 
 struct OOC_LinkedListIterator {
-    OOC_BaseIterator baseIterator;
+    OOC_BaseListIterator baseListIterator;
     OOC_LinkedList* list;
     OOC_LinkedListNode* next;
     OOC_LinkedListNode* lastReturned;
@@ -28,8 +28,7 @@ struct OOC_LinkedListIterator {
 };
 
 struct OOC_LinkedListIteratorClass {
-    OOC_BaseIteratorClass class;
-    OOC_ListIteratorVtable listIteratorVtable;
+    OOC_BaseListIteratorClass class;
 };
 
 static OOC_LinkedListClass* LinkedListClass;
@@ -39,7 +38,6 @@ static OOC_LinkedListIteratorClass* LinkedListIteratorClass;
 static OOC_LinkedListIteratorClass LinkedListIteratorClassInstance;
 
 static OOC_InterfaceImpl LinkedListInterfaces[1];
-static OOC_InterfaceImpl LinkedListIteratorInterfaces[1];
 
 static OOC_Error ooc_linkedListNodeDestroy(OOC_LinkedListNode* node) {
     if (!node) {
@@ -283,7 +281,7 @@ static int ooc_linkedListIteratorPreviousIndex(void* self) {
         return -1;
     }
     OOC_LinkedListIterator* iterator = self;
-    return (int)(iterator->nextIndex - 1);
+    return (iterator->nextIndex == 0) ? -1 : (int)(iterator->nextIndex - 1);
 }
 
 static OOC_Error ooc_linkedListIteratorSet(void* self, void* element) {
@@ -355,30 +353,19 @@ static void* ooc_linkedListIteratorClassInit(void) {
                      "LinkedListIterator",
                      sizeof(OOC_LinkedListIterator),
                      sizeof(OOC_LinkedListIteratorClass),
-                     ooc_baseIteratorClass(),
+                     ooc_baseListIteratorClass(),
                      OOC_MODIFIER_NONE,
                      OOC_METHOD_CTOR, ooc_linkedListIteratorCtor,
                      OOC_BASE_ITERATOR_METHOD_HAS_NEXT, ooc_linkedListIteratorHasNext,
                      OOC_BASE_ITERATOR_METHOD_NEXT, ooc_linkedListIteratorNext,
                      OOC_BASE_ITERATOR_METHOD_REMOVE, ooc_linkedListIteratorRemove,
-                     offsetof(OOC_LinkedListIteratorClass, listIteratorVtable.hasPrevious), ooc_linkedListIteratorHasPrevious,
-                     offsetof(OOC_LinkedListIteratorClass, listIteratorVtable.previous), ooc_linkedListIteratorPrevious,
-                     offsetof(OOC_LinkedListIteratorClass, listIteratorVtable.nextIndex), ooc_linkedListIteratorNextIndex,
-                     offsetof(OOC_LinkedListIteratorClass, listIteratorVtable.previousIndex), ooc_linkedListIteratorPreviousIndex,
-                     offsetof(OOC_LinkedListIteratorClass, listIteratorVtable.set), ooc_linkedListIteratorSet,
-                     offsetof(OOC_LinkedListIteratorClass, listIteratorVtable.add), ooc_linkedListIteratorAdd,
+                     OOC_BASE_LIST_ITERATOR_METHOD_HAS_PREVIOUS, ooc_linkedListIteratorHasPrevious,
+                     OOC_BASE_LIST_ITERATOR_METHOD_PREVIOUS, ooc_linkedListIteratorPrevious,
+                     OOC_BASE_LIST_ITERATOR_METHOD_NEXT_INDEX, ooc_linkedListIteratorNextIndex,
+                     OOC_BASE_LIST_ITERATOR_METHOD_PREVIOUS_INDEX, ooc_linkedListIteratorPreviousIndex,
+                     OOC_BASE_LIST_ITERATOR_METHOD_SET, ooc_linkedListIteratorSet,
+                     OOC_BASE_LIST_ITERATOR_METHOD_ADD, ooc_linkedListIteratorAdd,
                      0) != OOC_ERROR_NONE) {
-        ooc_classDestroy(&LinkedListIteratorClassInstance);
-        return NULL;
-    }
-
-    LinkedListIteratorInterfaces[0].interfaceClass = ooc_listIteratorClass();
-    LinkedListIteratorInterfaces[0].vtableOffset =
-        offsetof(OOC_LinkedListIteratorClass, listIteratorVtable);
-
-    if (ooc_classSetInterface(&LinkedListIteratorClassInstance,
-                              LinkedListIteratorInterfaces,
-                              1) != OOC_ERROR_NONE) {
         ooc_classDestroy(&LinkedListIteratorClassInstance);
         return NULL;
     }
