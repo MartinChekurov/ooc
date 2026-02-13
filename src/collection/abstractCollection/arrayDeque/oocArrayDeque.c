@@ -112,9 +112,7 @@ static void* ooc_arrayDequeIteratorNext(void* self) {
     if (iterator->index >= iterator->deque->size) {
         return NULL;
     }
-    if (!ooc_superBaseIteratorNext(iterator)) {
-        return NULL;
-    }
+    ooc_superBaseIteratorNext(iterator);
     size_t physicalIndex = OOC_ARRAY_DEQUE_GET_PHYSICAL_INDEX(iterator->deque, iterator->deque->head, iterator->index);
     void* element = iterator->deque->elements[physicalIndex];
     iterator->lastIndex = iterator->index;
@@ -388,7 +386,7 @@ static void* ooc_arrayDequeClassInit(void) {
                      OOC_ABSTRACT_COLLECTION_METHOD_SIZE, ooc_arrayDequeSize,
                      OOC_ABSTRACT_COLLECTION_METHOD_ADD, ooc_arrayDequeAdd,
                      OOC_ARRAY_DEQUE_METHOD_OFFER, ooc_arrayDequeOffer,
-                     OOC_ARRAY_DEQUE_METHOD_POP, ooc_arrayDequePoll,
+                     OOC_ARRAY_DEQUE_METHOD_POLL, ooc_arrayDequePoll,
                      OOC_ARRAY_DEQUE_METHOD_PEEK, ooc_arrayDequePeek,
                      OOC_ARRAY_DEQUE_METHOD_ADD_FIRST, ooc_arrayDequeAddFirst,
                      OOC_ARRAY_DEQUE_METHOD_ADD_LAST, ooc_arrayDequeAddLast,

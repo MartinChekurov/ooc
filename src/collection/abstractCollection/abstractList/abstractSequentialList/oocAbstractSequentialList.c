@@ -13,7 +13,7 @@
 static OOC_AbstractSequentialListClass* AbstractSequentialListClass;
 static OOC_AbstractSequentialListClass AbstractSequentialListClassInstance;
 
-void* ooc_abstractSequantialListGetIterator(void* self) {
+void* ooc_abstractSequentialListGetIterator(void* self) {
     return ooc_iterableGetIterator(self);
 }
 

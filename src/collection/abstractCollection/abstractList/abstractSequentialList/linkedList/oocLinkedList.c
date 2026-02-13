@@ -199,9 +199,7 @@ static void* ooc_linkedListIteratorNext(void* self) {
     if (!iterator->next) {
         return NULL;
     }
-    if (!ooc_superBaseIteratorNext(iterator)) {
-        return NULL;
-    }
+    ooc_superBaseIteratorNext(iterator);
     iterator->lastReturned = iterator->next;
     iterator->next = iterator->next->next;
     iterator->nextIndex++;
@@ -267,6 +265,8 @@ static void* ooc_linkedListIteratorPrevious(void* self) {
         iterator->next = iterator->next->prev;
     }
     iterator->nextIndex--;
+    OOC_BaseIterator* base = (OOC_BaseIterator*)iterator;
+    base->canRemove = true;
     return iterator->lastReturned ? iterator->lastReturned->data : NULL;
 }
 
@@ -322,6 +322,8 @@ static OOC_Error ooc_linkedListIteratorAdd(void* self, void* element) {
     }
     iterator->nextIndex++;
     iterator->lastReturned = NULL;
+    OOC_BaseIterator* base = (OOC_BaseIterator*)iterator;
+    base->canRemove = false;
     return OOC_ERROR_NONE;
 }
 

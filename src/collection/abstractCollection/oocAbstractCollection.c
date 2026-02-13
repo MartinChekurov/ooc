@@ -44,91 +44,24 @@ static char* ooc_abstractCollectionToString(const void* self) {
     return result;
 }
 
-static bool ooc_abstractCollectionEquals(const void* self, const void* other) {
-    OOC_TYPE_CHECK(self, ooc_abstractCollectionClass(), false);
-    OOC_TYPE_CHECK(other, ooc_abstractCollectionClass(), false);
-    size_t selfSize = ooc_collectionSize((void*)self);
-    size_t otherSize = ooc_collectionSize((void*)other);
-    if (selfSize != otherSize) {
-        return false;
-    }
-    void* it1 = ooc_iterableGetIterator((void*)self);
-    void* it2 = ooc_iterableGetIterator((void*)other);
-    if (!it1 || !it2) {
-        ooc_destroy(it1);
-        ooc_destroy(it2);
-        return false;
-    }
-    while (ooc_iteratorHasNext(it1) && ooc_iteratorHasNext(it2)) {
-        void* elem1 = ooc_iteratorNext(it1);
-        void* elem2 = ooc_iteratorNext(it2);
-        if (!ooc_equals(elem1, elem2)) {
-            ooc_destroy(it1);
-            ooc_destroy(it2);
-            return false;
-        }
-    }
-    ooc_destroy(it1);
-    ooc_destroy(it2);
-    return true;
-}
-
-static size_t ooc_abstractCollectionHash(const void* self) {
-    OOC_TYPE_CHECK(self, ooc_abstractCollectionClass(), 0);
-    size_t hash = 0;
-    void* it = ooc_iterableGetIterator((void*)self);
-    while (ooc_iteratorHasNext(it)) {
-        void* elem = ooc_iteratorNext(it);
-        hash = 31 * hash + ooc_hashCode(elem);
-    }
-    ooc_destroy(it);
-    return hash;
-}
-
-static int ooc_abstractCollectionCompare(const void* self, const void* other) {
-    OOC_TYPE_CHECK(self, ooc_abstractCollectionClass(), -1);
-    OOC_TYPE_CHECK(other, ooc_abstractCollectionClass(), -1);
-    void* it1 = ooc_iterableGetIterator((void*)self);
-    void* it2 = ooc_iterableGetIterator((void*)other);
-    if (!it1 || !it2) {
-        ooc_destroy(it1);
-        ooc_destroy(it2);
-        return -1;
-    }
-    while (ooc_iteratorHasNext(it1) && ooc_iteratorHasNext(it2)) {
-        void* elem1 = ooc_iteratorNext(it1);
-        void* elem2 = ooc_iteratorNext(it2);
-        int cmp = ooc_compare(elem1, elem2);
-        if (cmp) {
-            ooc_destroy(it1);
-            ooc_destroy(it2);
-            return cmp;
-        }
-    }
-    int result = ooc_iteratorHasNext(it1) ? 1 : (ooc_iteratorHasNext(it2) ? -1 : 0);
-    ooc_destroy(it1);
-    ooc_destroy(it2);
-    return result;
-}
-
 static void* ooc_abstractCollectionClone(const void* self) {
     OOC_TYPE_CHECK(self, ooc_abstractCollectionClass(), NULL);
     void* clone = ooc_superClone(self);
     if (!clone) {
         return NULL;
     }
-    void* it = ooc_iterableGetIterator((void*)self);
-    while (ooc_iteratorHasNext(it)) {
-        void* elem = ooc_iteratorNext(it);
+    void* iterator = ooc_iterableGetIterator((void*)self);
+    while (ooc_iteratorHasNext(iterator)) {
+        void* elem = ooc_iteratorNext(iterator);
         void* elemClone = ooc_clone(elem);
         if (ooc_collectionAdd(clone, elemClone) != OOC_ERROR_NONE) {
             ooc_destroy(elemClone);
-            ooc_destroy(it);
+            ooc_destroy(iterator);
             ooc_destroy(clone);
             return NULL;
         }
     }
-    ooc_destroy(it);
+    ooc_destroy(iterator);
     return clone;
 }
 
@@ -147,15 +80,15 @@ bool ooc_abstractCollectionIsEmpty(void* self) {
 bool ooc_abstractCollectionContains(void* self, void* object) {
     OOC_TYPE_CHECK(self, ooc_abstractCollectionClass(), false);
     bool found = false;
-    void* it = ooc_iterableGetIterator(self);
-    while (ooc_iteratorHasNext(it)) {
-        void* elem = ooc_iteratorNext(it);
+    void* iterator = ooc_iterableGetIterator(self);
+    while (ooc_iteratorHasNext(iterator)) {
+        void* elem = ooc_iteratorNext(iterator);
         if (ooc_equals(elem, object)) {
             found = true;
             break;
         }
     }
-    ooc_destroy(it);
+    ooc_destroy(iterator);
     return found;
 }
 
@@ -167,15 +100,15 @@ bool ooc_abstractCollectionContainsAll(void* self, void* other) {
         return true;
     }
     bool allFound = true;
-    void* it = ooc_iterableGetIterator(other);
-    while (ooc_iteratorHasNext(it)) {
-        void* elem = ooc_iteratorNext(it);
+    void* iterator = ooc_iterableGetIterator(other);
+    while (ooc_iteratorHasNext(iterator)) {
+        void* elem = ooc_iteratorNext(iterator);
         if (!ooc_collectionContains(self, elem)) {
             allFound = false;
             break;
         }
     }
-    ooc_destroy(it);
+    ooc_destroy(iterator);
     return allFound;
 }
 
@@ -188,18 +121,17 @@ OOC_Error ooc_abstractCollectionRemove(void* self, void* object) {
         return OOC_ERROR_INVALID_ARGUMENT;
     }
     OOC_TYPE_CHECK(self, ooc_abstractCollectionClass(), OOC_ERROR_INVALID_OBJECT);
-    bool found = false;
-    void* it = ooc_iterableGetIterator(self);
-    while (ooc_iteratorHasNext(it)) {
-        void* elem = ooc_iteratorNext(it);
+    OOC_Error error = OOC_ERROR_NOT_FOUND;
+    void* iterator = ooc_iterableGetIterator(self);
+    while (ooc_iteratorHasNext(iterator)) {
+        void* elem = ooc_iteratorNext(iterator);
         if (ooc_equals(elem, object)) {
-            ooc_iteratorRemove(it);
-            found = true;
+            error = ooc_iteratorRemove(iterator);
             break;
         }
     }
-    ooc_destroy(it);
-    return found ? OOC_ERROR_NONE : OOC_ERROR_NOT_FOUND;
+    ooc_destroy(iterator);
+    return error;
 }
 
 OOC_Error ooc_abstractCollectionClear(void* self) {
@@ -207,13 +139,17 @@ OOC_Error ooc_abstractCollectionClear(void* self) {
         return OOC_ERROR_INVALID_ARGUMENT;
     }
     OOC_TYPE_CHECK(self, ooc_abstractCollectionClass(), OOC_ERROR_INVALID_OBJECT);
+    OOC_Error error = OOC_ERROR_NONE;
     void* iterator = ooc_iterableGetIterator(self);
     while (ooc_iteratorHasNext(iterator)) {
         ooc_iteratorNext(iterator);
-        ooc_iteratorRemove(iterator);
+        error = ooc_iteratorRemove(iterator);
+        if (error != OOC_ERROR_NONE) {
+            break;
+        }
     }
     ooc_destroy(iterator);
-    return OOC_ERROR_NONE;
+    return error;
 }
 
 static void* ooc_abstractCollectionClassInit(void) {
@@ -224,9 +160,6 @@ static void* ooc_abstractCollectionClassInit(void) {
                     ooc_objectClass(),
                     OOC_MODIFIER_ABSTRACT,
                     OOC_METHOD_TO_STRING, ooc_abstractCollectionToString,
-                    OOC_METHOD_EQUALS, ooc_abstractCollectionEquals,
-                    OOC_METHOD_HASH, ooc_abstractCollectionHash,
-                    OOC_METHOD_COMPARE, ooc_abstractCollectionCompare,
                     OOC_METHOD_CLONE, ooc_abstractCollectionClone,
                     OOC_ABSTRACT_COLLECTION_METHOD_IS_EMPTY, ooc_abstractCollectionIsEmpty,
                     OOC_ABSTRACT_COLLECTION_METHOD_CONTAINS, ooc_abstractCollectionContains,
