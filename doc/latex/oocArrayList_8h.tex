@@ -1,11 +1,12 @@
-\doxysection{src/collection/abstract\+Collection/list/array\+List/ooc\+Array\+List.h File Reference}
-\hypertarget{oocArrayList_8h}{}\label{oocArrayList_8h}\index{src/collection/abstractCollection/list/arrayList/oocArrayList.h@{src/collection/abstractCollection/list/arrayList/oocArrayList.h}}
+\doxysection{src/collection/abstract\+Collection/abstract\+List/array\+List/ooc\+Array\+List.h File Reference}
+\hypertarget{oocArrayList_8h}{}\label{oocArrayList_8h}\index{src/collection/abstractCollection/abstractList/arrayList/oocArrayList.h@{src/collection/abstractCollection/abstractList/arrayList/oocArrayList.h}}
 
 
 Array\+List implementation for the OOC (Object-\/\+Oriented C) framework.  
 
 
 {\ttfamily \#include "{}ooc\+Error.\+h"{}}\newline
+{\ttfamily \#include $<$stdbool.\+h$>$}\newline
 {\ttfamily \#include $<$stddef.\+h$>$}\newline
 \doxysubsubsection*{Functions}
 \begin{DoxyCompactItemize}
@@ -17,7 +18,55 @@ size\+\_\+t \mbox{\hyperlink{oocArrayList_8h_a32691e3507496a50da2f0058d450cba7}{
 \mbox{\hyperlink{oocError_8h_a1effaed6897d01c49b4771abc4185718}{OOC\+\_\+\+Error}} \mbox{\hyperlink{oocArrayList_8h_a5497c421d79df955a4241939dfef548e}{ooc\+\_\+array\+List\+Ensure\+Capacity}} (void \texorpdfstring{$\ast$}{*}self, size\+\_\+t min\+Capacity)
 \begin{DoxyCompactList}\small\item\em Ensures the Array\+List can hold at least the specified capacity. \end{DoxyCompactList}\item 
 \mbox{\hyperlink{oocError_8h_a1effaed6897d01c49b4771abc4185718}{OOC\+\_\+\+Error}} \mbox{\hyperlink{oocArrayList_8h_a530b6fffb3bc1f6e2faf69331e137821}{ooc\+\_\+array\+List\+Trim\+To\+Size}} (void \texorpdfstring{$\ast$}{*}self)
-\begin{DoxyCompactList}\small\item\em Trims the capacity to match the current size. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\begin{DoxyCompactList}\small\item\em Trims the capacity to match the current size. \end{DoxyCompactList}\item 
+\Hypertarget{oocArrayList_8h_a0af5263f3b5ca66d628333e9bf3b6536}\label{oocArrayList_8h_a0af5263f3b5ca66d628333e9bf3b6536} 
+void \texorpdfstring{$\ast$}{*} {\bfseries ooc\+\_\+array\+List\+Get\+Iterator} (void \texorpdfstring{$\ast$}{*}self)
+\item 
+\Hypertarget{oocArrayList_8h_a320ac2c7750e3dce6f84fd2ddb9a3174}\label{oocArrayList_8h_a320ac2c7750e3dce6f84fd2ddb9a3174} 
+size\+\_\+t {\bfseries ooc\+\_\+array\+List\+Size} (void \texorpdfstring{$\ast$}{*}self)
+\item 
+\Hypertarget{oocArrayList_8h_a124d81df662e94b365af3cf919bf9863}\label{oocArrayList_8h_a124d81df662e94b365af3cf919bf9863} 
+bool {\bfseries ooc\+\_\+array\+List\+Is\+Empty} (void \texorpdfstring{$\ast$}{*}self)
+\item 
+\Hypertarget{oocArrayList_8h_af1d36b180e99697d8cf34bf34c105a71}\label{oocArrayList_8h_af1d36b180e99697d8cf34bf34c105a71} 
+bool {\bfseries ooc\+\_\+array\+List\+Contains} (void \texorpdfstring{$\ast$}{*}self, void \texorpdfstring{$\ast$}{*}element)
+\item 
+\Hypertarget{oocArrayList_8h_a77160617951de7c73b16e4d3a8024d5c}\label{oocArrayList_8h_a77160617951de7c73b16e4d3a8024d5c} 
+bool {\bfseries ooc\+\_\+array\+List\+Contains\+All} (void \texorpdfstring{$\ast$}{*}self, void \texorpdfstring{$\ast$}{*}other)
+\item 
+\Hypertarget{oocArrayList_8h_ab00a5b8739e4d211977a5bfa4f150c22}\label{oocArrayList_8h_ab00a5b8739e4d211977a5bfa4f150c22} 
+\mbox{\hyperlink{oocError_8h_a1effaed6897d01c49b4771abc4185718}{OOC\+\_\+\+Error}} {\bfseries ooc\+\_\+array\+List\+Add} (void \texorpdfstring{$\ast$}{*}self, void \texorpdfstring{$\ast$}{*}element)
+\item 
+\Hypertarget{oocArrayList_8h_aebabf33a5884fa91a587cb10d1227d68}\label{oocArrayList_8h_aebabf33a5884fa91a587cb10d1227d68} 
+\mbox{\hyperlink{oocError_8h_a1effaed6897d01c49b4771abc4185718}{OOC\+\_\+\+Error}} {\bfseries ooc\+\_\+array\+List\+Remove} (void \texorpdfstring{$\ast$}{*}self, void \texorpdfstring{$\ast$}{*}element)
+\item 
+\Hypertarget{oocArrayList_8h_a8b10fa4eb82ef0356ee5175e7a4d1bba}\label{oocArrayList_8h_a8b10fa4eb82ef0356ee5175e7a4d1bba} 
+\mbox{\hyperlink{oocError_8h_a1effaed6897d01c49b4771abc4185718}{OOC\+\_\+\+Error}} {\bfseries ooc\+\_\+array\+List\+Clear} (void \texorpdfstring{$\ast$}{*}self)
+\item 
+\Hypertarget{oocArrayList_8h_a521981d4df07badc295c7390edb361f1}\label{oocArrayList_8h_a521981d4df07badc295c7390edb361f1} 
+void \texorpdfstring{$\ast$}{*} {\bfseries ooc\+\_\+array\+List\+Get\+At} (void \texorpdfstring{$\ast$}{*}self, size\+\_\+t index)
+\item 
+\Hypertarget{oocArrayList_8h_aa4167829d62a7502e0337beff5bae3d6}\label{oocArrayList_8h_aa4167829d62a7502e0337beff5bae3d6} 
+\mbox{\hyperlink{oocError_8h_a1effaed6897d01c49b4771abc4185718}{OOC\+\_\+\+Error}} {\bfseries ooc\+\_\+array\+List\+Set\+At} (void \texorpdfstring{$\ast$}{*}self, size\+\_\+t index, void \texorpdfstring{$\ast$}{*}element)
+\item 
+\Hypertarget{oocArrayList_8h_ae00dec30c56b5fa0942fc3a9183a74ba}\label{oocArrayList_8h_ae00dec30c56b5fa0942fc3a9183a74ba} 
+\mbox{\hyperlink{oocError_8h_a1effaed6897d01c49b4771abc4185718}{OOC\+\_\+\+Error}} {\bfseries ooc\+\_\+array\+List\+Insert\+At} (void \texorpdfstring{$\ast$}{*}self, size\+\_\+t index, void \texorpdfstring{$\ast$}{*}element)
+\item 
+\Hypertarget{oocArrayList_8h_ac045971f64558746e30f59c0fac911b9}\label{oocArrayList_8h_ac045971f64558746e30f59c0fac911b9} 
+\mbox{\hyperlink{oocError_8h_a1effaed6897d01c49b4771abc4185718}{OOC\+\_\+\+Error}} {\bfseries ooc\+\_\+array\+List\+Remove\+At} (void \texorpdfstring{$\ast$}{*}self, size\+\_\+t index)
+\item 
+\Hypertarget{oocArrayList_8h_aac578ec6498fefaaff738b3e72599d44}\label{oocArrayList_8h_aac578ec6498fefaaff738b3e72599d44} 
+int {\bfseries ooc\+\_\+array\+List\+Index\+Of} (void \texorpdfstring{$\ast$}{*}self, void \texorpdfstring{$\ast$}{*}element)
+\item 
+\Hypertarget{oocArrayList_8h_a5f8de582e848d4fce5c0b2683c38995d}\label{oocArrayList_8h_a5f8de582e848d4fce5c0b2683c38995d} 
+int {\bfseries ooc\+\_\+array\+List\+Last\+Index\+Of} (void \texorpdfstring{$\ast$}{*}self, void \texorpdfstring{$\ast$}{*}element)
+\item 
+\Hypertarget{oocArrayList_8h_a632c34bedd79785ffccbd1ff292b834a}\label{oocArrayList_8h_a632c34bedd79785ffccbd1ff292b834a} 
+void \texorpdfstring{$\ast$}{*} {\bfseries ooc\+\_\+array\+List\+Get\+List\+Iterator} (void \texorpdfstring{$\ast$}{*}self)
+\item 
+\Hypertarget{oocArrayList_8h_a85f27a910fed99d1924e9762abff6a42}\label{oocArrayList_8h_a85f27a910fed99d1924e9762abff6a42} 
+void \texorpdfstring{$\ast$}{*} {\bfseries ooc\+\_\+array\+List\+Get\+List\+Iterator\+At} (void \texorpdfstring{$\ast$}{*}self, size\+\_\+t index)
+\end{DoxyCompactItemize}
 
 
 \doxysubsection{Detailed Description}

@@ -5,7 +5,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=11"/>
 <meta name="generator" content="Doxygen 1.14.0"/>
 <meta name="viewport" content="width=device-width, initial-scale=1"/>
-<title>OOC: src/collection/abstractCollection/list/arrayList/oocArrayList.h File Reference</title>
+<title>OOC: src/collection/abstractCollection/abstractList/arrayList/oocArrayList.h File Reference</title>
 <link href="tabs.css" rel="stylesheet" type="text/css"/>
 <script type="text/javascript" src="jquery.js"></script>
 <script type="text/javascript" src="dynsections.js"></script>
@@ -95,6 +95,7 @@ $(function(){initNavTree('oocArrayList_8h.html','',''); });
 <p>ArrayList implementation for the OOC (Object-Oriented C) framework.  
 <a href="#details">More...</a></p>
 <div class="textblock"><code>#include &quot;<a class="el" href="oocError_8h_source.html">oocError.h</a>&quot;</code><br />
+<code>#include &lt;stdbool.h&gt;</code><br />
 <code>#include &lt;stddef.h&gt;</code><br />
 </div>
 <p><a href="oocArrayList_8h_source.html">Go to the source code of this file.</a></p>
@@ -109,6 +110,38 @@ Functions</h2></td></tr>
 <tr class="memdesc:a5497c421d79df955a4241939dfef548e"><td class="mdescLeft">&#160;</td><td class="mdescRight">Ensures the ArrayList can hold at least the specified capacity.  <br /></td></tr>
 <tr class="memitem:a530b6fffb3bc1f6e2faf69331e137821" id="r_a530b6fffb3bc1f6e2faf69331e137821"><td class="memItemLeft" align="right" valign="top"><a class="el" href="oocError_8h.html#a1effaed6897d01c49b4771abc4185718">OOC_Error</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a530b6fffb3bc1f6e2faf69331e137821">ooc_arrayListTrimToSize</a> (void *self)</td></tr>
 <tr class="memdesc:a530b6fffb3bc1f6e2faf69331e137821"><td class="mdescLeft">&#160;</td><td class="mdescRight">Trims the capacity to match the current size.  <br /></td></tr>
+<tr class="memitem:a0af5263f3b5ca66d628333e9bf3b6536" id="r_a0af5263f3b5ca66d628333e9bf3b6536"><td class="memItemLeft" align="right" valign="top"><a id="a0af5263f3b5ca66d628333e9bf3b6536" name="a0af5263f3b5ca66d628333e9bf3b6536"></a>
+void *&#160;</td><td class="memItemRight" valign="bottom"><b>ooc_arrayListGetIterator</b> (void *self)</td></tr>
+<tr class="memitem:a320ac2c7750e3dce6f84fd2ddb9a3174" id="r_a320ac2c7750e3dce6f84fd2ddb9a3174"><td class="memItemLeft" align="right" valign="top"><a id="a320ac2c7750e3dce6f84fd2ddb9a3174" name="a320ac2c7750e3dce6f84fd2ddb9a3174"></a>
+size_t&#160;</td><td class="memItemRight" valign="bottom"><b>ooc_arrayListSize</b> (void *self)</td></tr>
+<tr class="memitem:a124d81df662e94b365af3cf919bf9863" id="r_a124d81df662e94b365af3cf919bf9863"><td class="memItemLeft" align="right" valign="top"><a id="a124d81df662e94b365af3cf919bf9863" name="a124d81df662e94b365af3cf919bf9863"></a>
+bool&#160;</td><td class="memItemRight" valign="bottom"><b>ooc_arrayListIsEmpty</b> (void *self)</td></tr>
+<tr class="memitem:af1d36b180e99697d8cf34bf34c105a71" id="r_af1d36b180e99697d8cf34bf34c105a71"><td class="memItemLeft" align="right" valign="top"><a id="af1d36b180e99697d8cf34bf34c105a71" name="af1d36b180e99697d8cf34bf34c105a71"></a>
+bool&#160;</td><td class="memItemRight" valign="bottom"><b>ooc_arrayListContains</b> (void *self, void *element)</td></tr>
+<tr class="memitem:a77160617951de7c73b16e4d3a8024d5c" id="r_a77160617951de7c73b16e4d3a8024d5c"><td class="memItemLeft" align="right" valign="top"><a id="a77160617951de7c73b16e4d3a8024d5c" name="a77160617951de7c73b16e4d3a8024d5c"></a>
+bool&#160;</td><td class="memItemRight" valign="bottom"><b>ooc_arrayListContainsAll</b> (void *self, void *other)</td></tr>
+<tr class="memitem:ab00a5b8739e4d211977a5bfa4f150c22" id="r_ab00a5b8739e4d211977a5bfa4f150c22"><td class="memItemLeft" align="right" valign="top"><a id="ab00a5b8739e4d211977a5bfa4f150c22" name="ab00a5b8739e4d211977a5bfa4f150c22"></a>
+<a class="el" href="oocError_8h.html#a1effaed6897d01c49b4771abc4185718">OOC_Error</a>&#160;</td><td class="memItemRight" valign="bottom"><b>ooc_arrayListAdd</b> (void *self, void *element)</td></tr>
+<tr class="memitem:aebabf33a5884fa91a587cb10d1227d68" id="r_aebabf33a5884fa91a587cb10d1227d68"><td class="memItemLeft" align="right" valign="top"><a id="aebabf33a5884fa91a587cb10d1227d68" name="aebabf33a5884fa91a587cb10d1227d68"></a>
+<a class="el" href="oocError_8h.html#a1effaed6897d01c49b4771abc4185718">OOC_Error</a>&#160;</td><td class="memItemRight" valign="bottom"><b>ooc_arrayListRemove</b> (void *self, void *element)</td></tr>
+<tr class="memitem:a8b10fa4eb82ef0356ee5175e7a4d1bba" id="r_a8b10fa4eb82ef0356ee5175e7a4d1bba"><td class="memItemLeft" align="right" valign="top"><a id="a8b10fa4eb82ef0356ee5175e7a4d1bba" name="a8b10fa4eb82ef0356ee5175e7a4d1bba"></a>
+<a class="el" href="oocError_8h.html#a1effaed6897d01c49b4771abc4185718">OOC_Error</a>&#160;</td><td class="memItemRight" valign="bottom"><b>ooc_arrayListClear</b> (void *self)</td></tr>
+<tr class="memitem:a521981d4df07badc295c7390edb361f1" id="r_a521981d4df07badc295c7390edb361f1"><td class="memItemLeft" align="right" valign="top"><a id="a521981d4df07badc295c7390edb361f1" name="a521981d4df07badc295c7390edb361f1"></a>
+void *&#160;</td><td class="memItemRight" valign="bottom"><b>ooc_arrayListGetAt</b> (void *self, size_t index)</td></tr>
+<tr class="memitem:aa4167829d62a7502e0337beff5bae3d6" id="r_aa4167829d62a7502e0337beff5bae3d6"><td class="memItemLeft" align="right" valign="top"><a id="aa4167829d62a7502e0337beff5bae3d6" name="aa4167829d62a7502e0337beff5bae3d6"></a>
+<a class="el" href="oocError_8h.html#a1effaed6897d01c49b4771abc4185718">OOC_Error</a>&#160;</td><td class="memItemRight" valign="bottom"><b>ooc_arrayListSetAt</b> (void *self, size_t index, void *element)</td></tr>
+<tr class="memitem:ae00dec30c56b5fa0942fc3a9183a74ba" id="r_ae00dec30c56b5fa0942fc3a9183a74ba"><td class="memItemLeft" align="right" valign="top"><a id="ae00dec30c56b5fa0942fc3a9183a74ba" name="ae00dec30c56b5fa0942fc3a9183a74ba"></a>
+<a class="el" href="oocError_8h.html#a1effaed6897d01c49b4771abc4185718">OOC_Error</a>&#160;</td><td class="memItemRight" valign="bottom"><b>ooc_arrayListInsertAt</b> (void *self, size_t index, void *element)</td></tr>
+<tr class="memitem:ac045971f64558746e30f59c0fac911b9" id="r_ac045971f64558746e30f59c0fac911b9"><td class="memItemLeft" align="right" valign="top"><a id="ac045971f64558746e30f59c0fac911b9" name="ac045971f64558746e30f59c0fac911b9"></a>
+<a class="el" href="oocError_8h.html#a1effaed6897d01c49b4771abc4185718">OOC_Error</a>&#160;</td><td class="memItemRight" valign="bottom"><b>ooc_arrayListRemoveAt</b> (void *self, size_t index)</td></tr>
+<tr class="memitem:aac578ec6498fefaaff738b3e72599d44" id="r_aac578ec6498fefaaff738b3e72599d44"><td class="memItemLeft" align="right" valign="top"><a id="aac578ec6498fefaaff738b3e72599d44" name="aac578ec6498fefaaff738b3e72599d44"></a>
+int&#160;</td><td class="memItemRight" valign="bottom"><b>ooc_arrayListIndexOf</b> (void *self, void *element)</td></tr>
+<tr class="memitem:a5f8de582e848d4fce5c0b2683c38995d" id="r_a5f8de582e848d4fce5c0b2683c38995d"><td class="memItemLeft" align="right" valign="top"><a id="a5f8de582e848d4fce5c0b2683c38995d" name="a5f8de582e848d4fce5c0b2683c38995d"></a>
+int&#160;</td><td class="memItemRight" valign="bottom"><b>ooc_arrayListLastIndexOf</b> (void *self, void *element)</td></tr>
+<tr class="memitem:a632c34bedd79785ffccbd1ff292b834a" id="r_a632c34bedd79785ffccbd1ff292b834a"><td class="memItemLeft" align="right" valign="top"><a id="a632c34bedd79785ffccbd1ff292b834a" name="a632c34bedd79785ffccbd1ff292b834a"></a>
+void *&#160;</td><td class="memItemRight" valign="bottom"><b>ooc_arrayListGetListIterator</b> (void *self)</td></tr>
+<tr class="memitem:a85f27a910fed99d1924e9762abff6a42" id="r_a85f27a910fed99d1924e9762abff6a42"><td class="memItemLeft" align="right" valign="top"><a id="a85f27a910fed99d1924e9762abff6a42" name="a85f27a910fed99d1924e9762abff6a42"></a>
+void *&#160;</td><td class="memItemRight" valign="bottom"><b>ooc_arrayListGetListIteratorAt</b> (void *self, size_t index)</td></tr>
 </table>
 <a name="details" id="details"></a><h2 id="header-details" class="groupheader">Detailed Description</h2>
 <div class="textblock"><p>ArrayList implementation for the OOC (Object-Oriented C) framework. </p>
@@ -161,7 +194,7 @@ Functions</h2></td></tr>
 <li>initialCapacity (size_t): Initial capacity for the array, or 0 for default (10)</li>
 </ul>
 <p>Example: </p><div class="fragment"><div class="line"><span class="keywordtype">void</span>* list = ooc_new(<a class="code hl_function" href="#a7efe7f26bad1bd2e79e5c7afd0a2c54a">ooc_arrayListClass</a>(), 20);  <span class="comment">// Create with capacity 20</span></div>
-<div class="ttc" id="aoocArrayList_8h_html_a7efe7f26bad1bd2e79e5c7afd0a2c54a"><div class="ttname"><a href="#a7efe7f26bad1bd2e79e5c7afd0a2c54a">ooc_arrayListClass</a></div><div class="ttdeci">void * ooc_arrayListClass()</div><div class="ttdoc">Returns the ArrayList class descriptor.</div><div class="ttdef"><b>Definition</b> oocArrayList.c:463</div></div>
+<div class="ttc" id="aoocArrayList_8h_html_a7efe7f26bad1bd2e79e5c7afd0a2c54a"><div class="ttname"><a href="#a7efe7f26bad1bd2e79e5c7afd0a2c54a">ooc_arrayListClass</a></div><div class="ttdeci">void * ooc_arrayListClass()</div><div class="ttdoc">Returns the ArrayList class descriptor.</div><div class="ttdef"><b>Definition</b> oocArrayList.c:271</div></div>
 </div><!-- fragment --> 
 </div>
 </div>
@@ -235,7 +268,7 @@ Functions</h2></td></tr>
 <!-- start footer part -->
 <div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
   <ul>
-    <li class="navelem"><a href="dir_68267d1309a1af8e8297ef4c3efbcdba.html">src</a></li><li class="navelem"><a href="dir_ea4d0e9a65eb15bd8a423e17e16ea529.html">collection</a></li><li class="navelem"><a href="dir_516c0cd75c0a20886834c1675a0a0bfe.html">abstractCollection</a></li><li class="navelem"><a href="dir_adf99e92d6cd49a85d477499966e1879.html">list</a></li><li class="navelem"><a href="dir_120093dd0dd7d702d534b85f80dff6d5.html">arrayList</a></li><li class="navelem"><a href="oocArrayList_8h.html">oocArrayList.h</a></li>
+    <li class="navelem"><a href="dir_68267d1309a1af8e8297ef4c3efbcdba.html">src</a></li><li class="navelem"><a href="dir_ea4d0e9a65eb15bd8a423e17e16ea529.html">collection</a></li><li class="navelem"><a href="dir_516c0cd75c0a20886834c1675a0a0bfe.html">abstractCollection</a></li><li class="navelem"><a href="dir_13910d01e4cfde2fbc5cad65ca053ff7.html">abstractList</a></li><li class="navelem"><a href="dir_f59aa7a91a0541a233d6076992ce7d8a.html">arrayList</a></li><li class="navelem"><a href="oocArrayList_8h.html">oocArrayList.h</a></li>
     <li class="footer">Generated by <a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.14.0 </li>
   </ul>
 </div>

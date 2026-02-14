@@ -4,6 +4,7 @@ var oocSet_8h =
     [ "ooc_setClass", "oocSet_8h.html#a7d635a4c4559c769cc5d69b485cb38b4", null ],
     [ "ooc_setClear", "oocSet_8h.html#aa960fdde65cb33f868d761bc5740ff12", null ],
     [ "ooc_setContains", "oocSet_8h.html#a165434961138e9ef6528b253258f48a5", null ],
+    [ "ooc_setContainsAll", "oocSet_8h.html#a8170cabbe7f5d99c92d31bd0b9a5a7be", null ],
     [ "ooc_setGetIterator", "oocSet_8h.html#acff9f832f0772206d3dcc76736f841e0", null ],
     [ "ooc_setIsEmpty", "oocSet_8h.html#a0a96090814504c58174136919240513f", null ],
     [ "ooc_setRemove", "oocSet_8h.html#a263e28f76b58e943b3ea7f81daf6b121", null ],

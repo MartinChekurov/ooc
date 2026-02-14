@@ -21,15 +21,17 @@ bool \mbox{\hyperlink{oocQueue_8h_a6d7cfa9f5c57a876fdca29914ff78d43}{ooc\+\_\+qu
 \begin{DoxyCompactList}\small\item\em Checks if the queue is empty. \end{DoxyCompactList}\item 
 bool \mbox{\hyperlink{oocQueue_8h_a13f7a8efc782c19264e72ff46a298319}{ooc\+\_\+queue\+Contains}} (void \texorpdfstring{$\ast$}{*}self, void \texorpdfstring{$\ast$}{*}element)
 \begin{DoxyCompactList}\small\item\em Checks if the queue contains the specified element. \end{DoxyCompactList}\item 
+bool \mbox{\hyperlink{oocQueue_8h_a7205f408bd5a630884651cbf1cb3706a}{ooc\+\_\+queue\+Contains\+All}} (void \texorpdfstring{$\ast$}{*}self, void \texorpdfstring{$\ast$}{*}other)
+\begin{DoxyCompactList}\small\item\em Checks if this queue contains all elements from another queue. \end{DoxyCompactList}\item 
 \mbox{\hyperlink{oocError_8h_a1effaed6897d01c49b4771abc4185718}{OOC\+\_\+\+Error}} \mbox{\hyperlink{oocQueue_8h_a82deebc7f94b4743a991d25e5a49c58a}{ooc\+\_\+queue\+Add}} (void \texorpdfstring{$\ast$}{*}self, void \texorpdfstring{$\ast$}{*}element)
 \begin{DoxyCompactList}\small\item\em Adds an element to the queue. \end{DoxyCompactList}\item 
 \mbox{\hyperlink{oocError_8h_a1effaed6897d01c49b4771abc4185718}{OOC\+\_\+\+Error}} \mbox{\hyperlink{oocQueue_8h_a83d72bb1b61330dc4bbf949c7e03efc8}{ooc\+\_\+queue\+Remove}} (void \texorpdfstring{$\ast$}{*}self, void \texorpdfstring{$\ast$}{*}element)
 \begin{DoxyCompactList}\small\item\em Removes the first occurrence of the specified element from the queue. \end{DoxyCompactList}\item 
 \mbox{\hyperlink{oocError_8h_a1effaed6897d01c49b4771abc4185718}{OOC\+\_\+\+Error}} \mbox{\hyperlink{oocQueue_8h_aca51ad1623fd9d0f975ad521360db412}{ooc\+\_\+queue\+Clear}} (void \texorpdfstring{$\ast$}{*}self)
 \begin{DoxyCompactList}\small\item\em Removes all elements from the queue. \end{DoxyCompactList}\item 
-\mbox{\hyperlink{oocError_8h_a1effaed6897d01c49b4771abc4185718}{OOC\+\_\+\+Error}} \mbox{\hyperlink{oocQueue_8h_a2fd7549a0b3f263fe2aed9ccffd4b85a}{ooc\+\_\+queue\+Push}} (void \texorpdfstring{$\ast$}{*}self, void \texorpdfstring{$\ast$}{*}element)
+\mbox{\hyperlink{oocError_8h_a1effaed6897d01c49b4771abc4185718}{OOC\+\_\+\+Error}} \mbox{\hyperlink{oocQueue_8h_ab3436892f96a2e140ee4cf5d54c5796a}{ooc\+\_\+queue\+Offer}} (void \texorpdfstring{$\ast$}{*}self, void \texorpdfstring{$\ast$}{*}element)
 \begin{DoxyCompactList}\small\item\em Inserts an element into the queue. \end{DoxyCompactList}\item 
-void \texorpdfstring{$\ast$}{*} \mbox{\hyperlink{oocQueue_8h_a4431454b761197b54059e4c2f4baec2e}{ooc\+\_\+queue\+Pop}} (void \texorpdfstring{$\ast$}{*}self)
+void \texorpdfstring{$\ast$}{*} \mbox{\hyperlink{oocQueue_8h_a3c23b61d2beebf7d8656e6b1f3d42619}{ooc\+\_\+queue\+Poll}} (void \texorpdfstring{$\ast$}{*}self)
 \begin{DoxyCompactList}\small\item\em Retrieves and removes an element from the queue. \end{DoxyCompactList}\item 
 void \texorpdfstring{$\ast$}{*} \mbox{\hyperlink{oocQueue_8h_a95cdb66f6f1f8f76cc1702aa022f081b}{ooc\+\_\+queue\+Peek}} (void \texorpdfstring{$\ast$}{*}self)
 \begin{DoxyCompactList}\small\item\em Retrieves, but does not remove, an element from the queue. \end{DoxyCompactList}\end{DoxyCompactItemize}
@@ -119,6 +121,26 @@ Checks if the queue contains the specified element.
 \begin{DoxyReturn}{Returns}
 true if the queue contains the element, false otherwise 
 \end{DoxyReturn}
+\Hypertarget{oocQueue_8h_a7205f408bd5a630884651cbf1cb3706a}\index{oocQueue.h@{oocQueue.h}!ooc\_queueContainsAll@{ooc\_queueContainsAll}}
+\index{ooc\_queueContainsAll@{ooc\_queueContainsAll}!oocQueue.h@{oocQueue.h}}
+\doxysubsubsection{\texorpdfstring{ooc\_queueContainsAll()}{ooc\_queueContainsAll()}}
+{\footnotesize\ttfamily \label{oocQueue_8h_a7205f408bd5a630884651cbf1cb3706a} 
+bool ooc\+\_\+queue\+Contains\+All (\begin{DoxyParamCaption}\item[{void \texorpdfstring{$\ast$}{*}}]{self}{, }\item[{void \texorpdfstring{$\ast$}{*}}]{other}{}\end{DoxyParamCaption})}
+
+
+
+Checks if this queue contains all elements from another queue. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em self} & Queue object instance \\
+\hline
+{\em other} & Queue to be checked for containment \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+true if this queue contains all elements of the specified queue 
+\end{DoxyReturn}
 \Hypertarget{oocQueue_8h_ac5168731aa1a9f3c4fe56c88b0c3edcd}\index{oocQueue.h@{oocQueue.h}!ooc\_queueGetIterator@{ooc\_queueGetIterator}}
 \index{ooc\_queueGetIterator@{ooc\_queueGetIterator}!oocQueue.h@{oocQueue.h}}
 \doxysubsubsection{\texorpdfstring{ooc\_queueGetIterator()}{ooc\_queueGetIterator()}}
@@ -172,6 +194,29 @@ Checks if the queue is empty.
 \begin{DoxyReturn}{Returns}
 true if the queue contains no elements, false otherwise 
 \end{DoxyReturn}
+\Hypertarget{oocQueue_8h_ab3436892f96a2e140ee4cf5d54c5796a}\index{oocQueue.h@{oocQueue.h}!ooc\_queueOffer@{ooc\_queueOffer}}
+\index{ooc\_queueOffer@{ooc\_queueOffer}!oocQueue.h@{oocQueue.h}}
+\doxysubsubsection{\texorpdfstring{ooc\_queueOffer()}{ooc\_queueOffer()}}
+{\footnotesize\ttfamily \label{oocQueue_8h_ab3436892f96a2e140ee4cf5d54c5796a} 
+\mbox{\hyperlink{oocError_8h_a1effaed6897d01c49b4771abc4185718}{OOC\+\_\+\+Error}} ooc\+\_\+queue\+Offer (\begin{DoxyParamCaption}\item[{void \texorpdfstring{$\ast$}{*}}]{self}{, }\item[{void \texorpdfstring{$\ast$}{*}}]{element}{}\end{DoxyParamCaption})}
+
+
+
+Inserts an element into the queue. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em self} & Queue object instance \\
+\hline
+{\em element} & Element to add \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+OOC\+\_\+\+ERROR\+\_\+\+NONE on success, appropriate error code on failure 
+\end{DoxyReturn}
+\begin{DoxyNote}{Note}
+Equivalent to add(). Ordering depends on implementation (FIFO, LIFO, priority, etc.) 
+\end{DoxyNote}
 \Hypertarget{oocQueue_8h_a95cdb66f6f1f8f76cc1702aa022f081b}\index{oocQueue.h@{oocQueue.h}!ooc\_queuePeek@{ooc\_queuePeek}}
 \index{ooc\_queuePeek@{ooc\_queuePeek}!oocQueue.h@{oocQueue.h}}
 \doxysubsubsection{\texorpdfstring{ooc\_queuePeek()}{ooc\_queuePeek()}}
@@ -193,11 +238,11 @@ Pointer to the element that would be returned by pop(), or NULL if queue is empt
 \begin{DoxyNote}{Note}
 Which element is returned depends on implementation 
 \end{DoxyNote}
-\Hypertarget{oocQueue_8h_a4431454b761197b54059e4c2f4baec2e}\index{oocQueue.h@{oocQueue.h}!ooc\_queuePop@{ooc\_queuePop}}
-\index{ooc\_queuePop@{ooc\_queuePop}!oocQueue.h@{oocQueue.h}}
-\doxysubsubsection{\texorpdfstring{ooc\_queuePop()}{ooc\_queuePop()}}
-{\footnotesize\ttfamily \label{oocQueue_8h_a4431454b761197b54059e4c2f4baec2e} 
-void \texorpdfstring{$\ast$}{*} ooc\+\_\+queue\+Pop (\begin{DoxyParamCaption}\item[{void \texorpdfstring{$\ast$}{*}}]{self}{}\end{DoxyParamCaption})}
+\Hypertarget{oocQueue_8h_a3c23b61d2beebf7d8656e6b1f3d42619}\index{oocQueue.h@{oocQueue.h}!ooc\_queuePoll@{ooc\_queuePoll}}
+\index{ooc\_queuePoll@{ooc\_queuePoll}!oocQueue.h@{oocQueue.h}}
+\doxysubsubsection{\texorpdfstring{ooc\_queuePoll()}{ooc\_queuePoll()}}
+{\footnotesize\ttfamily \label{oocQueue_8h_a3c23b61d2beebf7d8656e6b1f3d42619} 
+void \texorpdfstring{$\ast$}{*} ooc\+\_\+queue\+Poll (\begin{DoxyParamCaption}\item[{void \texorpdfstring{$\ast$}{*}}]{self}{}\end{DoxyParamCaption})}
 
 
 
@@ -213,29 +258,6 @@ Pointer to the removed element, or NULL if queue is empty
 \end{DoxyReturn}
 \begin{DoxyNote}{Note}
 Which element is removed depends on implementation (FIFO, LIFO, priority, etc.) 
-\end{DoxyNote}
-\Hypertarget{oocQueue_8h_a2fd7549a0b3f263fe2aed9ccffd4b85a}\index{oocQueue.h@{oocQueue.h}!ooc\_queuePush@{ooc\_queuePush}}
-\index{ooc\_queuePush@{ooc\_queuePush}!oocQueue.h@{oocQueue.h}}
-\doxysubsubsection{\texorpdfstring{ooc\_queuePush()}{ooc\_queuePush()}}
-{\footnotesize\ttfamily \label{oocQueue_8h_a2fd7549a0b3f263fe2aed9ccffd4b85a} 
-\mbox{\hyperlink{oocError_8h_a1effaed6897d01c49b4771abc4185718}{OOC\+\_\+\+Error}} ooc\+\_\+queue\+Push (\begin{DoxyParamCaption}\item[{void \texorpdfstring{$\ast$}{*}}]{self}{, }\item[{void \texorpdfstring{$\ast$}{*}}]{element}{}\end{DoxyParamCaption})}
-
-
-
-Inserts an element into the queue. 
-
-
-\begin{DoxyParams}{Parameters}
-{\em self} & Queue object instance \\
-\hline
-{\em element} & Element to add \\
-\hline
-\end{DoxyParams}
-\begin{DoxyReturn}{Returns}
-OOC\+\_\+\+ERROR\+\_\+\+NONE on success, appropriate error code on failure 
-\end{DoxyReturn}
-\begin{DoxyNote}{Note}
-Equivalent to add(). Ordering depends on implementation (FIFO, LIFO, priority, etc.) 
 \end{DoxyNote}
 \Hypertarget{oocQueue_8h_a83d72bb1b61330dc4bbf949c7e03efc8}\index{oocQueue.h@{oocQueue.h}!ooc\_queueRemove@{ooc\_queueRemove}}
 \index{ooc\_queueRemove@{ooc\_queueRemove}!oocQueue.h@{oocQueue.h}}

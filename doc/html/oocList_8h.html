@@ -112,6 +112,8 @@ Functions</h2></td></tr>
 <tr class="memdesc:af1a1c6972e2fa17219ef1c0aa3ddc1fc"><td class="mdescLeft">&#160;</td><td class="mdescRight">Checks if the list is empty.  <br /></td></tr>
 <tr class="memitem:a84961a0229e98d60452f74b523ad0fcc" id="r_a84961a0229e98d60452f74b523ad0fcc"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a84961a0229e98d60452f74b523ad0fcc">ooc_listContains</a> (void *self, void *element)</td></tr>
 <tr class="memdesc:a84961a0229e98d60452f74b523ad0fcc"><td class="mdescLeft">&#160;</td><td class="mdescRight">Checks if the list contains the specified element.  <br /></td></tr>
+<tr class="memitem:a986a40d4c7c6467944c226e6d5842d9b" id="r_a986a40d4c7c6467944c226e6d5842d9b"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a986a40d4c7c6467944c226e6d5842d9b">ooc_listContainsAll</a> (void *self, void *other)</td></tr>
+<tr class="memdesc:a986a40d4c7c6467944c226e6d5842d9b"><td class="mdescLeft">&#160;</td><td class="mdescRight">Checks if this list contains all elements from another list.  <br /></td></tr>
 <tr class="memitem:a9579f47a2b0b05d4f4f1b57229455898" id="r_a9579f47a2b0b05d4f4f1b57229455898"><td class="memItemLeft" align="right" valign="top"><a class="el" href="oocError_8h.html#a1effaed6897d01c49b4771abc4185718">OOC_Error</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a9579f47a2b0b05d4f4f1b57229455898">ooc_listAdd</a> (void *self, void *element)</td></tr>
 <tr class="memdesc:a9579f47a2b0b05d4f4f1b57229455898"><td class="mdescLeft">&#160;</td><td class="mdescRight">Adds an element to the list.  <br /></td></tr>
 <tr class="memitem:aae17ac5d8a5ab2980fb46f57d0791c4d" id="r_aae17ac5d8a5ab2980fb46f57d0791c4d"><td class="memItemLeft" align="right" valign="top"><a class="el" href="oocError_8h.html#a1effaed6897d01c49b4771abc4185718">OOC_Error</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#aae17ac5d8a5ab2980fb46f57d0791c4d">ooc_listRemove</a> (void *self, void *element)</td></tr>
@@ -130,6 +132,10 @@ Functions</h2></td></tr>
 <tr class="memdesc:a50763d45be7c0a3cf85724799a06a01a"><td class="mdescLeft">&#160;</td><td class="mdescRight">Finds the first occurrence of an element in the list.  <br /></td></tr>
 <tr class="memitem:a08cc5cdcf3c0dd72d4c6d4648836adda" id="r_a08cc5cdcf3c0dd72d4c6d4648836adda"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a08cc5cdcf3c0dd72d4c6d4648836adda">ooc_listLastIndexOf</a> (void *self, void *element)</td></tr>
 <tr class="memdesc:a08cc5cdcf3c0dd72d4c6d4648836adda"><td class="mdescLeft">&#160;</td><td class="mdescRight">Finds the last occurrence of an element in the list.  <br /></td></tr>
+<tr class="memitem:ad5e219f7a24b1caa812a2bfa7deb3b75" id="r_ad5e219f7a24b1caa812a2bfa7deb3b75"><td class="memItemLeft" align="right" valign="top"><a id="ad5e219f7a24b1caa812a2bfa7deb3b75" name="ad5e219f7a24b1caa812a2bfa7deb3b75"></a>
+void *&#160;</td><td class="memItemRight" valign="bottom"><b>ooc_listGetListIterator</b> (void *self)</td></tr>
+<tr class="memitem:aef642171a787b15996ddce3de53213f6" id="r_aef642171a787b15996ddce3de53213f6"><td class="memItemLeft" align="right" valign="top"><a id="aef642171a787b15996ddce3de53213f6" name="aef642171a787b15996ddce3de53213f6"></a>
+void *&#160;</td><td class="memItemRight" valign="bottom"><b>ooc_listGetListIteratorAt</b> (void *self, size_t index)</td></tr>
 </table>
 <a name="details" id="details"></a><h2 id="header-details" class="groupheader">Detailed Description</h2>
 <div class="textblock"><p>List interface for the OOC (Object-Oriented C) framework. </p>
@@ -241,6 +247,37 @@ Functions</h2></td></tr>
   </dd>
 </dl>
 <dl class="section return"><dt>Returns</dt><dd>true if the list contains the element, false otherwise </dd></dl>
+
+</div>
+</div>
+<a id="a986a40d4c7c6467944c226e6d5842d9b" name="a986a40d4c7c6467944c226e6d5842d9b"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a986a40d4c7c6467944c226e6d5842d9b">&#9670;&#160;</a></span>ooc_listContainsAll()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">bool ooc_listContainsAll </td>
+          <td>(</td>
+          <td class="paramtype">void *</td>          <td class="paramname"><span class="paramname"><em>self</em></span>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">void *</td>          <td class="paramname"><span class="paramname"><em>other</em></span>&#160;)</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Checks if this list contains all elements from another list. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">self</td><td>List object instance </td></tr>
+    <tr><td class="paramname">other</td><td>List to be checked for containment </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd>true if this list contains all elements of the specified list </dd></dl>
 
 </div>
 </div>

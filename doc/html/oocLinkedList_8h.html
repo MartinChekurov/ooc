@@ -5,7 +5,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=11"/>
 <meta name="generator" content="Doxygen 1.14.0"/>
 <meta name="viewport" content="width=device-width, initial-scale=1"/>
-<title>OOC: src/collection/abstractCollection/list/linkedList/oocLinkedList.h File Reference</title>
+<title>OOC: src/collection/abstractCollection/abstractList/abstractSequentialList/linkedList/oocLinkedList.h File Reference</title>
 <link href="tabs.css" rel="stylesheet" type="text/css"/>
 <script type="text/javascript" src="jquery.js"></script>
 <script type="text/javascript" src="dynsections.js"></script>
@@ -92,46 +92,81 @@ $(function(){initNavTree('oocLinkedList_8h.html','',''); });
 </div><!--header-->
 <div class="contents">
 
-<p>LinkedList implementation for the OOC (Object-Oriented C) framework.  
+<p>LinkedList concrete class (sequential list) for OOC.  
 <a href="#details">More...</a></p>
-
+<div class="textblock"><code>#include &quot;<a class="el" href="oocError_8h_source.html">oocError.h</a>&quot;</code><br />
+<code>#include &lt;stdbool.h&gt;</code><br />
+<code>#include &lt;stddef.h&gt;</code><br />
+</div>
 <p><a href="oocLinkedList_8h_source.html">Go to the source code of this file.</a></p>
 <table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 id="header-func-members" class="groupheader"><a id="func-members" name="func-members"></a>
 Functions</h2></td></tr>
-<tr class="memitem:ad658a83e11f48a0290746d2c23daf7b0" id="r_ad658a83e11f48a0290746d2c23daf7b0"><td class="memItemLeft" align="right" valign="top">void *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#ad658a83e11f48a0290746d2c23daf7b0">ooc_linkedListClass</a> ()</td></tr>
-<tr class="memdesc:ad658a83e11f48a0290746d2c23daf7b0"><td class="mdescLeft">&#160;</td><td class="mdescRight">Returns the LinkedList class descriptor.  <br /></td></tr>
+<tr class="memitem:af9d2742ec7248b2a5b5932dfdf47ce43" id="r_af9d2742ec7248b2a5b5932dfdf47ce43"><td class="memItemLeft" align="right" valign="top"><a id="af9d2742ec7248b2a5b5932dfdf47ce43" name="af9d2742ec7248b2a5b5932dfdf47ce43"></a>
+void *&#160;</td><td class="memItemRight" valign="bottom"><b>ooc_linkedListClass</b> (void)</td></tr>
+<tr class="memitem:a6c03cfedc17e23059eb47b5184adc4fc" id="r_a6c03cfedc17e23059eb47b5184adc4fc"><td class="memItemLeft" align="right" valign="top"><a id="a6c03cfedc17e23059eb47b5184adc4fc" name="a6c03cfedc17e23059eb47b5184adc4fc"></a>
+void *&#160;</td><td class="memItemRight" valign="bottom"><b>ooc_linkedListGetIterator</b> (void *self)</td></tr>
+<tr class="memitem:a7a779a73d9370825cf16d85bc1e267cd" id="r_a7a779a73d9370825cf16d85bc1e267cd"><td class="memItemLeft" align="right" valign="top"><a id="a7a779a73d9370825cf16d85bc1e267cd" name="a7a779a73d9370825cf16d85bc1e267cd"></a>
+size_t&#160;</td><td class="memItemRight" valign="bottom"><b>ooc_linkedListSize</b> (void *self)</td></tr>
+<tr class="memitem:a287c50920404b1837242bff0722d0e8b" id="r_a287c50920404b1837242bff0722d0e8b"><td class="memItemLeft" align="right" valign="top"><a id="a287c50920404b1837242bff0722d0e8b" name="a287c50920404b1837242bff0722d0e8b"></a>
+bool&#160;</td><td class="memItemRight" valign="bottom"><b>ooc_linkedListIsEmpty</b> (void *self)</td></tr>
+<tr class="memitem:a56daa0bfd2a8c530017c978fb85b0000" id="r_a56daa0bfd2a8c530017c978fb85b0000"><td class="memItemLeft" align="right" valign="top"><a id="a56daa0bfd2a8c530017c978fb85b0000" name="a56daa0bfd2a8c530017c978fb85b0000"></a>
+bool&#160;</td><td class="memItemRight" valign="bottom"><b>ooc_linkedListContains</b> (void *self, void *element)</td></tr>
+<tr class="memitem:a6e5632120774ef600b1df58f29bb1560" id="r_a6e5632120774ef600b1df58f29bb1560"><td class="memItemLeft" align="right" valign="top"><a id="a6e5632120774ef600b1df58f29bb1560" name="a6e5632120774ef600b1df58f29bb1560"></a>
+bool&#160;</td><td class="memItemRight" valign="bottom"><b>ooc_linkedListContainsAll</b> (void *self, void *other)</td></tr>
+<tr class="memitem:ae1b205e08b045021d0deefcbd0d6ddaa" id="r_ae1b205e08b045021d0deefcbd0d6ddaa"><td class="memItemLeft" align="right" valign="top"><a id="ae1b205e08b045021d0deefcbd0d6ddaa" name="ae1b205e08b045021d0deefcbd0d6ddaa"></a>
+<a class="el" href="oocError_8h.html#a1effaed6897d01c49b4771abc4185718">OOC_Error</a>&#160;</td><td class="memItemRight" valign="bottom"><b>ooc_linkedListAdd</b> (void *self, void *element)</td></tr>
+<tr class="memitem:a07ffb5ce74a490c14b14b61e6f62345d" id="r_a07ffb5ce74a490c14b14b61e6f62345d"><td class="memItemLeft" align="right" valign="top"><a id="a07ffb5ce74a490c14b14b61e6f62345d" name="a07ffb5ce74a490c14b14b61e6f62345d"></a>
+<a class="el" href="oocError_8h.html#a1effaed6897d01c49b4771abc4185718">OOC_Error</a>&#160;</td><td class="memItemRight" valign="bottom"><b>ooc_linkedListRemove</b> (void *self, void *element)</td></tr>
+<tr class="memitem:ab57fd9638b6ae8e71b8e8674872f18f8" id="r_ab57fd9638b6ae8e71b8e8674872f18f8"><td class="memItemLeft" align="right" valign="top"><a id="ab57fd9638b6ae8e71b8e8674872f18f8" name="ab57fd9638b6ae8e71b8e8674872f18f8"></a>
+<a class="el" href="oocError_8h.html#a1effaed6897d01c49b4771abc4185718">OOC_Error</a>&#160;</td><td class="memItemRight" valign="bottom"><b>ooc_linkedListClear</b> (void *self)</td></tr>
+<tr class="memitem:a98fbb066d229799ddb45a49b6d39f42f" id="r_a98fbb066d229799ddb45a49b6d39f42f"><td class="memItemLeft" align="right" valign="top"><a id="a98fbb066d229799ddb45a49b6d39f42f" name="a98fbb066d229799ddb45a49b6d39f42f"></a>
+void *&#160;</td><td class="memItemRight" valign="bottom"><b>ooc_linkedListGetAt</b> (void *self, size_t index)</td></tr>
+<tr class="memitem:a112fc6b1b9665ed4931f501d5cd673a1" id="r_a112fc6b1b9665ed4931f501d5cd673a1"><td class="memItemLeft" align="right" valign="top"><a id="a112fc6b1b9665ed4931f501d5cd673a1" name="a112fc6b1b9665ed4931f501d5cd673a1"></a>
+<a class="el" href="oocError_8h.html#a1effaed6897d01c49b4771abc4185718">OOC_Error</a>&#160;</td><td class="memItemRight" valign="bottom"><b>ooc_linkedListSetAt</b> (void *self, size_t index, void *element)</td></tr>
+<tr class="memitem:a863c93485ff2a55c41b4d4e6eab35341" id="r_a863c93485ff2a55c41b4d4e6eab35341"><td class="memItemLeft" align="right" valign="top"><a id="a863c93485ff2a55c41b4d4e6eab35341" name="a863c93485ff2a55c41b4d4e6eab35341"></a>
+<a class="el" href="oocError_8h.html#a1effaed6897d01c49b4771abc4185718">OOC_Error</a>&#160;</td><td class="memItemRight" valign="bottom"><b>ooc_linkedListInsertAt</b> (void *self, size_t index, void *element)</td></tr>
+<tr class="memitem:aca61e241c5264b2a88d53d011c4005c4" id="r_aca61e241c5264b2a88d53d011c4005c4"><td class="memItemLeft" align="right" valign="top"><a id="aca61e241c5264b2a88d53d011c4005c4" name="aca61e241c5264b2a88d53d011c4005c4"></a>
+<a class="el" href="oocError_8h.html#a1effaed6897d01c49b4771abc4185718">OOC_Error</a>&#160;</td><td class="memItemRight" valign="bottom"><b>ooc_linkedListRemoveAt</b> (void *self, size_t index)</td></tr>
+<tr class="memitem:ac096a1c4cb2e4b97115644ecc7ecbec3" id="r_ac096a1c4cb2e4b97115644ecc7ecbec3"><td class="memItemLeft" align="right" valign="top"><a id="ac096a1c4cb2e4b97115644ecc7ecbec3" name="ac096a1c4cb2e4b97115644ecc7ecbec3"></a>
+int&#160;</td><td class="memItemRight" valign="bottom"><b>ooc_linkedListIndexOf</b> (void *self, void *element)</td></tr>
+<tr class="memitem:a112dade72b4c7abc72fea2f6c66d0ca2" id="r_a112dade72b4c7abc72fea2f6c66d0ca2"><td class="memItemLeft" align="right" valign="top"><a id="a112dade72b4c7abc72fea2f6c66d0ca2" name="a112dade72b4c7abc72fea2f6c66d0ca2"></a>
+int&#160;</td><td class="memItemRight" valign="bottom"><b>ooc_linkedListLastIndexOf</b> (void *self, void *element)</td></tr>
+<tr class="memitem:ada141be5bae3bf8129584eef6abae6c2" id="r_ada141be5bae3bf8129584eef6abae6c2"><td class="memItemLeft" align="right" valign="top"><a id="ada141be5bae3bf8129584eef6abae6c2" name="ada141be5bae3bf8129584eef6abae6c2"></a>
+void *&#160;</td><td class="memItemRight" valign="bottom"><b>ooc_linkedListGetListIterator</b> (void *self)</td></tr>
+<tr class="memitem:a829473bf3f09558d5514afce58fdc3bf" id="r_a829473bf3f09558d5514afce58fdc3bf"><td class="memItemLeft" align="right" valign="top"><a id="a829473bf3f09558d5514afce58fdc3bf" name="a829473bf3f09558d5514afce58fdc3bf"></a>
+void *&#160;</td><td class="memItemRight" valign="bottom"><b>ooc_linkedListGetListIteratorAt</b> (void *self, size_t index)</td></tr>
+<tr class="memitem:abb3a9f80e74963788edd90fef17e2fc3" id="r_abb3a9f80e74963788edd90fef17e2fc3"><td class="memItemLeft" align="right" valign="top"><a id="abb3a9f80e74963788edd90fef17e2fc3" name="abb3a9f80e74963788edd90fef17e2fc3"></a>
+<a class="el" href="oocError_8h.html#a1effaed6897d01c49b4771abc4185718">OOC_Error</a>&#160;</td><td class="memItemRight" valign="bottom"><b>ooc_linkedListOffer</b> (void *self, void *element)</td></tr>
+<tr class="memitem:ad0ec75c2f53ccc1d9d0a1db1a1d6c4fe" id="r_ad0ec75c2f53ccc1d9d0a1db1a1d6c4fe"><td class="memItemLeft" align="right" valign="top"><a id="ad0ec75c2f53ccc1d9d0a1db1a1d6c4fe" name="ad0ec75c2f53ccc1d9d0a1db1a1d6c4fe"></a>
+void *&#160;</td><td class="memItemRight" valign="bottom"><b>ooc_linkedListPoll</b> (void *self)</td></tr>
+<tr class="memitem:aa7b44d6e1090009713607bb83686c949" id="r_aa7b44d6e1090009713607bb83686c949"><td class="memItemLeft" align="right" valign="top"><a id="aa7b44d6e1090009713607bb83686c949" name="aa7b44d6e1090009713607bb83686c949"></a>
+void *&#160;</td><td class="memItemRight" valign="bottom"><b>ooc_linkedListPeek</b> (void *self)</td></tr>
+<tr class="memitem:a9f0fc85a69026085e3a7d1fb58e6d315" id="r_a9f0fc85a69026085e3a7d1fb58e6d315"><td class="memItemLeft" align="right" valign="top"><a id="a9f0fc85a69026085e3a7d1fb58e6d315" name="a9f0fc85a69026085e3a7d1fb58e6d315"></a>
+<a class="el" href="oocError_8h.html#a1effaed6897d01c49b4771abc4185718">OOC_Error</a>&#160;</td><td class="memItemRight" valign="bottom"><b>ooc_linkedListAddFirst</b> (void *self, void *element)</td></tr>
+<tr class="memitem:ae150ca546588886fdd1fff95d5b41451" id="r_ae150ca546588886fdd1fff95d5b41451"><td class="memItemLeft" align="right" valign="top"><a id="ae150ca546588886fdd1fff95d5b41451" name="ae150ca546588886fdd1fff95d5b41451"></a>
+<a class="el" href="oocError_8h.html#a1effaed6897d01c49b4771abc4185718">OOC_Error</a>&#160;</td><td class="memItemRight" valign="bottom"><b>ooc_linkedListAddLast</b> (void *self, void *element)</td></tr>
+<tr class="memitem:a3f0dcd174ffd9c77436026b5b50a64dc" id="r_a3f0dcd174ffd9c77436026b5b50a64dc"><td class="memItemLeft" align="right" valign="top"><a id="a3f0dcd174ffd9c77436026b5b50a64dc" name="a3f0dcd174ffd9c77436026b5b50a64dc"></a>
+void *&#160;</td><td class="memItemRight" valign="bottom"><b>ooc_linkedListGetFirst</b> (void *self)</td></tr>
+<tr class="memitem:a6963cdaf88a59e38ab886ef10b07ee98" id="r_a6963cdaf88a59e38ab886ef10b07ee98"><td class="memItemLeft" align="right" valign="top"><a id="a6963cdaf88a59e38ab886ef10b07ee98" name="a6963cdaf88a59e38ab886ef10b07ee98"></a>
+void *&#160;</td><td class="memItemRight" valign="bottom"><b>ooc_linkedListGetLast</b> (void *self)</td></tr>
+<tr class="memitem:a0f202491097119c7a5cf6bcd9da1bed7" id="r_a0f202491097119c7a5cf6bcd9da1bed7"><td class="memItemLeft" align="right" valign="top"><a id="a0f202491097119c7a5cf6bcd9da1bed7" name="a0f202491097119c7a5cf6bcd9da1bed7"></a>
+void *&#160;</td><td class="memItemRight" valign="bottom"><b>ooc_linkedListRemoveFirst</b> (void *self)</td></tr>
+<tr class="memitem:a24da84b7ad80c47e6afc43d35148c112" id="r_a24da84b7ad80c47e6afc43d35148c112"><td class="memItemLeft" align="right" valign="top"><a id="a24da84b7ad80c47e6afc43d35148c112" name="a24da84b7ad80c47e6afc43d35148c112"></a>
+void *&#160;</td><td class="memItemRight" valign="bottom"><b>ooc_linkedListRemoveLast</b> (void *self)</td></tr>
+<tr class="memitem:a27d4c1a49470eda74c527c9999ee9374" id="r_a27d4c1a49470eda74c527c9999ee9374"><td class="memItemLeft" align="right" valign="top"><a id="a27d4c1a49470eda74c527c9999ee9374" name="a27d4c1a49470eda74c527c9999ee9374"></a>
+<a class="el" href="oocError_8h.html#a1effaed6897d01c49b4771abc4185718">OOC_Error</a>&#160;</td><td class="memItemRight" valign="bottom"><b>ooc_linkedListPush</b> (void *self, void *element)</td></tr>
+<tr class="memitem:acfa0d3c44c425444beb9c69d6a6ff0b3" id="r_acfa0d3c44c425444beb9c69d6a6ff0b3"><td class="memItemLeft" align="right" valign="top"><a id="acfa0d3c44c425444beb9c69d6a6ff0b3" name="acfa0d3c44c425444beb9c69d6a6ff0b3"></a>
+void *&#160;</td><td class="memItemRight" valign="bottom"><b>ooc_linkedListPop</b> (void *self)</td></tr>
 </table>
 <a name="details" id="details"></a><h2 id="header-details" class="groupheader">Detailed Description</h2>
-<div class="textblock"><p>LinkedList implementation for the OOC (Object-Oriented C) framework. </p>
-<p>This header defines the LinkedList class, a doubly-linked list implementation of the List interface. It provides efficient insertion and deletion operations at any position, with O(1) operations at the head and tail. </p>
-</div><a name="doc-func-members" id="doc-func-members"></a><h2 id="header-doc-func-members" class="groupheader">Function Documentation</h2>
-<a id="ad658a83e11f48a0290746d2c23daf7b0" name="ad658a83e11f48a0290746d2c23daf7b0"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#ad658a83e11f48a0290746d2c23daf7b0">&#9670;&#160;</a></span>ooc_linkedListClass()</h2>
-
-<div class="memitem">
-<div class="memproto">
-      <table class="memname">
-        <tr>
-          <td class="memname">void * ooc_linkedListClass </td>
-          <td>(</td>
-          <td class="paramname"><span class="paramname"><em></em></span></td><td>)</td>
-          <td></td>
-        </tr>
-      </table>
-</div><div class="memdoc">
-
-<p>Returns the LinkedList class descriptor. </p>
-<dl class="section return"><dt>Returns</dt><dd>Pointer to the LinkedList class object</dd></dl>
-<p>Constructor parameters:</p><ul>
-<li>(none)</li>
+<div class="textblock"><p>LinkedList concrete class (sequential list) for OOC. </p>
+<p>Java-style design:</p><ul>
+<li>LinkedList extends AbstractSequentialList</li>
+<li>Core list primitive exposed by LinkedList is listIteratorAt(index)</li>
+<li>Random-access list operations are intended to come from AbstractSequentialList </li>
 </ul>
-<p>Example: </p><div class="fragment"><div class="line"><span class="keywordtype">void</span>* list = ooc_new(<a class="code hl_function" href="#ad658a83e11f48a0290746d2c23daf7b0">ooc_linkedListClass</a>());</div>
-<div class="ttc" id="aoocLinkedList_8h_html_ad658a83e11f48a0290746d2c23daf7b0"><div class="ttname"><a href="#ad658a83e11f48a0290746d2c23daf7b0">ooc_linkedListClass</a></div><div class="ttdeci">void * ooc_linkedListClass()</div><div class="ttdoc">Returns the LinkedList class descriptor.</div><div class="ttdef"><b>Definition</b> oocLinkedList.c:582</div></div>
-</div><!-- fragment --> 
-</div>
-</div>
-</div><!-- contents -->
+</div></div><!-- contents -->
 </div><!-- doc-content -->
 <div id="page-nav" class="page-nav-panel">
 <div id="page-nav-resize-handle"></div>
@@ -144,7 +179,7 @@ Functions</h2></td></tr>
 <!-- start footer part -->
 <div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
   <ul>
-    <li class="navelem"><a href="dir_68267d1309a1af8e8297ef4c3efbcdba.html">src</a></li><li class="navelem"><a href="dir_ea4d0e9a65eb15bd8a423e17e16ea529.html">collection</a></li><li class="navelem"><a href="dir_516c0cd75c0a20886834c1675a0a0bfe.html">abstractCollection</a></li><li class="navelem"><a href="dir_adf99e92d6cd49a85d477499966e1879.html">list</a></li><li class="navelem"><a href="dir_bf17c11019878bd30eb47cb85c7a5b63.html">linkedList</a></li><li class="navelem"><a href="oocLinkedList_8h.html">oocLinkedList.h</a></li>
+    <li class="navelem"><a href="dir_68267d1309a1af8e8297ef4c3efbcdba.html">src</a></li><li class="navelem"><a href="dir_ea4d0e9a65eb15bd8a423e17e16ea529.html">collection</a></li><li class="navelem"><a href="dir_516c0cd75c0a20886834c1675a0a0bfe.html">abstractCollection</a></li><li class="navelem"><a href="dir_13910d01e4cfde2fbc5cad65ca053ff7.html">abstractList</a></li><li class="navelem"><a href="dir_32ad37384cf9cbd521935b064dd248ad.html">abstractSequentialList</a></li><li class="navelem"><a href="dir_ce4af77f336efa22bc8cc2b25be80347.html">linkedList</a></li><li class="navelem"><a href="oocLinkedList_8h.html">oocLinkedList.h</a></li>
     <li class="footer">Generated by <a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.14.0 </li>
   </ul>
 </div>

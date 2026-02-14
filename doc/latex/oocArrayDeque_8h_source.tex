@@ -3,12 +3,38 @@
 \mbox{\hyperlink{oocArrayDeque_8h}{Go to the documentation of this file.}}
 \begin{DoxyCode}{0}
 \DoxyCodeLine{00001\ }
-\DoxyCodeLine{00009\ }
-\DoxyCodeLine{00010\ \textcolor{preprocessor}{\#ifndef\ OOC\_ARRAY\_DEQUE\_H\_}}
-\DoxyCodeLine{00011\ \textcolor{preprocessor}{\#define\ OOC\_ARRAY\_DEQUE\_H\_}}
-\DoxyCodeLine{00012\ }
-\DoxyCodeLine{00025\ \textcolor{keywordtype}{void}*\ \mbox{\hyperlink{oocArrayDeque_8h_ae132956391e229f03175f0e8a82eea0e}{ooc\_arrayDequeClass}}();}
-\DoxyCodeLine{00026\ }
-\DoxyCodeLine{00027\ \textcolor{preprocessor}{\#endif}}
+\DoxyCodeLine{00016\ }
+\DoxyCodeLine{00017\ \textcolor{preprocessor}{\#ifndef\ OOC\_ARRAY\_DEQUE\_H\_}}
+\DoxyCodeLine{00018\ \textcolor{preprocessor}{\#define\ OOC\_ARRAY\_DEQUE\_H\_}}
+\DoxyCodeLine{00019\ }
+\DoxyCodeLine{00020\ \textcolor{preprocessor}{\#include\ "{}\mbox{\hyperlink{oocError_8h}{oocError.h}}"{}}}
+\DoxyCodeLine{00021\ \textcolor{preprocessor}{\#include\ <stdbool.h>}}
+\DoxyCodeLine{00022\ \textcolor{preprocessor}{\#include\ <stddef.h>}}
+\DoxyCodeLine{00023\ }
+\DoxyCodeLine{00024\ \textcolor{keywordtype}{void}*\ ooc\_arrayDequeClass(\textcolor{keywordtype}{void});}
+\DoxyCodeLine{00025\ }
+\DoxyCodeLine{00026\ \textcolor{keywordtype}{void}*\ ooc\_arrayDequeGetIterator(\textcolor{keywordtype}{void}*\ self);}
+\DoxyCodeLine{00027\ \textcolor{keywordtype}{size\_t}\ ooc\_arrayDequeSize(\textcolor{keywordtype}{void}*\ self);}
+\DoxyCodeLine{00028\ \textcolor{keywordtype}{bool}\ ooc\_arrayDequeIsEmpty(\textcolor{keywordtype}{void}*\ self);}
+\DoxyCodeLine{00029\ \textcolor{keywordtype}{bool}\ ooc\_arrayDequeContains(\textcolor{keywordtype}{void}*\ self,\ \textcolor{keywordtype}{void}*\ element);}
+\DoxyCodeLine{00030\ \textcolor{keywordtype}{bool}\ ooc\_arrayDequeContainsAll(\textcolor{keywordtype}{void}*\ self,\ \textcolor{keywordtype}{void}*\ other);}
+\DoxyCodeLine{00031\ \mbox{\hyperlink{oocError_8h_a1effaed6897d01c49b4771abc4185718}{OOC\_Error}}\ ooc\_arrayDequeAdd(\textcolor{keywordtype}{void}*\ self,\ \textcolor{keywordtype}{void}*\ element);}
+\DoxyCodeLine{00032\ \mbox{\hyperlink{oocError_8h_a1effaed6897d01c49b4771abc4185718}{OOC\_Error}}\ ooc\_arrayDequeRemove(\textcolor{keywordtype}{void}*\ self,\ \textcolor{keywordtype}{void}*\ element);}
+\DoxyCodeLine{00033\ \mbox{\hyperlink{oocError_8h_a1effaed6897d01c49b4771abc4185718}{OOC\_Error}}\ ooc\_arrayDequeClear(\textcolor{keywordtype}{void}*\ self);}
+\DoxyCodeLine{00034\ }
+\DoxyCodeLine{00035\ \mbox{\hyperlink{oocError_8h_a1effaed6897d01c49b4771abc4185718}{OOC\_Error}}\ ooc\_arrayDequeOffer(\textcolor{keywordtype}{void}*\ self,\ \textcolor{keywordtype}{void}*\ element);}
+\DoxyCodeLine{00036\ \textcolor{keywordtype}{void}*\ ooc\_arrayDequePoll(\textcolor{keywordtype}{void}*\ self);}
+\DoxyCodeLine{00037\ \textcolor{keywordtype}{void}*\ ooc\_arrayDequePeek(\textcolor{keywordtype}{void}*\ self);}
+\DoxyCodeLine{00038\ }
+\DoxyCodeLine{00039\ \mbox{\hyperlink{oocError_8h_a1effaed6897d01c49b4771abc4185718}{OOC\_Error}}\ ooc\_arrayDequeAddFirst(\textcolor{keywordtype}{void}*\ self,\ \textcolor{keywordtype}{void}*\ element);}
+\DoxyCodeLine{00040\ \mbox{\hyperlink{oocError_8h_a1effaed6897d01c49b4771abc4185718}{OOC\_Error}}\ ooc\_arrayDequeAddLast(\textcolor{keywordtype}{void}*\ self,\ \textcolor{keywordtype}{void}*\ element);}
+\DoxyCodeLine{00041\ \textcolor{keywordtype}{void}*\ ooc\_arrayDequeRemoveFirst(\textcolor{keywordtype}{void}*\ self);}
+\DoxyCodeLine{00042\ \textcolor{keywordtype}{void}*\ ooc\_arrayDequeRemoveLast(\textcolor{keywordtype}{void}*\ self);}
+\DoxyCodeLine{00043\ \textcolor{keywordtype}{void}*\ ooc\_arrayDequeGetFirst(\textcolor{keywordtype}{void}*\ self);}
+\DoxyCodeLine{00044\ \textcolor{keywordtype}{void}*\ ooc\_arrayDequeGetLast(\textcolor{keywordtype}{void}*\ self);}
+\DoxyCodeLine{00045\ \mbox{\hyperlink{oocError_8h_a1effaed6897d01c49b4771abc4185718}{OOC\_Error}}\ ooc\_arrayDequePush(\textcolor{keywordtype}{void}*\ self,\ \textcolor{keywordtype}{void}*\ element);}
+\DoxyCodeLine{00046\ \textcolor{keywordtype}{void}*\ ooc\_arrayDequePop(\textcolor{keywordtype}{void}*\ self);}
+\DoxyCodeLine{00047\ }
+\DoxyCodeLine{00048\ \textcolor{preprocessor}{\#endif\ }\textcolor{comment}{/*\ OOC\_ARRAY\_DEQUE\_H\_\ */}\textcolor{preprocessor}{}}
 
 \end{DoxyCode}

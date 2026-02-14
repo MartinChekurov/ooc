@@ -21,6 +21,8 @@ bool \mbox{\hyperlink{oocList_8h_af1a1c6972e2fa17219ef1c0aa3ddc1fc}{ooc\+\_\+lis
 \begin{DoxyCompactList}\small\item\em Checks if the list is empty. \end{DoxyCompactList}\item 
 bool \mbox{\hyperlink{oocList_8h_a84961a0229e98d60452f74b523ad0fcc}{ooc\+\_\+list\+Contains}} (void \texorpdfstring{$\ast$}{*}self, void \texorpdfstring{$\ast$}{*}element)
 \begin{DoxyCompactList}\small\item\em Checks if the list contains the specified element. \end{DoxyCompactList}\item 
+bool \mbox{\hyperlink{oocList_8h_a986a40d4c7c6467944c226e6d5842d9b}{ooc\+\_\+list\+Contains\+All}} (void \texorpdfstring{$\ast$}{*}self, void \texorpdfstring{$\ast$}{*}other)
+\begin{DoxyCompactList}\small\item\em Checks if this list contains all elements from another list. \end{DoxyCompactList}\item 
 \mbox{\hyperlink{oocError_8h_a1effaed6897d01c49b4771abc4185718}{OOC\+\_\+\+Error}} \mbox{\hyperlink{oocList_8h_a9579f47a2b0b05d4f4f1b57229455898}{ooc\+\_\+list\+Add}} (void \texorpdfstring{$\ast$}{*}self, void \texorpdfstring{$\ast$}{*}element)
 \begin{DoxyCompactList}\small\item\em Adds an element to the list. \end{DoxyCompactList}\item 
 \mbox{\hyperlink{oocError_8h_a1effaed6897d01c49b4771abc4185718}{OOC\+\_\+\+Error}} \mbox{\hyperlink{oocList_8h_aae17ac5d8a5ab2980fb46f57d0791c4d}{ooc\+\_\+list\+Remove}} (void \texorpdfstring{$\ast$}{*}self, void \texorpdfstring{$\ast$}{*}element)
@@ -38,7 +40,13 @@ void \texorpdfstring{$\ast$}{*} \mbox{\hyperlink{oocList_8h_ad376c37a5afc20409e3
 int \mbox{\hyperlink{oocList_8h_a50763d45be7c0a3cf85724799a06a01a}{ooc\+\_\+list\+Index\+Of}} (void \texorpdfstring{$\ast$}{*}self, void \texorpdfstring{$\ast$}{*}element)
 \begin{DoxyCompactList}\small\item\em Finds the first occurrence of an element in the list. \end{DoxyCompactList}\item 
 int \mbox{\hyperlink{oocList_8h_a08cc5cdcf3c0dd72d4c6d4648836adda}{ooc\+\_\+list\+Last\+Index\+Of}} (void \texorpdfstring{$\ast$}{*}self, void \texorpdfstring{$\ast$}{*}element)
-\begin{DoxyCompactList}\small\item\em Finds the last occurrence of an element in the list. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\begin{DoxyCompactList}\small\item\em Finds the last occurrence of an element in the list. \end{DoxyCompactList}\item 
+\Hypertarget{oocList_8h_ad5e219f7a24b1caa812a2bfa7deb3b75}\label{oocList_8h_ad5e219f7a24b1caa812a2bfa7deb3b75} 
+void \texorpdfstring{$\ast$}{*} {\bfseries ooc\+\_\+list\+Get\+List\+Iterator} (void \texorpdfstring{$\ast$}{*}self)
+\item 
+\Hypertarget{oocList_8h_aef642171a787b15996ddce3de53213f6}\label{oocList_8h_aef642171a787b15996ddce3de53213f6} 
+void \texorpdfstring{$\ast$}{*} {\bfseries ooc\+\_\+list\+Get\+List\+Iterator\+At} (void \texorpdfstring{$\ast$}{*}self, size\+\_\+t index)
+\end{DoxyCompactItemize}
 
 
 \doxysubsection{Detailed Description}
@@ -119,6 +127,26 @@ Checks if the list contains the specified element.
 \end{DoxyParams}
 \begin{DoxyReturn}{Returns}
 true if the list contains the element, false otherwise 
+\end{DoxyReturn}
+\Hypertarget{oocList_8h_a986a40d4c7c6467944c226e6d5842d9b}\index{oocList.h@{oocList.h}!ooc\_listContainsAll@{ooc\_listContainsAll}}
+\index{ooc\_listContainsAll@{ooc\_listContainsAll}!oocList.h@{oocList.h}}
+\doxysubsubsection{\texorpdfstring{ooc\_listContainsAll()}{ooc\_listContainsAll()}}
+{\footnotesize\ttfamily \label{oocList_8h_a986a40d4c7c6467944c226e6d5842d9b} 
+bool ooc\+\_\+list\+Contains\+All (\begin{DoxyParamCaption}\item[{void \texorpdfstring{$\ast$}{*}}]{self}{, }\item[{void \texorpdfstring{$\ast$}{*}}]{other}{}\end{DoxyParamCaption})}
+
+
+
+Checks if this list contains all elements from another list. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em self} & List object instance \\
+\hline
+{\em other} & List to be checked for containment \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+true if this list contains all elements of the specified list 
 \end{DoxyReturn}
 \Hypertarget{oocList_8h_ad376c37a5afc20409e3546a41cb30629}\index{oocList.h@{oocList.h}!ooc\_listGetAt@{ooc\_listGetAt}}
 \index{ooc\_listGetAt@{ooc\_listGetAt}!oocList.h@{oocList.h}}

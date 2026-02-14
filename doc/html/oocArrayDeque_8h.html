@@ -92,46 +92,71 @@ $(function(){initNavTree('oocArrayDeque_8h.html','',''); });
 </div><!--header-->
 <div class="contents">
 
-<p>ArrayDeque implementation for the OOC (Object-Oriented C) framework.  
+<p>ArrayDeque concrete class for OOC.  
 <a href="#details">More...</a></p>
-
+<div class="textblock"><code>#include &quot;<a class="el" href="oocError_8h_source.html">oocError.h</a>&quot;</code><br />
+<code>#include &lt;stdbool.h&gt;</code><br />
+<code>#include &lt;stddef.h&gt;</code><br />
+</div>
 <p><a href="oocArrayDeque_8h_source.html">Go to the source code of this file.</a></p>
 <table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 id="header-func-members" class="groupheader"><a id="func-members" name="func-members"></a>
 Functions</h2></td></tr>
-<tr class="memitem:ae132956391e229f03175f0e8a82eea0e" id="r_ae132956391e229f03175f0e8a82eea0e"><td class="memItemLeft" align="right" valign="top">void *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#ae132956391e229f03175f0e8a82eea0e">ooc_arrayDequeClass</a> ()</td></tr>
-<tr class="memdesc:ae132956391e229f03175f0e8a82eea0e"><td class="mdescLeft">&#160;</td><td class="mdescRight">Returns the ArrayDeque class descriptor.  <br /></td></tr>
+<tr class="memitem:a3319e4e7207674779bd6ac7d8cffac39" id="r_a3319e4e7207674779bd6ac7d8cffac39"><td class="memItemLeft" align="right" valign="top"><a id="a3319e4e7207674779bd6ac7d8cffac39" name="a3319e4e7207674779bd6ac7d8cffac39"></a>
+void *&#160;</td><td class="memItemRight" valign="bottom"><b>ooc_arrayDequeClass</b> (void)</td></tr>
+<tr class="memitem:ad16c1f5ce20473e98157def5ec0d118b" id="r_ad16c1f5ce20473e98157def5ec0d118b"><td class="memItemLeft" align="right" valign="top"><a id="ad16c1f5ce20473e98157def5ec0d118b" name="ad16c1f5ce20473e98157def5ec0d118b"></a>
+void *&#160;</td><td class="memItemRight" valign="bottom"><b>ooc_arrayDequeGetIterator</b> (void *self)</td></tr>
+<tr class="memitem:aea3e89407ea3efae5fbeb234e5925213" id="r_aea3e89407ea3efae5fbeb234e5925213"><td class="memItemLeft" align="right" valign="top"><a id="aea3e89407ea3efae5fbeb234e5925213" name="aea3e89407ea3efae5fbeb234e5925213"></a>
+size_t&#160;</td><td class="memItemRight" valign="bottom"><b>ooc_arrayDequeSize</b> (void *self)</td></tr>
+<tr class="memitem:abe7baebfc26baf3a0937eab84eec8363" id="r_abe7baebfc26baf3a0937eab84eec8363"><td class="memItemLeft" align="right" valign="top"><a id="abe7baebfc26baf3a0937eab84eec8363" name="abe7baebfc26baf3a0937eab84eec8363"></a>
+bool&#160;</td><td class="memItemRight" valign="bottom"><b>ooc_arrayDequeIsEmpty</b> (void *self)</td></tr>
+<tr class="memitem:a4fdffa7c3fbaa4bb35eea8e1d836944d" id="r_a4fdffa7c3fbaa4bb35eea8e1d836944d"><td class="memItemLeft" align="right" valign="top"><a id="a4fdffa7c3fbaa4bb35eea8e1d836944d" name="a4fdffa7c3fbaa4bb35eea8e1d836944d"></a>
+bool&#160;</td><td class="memItemRight" valign="bottom"><b>ooc_arrayDequeContains</b> (void *self, void *element)</td></tr>
+<tr class="memitem:aa46a49ad12a74758923bbe24d5931e9c" id="r_aa46a49ad12a74758923bbe24d5931e9c"><td class="memItemLeft" align="right" valign="top"><a id="aa46a49ad12a74758923bbe24d5931e9c" name="aa46a49ad12a74758923bbe24d5931e9c"></a>
+bool&#160;</td><td class="memItemRight" valign="bottom"><b>ooc_arrayDequeContainsAll</b> (void *self, void *other)</td></tr>
+<tr class="memitem:a20163ba9406f80ac377d45a48d3d88b3" id="r_a20163ba9406f80ac377d45a48d3d88b3"><td class="memItemLeft" align="right" valign="top"><a id="a20163ba9406f80ac377d45a48d3d88b3" name="a20163ba9406f80ac377d45a48d3d88b3"></a>
+<a class="el" href="oocError_8h.html#a1effaed6897d01c49b4771abc4185718">OOC_Error</a>&#160;</td><td class="memItemRight" valign="bottom"><b>ooc_arrayDequeAdd</b> (void *self, void *element)</td></tr>
+<tr class="memitem:a83cfe75bccc8603cb3bb6cb776254156" id="r_a83cfe75bccc8603cb3bb6cb776254156"><td class="memItemLeft" align="right" valign="top"><a id="a83cfe75bccc8603cb3bb6cb776254156" name="a83cfe75bccc8603cb3bb6cb776254156"></a>
+<a class="el" href="oocError_8h.html#a1effaed6897d01c49b4771abc4185718">OOC_Error</a>&#160;</td><td class="memItemRight" valign="bottom"><b>ooc_arrayDequeRemove</b> (void *self, void *element)</td></tr>
+<tr class="memitem:a585fe6ff6bfe3253f605f3a8168b6045" id="r_a585fe6ff6bfe3253f605f3a8168b6045"><td class="memItemLeft" align="right" valign="top"><a id="a585fe6ff6bfe3253f605f3a8168b6045" name="a585fe6ff6bfe3253f605f3a8168b6045"></a>
+<a class="el" href="oocError_8h.html#a1effaed6897d01c49b4771abc4185718">OOC_Error</a>&#160;</td><td class="memItemRight" valign="bottom"><b>ooc_arrayDequeClear</b> (void *self)</td></tr>
+<tr class="memitem:a030f3d7a063c3938fcce5a3f3a8c9f7e" id="r_a030f3d7a063c3938fcce5a3f3a8c9f7e"><td class="memItemLeft" align="right" valign="top"><a id="a030f3d7a063c3938fcce5a3f3a8c9f7e" name="a030f3d7a063c3938fcce5a3f3a8c9f7e"></a>
+<a class="el" href="oocError_8h.html#a1effaed6897d01c49b4771abc4185718">OOC_Error</a>&#160;</td><td class="memItemRight" valign="bottom"><b>ooc_arrayDequeOffer</b> (void *self, void *element)</td></tr>
+<tr class="memitem:a163dab6b8e23d3558d23af1b6e187cf9" id="r_a163dab6b8e23d3558d23af1b6e187cf9"><td class="memItemLeft" align="right" valign="top"><a id="a163dab6b8e23d3558d23af1b6e187cf9" name="a163dab6b8e23d3558d23af1b6e187cf9"></a>
+void *&#160;</td><td class="memItemRight" valign="bottom"><b>ooc_arrayDequePoll</b> (void *self)</td></tr>
+<tr class="memitem:acc4b02b1a586c1c01e5472e9504371a0" id="r_acc4b02b1a586c1c01e5472e9504371a0"><td class="memItemLeft" align="right" valign="top"><a id="acc4b02b1a586c1c01e5472e9504371a0" name="acc4b02b1a586c1c01e5472e9504371a0"></a>
+void *&#160;</td><td class="memItemRight" valign="bottom"><b>ooc_arrayDequePeek</b> (void *self)</td></tr>
+<tr class="memitem:af203ff0d4c9aa1c6054f5a400b145124" id="r_af203ff0d4c9aa1c6054f5a400b145124"><td class="memItemLeft" align="right" valign="top"><a id="af203ff0d4c9aa1c6054f5a400b145124" name="af203ff0d4c9aa1c6054f5a400b145124"></a>
+<a class="el" href="oocError_8h.html#a1effaed6897d01c49b4771abc4185718">OOC_Error</a>&#160;</td><td class="memItemRight" valign="bottom"><b>ooc_arrayDequeAddFirst</b> (void *self, void *element)</td></tr>
+<tr class="memitem:a720bb07fa31648322709693c2b7402c4" id="r_a720bb07fa31648322709693c2b7402c4"><td class="memItemLeft" align="right" valign="top"><a id="a720bb07fa31648322709693c2b7402c4" name="a720bb07fa31648322709693c2b7402c4"></a>
+<a class="el" href="oocError_8h.html#a1effaed6897d01c49b4771abc4185718">OOC_Error</a>&#160;</td><td class="memItemRight" valign="bottom"><b>ooc_arrayDequeAddLast</b> (void *self, void *element)</td></tr>
+<tr class="memitem:a7c110fad3e319fc254426ad9c0ab5ff3" id="r_a7c110fad3e319fc254426ad9c0ab5ff3"><td class="memItemLeft" align="right" valign="top"><a id="a7c110fad3e319fc254426ad9c0ab5ff3" name="a7c110fad3e319fc254426ad9c0ab5ff3"></a>
+void *&#160;</td><td class="memItemRight" valign="bottom"><b>ooc_arrayDequeRemoveFirst</b> (void *self)</td></tr>
+<tr class="memitem:ae38b1b3e566671af72ef524f6f69ce22" id="r_ae38b1b3e566671af72ef524f6f69ce22"><td class="memItemLeft" align="right" valign="top"><a id="ae38b1b3e566671af72ef524f6f69ce22" name="ae38b1b3e566671af72ef524f6f69ce22"></a>
+void *&#160;</td><td class="memItemRight" valign="bottom"><b>ooc_arrayDequeRemoveLast</b> (void *self)</td></tr>
+<tr class="memitem:affcfa59ac65e461679fd0eba72c3b1e2" id="r_affcfa59ac65e461679fd0eba72c3b1e2"><td class="memItemLeft" align="right" valign="top"><a id="affcfa59ac65e461679fd0eba72c3b1e2" name="affcfa59ac65e461679fd0eba72c3b1e2"></a>
+void *&#160;</td><td class="memItemRight" valign="bottom"><b>ooc_arrayDequeGetFirst</b> (void *self)</td></tr>
+<tr class="memitem:a58ece2d3f2a37dfcf3f65b99529867d9" id="r_a58ece2d3f2a37dfcf3f65b99529867d9"><td class="memItemLeft" align="right" valign="top"><a id="a58ece2d3f2a37dfcf3f65b99529867d9" name="a58ece2d3f2a37dfcf3f65b99529867d9"></a>
+void *&#160;</td><td class="memItemRight" valign="bottom"><b>ooc_arrayDequeGetLast</b> (void *self)</td></tr>
+<tr class="memitem:a2c2cf1e408f4e550cb88f3ca27fa1650" id="r_a2c2cf1e408f4e550cb88f3ca27fa1650"><td class="memItemLeft" align="right" valign="top"><a id="a2c2cf1e408f4e550cb88f3ca27fa1650" name="a2c2cf1e408f4e550cb88f3ca27fa1650"></a>
+<a class="el" href="oocError_8h.html#a1effaed6897d01c49b4771abc4185718">OOC_Error</a>&#160;</td><td class="memItemRight" valign="bottom"><b>ooc_arrayDequePush</b> (void *self, void *element)</td></tr>
+<tr class="memitem:a2370807b6a2b3ac67c079b8c45752d0a" id="r_a2370807b6a2b3ac67c079b8c45752d0a"><td class="memItemLeft" align="right" valign="top"><a id="a2370807b6a2b3ac67c079b8c45752d0a" name="a2370807b6a2b3ac67c079b8c45752d0a"></a>
+void *&#160;</td><td class="memItemRight" valign="bottom"><b>ooc_arrayDequePop</b> (void *self)</td></tr>
 </table>
 <a name="details" id="details"></a><h2 id="header-details" class="groupheader">Detailed Description</h2>
-<div class="textblock"><p>ArrayDeque implementation for the OOC (Object-Oriented C) framework. </p>
-<p>This header defines the ArrayDeque class, a resizable array implementation of the Deque interface. It provides efficient O(1) insertion and deletion operations at both ends using a circular buffer. </p>
-</div><a name="doc-func-members" id="doc-func-members"></a><h2 id="header-doc-func-members" class="groupheader">Function Documentation</h2>
-<a id="ae132956391e229f03175f0e8a82eea0e" name="ae132956391e229f03175f0e8a82eea0e"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#ae132956391e229f03175f0e8a82eea0e">&#9670;&#160;</a></span>ooc_arrayDequeClass()</h2>
-
-<div class="memitem">
-<div class="memproto">
-      <table class="memname">
-        <tr>
-          <td class="memname">void * ooc_arrayDequeClass </td>
-          <td>(</td>
-          <td class="paramname"><span class="paramname"><em></em></span></td><td>)</td>
-          <td></td>
-        </tr>
-      </table>
-</div><div class="memdoc">
-
-<p>Returns the ArrayDeque class descriptor. </p>
-<dl class="section return"><dt>Returns</dt><dd>Pointer to the ArrayDeque class object</dd></dl>
-<p>Constructor parameters:</p><ul>
-<li>initialCapacity (size_t): Initial capacity for the circular buffer, or 0 for default (16)</li>
+<div class="textblock"><p>ArrayDeque concrete class for OOC. </p>
+<p>Java-style design:</p><ul>
+<li>ArrayDeque extends AbstractCollection</li>
+<li>Implements Deque (and therefore Queue/Collection/Iterable)</li>
+<li>Backed by a circular resizable array</li>
 </ul>
-<p>Example: </p><div class="fragment"><div class="line"><span class="keywordtype">void</span>* deque = ooc_new(<a class="code hl_function" href="#ae132956391e229f03175f0e8a82eea0e">ooc_arrayDequeClass</a>(), 32);  <span class="comment">// Create with capacity 32</span></div>
-<div class="ttc" id="aoocArrayDeque_8h_html_ae132956391e229f03175f0e8a82eea0e"><div class="ttname"><a href="#ae132956391e229f03175f0e8a82eea0e">ooc_arrayDequeClass</a></div><div class="ttdeci">void * ooc_arrayDequeClass()</div><div class="ttdoc">Returns the ArrayDeque class descriptor.</div><div class="ttdef"><b>Definition</b> oocArrayDeque.c:439</div></div>
-</div><!-- fragment --> 
-</div>
-</div>
-</div><!-- contents -->
+<p>Notes aligned with java.util.ArrayDeque semantics:</p><ul>
+<li>null elements are not allowed</li>
+<li>add/addLast append at tail</li>
+<li>addFirst prepends at head</li>
+<li>remove(Object) removes first matching occurrence </li>
+</ul>
+</div></div><!-- contents -->
 </div><!-- doc-content -->
 <div id="page-nav" class="page-nav-panel">
 <div id="page-nav-resize-handle"></div>

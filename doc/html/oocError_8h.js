@@ -22,6 +22,7 @@ var oocError_8h =
       [ "OOC_ERROR_INVALID_MODIFIER", "oocError_8h.html#a1effaed6897d01c49b4771abc4185718a4cefc658f54e4a698c866df9b5a475d7", null ],
       [ "OOC_ERROR_NO_PARENT", "oocError_8h.html#a1effaed6897d01c49b4771abc4185718a7265f77c4ddd0e193c5049c0df64a604", null ],
       [ "OOC_ERROR_ABSTRACT_METHOD_NOT_IMPLEMENTED", "oocError_8h.html#a1effaed6897d01c49b4771abc4185718a96acbc563ce0088cf415f5605a5ba7b9", null ],
+      [ "OOC_ERROR_OUT_OF_BOUNDS", "oocError_8h.html#a1effaed6897d01c49b4771abc4185718acdf96f6c7ab3a415cbfb4c8ba233217e", null ],
       [ "OOC_ERROR_COUNT", "oocError_8h.html#a1effaed6897d01c49b4771abc4185718aaeeb54efa54c17a1bf3cd44fb79823fa", null ]
     ] ]
 ];

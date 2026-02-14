@@ -21,15 +21,17 @@ bool \mbox{\hyperlink{oocDeque_8h_a68ccebeb9f237fb9bdf5884e7c1eeb0c}{ooc\+\_\+de
 \begin{DoxyCompactList}\small\item\em Checks if the deque is empty. \end{DoxyCompactList}\item 
 bool \mbox{\hyperlink{oocDeque_8h_ac4299e7444667fc6f5a09f6213040441}{ooc\+\_\+deque\+Contains}} (void \texorpdfstring{$\ast$}{*}self, void \texorpdfstring{$\ast$}{*}element)
 \begin{DoxyCompactList}\small\item\em Checks if the deque contains the specified element. \end{DoxyCompactList}\item 
+bool \mbox{\hyperlink{oocDeque_8h_a91dada5f6a8101c1fb5ebcb271929426}{ooc\+\_\+deque\+Contains\+All}} (void \texorpdfstring{$\ast$}{*}self, void \texorpdfstring{$\ast$}{*}other)
+\begin{DoxyCompactList}\small\item\em Checks if this deque contains all elements from another deque. \end{DoxyCompactList}\item 
 \mbox{\hyperlink{oocError_8h_a1effaed6897d01c49b4771abc4185718}{OOC\+\_\+\+Error}} \mbox{\hyperlink{oocDeque_8h_aeeb36cfae5303da7cd8e12497d3b346d}{ooc\+\_\+deque\+Add}} (void \texorpdfstring{$\ast$}{*}self, void \texorpdfstring{$\ast$}{*}element)
 \begin{DoxyCompactList}\small\item\em Adds an element to the tail (back/end) of the deque. \end{DoxyCompactList}\item 
 \mbox{\hyperlink{oocError_8h_a1effaed6897d01c49b4771abc4185718}{OOC\+\_\+\+Error}} \mbox{\hyperlink{oocDeque_8h_a83d99e9dd8196842c6ea187dd3ae8824}{ooc\+\_\+deque\+Remove}} (void \texorpdfstring{$\ast$}{*}self, void \texorpdfstring{$\ast$}{*}element)
 \begin{DoxyCompactList}\small\item\em Removes the first occurrence of the specified element from the deque. \end{DoxyCompactList}\item 
 \mbox{\hyperlink{oocError_8h_a1effaed6897d01c49b4771abc4185718}{OOC\+\_\+\+Error}} \mbox{\hyperlink{oocDeque_8h_a5ed5aeccbab1364f8d0b6e9162d78614}{ooc\+\_\+deque\+Clear}} (void \texorpdfstring{$\ast$}{*}self)
 \begin{DoxyCompactList}\small\item\em Removes all elements from the deque. \end{DoxyCompactList}\item 
-\mbox{\hyperlink{oocError_8h_a1effaed6897d01c49b4771abc4185718}{OOC\+\_\+\+Error}} \mbox{\hyperlink{oocDeque_8h_afdb3f3343c7373f09d4323a0d2a12bbe}{ooc\+\_\+deque\+Push}} (void \texorpdfstring{$\ast$}{*}self, void \texorpdfstring{$\ast$}{*}element)
+\mbox{\hyperlink{oocError_8h_a1effaed6897d01c49b4771abc4185718}{OOC\+\_\+\+Error}} \mbox{\hyperlink{oocDeque_8h_acde81b1571e4abcb5bbfe69a0f24838b}{ooc\+\_\+deque\+Offer}} (void \texorpdfstring{$\ast$}{*}self, void \texorpdfstring{$\ast$}{*}element)
 \begin{DoxyCompactList}\small\item\em Inserts an element at the tail (back/end) of the deque. \end{DoxyCompactList}\item 
-void \texorpdfstring{$\ast$}{*} \mbox{\hyperlink{oocDeque_8h_ae43872a10db0951c6a2149581c62129a}{ooc\+\_\+deque\+Pop}} (void \texorpdfstring{$\ast$}{*}self)
+void \texorpdfstring{$\ast$}{*} \mbox{\hyperlink{oocDeque_8h_a760012b0d20ad8c0a7629a0a6d82d033}{ooc\+\_\+deque\+Poll}} (void \texorpdfstring{$\ast$}{*}self)
 \begin{DoxyCompactList}\small\item\em Retrieves and removes the head (front) element of the deque. \end{DoxyCompactList}\item 
 void \texorpdfstring{$\ast$}{*} \mbox{\hyperlink{oocDeque_8h_aae437e5b3d6df575571f99097d17be9c}{ooc\+\_\+deque\+Peek}} (void \texorpdfstring{$\ast$}{*}self)
 \begin{DoxyCompactList}\small\item\em Retrieves, but does not remove, the head (front) element of the deque. \end{DoxyCompactList}\item 
@@ -44,7 +46,13 @@ void \texorpdfstring{$\ast$}{*} \mbox{\hyperlink{oocDeque_8h_af462b88cc392bfb208
 void \texorpdfstring{$\ast$}{*} \mbox{\hyperlink{oocDeque_8h_ac525a4030c8017d3cbabcd2b7aaeb9c1}{ooc\+\_\+deque\+Get\+First}} (void \texorpdfstring{$\ast$}{*}self)
 \begin{DoxyCompactList}\small\item\em Retrieves, but does not remove, the head (front) element of the deque. \end{DoxyCompactList}\item 
 void \texorpdfstring{$\ast$}{*} \mbox{\hyperlink{oocDeque_8h_af85b8e27c2122c5edd9602444c1dc4be}{ooc\+\_\+deque\+Get\+Last}} (void \texorpdfstring{$\ast$}{*}self)
-\begin{DoxyCompactList}\small\item\em Retrieves, but does not remove, the tail (back/end) element of the deque. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\begin{DoxyCompactList}\small\item\em Retrieves, but does not remove, the tail (back/end) element of the deque. \end{DoxyCompactList}\item 
+\Hypertarget{oocDeque_8h_afdb3f3343c7373f09d4323a0d2a12bbe}\label{oocDeque_8h_afdb3f3343c7373f09d4323a0d2a12bbe} 
+\mbox{\hyperlink{oocError_8h_a1effaed6897d01c49b4771abc4185718}{OOC\+\_\+\+Error}} {\bfseries ooc\+\_\+deque\+Push} (void \texorpdfstring{$\ast$}{*}self, void \texorpdfstring{$\ast$}{*}element)
+\item 
+\Hypertarget{oocDeque_8h_a0aece74ed6db0aea327248425a7dee20}\label{oocDeque_8h_a0aece74ed6db0aea327248425a7dee20} 
+void \texorpdfstring{$\ast$}{*} {\bfseries ooc\+\_\+deque\+Get\+Pop} (void \texorpdfstring{$\ast$}{*}self)
+\end{DoxyCompactItemize}
 
 
 \doxysubsection{Detailed Description}
@@ -177,6 +185,26 @@ Checks if the deque contains the specified element.
 \begin{DoxyReturn}{Returns}
 true if the deque contains the element, false otherwise 
 \end{DoxyReturn}
+\Hypertarget{oocDeque_8h_a91dada5f6a8101c1fb5ebcb271929426}\index{oocDeque.h@{oocDeque.h}!ooc\_dequeContainsAll@{ooc\_dequeContainsAll}}
+\index{ooc\_dequeContainsAll@{ooc\_dequeContainsAll}!oocDeque.h@{oocDeque.h}}
+\doxysubsubsection{\texorpdfstring{ooc\_dequeContainsAll()}{ooc\_dequeContainsAll()}}
+{\footnotesize\ttfamily \label{oocDeque_8h_a91dada5f6a8101c1fb5ebcb271929426} 
+bool ooc\+\_\+deque\+Contains\+All (\begin{DoxyParamCaption}\item[{void \texorpdfstring{$\ast$}{*}}]{self}{, }\item[{void \texorpdfstring{$\ast$}{*}}]{other}{}\end{DoxyParamCaption})}
+
+
+
+Checks if this deque contains all elements from another deque. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em self} & Deque object instance \\
+\hline
+{\em other} & Deque to be checked for containment \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+true if this deque contains all elements of the specified deque 
+\end{DoxyReturn}
 \Hypertarget{oocDeque_8h_ac525a4030c8017d3cbabcd2b7aaeb9c1}\index{oocDeque.h@{oocDeque.h}!ooc\_dequeGetFirst@{ooc\_dequeGetFirst}}
 \index{ooc\_dequeGetFirst@{ooc\_dequeGetFirst}!oocDeque.h@{oocDeque.h}}
 \doxysubsubsection{\texorpdfstring{ooc\_dequeGetFirst()}{ooc\_dequeGetFirst()}}
@@ -272,6 +300,29 @@ Checks if the deque is empty.
 \begin{DoxyReturn}{Returns}
 true if the deque contains no elements, false otherwise 
 \end{DoxyReturn}
+\Hypertarget{oocDeque_8h_acde81b1571e4abcb5bbfe69a0f24838b}\index{oocDeque.h@{oocDeque.h}!ooc\_dequeOffer@{ooc\_dequeOffer}}
+\index{ooc\_dequeOffer@{ooc\_dequeOffer}!oocDeque.h@{oocDeque.h}}
+\doxysubsubsection{\texorpdfstring{ooc\_dequeOffer()}{ooc\_dequeOffer()}}
+{\footnotesize\ttfamily \label{oocDeque_8h_acde81b1571e4abcb5bbfe69a0f24838b} 
+\mbox{\hyperlink{oocError_8h_a1effaed6897d01c49b4771abc4185718}{OOC\+\_\+\+Error}} ooc\+\_\+deque\+Offer (\begin{DoxyParamCaption}\item[{void \texorpdfstring{$\ast$}{*}}]{self}{, }\item[{void \texorpdfstring{$\ast$}{*}}]{element}{}\end{DoxyParamCaption})}
+
+
+
+Inserts an element at the tail (back/end) of the deque. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em self} & deque object instance \\
+\hline
+{\em element} & Element to add \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+OOC\+\_\+\+ERROR\+\_\+\+NONE on success, appropriate error code on failure 
+\end{DoxyReturn}
+\begin{DoxyNote}{Note}
+Inherited from Queue interface. Equivalent to add\+Last() 
+\end{DoxyNote}
 \Hypertarget{oocDeque_8h_aae437e5b3d6df575571f99097d17be9c}\index{oocDeque.h@{oocDeque.h}!ooc\_dequePeek@{ooc\_dequePeek}}
 \index{ooc\_dequePeek@{ooc\_dequePeek}!oocDeque.h@{oocDeque.h}}
 \doxysubsubsection{\texorpdfstring{ooc\_dequePeek()}{ooc\_dequePeek()}}
@@ -293,11 +344,11 @@ Pointer to the head element, or NULL if deque is empty
 \begin{DoxyNote}{Note}
 Inherited from Queue interface. Equivalent to get\+First() 
 \end{DoxyNote}
-\Hypertarget{oocDeque_8h_ae43872a10db0951c6a2149581c62129a}\index{oocDeque.h@{oocDeque.h}!ooc\_dequePop@{ooc\_dequePop}}
-\index{ooc\_dequePop@{ooc\_dequePop}!oocDeque.h@{oocDeque.h}}
-\doxysubsubsection{\texorpdfstring{ooc\_dequePop()}{ooc\_dequePop()}}
-{\footnotesize\ttfamily \label{oocDeque_8h_ae43872a10db0951c6a2149581c62129a} 
-void \texorpdfstring{$\ast$}{*} ooc\+\_\+deque\+Pop (\begin{DoxyParamCaption}\item[{void \texorpdfstring{$\ast$}{*}}]{self}{}\end{DoxyParamCaption})}
+\Hypertarget{oocDeque_8h_a760012b0d20ad8c0a7629a0a6d82d033}\index{oocDeque.h@{oocDeque.h}!ooc\_dequePoll@{ooc\_dequePoll}}
+\index{ooc\_dequePoll@{ooc\_dequePoll}!oocDeque.h@{oocDeque.h}}
+\doxysubsubsection{\texorpdfstring{ooc\_dequePoll()}{ooc\_dequePoll()}}
+{\footnotesize\ttfamily \label{oocDeque_8h_a760012b0d20ad8c0a7629a0a6d82d033} 
+void \texorpdfstring{$\ast$}{*} ooc\+\_\+deque\+Poll (\begin{DoxyParamCaption}\item[{void \texorpdfstring{$\ast$}{*}}]{self}{}\end{DoxyParamCaption})}
 
 
 
@@ -313,29 +364,6 @@ Pointer to the removed element, or NULL if deque is empty
 \end{DoxyReturn}
 \begin{DoxyNote}{Note}
 Inherited from Queue interface. Equivalent to remove\+First() 
-\end{DoxyNote}
-\Hypertarget{oocDeque_8h_afdb3f3343c7373f09d4323a0d2a12bbe}\index{oocDeque.h@{oocDeque.h}!ooc\_dequePush@{ooc\_dequePush}}
-\index{ooc\_dequePush@{ooc\_dequePush}!oocDeque.h@{oocDeque.h}}
-\doxysubsubsection{\texorpdfstring{ooc\_dequePush()}{ooc\_dequePush()}}
-{\footnotesize\ttfamily \label{oocDeque_8h_afdb3f3343c7373f09d4323a0d2a12bbe} 
-\mbox{\hyperlink{oocError_8h_a1effaed6897d01c49b4771abc4185718}{OOC\+\_\+\+Error}} ooc\+\_\+deque\+Push (\begin{DoxyParamCaption}\item[{void \texorpdfstring{$\ast$}{*}}]{self}{, }\item[{void \texorpdfstring{$\ast$}{*}}]{element}{}\end{DoxyParamCaption})}
-
-
-
-Inserts an element at the tail (back/end) of the deque. 
-
-
-\begin{DoxyParams}{Parameters}
-{\em self} & deque object instance \\
-\hline
-{\em element} & Element to add \\
-\hline
-\end{DoxyParams}
-\begin{DoxyReturn}{Returns}
-OOC\+\_\+\+ERROR\+\_\+\+NONE on success, appropriate error code on failure 
-\end{DoxyReturn}
-\begin{DoxyNote}{Note}
-Inherited from Queue interface. Equivalent to add\+Last() 
 \end{DoxyNote}
 \Hypertarget{oocDeque_8h_a83d99e9dd8196842c6ea187dd3ae8824}\index{oocDeque.h@{oocDeque.h}!ooc\_dequeRemove@{ooc\_dequeRemove}}
 \index{ooc\_dequeRemove@{ooc\_dequeRemove}!oocDeque.h@{oocDeque.h}}

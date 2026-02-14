@@ -112,6 +112,8 @@ Functions</h2></td></tr>
 <tr class="memdesc:a0a96090814504c58174136919240513f"><td class="mdescLeft">&#160;</td><td class="mdescRight">Checks if the set is empty.  <br /></td></tr>
 <tr class="memitem:a165434961138e9ef6528b253258f48a5" id="r_a165434961138e9ef6528b253258f48a5"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a165434961138e9ef6528b253258f48a5">ooc_setContains</a> (void *self, void *element)</td></tr>
 <tr class="memdesc:a165434961138e9ef6528b253258f48a5"><td class="mdescLeft">&#160;</td><td class="mdescRight">Checks if the set contains the specified element.  <br /></td></tr>
+<tr class="memitem:a8170cabbe7f5d99c92d31bd0b9a5a7be" id="r_a8170cabbe7f5d99c92d31bd0b9a5a7be"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a8170cabbe7f5d99c92d31bd0b9a5a7be">ooc_setContainsAll</a> (void *self, void *other)</td></tr>
+<tr class="memdesc:a8170cabbe7f5d99c92d31bd0b9a5a7be"><td class="mdescLeft">&#160;</td><td class="mdescRight">Checks if the set contains all elements from another set.  <br /></td></tr>
 <tr class="memitem:af4b506449327599a61547f961a166333" id="r_af4b506449327599a61547f961a166333"><td class="memItemLeft" align="right" valign="top"><a class="el" href="oocError_8h.html#a1effaed6897d01c49b4771abc4185718">OOC_Error</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#af4b506449327599a61547f961a166333">ooc_setAdd</a> (void *self, void *element)</td></tr>
 <tr class="memdesc:af4b506449327599a61547f961a166333"><td class="mdescLeft">&#160;</td><td class="mdescRight">Adds an element to the set.  <br /></td></tr>
 <tr class="memitem:a263e28f76b58e943b3ea7f81daf6b121" id="r_a263e28f76b58e943b3ea7f81daf6b121"><td class="memItemLeft" align="right" valign="top"><a class="el" href="oocError_8h.html#a1effaed6897d01c49b4771abc4185718">OOC_Error</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a263e28f76b58e943b3ea7f81daf6b121">ooc_setRemove</a> (void *self, void *element)</td></tr>
@@ -233,6 +235,37 @@ Functions</h2></td></tr>
 
 </div>
 </div>
+<a id="a8170cabbe7f5d99c92d31bd0b9a5a7be" name="a8170cabbe7f5d99c92d31bd0b9a5a7be"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a8170cabbe7f5d99c92d31bd0b9a5a7be">&#9670;&#160;</a></span>ooc_setContainsAll()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">bool ooc_setContainsAll </td>
+          <td>(</td>
+          <td class="paramtype">void *</td>          <td class="paramname"><span class="paramname"><em>self</em></span>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">void *</td>          <td class="paramname"><span class="paramname"><em>other</em></span>&#160;)</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Checks if the set contains all elements from another set. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">self</td><td>Set object instance </td></tr>
+    <tr><td class="paramname">other</td><td>Set to be checked for containment </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd>true if this set contains all elements of the specified set </dd></dl>
+
+</div>
+</div>
 <a id="acff9f832f0772206d3dcc76736f841e0" name="acff9f832f0772206d3dcc76736f841e0"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#acff9f832f0772206d3dcc76736f841e0">&#9670;&#160;</a></span>ooc_setGetIterator()</h2>
 
@@ -266,7 +299,7 @@ Multiple iterators can be obtained and used concurrently, each maintaining its o
 <div class="line">    <span class="comment">// process element</span></div>
 <div class="line">}</div>
 <div class="line">ooc_destroy(iter);</div>
-<div class="ttc" id="aoocSet_8h_html_acff9f832f0772206d3dcc76736f841e0"><div class="ttname"><a href="#acff9f832f0772206d3dcc76736f841e0">ooc_setGetIterator</a></div><div class="ttdeci">void * ooc_setGetIterator(void *self)</div><div class="ttdoc">Returns an Iterator over the elements in this set.</div><div class="ttdef"><b>Definition</b> oocSet.c:32</div></div>
+<div class="ttc" id="aoocSet_8h_html_acff9f832f0772206d3dcc76736f841e0"><div class="ttname"><a href="#acff9f832f0772206d3dcc76736f841e0">ooc_setGetIterator</a></div><div class="ttdeci">void * ooc_setGetIterator(void *self)</div><div class="ttdoc">Returns an Iterator over the elements in this set.</div><div class="ttdef"><b>Definition</b> oocSet.c:31</div></div>
 </div><!-- fragment --> 
 </div>
 </div>

@@ -21,6 +21,8 @@ bool \mbox{\hyperlink{oocSet_8h_a0a96090814504c58174136919240513f}{ooc\+\_\+set\
 \begin{DoxyCompactList}\small\item\em Checks if the set is empty. \end{DoxyCompactList}\item 
 bool \mbox{\hyperlink{oocSet_8h_a165434961138e9ef6528b253258f48a5}{ooc\+\_\+set\+Contains}} (void \texorpdfstring{$\ast$}{*}self, void \texorpdfstring{$\ast$}{*}element)
 \begin{DoxyCompactList}\small\item\em Checks if the set contains the specified element. \end{DoxyCompactList}\item 
+bool \mbox{\hyperlink{oocSet_8h_a8170cabbe7f5d99c92d31bd0b9a5a7be}{ooc\+\_\+set\+Contains\+All}} (void \texorpdfstring{$\ast$}{*}self, void \texorpdfstring{$\ast$}{*}other)
+\begin{DoxyCompactList}\small\item\em Checks if the set contains all elements from another set. \end{DoxyCompactList}\item 
 \mbox{\hyperlink{oocError_8h_a1effaed6897d01c49b4771abc4185718}{OOC\+\_\+\+Error}} \mbox{\hyperlink{oocSet_8h_af4b506449327599a61547f961a166333}{ooc\+\_\+set\+Add}} (void \texorpdfstring{$\ast$}{*}self, void \texorpdfstring{$\ast$}{*}element)
 \begin{DoxyCompactList}\small\item\em Adds an element to the set. \end{DoxyCompactList}\item 
 \mbox{\hyperlink{oocError_8h_a1effaed6897d01c49b4771abc4185718}{OOC\+\_\+\+Error}} \mbox{\hyperlink{oocSet_8h_a263e28f76b58e943b3ea7f81daf6b121}{ooc\+\_\+set\+Remove}} (void \texorpdfstring{$\ast$}{*}self, void \texorpdfstring{$\ast$}{*}element)
@@ -110,6 +112,26 @@ Checks if the set contains the specified element.
 \end{DoxyParams}
 \begin{DoxyReturn}{Returns}
 true if the set contains the element, false otherwise 
+\end{DoxyReturn}
+\Hypertarget{oocSet_8h_a8170cabbe7f5d99c92d31bd0b9a5a7be}\index{oocSet.h@{oocSet.h}!ooc\_setContainsAll@{ooc\_setContainsAll}}
+\index{ooc\_setContainsAll@{ooc\_setContainsAll}!oocSet.h@{oocSet.h}}
+\doxysubsubsection{\texorpdfstring{ooc\_setContainsAll()}{ooc\_setContainsAll()}}
+{\footnotesize\ttfamily \label{oocSet_8h_a8170cabbe7f5d99c92d31bd0b9a5a7be} 
+bool ooc\+\_\+set\+Contains\+All (\begin{DoxyParamCaption}\item[{void \texorpdfstring{$\ast$}{*}}]{self}{, }\item[{void \texorpdfstring{$\ast$}{*}}]{other}{}\end{DoxyParamCaption})}
+
+
+
+Checks if the set contains all elements from another set. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em self} & Set object instance \\
+\hline
+{\em other} & Set to be checked for containment \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+true if this set contains all elements of the specified set 
 \end{DoxyReturn}
 \Hypertarget{oocSet_8h_acff9f832f0772206d3dcc76736f841e0}\index{oocSet.h@{oocSet.h}!ooc\_setGetIterator@{ooc\_setGetIterator}}
 \index{ooc\_setGetIterator@{ooc\_setGetIterator}!oocSet.h@{oocSet.h}}

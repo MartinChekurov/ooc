@@ -250,7 +250,7 @@ static void* ooc_linkedListIteratorPrevious(void* self) {
         return NULL;
     }
     OOC_LinkedListIterator* iterator = self;
-    if (ooc_linkedListIteratorHasPrevious(iterator)) {
+    if (!ooc_linkedListIteratorHasPrevious(iterator)) {
         return NULL;
     }
     ooc_abstractListIteratorPrevious(iterator);

@@ -1,0 +1,27 @@
+\doxysection{ooc\+List\+Iterator.\+h}
+\hypertarget{oocListIterator_8h_source}{}\label{oocListIterator_8h_source}\index{src/interface/iterator/listIterator/oocListIterator.h@{src/interface/iterator/listIterator/oocListIterator.h}}
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00001\ \textcolor{preprocessor}{\#ifndef\ OOC\_LIST\_ITERATOR\_H\_}}
+\DoxyCodeLine{00002\ \textcolor{preprocessor}{\#define\ OOC\_LIST\_ITERATOR\_H\_}}
+\DoxyCodeLine{00003\ }
+\DoxyCodeLine{00004\ \textcolor{preprocessor}{\#include\ "{}\mbox{\hyperlink{oocError_8h}{oocError.h}}"{}}}
+\DoxyCodeLine{00005\ \textcolor{preprocessor}{\#include\ <stdbool.h>}}
+\DoxyCodeLine{00006\ \textcolor{preprocessor}{\#include\ <stddef.h>}}
+\DoxyCodeLine{00007\ }
+\DoxyCodeLine{00008\ }
+\DoxyCodeLine{00009\ \textcolor{keywordtype}{void}*\ ooc\_listIteratorClass(\textcolor{keywordtype}{void});}
+\DoxyCodeLine{00010\ }
+\DoxyCodeLine{00011\ \textcolor{keywordtype}{bool}\ ooc\_listIteratorHasNext(\textcolor{keywordtype}{void}*\ self);}
+\DoxyCodeLine{00012\ \textcolor{keywordtype}{void}*\ ooc\_listIteratorNext(\textcolor{keywordtype}{void}*\ self);}
+\DoxyCodeLine{00013\ \textcolor{keywordtype}{bool}\ ooc\_listIteratorHasPrevious(\textcolor{keywordtype}{void}*\ self);}
+\DoxyCodeLine{00014\ \textcolor{keywordtype}{void}*\ ooc\_listIteratorPrevious(\textcolor{keywordtype}{void}*\ self);}
+\DoxyCodeLine{00015\ \textcolor{keywordtype}{int}\ ooc\_listIteratorNextIndex(\textcolor{keywordtype}{void}*\ self);}
+\DoxyCodeLine{00016\ \textcolor{keywordtype}{int}\ ooc\_listIteratorPreviousIndex(\textcolor{keywordtype}{void}*\ self);}
+\DoxyCodeLine{00017\ \mbox{\hyperlink{oocError_8h_a1effaed6897d01c49b4771abc4185718}{OOC\_Error}}\ ooc\_listIteratorRemove(\textcolor{keywordtype}{void}*\ self);}
+\DoxyCodeLine{00018\ \mbox{\hyperlink{oocError_8h_a1effaed6897d01c49b4771abc4185718}{OOC\_Error}}\ ooc\_listIteratorSet(\textcolor{keywordtype}{void}*\ self,\ \textcolor{keywordtype}{void}*\ element);}
+\DoxyCodeLine{00019\ \mbox{\hyperlink{oocError_8h_a1effaed6897d01c49b4771abc4185718}{OOC\_Error}}\ ooc\_listIteratorAdd(\textcolor{keywordtype}{void}*\ self,\ \textcolor{keywordtype}{void}*\ element);}
+\DoxyCodeLine{00020\ }
+\DoxyCodeLine{00021\ \textcolor{preprocessor}{\#endif\ }\textcolor{comment}{/*\ OOC\_LIST\_ITERATOR\_H\_\ */}\textcolor{preprocessor}{}}
+
+\end{DoxyCode}

@@ -2,45 +2,91 @@
 \hypertarget{oocArrayDeque_8h}{}\label{oocArrayDeque_8h}\index{src/collection/abstractCollection/arrayDeque/oocArrayDeque.h@{src/collection/abstractCollection/arrayDeque/oocArrayDeque.h}}
 
 
-Array\+Deque implementation for the OOC (Object-\/\+Oriented C) framework.  
+Array\+Deque concrete class for OOC.  
 
 
+{\ttfamily \#include "{}ooc\+Error.\+h"{}}\newline
+{\ttfamily \#include $<$stdbool.\+h$>$}\newline
+{\ttfamily \#include $<$stddef.\+h$>$}\newline
 \doxysubsubsection*{Functions}
 \begin{DoxyCompactItemize}
 \item 
-void \texorpdfstring{$\ast$}{*} \mbox{\hyperlink{oocArrayDeque_8h_ae132956391e229f03175f0e8a82eea0e}{ooc\+\_\+array\+Deque\+Class}} ()
-\begin{DoxyCompactList}\small\item\em Returns the Array\+Deque class descriptor. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\Hypertarget{oocArrayDeque_8h_a3319e4e7207674779bd6ac7d8cffac39}\label{oocArrayDeque_8h_a3319e4e7207674779bd6ac7d8cffac39} 
+void \texorpdfstring{$\ast$}{*} {\bfseries ooc\+\_\+array\+Deque\+Class} (void)
+\item 
+\Hypertarget{oocArrayDeque_8h_ad16c1f5ce20473e98157def5ec0d118b}\label{oocArrayDeque_8h_ad16c1f5ce20473e98157def5ec0d118b} 
+void \texorpdfstring{$\ast$}{*} {\bfseries ooc\+\_\+array\+Deque\+Get\+Iterator} (void \texorpdfstring{$\ast$}{*}self)
+\item 
+\Hypertarget{oocArrayDeque_8h_aea3e89407ea3efae5fbeb234e5925213}\label{oocArrayDeque_8h_aea3e89407ea3efae5fbeb234e5925213} 
+size\+\_\+t {\bfseries ooc\+\_\+array\+Deque\+Size} (void \texorpdfstring{$\ast$}{*}self)
+\item 
+\Hypertarget{oocArrayDeque_8h_abe7baebfc26baf3a0937eab84eec8363}\label{oocArrayDeque_8h_abe7baebfc26baf3a0937eab84eec8363} 
+bool {\bfseries ooc\+\_\+array\+Deque\+Is\+Empty} (void \texorpdfstring{$\ast$}{*}self)
+\item 
+\Hypertarget{oocArrayDeque_8h_a4fdffa7c3fbaa4bb35eea8e1d836944d}\label{oocArrayDeque_8h_a4fdffa7c3fbaa4bb35eea8e1d836944d} 
+bool {\bfseries ooc\+\_\+array\+Deque\+Contains} (void \texorpdfstring{$\ast$}{*}self, void \texorpdfstring{$\ast$}{*}element)
+\item 
+\Hypertarget{oocArrayDeque_8h_aa46a49ad12a74758923bbe24d5931e9c}\label{oocArrayDeque_8h_aa46a49ad12a74758923bbe24d5931e9c} 
+bool {\bfseries ooc\+\_\+array\+Deque\+Contains\+All} (void \texorpdfstring{$\ast$}{*}self, void \texorpdfstring{$\ast$}{*}other)
+\item 
+\Hypertarget{oocArrayDeque_8h_a20163ba9406f80ac377d45a48d3d88b3}\label{oocArrayDeque_8h_a20163ba9406f80ac377d45a48d3d88b3} 
+\mbox{\hyperlink{oocError_8h_a1effaed6897d01c49b4771abc4185718}{OOC\+\_\+\+Error}} {\bfseries ooc\+\_\+array\+Deque\+Add} (void \texorpdfstring{$\ast$}{*}self, void \texorpdfstring{$\ast$}{*}element)
+\item 
+\Hypertarget{oocArrayDeque_8h_a83cfe75bccc8603cb3bb6cb776254156}\label{oocArrayDeque_8h_a83cfe75bccc8603cb3bb6cb776254156} 
+\mbox{\hyperlink{oocError_8h_a1effaed6897d01c49b4771abc4185718}{OOC\+\_\+\+Error}} {\bfseries ooc\+\_\+array\+Deque\+Remove} (void \texorpdfstring{$\ast$}{*}self, void \texorpdfstring{$\ast$}{*}element)
+\item 
+\Hypertarget{oocArrayDeque_8h_a585fe6ff6bfe3253f605f3a8168b6045}\label{oocArrayDeque_8h_a585fe6ff6bfe3253f605f3a8168b6045} 
+\mbox{\hyperlink{oocError_8h_a1effaed6897d01c49b4771abc4185718}{OOC\+\_\+\+Error}} {\bfseries ooc\+\_\+array\+Deque\+Clear} (void \texorpdfstring{$\ast$}{*}self)
+\item 
+\Hypertarget{oocArrayDeque_8h_a030f3d7a063c3938fcce5a3f3a8c9f7e}\label{oocArrayDeque_8h_a030f3d7a063c3938fcce5a3f3a8c9f7e} 
+\mbox{\hyperlink{oocError_8h_a1effaed6897d01c49b4771abc4185718}{OOC\+\_\+\+Error}} {\bfseries ooc\+\_\+array\+Deque\+Offer} (void \texorpdfstring{$\ast$}{*}self, void \texorpdfstring{$\ast$}{*}element)
+\item 
+\Hypertarget{oocArrayDeque_8h_a163dab6b8e23d3558d23af1b6e187cf9}\label{oocArrayDeque_8h_a163dab6b8e23d3558d23af1b6e187cf9} 
+void \texorpdfstring{$\ast$}{*} {\bfseries ooc\+\_\+array\+Deque\+Poll} (void \texorpdfstring{$\ast$}{*}self)
+\item 
+\Hypertarget{oocArrayDeque_8h_acc4b02b1a586c1c01e5472e9504371a0}\label{oocArrayDeque_8h_acc4b02b1a586c1c01e5472e9504371a0} 
+void \texorpdfstring{$\ast$}{*} {\bfseries ooc\+\_\+array\+Deque\+Peek} (void \texorpdfstring{$\ast$}{*}self)
+\item 
+\Hypertarget{oocArrayDeque_8h_af203ff0d4c9aa1c6054f5a400b145124}\label{oocArrayDeque_8h_af203ff0d4c9aa1c6054f5a400b145124} 
+\mbox{\hyperlink{oocError_8h_a1effaed6897d01c49b4771abc4185718}{OOC\+\_\+\+Error}} {\bfseries ooc\+\_\+array\+Deque\+Add\+First} (void \texorpdfstring{$\ast$}{*}self, void \texorpdfstring{$\ast$}{*}element)
+\item 
+\Hypertarget{oocArrayDeque_8h_a720bb07fa31648322709693c2b7402c4}\label{oocArrayDeque_8h_a720bb07fa31648322709693c2b7402c4} 
+\mbox{\hyperlink{oocError_8h_a1effaed6897d01c49b4771abc4185718}{OOC\+\_\+\+Error}} {\bfseries ooc\+\_\+array\+Deque\+Add\+Last} (void \texorpdfstring{$\ast$}{*}self, void \texorpdfstring{$\ast$}{*}element)
+\item 
+\Hypertarget{oocArrayDeque_8h_a7c110fad3e319fc254426ad9c0ab5ff3}\label{oocArrayDeque_8h_a7c110fad3e319fc254426ad9c0ab5ff3} 
+void \texorpdfstring{$\ast$}{*} {\bfseries ooc\+\_\+array\+Deque\+Remove\+First} (void \texorpdfstring{$\ast$}{*}self)
+\item 
+\Hypertarget{oocArrayDeque_8h_ae38b1b3e566671af72ef524f6f69ce22}\label{oocArrayDeque_8h_ae38b1b3e566671af72ef524f6f69ce22} 
+void \texorpdfstring{$\ast$}{*} {\bfseries ooc\+\_\+array\+Deque\+Remove\+Last} (void \texorpdfstring{$\ast$}{*}self)
+\item 
+\Hypertarget{oocArrayDeque_8h_affcfa59ac65e461679fd0eba72c3b1e2}\label{oocArrayDeque_8h_affcfa59ac65e461679fd0eba72c3b1e2} 
+void \texorpdfstring{$\ast$}{*} {\bfseries ooc\+\_\+array\+Deque\+Get\+First} (void \texorpdfstring{$\ast$}{*}self)
+\item 
+\Hypertarget{oocArrayDeque_8h_a58ece2d3f2a37dfcf3f65b99529867d9}\label{oocArrayDeque_8h_a58ece2d3f2a37dfcf3f65b99529867d9} 
+void \texorpdfstring{$\ast$}{*} {\bfseries ooc\+\_\+array\+Deque\+Get\+Last} (void \texorpdfstring{$\ast$}{*}self)
+\item 
+\Hypertarget{oocArrayDeque_8h_a2c2cf1e408f4e550cb88f3ca27fa1650}\label{oocArrayDeque_8h_a2c2cf1e408f4e550cb88f3ca27fa1650} 
+\mbox{\hyperlink{oocError_8h_a1effaed6897d01c49b4771abc4185718}{OOC\+\_\+\+Error}} {\bfseries ooc\+\_\+array\+Deque\+Push} (void \texorpdfstring{$\ast$}{*}self, void \texorpdfstring{$\ast$}{*}element)
+\item 
+\Hypertarget{oocArrayDeque_8h_a2370807b6a2b3ac67c079b8c45752d0a}\label{oocArrayDeque_8h_a2370807b6a2b3ac67c079b8c45752d0a} 
+void \texorpdfstring{$\ast$}{*} {\bfseries ooc\+\_\+array\+Deque\+Pop} (void \texorpdfstring{$\ast$}{*}self)
+\end{DoxyCompactItemize}
 
 
 \doxysubsection{Detailed Description}
-Array\+Deque implementation for the OOC (Object-\/\+Oriented C) framework. 
+Array\+Deque concrete class for OOC. 
 
-This header defines the Array\+Deque class, a resizable array implementation of the Deque interface. It provides efficient O(1) insertion and deletion operations at both ends using a circular buffer. 
-
-\label{doc-func-members}
-\Hypertarget{oocArrayDeque_8h_doc-func-members}
-\doxysubsection{Function Documentation}
-\Hypertarget{oocArrayDeque_8h_ae132956391e229f03175f0e8a82eea0e}\index{oocArrayDeque.h@{oocArrayDeque.h}!ooc\_arrayDequeClass@{ooc\_arrayDequeClass}}
-\index{ooc\_arrayDequeClass@{ooc\_arrayDequeClass}!oocArrayDeque.h@{oocArrayDeque.h}}
-\doxysubsubsection{\texorpdfstring{ooc\_arrayDequeClass()}{ooc\_arrayDequeClass()}}
-{\footnotesize\ttfamily \label{oocArrayDeque_8h_ae132956391e229f03175f0e8a82eea0e} 
-void \texorpdfstring{$\ast$}{*} ooc\+\_\+array\+Deque\+Class (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})}
-
-
-
-Returns the Array\+Deque class descriptor. 
-
-\begin{DoxyReturn}{Returns}
-Pointer to the Array\+Deque class object
-\end{DoxyReturn}
-Constructor parameters\+:
+Java-\/style design\+:
 \begin{DoxyItemize}
-\item initial\+Capacity (size\+\_\+t)\+: Initial capacity for the circular buffer, or 0 for default (16)
+\item Array\+Deque extends Abstract\+Collection
+\item Implements Deque (and therefore Queue/\+Collection/\+Iterable)
+\item Backed by a circular resizable array
 \end{DoxyItemize}
 
-Example\+: 
-\begin{DoxyCode}{0}
-\DoxyCodeLine{\textcolor{keywordtype}{void}*\ deque\ =\ ooc\_new(\mbox{\hyperlink{oocArrayDeque_8h_ae132956391e229f03175f0e8a82eea0e}{ooc\_arrayDequeClass}}(),\ 32);\ \ \textcolor{comment}{//\ Create\ with\ capacity\ 32}}
-
-\end{DoxyCode}
- 
+Notes aligned with java.\+util.\+Array\+Deque semantics\+:
+\begin{DoxyItemize}
+\item null elements are not allowed
+\item add/add\+Last append at tail
+\item add\+First prepends at head
+\item remove(\+Object) removes first matching occurrence 
+\end{DoxyItemize}

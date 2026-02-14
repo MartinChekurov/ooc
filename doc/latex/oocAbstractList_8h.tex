@@ -1,0 +1,70 @@
+\doxysection{src/collection/abstract\+Collection/abstract\+List/ooc\+Abstract\+List.h File Reference}
+\hypertarget{oocAbstractList_8h}{}\label{oocAbstractList_8h}\index{src/collection/abstractCollection/abstractList/oocAbstractList.h@{src/collection/abstractCollection/abstractList/oocAbstractList.h}}
+
+
+Abstract base class for List implementations in the OOC framework.  
+
+
+{\ttfamily \#include "{}ooc\+Error.\+h"{}}\newline
+{\ttfamily \#include $<$stddef.\+h$>$}\newline
+{\ttfamily \#include $<$stdbool.\+h$>$}\newline
+\doxysubsubsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+\Hypertarget{oocAbstractList_8h_a5a3db829ea69b0f4f72f2ea177e380dc}\label{oocAbstractList_8h_a5a3db829ea69b0f4f72f2ea177e380dc} 
+void \texorpdfstring{$\ast$}{*} {\bfseries ooc\+\_\+abstract\+List\+Class} (void)
+\item 
+\Hypertarget{oocAbstractList_8h_a5488dddda2adf791668d07c3407a329d}\label{oocAbstractList_8h_a5488dddda2adf791668d07c3407a329d} 
+void \texorpdfstring{$\ast$}{*} {\bfseries ooc\+\_\+abstract\+List\+Get\+Iterator} (void \texorpdfstring{$\ast$}{*}self)
+\item 
+\Hypertarget{oocAbstractList_8h_a705f1c624c483fbad633267f04cccc8a}\label{oocAbstractList_8h_a705f1c624c483fbad633267f04cccc8a} 
+size\+\_\+t {\bfseries ooc\+\_\+abstract\+List\+Size} (void \texorpdfstring{$\ast$}{*}self)
+\item 
+\Hypertarget{oocAbstractList_8h_a3626c07a7309e5dfc2be654d55c18931}\label{oocAbstractList_8h_a3626c07a7309e5dfc2be654d55c18931} 
+bool {\bfseries ooc\+\_\+abstract\+List\+Is\+Empty} (void \texorpdfstring{$\ast$}{*}self)
+\item 
+\Hypertarget{oocAbstractList_8h_a3d1ea7e2d7a46cdb43db0e832d18858a}\label{oocAbstractList_8h_a3d1ea7e2d7a46cdb43db0e832d18858a} 
+bool {\bfseries ooc\+\_\+abstract\+List\+Contains} (void \texorpdfstring{$\ast$}{*}self, void \texorpdfstring{$\ast$}{*}element)
+\item 
+\Hypertarget{oocAbstractList_8h_aaf30b2dc134280f1fa661adfb62f0c99}\label{oocAbstractList_8h_aaf30b2dc134280f1fa661adfb62f0c99} 
+bool {\bfseries ooc\+\_\+abstract\+List\+Contains\+All} (void \texorpdfstring{$\ast$}{*}self, void \texorpdfstring{$\ast$}{*}other)
+\item 
+\Hypertarget{oocAbstractList_8h_a8c8eade6429cd0a6e79d35457d7c4664}\label{oocAbstractList_8h_a8c8eade6429cd0a6e79d35457d7c4664} 
+\mbox{\hyperlink{oocError_8h_a1effaed6897d01c49b4771abc4185718}{OOC\+\_\+\+Error}} {\bfseries ooc\+\_\+abstract\+List\+Add} (void \texorpdfstring{$\ast$}{*}self, void \texorpdfstring{$\ast$}{*}element)
+\item 
+\Hypertarget{oocAbstractList_8h_ae248616d5f5a461ff2080e79d86e9811}\label{oocAbstractList_8h_ae248616d5f5a461ff2080e79d86e9811} 
+\mbox{\hyperlink{oocError_8h_a1effaed6897d01c49b4771abc4185718}{OOC\+\_\+\+Error}} {\bfseries ooc\+\_\+abstract\+List\+Remove} (void \texorpdfstring{$\ast$}{*}self, void \texorpdfstring{$\ast$}{*}element)
+\item 
+\Hypertarget{oocAbstractList_8h_a77308f866d4212298035b410630b31a6}\label{oocAbstractList_8h_a77308f866d4212298035b410630b31a6} 
+\mbox{\hyperlink{oocError_8h_a1effaed6897d01c49b4771abc4185718}{OOC\+\_\+\+Error}} {\bfseries ooc\+\_\+abstract\+List\+Clear} (void \texorpdfstring{$\ast$}{*}self)
+\item 
+\Hypertarget{oocAbstractList_8h_a30759019ceff4aad5c31c4859eeeb721}\label{oocAbstractList_8h_a30759019ceff4aad5c31c4859eeeb721} 
+void \texorpdfstring{$\ast$}{*} {\bfseries ooc\+\_\+abstract\+List\+Get\+At} (void \texorpdfstring{$\ast$}{*}self, size\+\_\+t index)
+\item 
+\Hypertarget{oocAbstractList_8h_af737b7b485f2087a060943b93f10f226}\label{oocAbstractList_8h_af737b7b485f2087a060943b93f10f226} 
+\mbox{\hyperlink{oocError_8h_a1effaed6897d01c49b4771abc4185718}{OOC\+\_\+\+Error}} {\bfseries ooc\+\_\+abstract\+List\+Set\+At} (void \texorpdfstring{$\ast$}{*}self, size\+\_\+t index, void \texorpdfstring{$\ast$}{*}element)
+\item 
+\Hypertarget{oocAbstractList_8h_a1df0e07d22c05b99fe7116ed8bdaae15}\label{oocAbstractList_8h_a1df0e07d22c05b99fe7116ed8bdaae15} 
+\mbox{\hyperlink{oocError_8h_a1effaed6897d01c49b4771abc4185718}{OOC\+\_\+\+Error}} {\bfseries ooc\+\_\+abstract\+List\+Insert\+At} (void \texorpdfstring{$\ast$}{*}self, size\+\_\+t index, void \texorpdfstring{$\ast$}{*}element)
+\item 
+\Hypertarget{oocAbstractList_8h_a646e635272e888edded5849630b09fb0}\label{oocAbstractList_8h_a646e635272e888edded5849630b09fb0} 
+\mbox{\hyperlink{oocError_8h_a1effaed6897d01c49b4771abc4185718}{OOC\+\_\+\+Error}} {\bfseries ooc\+\_\+abstract\+List\+Remove\+At} (void \texorpdfstring{$\ast$}{*}self, size\+\_\+t index)
+\item 
+\Hypertarget{oocAbstractList_8h_a1f911082e0a811be7614a9c45ebf7751}\label{oocAbstractList_8h_a1f911082e0a811be7614a9c45ebf7751} 
+int {\bfseries ooc\+\_\+abstract\+List\+Index\+Of} (void \texorpdfstring{$\ast$}{*}self, void \texorpdfstring{$\ast$}{*}element)
+\item 
+\Hypertarget{oocAbstractList_8h_adb7282364142f333e6a2f72416f54ffd}\label{oocAbstractList_8h_adb7282364142f333e6a2f72416f54ffd} 
+int {\bfseries ooc\+\_\+abstract\+List\+Last\+Index\+Of} (void \texorpdfstring{$\ast$}{*}self, void \texorpdfstring{$\ast$}{*}element)
+\item 
+\Hypertarget{oocAbstractList_8h_a6a38340268bc3546ac75bcbdbf9b45cd}\label{oocAbstractList_8h_a6a38340268bc3546ac75bcbdbf9b45cd} 
+void \texorpdfstring{$\ast$}{*} {\bfseries ooc\+\_\+abstract\+List\+Get\+List\+Iterator} (void \texorpdfstring{$\ast$}{*}self)
+\item 
+\Hypertarget{oocAbstractList_8h_ae5d29220c22b184686e3d70bbeacc894}\label{oocAbstractList_8h_ae5d29220c22b184686e3d70bbeacc894} 
+void \texorpdfstring{$\ast$}{*} {\bfseries ooc\+\_\+abstract\+List\+Get\+List\+Iterator\+At} (void \texorpdfstring{$\ast$}{*}self, size\+\_\+t index)
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+Abstract base class for List implementations in the OOC framework. 
+
+Similar to java.\+util.\+Abstract\+List, this class provides skeletal List behavior on top of random-\/access primitives. Subclasses should implement at least size() and get\+At(index). For modifiable lists they should additionally override set\+At(), insert\+At(), and remove\+At(). 

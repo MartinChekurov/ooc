@@ -1,5 +1,5 @@
 \doxysection{ooc\+Array\+List.\+h}
-\hypertarget{oocArrayList_8h_source}{}\label{oocArrayList_8h_source}\index{src/collection/abstractCollection/list/arrayList/oocArrayList.h@{src/collection/abstractCollection/list/arrayList/oocArrayList.h}}
+\hypertarget{oocArrayList_8h_source}{}\label{oocArrayList_8h_source}\index{src/collection/abstractCollection/abstractList/arrayList/oocArrayList.h@{src/collection/abstractCollection/abstractList/arrayList/oocArrayList.h}}
 \mbox{\hyperlink{oocArrayList_8h}{Go to the documentation of this file.}}
 \begin{DoxyCode}{0}
 \DoxyCodeLine{00001\ }
@@ -8,16 +8,34 @@
 \DoxyCodeLine{00011\ \textcolor{preprocessor}{\#define\ OOC\_ARRAY\_LIST\_H\_}}
 \DoxyCodeLine{00012\ }
 \DoxyCodeLine{00013\ \textcolor{preprocessor}{\#include\ "{}\mbox{\hyperlink{oocError_8h}{oocError.h}}"{}}}
-\DoxyCodeLine{00014\ \textcolor{preprocessor}{\#include\ <stddef.h>}}
-\DoxyCodeLine{00015\ }
-\DoxyCodeLine{00028\ \textcolor{keywordtype}{void}*\ \mbox{\hyperlink{oocArrayList_8h_a7efe7f26bad1bd2e79e5c7afd0a2c54a}{ooc\_arrayListClass}}();}
-\DoxyCodeLine{00029\ }
-\DoxyCodeLine{00035\ \textcolor{keywordtype}{size\_t}\ \mbox{\hyperlink{oocArrayList_8h_a32691e3507496a50da2f0058d450cba7}{ooc\_arrayListCapacity}}(\textcolor{keywordtype}{void}*\ self);}
-\DoxyCodeLine{00036\ }
-\DoxyCodeLine{00043\ \mbox{\hyperlink{oocError_8h_a1effaed6897d01c49b4771abc4185718}{OOC\_Error}}\ \mbox{\hyperlink{oocArrayList_8h_a5497c421d79df955a4241939dfef548e}{ooc\_arrayListEnsureCapacity}}(\textcolor{keywordtype}{void}*\ self,\ \textcolor{keywordtype}{size\_t}\ minCapacity);}
-\DoxyCodeLine{00044\ }
-\DoxyCodeLine{00050\ \mbox{\hyperlink{oocError_8h_a1effaed6897d01c49b4771abc4185718}{OOC\_Error}}\ \mbox{\hyperlink{oocArrayList_8h_a530b6fffb3bc1f6e2faf69331e137821}{ooc\_arrayListTrimToSize}}(\textcolor{keywordtype}{void}*\ self);}
-\DoxyCodeLine{00051\ }
-\DoxyCodeLine{00052\ \textcolor{preprocessor}{\#endif}}
+\DoxyCodeLine{00014\ \textcolor{preprocessor}{\#include\ <stdbool.h>}}
+\DoxyCodeLine{00015\ \textcolor{preprocessor}{\#include\ <stddef.h>}}
+\DoxyCodeLine{00016\ }
+\DoxyCodeLine{00029\ \textcolor{keywordtype}{void}*\ \mbox{\hyperlink{oocArrayList_8h_a7efe7f26bad1bd2e79e5c7afd0a2c54a}{ooc\_arrayListClass}}();}
+\DoxyCodeLine{00030\ }
+\DoxyCodeLine{00036\ \textcolor{keywordtype}{size\_t}\ \mbox{\hyperlink{oocArrayList_8h_a32691e3507496a50da2f0058d450cba7}{ooc\_arrayListCapacity}}(\textcolor{keywordtype}{void}*\ self);}
+\DoxyCodeLine{00037\ }
+\DoxyCodeLine{00044\ \mbox{\hyperlink{oocError_8h_a1effaed6897d01c49b4771abc4185718}{OOC\_Error}}\ \mbox{\hyperlink{oocArrayList_8h_a5497c421d79df955a4241939dfef548e}{ooc\_arrayListEnsureCapacity}}(\textcolor{keywordtype}{void}*\ self,\ \textcolor{keywordtype}{size\_t}\ minCapacity);}
+\DoxyCodeLine{00045\ }
+\DoxyCodeLine{00051\ \mbox{\hyperlink{oocError_8h_a1effaed6897d01c49b4771abc4185718}{OOC\_Error}}\ \mbox{\hyperlink{oocArrayList_8h_a530b6fffb3bc1f6e2faf69331e137821}{ooc\_arrayListTrimToSize}}(\textcolor{keywordtype}{void}*\ self);}
+\DoxyCodeLine{00052\ }
+\DoxyCodeLine{00053\ \textcolor{keywordtype}{void}*\ ooc\_arrayListGetIterator(\textcolor{keywordtype}{void}*\ self);}
+\DoxyCodeLine{00054\ \textcolor{keywordtype}{size\_t}\ ooc\_arrayListSize(\textcolor{keywordtype}{void}*\ self);}
+\DoxyCodeLine{00055\ \textcolor{keywordtype}{bool}\ ooc\_arrayListIsEmpty(\textcolor{keywordtype}{void}*\ self);}
+\DoxyCodeLine{00056\ \textcolor{keywordtype}{bool}\ ooc\_arrayListContains(\textcolor{keywordtype}{void}*\ self,\ \textcolor{keywordtype}{void}*\ element);}
+\DoxyCodeLine{00057\ \textcolor{keywordtype}{bool}\ ooc\_arrayListContainsAll(\textcolor{keywordtype}{void}*\ self,\ \textcolor{keywordtype}{void}*\ other);}
+\DoxyCodeLine{00058\ \mbox{\hyperlink{oocError_8h_a1effaed6897d01c49b4771abc4185718}{OOC\_Error}}\ ooc\_arrayListAdd(\textcolor{keywordtype}{void}*\ self,\ \textcolor{keywordtype}{void}*\ element);}
+\DoxyCodeLine{00059\ \mbox{\hyperlink{oocError_8h_a1effaed6897d01c49b4771abc4185718}{OOC\_Error}}\ ooc\_arrayListRemove(\textcolor{keywordtype}{void}*\ self,\ \textcolor{keywordtype}{void}*\ element);}
+\DoxyCodeLine{00060\ \mbox{\hyperlink{oocError_8h_a1effaed6897d01c49b4771abc4185718}{OOC\_Error}}\ ooc\_arrayListClear(\textcolor{keywordtype}{void}*\ self);}
+\DoxyCodeLine{00061\ \textcolor{keywordtype}{void}*\ ooc\_arrayListGetAt(\textcolor{keywordtype}{void}*\ self,\ \textcolor{keywordtype}{size\_t}\ index);}
+\DoxyCodeLine{00062\ \mbox{\hyperlink{oocError_8h_a1effaed6897d01c49b4771abc4185718}{OOC\_Error}}\ ooc\_arrayListSetAt(\textcolor{keywordtype}{void}*\ self,\ \textcolor{keywordtype}{size\_t}\ index,\ \textcolor{keywordtype}{void}*\ element);}
+\DoxyCodeLine{00063\ \mbox{\hyperlink{oocError_8h_a1effaed6897d01c49b4771abc4185718}{OOC\_Error}}\ ooc\_arrayListInsertAt(\textcolor{keywordtype}{void}*\ self,\ \textcolor{keywordtype}{size\_t}\ index,\ \textcolor{keywordtype}{void}*\ element);}
+\DoxyCodeLine{00064\ \mbox{\hyperlink{oocError_8h_a1effaed6897d01c49b4771abc4185718}{OOC\_Error}}\ ooc\_arrayListRemoveAt(\textcolor{keywordtype}{void}*\ self,\ \textcolor{keywordtype}{size\_t}\ index);}
+\DoxyCodeLine{00065\ \textcolor{keywordtype}{int}\ ooc\_arrayListIndexOf(\textcolor{keywordtype}{void}*\ self,\ \textcolor{keywordtype}{void}*\ element);}
+\DoxyCodeLine{00066\ \textcolor{keywordtype}{int}\ ooc\_arrayListLastIndexOf(\textcolor{keywordtype}{void}*\ self,\ \textcolor{keywordtype}{void}*\ element);}
+\DoxyCodeLine{00067\ \textcolor{keywordtype}{void}*\ ooc\_arrayListGetListIterator(\textcolor{keywordtype}{void}*\ self);}
+\DoxyCodeLine{00068\ \textcolor{keywordtype}{void}*\ ooc\_arrayListGetListIteratorAt(\textcolor{keywordtype}{void}*\ self,\ \textcolor{keywordtype}{size\_t}\ index);}
+\DoxyCodeLine{00069\ }
+\DoxyCodeLine{00070\ \textcolor{preprocessor}{\#endif}}
 
 \end{DoxyCode}

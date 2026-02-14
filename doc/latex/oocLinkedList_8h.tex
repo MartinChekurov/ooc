@@ -1,46 +1,108 @@
-\doxysection{src/collection/abstract\+Collection/list/linked\+List/ooc\+Linked\+List.h File Reference}
-\hypertarget{oocLinkedList_8h}{}\label{oocLinkedList_8h}\index{src/collection/abstractCollection/list/linkedList/oocLinkedList.h@{src/collection/abstractCollection/list/linkedList/oocLinkedList.h}}
+\doxysection{src/collection/abstract\+Collection/abstract\+List/abstract\+Sequential\+List/linked\+List/ooc\+Linked\+List.h File Reference}
+\hypertarget{oocLinkedList_8h}{}\label{oocLinkedList_8h}\index{src/collection/abstractCollection/abstractList/abstractSequentialList/linkedList/oocLinkedList.h@{src/collection/abstractCollection/abstractList/abstractSequentialList/linkedList/oocLinkedList.h}}
 
 
-Linked\+List implementation for the OOC (Object-\/\+Oriented C) framework.  
+Linked\+List concrete class (sequential list) for OOC.  
 
 
+{\ttfamily \#include "{}ooc\+Error.\+h"{}}\newline
+{\ttfamily \#include $<$stdbool.\+h$>$}\newline
+{\ttfamily \#include $<$stddef.\+h$>$}\newline
 \doxysubsubsection*{Functions}
 \begin{DoxyCompactItemize}
 \item 
-void \texorpdfstring{$\ast$}{*} \mbox{\hyperlink{oocLinkedList_8h_ad658a83e11f48a0290746d2c23daf7b0}{ooc\+\_\+linked\+List\+Class}} ()
-\begin{DoxyCompactList}\small\item\em Returns the Linked\+List class descriptor. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\Hypertarget{oocLinkedList_8h_af9d2742ec7248b2a5b5932dfdf47ce43}\label{oocLinkedList_8h_af9d2742ec7248b2a5b5932dfdf47ce43} 
+void \texorpdfstring{$\ast$}{*} {\bfseries ooc\+\_\+linked\+List\+Class} (void)
+\item 
+\Hypertarget{oocLinkedList_8h_a6c03cfedc17e23059eb47b5184adc4fc}\label{oocLinkedList_8h_a6c03cfedc17e23059eb47b5184adc4fc} 
+void \texorpdfstring{$\ast$}{*} {\bfseries ooc\+\_\+linked\+List\+Get\+Iterator} (void \texorpdfstring{$\ast$}{*}self)
+\item 
+\Hypertarget{oocLinkedList_8h_a7a779a73d9370825cf16d85bc1e267cd}\label{oocLinkedList_8h_a7a779a73d9370825cf16d85bc1e267cd} 
+size\+\_\+t {\bfseries ooc\+\_\+linked\+List\+Size} (void \texorpdfstring{$\ast$}{*}self)
+\item 
+\Hypertarget{oocLinkedList_8h_a287c50920404b1837242bff0722d0e8b}\label{oocLinkedList_8h_a287c50920404b1837242bff0722d0e8b} 
+bool {\bfseries ooc\+\_\+linked\+List\+Is\+Empty} (void \texorpdfstring{$\ast$}{*}self)
+\item 
+\Hypertarget{oocLinkedList_8h_a56daa0bfd2a8c530017c978fb85b0000}\label{oocLinkedList_8h_a56daa0bfd2a8c530017c978fb85b0000} 
+bool {\bfseries ooc\+\_\+linked\+List\+Contains} (void \texorpdfstring{$\ast$}{*}self, void \texorpdfstring{$\ast$}{*}element)
+\item 
+\Hypertarget{oocLinkedList_8h_a6e5632120774ef600b1df58f29bb1560}\label{oocLinkedList_8h_a6e5632120774ef600b1df58f29bb1560} 
+bool {\bfseries ooc\+\_\+linked\+List\+Contains\+All} (void \texorpdfstring{$\ast$}{*}self, void \texorpdfstring{$\ast$}{*}other)
+\item 
+\Hypertarget{oocLinkedList_8h_ae1b205e08b045021d0deefcbd0d6ddaa}\label{oocLinkedList_8h_ae1b205e08b045021d0deefcbd0d6ddaa} 
+\mbox{\hyperlink{oocError_8h_a1effaed6897d01c49b4771abc4185718}{OOC\+\_\+\+Error}} {\bfseries ooc\+\_\+linked\+List\+Add} (void \texorpdfstring{$\ast$}{*}self, void \texorpdfstring{$\ast$}{*}element)
+\item 
+\Hypertarget{oocLinkedList_8h_a07ffb5ce74a490c14b14b61e6f62345d}\label{oocLinkedList_8h_a07ffb5ce74a490c14b14b61e6f62345d} 
+\mbox{\hyperlink{oocError_8h_a1effaed6897d01c49b4771abc4185718}{OOC\+\_\+\+Error}} {\bfseries ooc\+\_\+linked\+List\+Remove} (void \texorpdfstring{$\ast$}{*}self, void \texorpdfstring{$\ast$}{*}element)
+\item 
+\Hypertarget{oocLinkedList_8h_ab57fd9638b6ae8e71b8e8674872f18f8}\label{oocLinkedList_8h_ab57fd9638b6ae8e71b8e8674872f18f8} 
+\mbox{\hyperlink{oocError_8h_a1effaed6897d01c49b4771abc4185718}{OOC\+\_\+\+Error}} {\bfseries ooc\+\_\+linked\+List\+Clear} (void \texorpdfstring{$\ast$}{*}self)
+\item 
+\Hypertarget{oocLinkedList_8h_a98fbb066d229799ddb45a49b6d39f42f}\label{oocLinkedList_8h_a98fbb066d229799ddb45a49b6d39f42f} 
+void \texorpdfstring{$\ast$}{*} {\bfseries ooc\+\_\+linked\+List\+Get\+At} (void \texorpdfstring{$\ast$}{*}self, size\+\_\+t index)
+\item 
+\Hypertarget{oocLinkedList_8h_a112fc6b1b9665ed4931f501d5cd673a1}\label{oocLinkedList_8h_a112fc6b1b9665ed4931f501d5cd673a1} 
+\mbox{\hyperlink{oocError_8h_a1effaed6897d01c49b4771abc4185718}{OOC\+\_\+\+Error}} {\bfseries ooc\+\_\+linked\+List\+Set\+At} (void \texorpdfstring{$\ast$}{*}self, size\+\_\+t index, void \texorpdfstring{$\ast$}{*}element)
+\item 
+\Hypertarget{oocLinkedList_8h_a863c93485ff2a55c41b4d4e6eab35341}\label{oocLinkedList_8h_a863c93485ff2a55c41b4d4e6eab35341} 
+\mbox{\hyperlink{oocError_8h_a1effaed6897d01c49b4771abc4185718}{OOC\+\_\+\+Error}} {\bfseries ooc\+\_\+linked\+List\+Insert\+At} (void \texorpdfstring{$\ast$}{*}self, size\+\_\+t index, void \texorpdfstring{$\ast$}{*}element)
+\item 
+\Hypertarget{oocLinkedList_8h_aca61e241c5264b2a88d53d011c4005c4}\label{oocLinkedList_8h_aca61e241c5264b2a88d53d011c4005c4} 
+\mbox{\hyperlink{oocError_8h_a1effaed6897d01c49b4771abc4185718}{OOC\+\_\+\+Error}} {\bfseries ooc\+\_\+linked\+List\+Remove\+At} (void \texorpdfstring{$\ast$}{*}self, size\+\_\+t index)
+\item 
+\Hypertarget{oocLinkedList_8h_ac096a1c4cb2e4b97115644ecc7ecbec3}\label{oocLinkedList_8h_ac096a1c4cb2e4b97115644ecc7ecbec3} 
+int {\bfseries ooc\+\_\+linked\+List\+Index\+Of} (void \texorpdfstring{$\ast$}{*}self, void \texorpdfstring{$\ast$}{*}element)
+\item 
+\Hypertarget{oocLinkedList_8h_a112dade72b4c7abc72fea2f6c66d0ca2}\label{oocLinkedList_8h_a112dade72b4c7abc72fea2f6c66d0ca2} 
+int {\bfseries ooc\+\_\+linked\+List\+Last\+Index\+Of} (void \texorpdfstring{$\ast$}{*}self, void \texorpdfstring{$\ast$}{*}element)
+\item 
+\Hypertarget{oocLinkedList_8h_ada141be5bae3bf8129584eef6abae6c2}\label{oocLinkedList_8h_ada141be5bae3bf8129584eef6abae6c2} 
+void \texorpdfstring{$\ast$}{*} {\bfseries ooc\+\_\+linked\+List\+Get\+List\+Iterator} (void \texorpdfstring{$\ast$}{*}self)
+\item 
+\Hypertarget{oocLinkedList_8h_a829473bf3f09558d5514afce58fdc3bf}\label{oocLinkedList_8h_a829473bf3f09558d5514afce58fdc3bf} 
+void \texorpdfstring{$\ast$}{*} {\bfseries ooc\+\_\+linked\+List\+Get\+List\+Iterator\+At} (void \texorpdfstring{$\ast$}{*}self, size\+\_\+t index)
+\item 
+\Hypertarget{oocLinkedList_8h_abb3a9f80e74963788edd90fef17e2fc3}\label{oocLinkedList_8h_abb3a9f80e74963788edd90fef17e2fc3} 
+\mbox{\hyperlink{oocError_8h_a1effaed6897d01c49b4771abc4185718}{OOC\+\_\+\+Error}} {\bfseries ooc\+\_\+linked\+List\+Offer} (void \texorpdfstring{$\ast$}{*}self, void \texorpdfstring{$\ast$}{*}element)
+\item 
+\Hypertarget{oocLinkedList_8h_ad0ec75c2f53ccc1d9d0a1db1a1d6c4fe}\label{oocLinkedList_8h_ad0ec75c2f53ccc1d9d0a1db1a1d6c4fe} 
+void \texorpdfstring{$\ast$}{*} {\bfseries ooc\+\_\+linked\+List\+Poll} (void \texorpdfstring{$\ast$}{*}self)
+\item 
+\Hypertarget{oocLinkedList_8h_aa7b44d6e1090009713607bb83686c949}\label{oocLinkedList_8h_aa7b44d6e1090009713607bb83686c949} 
+void \texorpdfstring{$\ast$}{*} {\bfseries ooc\+\_\+linked\+List\+Peek} (void \texorpdfstring{$\ast$}{*}self)
+\item 
+\Hypertarget{oocLinkedList_8h_a9f0fc85a69026085e3a7d1fb58e6d315}\label{oocLinkedList_8h_a9f0fc85a69026085e3a7d1fb58e6d315} 
+\mbox{\hyperlink{oocError_8h_a1effaed6897d01c49b4771abc4185718}{OOC\+\_\+\+Error}} {\bfseries ooc\+\_\+linked\+List\+Add\+First} (void \texorpdfstring{$\ast$}{*}self, void \texorpdfstring{$\ast$}{*}element)
+\item 
+\Hypertarget{oocLinkedList_8h_ae150ca546588886fdd1fff95d5b41451}\label{oocLinkedList_8h_ae150ca546588886fdd1fff95d5b41451} 
+\mbox{\hyperlink{oocError_8h_a1effaed6897d01c49b4771abc4185718}{OOC\+\_\+\+Error}} {\bfseries ooc\+\_\+linked\+List\+Add\+Last} (void \texorpdfstring{$\ast$}{*}self, void \texorpdfstring{$\ast$}{*}element)
+\item 
+\Hypertarget{oocLinkedList_8h_a3f0dcd174ffd9c77436026b5b50a64dc}\label{oocLinkedList_8h_a3f0dcd174ffd9c77436026b5b50a64dc} 
+void \texorpdfstring{$\ast$}{*} {\bfseries ooc\+\_\+linked\+List\+Get\+First} (void \texorpdfstring{$\ast$}{*}self)
+\item 
+\Hypertarget{oocLinkedList_8h_a6963cdaf88a59e38ab886ef10b07ee98}\label{oocLinkedList_8h_a6963cdaf88a59e38ab886ef10b07ee98} 
+void \texorpdfstring{$\ast$}{*} {\bfseries ooc\+\_\+linked\+List\+Get\+Last} (void \texorpdfstring{$\ast$}{*}self)
+\item 
+\Hypertarget{oocLinkedList_8h_a0f202491097119c7a5cf6bcd9da1bed7}\label{oocLinkedList_8h_a0f202491097119c7a5cf6bcd9da1bed7} 
+void \texorpdfstring{$\ast$}{*} {\bfseries ooc\+\_\+linked\+List\+Remove\+First} (void \texorpdfstring{$\ast$}{*}self)
+\item 
+\Hypertarget{oocLinkedList_8h_a24da84b7ad80c47e6afc43d35148c112}\label{oocLinkedList_8h_a24da84b7ad80c47e6afc43d35148c112} 
+void \texorpdfstring{$\ast$}{*} {\bfseries ooc\+\_\+linked\+List\+Remove\+Last} (void \texorpdfstring{$\ast$}{*}self)
+\item 
+\Hypertarget{oocLinkedList_8h_a27d4c1a49470eda74c527c9999ee9374}\label{oocLinkedList_8h_a27d4c1a49470eda74c527c9999ee9374} 
+\mbox{\hyperlink{oocError_8h_a1effaed6897d01c49b4771abc4185718}{OOC\+\_\+\+Error}} {\bfseries ooc\+\_\+linked\+List\+Push} (void \texorpdfstring{$\ast$}{*}self, void \texorpdfstring{$\ast$}{*}element)
+\item 
+\Hypertarget{oocLinkedList_8h_acfa0d3c44c425444beb9c69d6a6ff0b3}\label{oocLinkedList_8h_acfa0d3c44c425444beb9c69d6a6ff0b3} 
+void \texorpdfstring{$\ast$}{*} {\bfseries ooc\+\_\+linked\+List\+Pop} (void \texorpdfstring{$\ast$}{*}self)
+\end{DoxyCompactItemize}
 
 
 \doxysubsection{Detailed Description}
-Linked\+List implementation for the OOC (Object-\/\+Oriented C) framework. 
+Linked\+List concrete class (sequential list) for OOC. 
 
-This header defines the Linked\+List class, a doubly-\/linked list implementation of the List interface. It provides efficient insertion and deletion operations at any position, with O(1) operations at the head and tail. 
-
-\label{doc-func-members}
-\Hypertarget{oocLinkedList_8h_doc-func-members}
-\doxysubsection{Function Documentation}
-\Hypertarget{oocLinkedList_8h_ad658a83e11f48a0290746d2c23daf7b0}\index{oocLinkedList.h@{oocLinkedList.h}!ooc\_linkedListClass@{ooc\_linkedListClass}}
-\index{ooc\_linkedListClass@{ooc\_linkedListClass}!oocLinkedList.h@{oocLinkedList.h}}
-\doxysubsubsection{\texorpdfstring{ooc\_linkedListClass()}{ooc\_linkedListClass()}}
-{\footnotesize\ttfamily \label{oocLinkedList_8h_ad658a83e11f48a0290746d2c23daf7b0} 
-void \texorpdfstring{$\ast$}{*} ooc\+\_\+linked\+List\+Class (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})}
-
-
-
-Returns the Linked\+List class descriptor. 
-
-\begin{DoxyReturn}{Returns}
-Pointer to the Linked\+List class object
-\end{DoxyReturn}
-Constructor parameters\+:
+Java-\/style design\+:
 \begin{DoxyItemize}
-\item (none)
+\item Linked\+List extends Abstract\+Sequential\+List
+\item Core list primitive exposed by Linked\+List is list\+Iterator\+At(index)
+\item Random-\/access list operations are intended to come from Abstract\+Sequential\+List 
 \end{DoxyItemize}
-
-Example\+: 
-\begin{DoxyCode}{0}
-\DoxyCodeLine{\textcolor{keywordtype}{void}*\ list\ =\ ooc\_new(\mbox{\hyperlink{oocLinkedList_8h_ad658a83e11f48a0290746d2c23daf7b0}{ooc\_linkedListClass}}());}
-
-\end{DoxyCode}
- 

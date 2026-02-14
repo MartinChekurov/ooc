@@ -1,14 +1,50 @@
 \doxysection{ooc\+Linked\+List.\+h}
-\hypertarget{oocLinkedList_8h_source}{}\label{oocLinkedList_8h_source}\index{src/collection/abstractCollection/list/linkedList/oocLinkedList.h@{src/collection/abstractCollection/list/linkedList/oocLinkedList.h}}
+\hypertarget{oocLinkedList_8h_source}{}\label{oocLinkedList_8h_source}\index{src/collection/abstractCollection/abstractList/abstractSequentialList/linkedList/oocLinkedList.h@{src/collection/abstractCollection/abstractList/abstractSequentialList/linkedList/oocLinkedList.h}}
 \mbox{\hyperlink{oocLinkedList_8h}{Go to the documentation of this file.}}
 \begin{DoxyCode}{0}
 \DoxyCodeLine{00001\ }
-\DoxyCodeLine{00009\ }
-\DoxyCodeLine{00010\ \textcolor{preprocessor}{\#ifndef\ OOC\_LINKED\_LIST\_H\_}}
-\DoxyCodeLine{00011\ \textcolor{preprocessor}{\#define\ OOC\_LINKED\_LIST\_H\_}}
-\DoxyCodeLine{00012\ }
-\DoxyCodeLine{00025\ \textcolor{keywordtype}{void}*\ \mbox{\hyperlink{oocLinkedList_8h_ad658a83e11f48a0290746d2c23daf7b0}{ooc\_linkedListClass}}();}
-\DoxyCodeLine{00026\ }
-\DoxyCodeLine{00027\ \textcolor{preprocessor}{\#endif}}
+\DoxyCodeLine{00010\ }
+\DoxyCodeLine{00011\ \textcolor{preprocessor}{\#ifndef\ OOC\_LINKED\_LIST\_H\_}}
+\DoxyCodeLine{00012\ \textcolor{preprocessor}{\#define\ OOC\_LINKED\_LIST\_H\_}}
+\DoxyCodeLine{00013\ }
+\DoxyCodeLine{00014\ \textcolor{preprocessor}{\#include\ "{}\mbox{\hyperlink{oocError_8h}{oocError.h}}"{}}}
+\DoxyCodeLine{00015\ \textcolor{preprocessor}{\#include\ <stdbool.h>}}
+\DoxyCodeLine{00016\ \textcolor{preprocessor}{\#include\ <stddef.h>}}
+\DoxyCodeLine{00017\ }
+\DoxyCodeLine{00018\ \textcolor{keywordtype}{void}*\ ooc\_linkedListClass(\textcolor{keywordtype}{void});}
+\DoxyCodeLine{00019\ }
+\DoxyCodeLine{00020\ \textcolor{keywordtype}{void}*\ ooc\_linkedListGetIterator(\textcolor{keywordtype}{void}*\ self);}
+\DoxyCodeLine{00021\ \textcolor{keywordtype}{size\_t}\ ooc\_linkedListSize(\textcolor{keywordtype}{void}*\ self);}
+\DoxyCodeLine{00022\ \textcolor{keywordtype}{bool}\ ooc\_linkedListIsEmpty(\textcolor{keywordtype}{void}*\ self);}
+\DoxyCodeLine{00023\ \textcolor{keywordtype}{bool}\ ooc\_linkedListContains(\textcolor{keywordtype}{void}*\ self,\ \textcolor{keywordtype}{void}*\ element);}
+\DoxyCodeLine{00024\ \textcolor{keywordtype}{bool}\ ooc\_linkedListContainsAll(\textcolor{keywordtype}{void}*\ self,\ \textcolor{keywordtype}{void}*\ other);}
+\DoxyCodeLine{00025\ \mbox{\hyperlink{oocError_8h_a1effaed6897d01c49b4771abc4185718}{OOC\_Error}}\ ooc\_linkedListAdd(\textcolor{keywordtype}{void}*\ self,\ \textcolor{keywordtype}{void}*\ element);}
+\DoxyCodeLine{00026\ \mbox{\hyperlink{oocError_8h_a1effaed6897d01c49b4771abc4185718}{OOC\_Error}}\ ooc\_linkedListRemove(\textcolor{keywordtype}{void}*\ self,\ \textcolor{keywordtype}{void}*\ element);}
+\DoxyCodeLine{00027\ \mbox{\hyperlink{oocError_8h_a1effaed6897d01c49b4771abc4185718}{OOC\_Error}}\ ooc\_linkedListClear(\textcolor{keywordtype}{void}*\ self);}
+\DoxyCodeLine{00028\ }
+\DoxyCodeLine{00029\ \textcolor{keywordtype}{void}*\ ooc\_linkedListGetAt(\textcolor{keywordtype}{void}*\ self,\ \textcolor{keywordtype}{size\_t}\ index);}
+\DoxyCodeLine{00030\ \mbox{\hyperlink{oocError_8h_a1effaed6897d01c49b4771abc4185718}{OOC\_Error}}\ ooc\_linkedListSetAt(\textcolor{keywordtype}{void}*\ self,\ \textcolor{keywordtype}{size\_t}\ index,\ \textcolor{keywordtype}{void}*\ element);}
+\DoxyCodeLine{00031\ \mbox{\hyperlink{oocError_8h_a1effaed6897d01c49b4771abc4185718}{OOC\_Error}}\ ooc\_linkedListInsertAt(\textcolor{keywordtype}{void}*\ self,\ \textcolor{keywordtype}{size\_t}\ index,\ \textcolor{keywordtype}{void}*\ element);}
+\DoxyCodeLine{00032\ \mbox{\hyperlink{oocError_8h_a1effaed6897d01c49b4771abc4185718}{OOC\_Error}}\ ooc\_linkedListRemoveAt(\textcolor{keywordtype}{void}*\ self,\ \textcolor{keywordtype}{size\_t}\ index);}
+\DoxyCodeLine{00033\ \textcolor{keywordtype}{int}\ ooc\_linkedListIndexOf(\textcolor{keywordtype}{void}*\ self,\ \textcolor{keywordtype}{void}*\ element);}
+\DoxyCodeLine{00034\ \textcolor{keywordtype}{int}\ ooc\_linkedListLastIndexOf(\textcolor{keywordtype}{void}*\ self,\ \textcolor{keywordtype}{void}*\ element);}
+\DoxyCodeLine{00035\ \textcolor{keywordtype}{void}*\ ooc\_linkedListGetListIterator(\textcolor{keywordtype}{void}*\ self);}
+\DoxyCodeLine{00036\ \textcolor{keywordtype}{void}*\ ooc\_linkedListGetListIteratorAt(\textcolor{keywordtype}{void}*\ self,\ \textcolor{keywordtype}{size\_t}\ index);}
+\DoxyCodeLine{00037\ }
+\DoxyCodeLine{00038\ \mbox{\hyperlink{oocError_8h_a1effaed6897d01c49b4771abc4185718}{OOC\_Error}}\ ooc\_linkedListOffer(\textcolor{keywordtype}{void}*\ self,\ \textcolor{keywordtype}{void}*\ element);}
+\DoxyCodeLine{00039\ \textcolor{keywordtype}{void}*\ ooc\_linkedListPoll(\textcolor{keywordtype}{void}*\ self);}
+\DoxyCodeLine{00040\ \textcolor{keywordtype}{void}*\ ooc\_linkedListPeek(\textcolor{keywordtype}{void}*\ self);}
+\DoxyCodeLine{00041\ }
+\DoxyCodeLine{00042\ \mbox{\hyperlink{oocError_8h_a1effaed6897d01c49b4771abc4185718}{OOC\_Error}}\ ooc\_linkedListAddFirst(\textcolor{keywordtype}{void}*\ self,\ \textcolor{keywordtype}{void}*\ element);}
+\DoxyCodeLine{00043\ \mbox{\hyperlink{oocError_8h_a1effaed6897d01c49b4771abc4185718}{OOC\_Error}}\ ooc\_linkedListAddLast(\textcolor{keywordtype}{void}*\ self,\ \textcolor{keywordtype}{void}*\ element);}
+\DoxyCodeLine{00044\ \textcolor{keywordtype}{void}*\ ooc\_linkedListGetFirst(\textcolor{keywordtype}{void}*\ self);}
+\DoxyCodeLine{00045\ \textcolor{keywordtype}{void}*\ ooc\_linkedListGetLast(\textcolor{keywordtype}{void}*\ self);}
+\DoxyCodeLine{00046\ \textcolor{keywordtype}{void}*\ ooc\_linkedListRemoveFirst(\textcolor{keywordtype}{void}*\ self);}
+\DoxyCodeLine{00047\ \textcolor{keywordtype}{void}*\ ooc\_linkedListRemoveLast(\textcolor{keywordtype}{void}*\ self);}
+\DoxyCodeLine{00048\ \mbox{\hyperlink{oocError_8h_a1effaed6897d01c49b4771abc4185718}{OOC\_Error}}\ ooc\_linkedListPush(\textcolor{keywordtype}{void}*\ self,\ \textcolor{keywordtype}{void}*\ element);}
+\DoxyCodeLine{00049\ \textcolor{keywordtype}{void}*\ ooc\_linkedListPop(\textcolor{keywordtype}{void}*\ self);}
+\DoxyCodeLine{00050\ }
+\DoxyCodeLine{00051\ }
+\DoxyCodeLine{00052\ \textcolor{preprocessor}{\#endif\ }\textcolor{comment}{/*\ OOC\_LINKED\_LIST\_H\_\ */}\textcolor{preprocessor}{}}
 
 \end{DoxyCode}

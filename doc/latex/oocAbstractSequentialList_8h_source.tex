@@ -1,0 +1,33 @@
+\doxysection{ooc\+Abstract\+Sequential\+List.\+h}
+\hypertarget{oocAbstractSequentialList_8h_source}{}\label{oocAbstractSequentialList_8h_source}\index{src/collection/abstractCollection/abstractList/abstractSequentialList/oocAbstractSequentialList.h@{src/collection/abstractCollection/abstractList/abstractSequentialList/oocAbstractSequentialList.h}}
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00001\ \textcolor{preprocessor}{\#ifndef\ OOC\_ABSTRACT\_SEQUENTIAL\_LIST\_H\_}}
+\DoxyCodeLine{00002\ \textcolor{preprocessor}{\#define\ OOC\_ABSTRACT\_SEQUENTIAL\_LIST\_H\_}}
+\DoxyCodeLine{00003\ }
+\DoxyCodeLine{00004\ \textcolor{preprocessor}{\#include\ "{}\mbox{\hyperlink{oocError_8h}{oocError.h}}"{}}}
+\DoxyCodeLine{00005\ \textcolor{preprocessor}{\#include\ <stdbool.h>}}
+\DoxyCodeLine{00006\ \textcolor{preprocessor}{\#include\ <stddef.h>}}
+\DoxyCodeLine{00007\ }
+\DoxyCodeLine{00008\ \textcolor{keywordtype}{void}*\ ooc\_abstractSequentialListClass(\textcolor{keywordtype}{void});}
+\DoxyCodeLine{00009\ }
+\DoxyCodeLine{00010\ \textcolor{keywordtype}{void}*\ ooc\_abstractSequentialListGetIterator(\textcolor{keywordtype}{void}*\ self);}
+\DoxyCodeLine{00011\ \textcolor{keywordtype}{size\_t}\ ooc\_abstractSequentialListSize(\textcolor{keywordtype}{void}*\ self);}
+\DoxyCodeLine{00012\ \textcolor{keywordtype}{bool}\ ooc\_abstractSequentialListIsEmpty(\textcolor{keywordtype}{void}*\ self);}
+\DoxyCodeLine{00013\ \textcolor{keywordtype}{bool}\ ooc\_abstractSequentialListContains(\textcolor{keywordtype}{void}*\ self,\ \textcolor{keywordtype}{void}*\ element);}
+\DoxyCodeLine{00014\ \textcolor{keywordtype}{bool}\ ooc\_abstractSequentialListContainsAll(\textcolor{keywordtype}{void}*\ self,\ \textcolor{keywordtype}{void}*\ other);}
+\DoxyCodeLine{00015\ \mbox{\hyperlink{oocError_8h_a1effaed6897d01c49b4771abc4185718}{OOC\_Error}}\ ooc\_abstractSequentialListAdd(\textcolor{keywordtype}{void}*\ self,\ \textcolor{keywordtype}{void}*\ element);}
+\DoxyCodeLine{00016\ \mbox{\hyperlink{oocError_8h_a1effaed6897d01c49b4771abc4185718}{OOC\_Error}}\ ooc\_abstractSequentialListRemove(\textcolor{keywordtype}{void}*\ self,\ \textcolor{keywordtype}{void}*\ element);}
+\DoxyCodeLine{00017\ \mbox{\hyperlink{oocError_8h_a1effaed6897d01c49b4771abc4185718}{OOC\_Error}}\ ooc\_abstractSequentialListClear(\textcolor{keywordtype}{void}*\ self);}
+\DoxyCodeLine{00018\ \textcolor{keywordtype}{void}*\ ooc\_abstractSequentialListGetAt(\textcolor{keywordtype}{void}*\ self,\ \textcolor{keywordtype}{size\_t}\ index);}
+\DoxyCodeLine{00019\ \mbox{\hyperlink{oocError_8h_a1effaed6897d01c49b4771abc4185718}{OOC\_Error}}\ ooc\_abstractSequentialListSetAt(\textcolor{keywordtype}{void}*\ self,\ \textcolor{keywordtype}{size\_t}\ index,\ \textcolor{keywordtype}{void}*\ element);}
+\DoxyCodeLine{00020\ \mbox{\hyperlink{oocError_8h_a1effaed6897d01c49b4771abc4185718}{OOC\_Error}}\ ooc\_abstractSequentialListInsertAt(\textcolor{keywordtype}{void}*\ self,\ \textcolor{keywordtype}{size\_t}\ index,\ \textcolor{keywordtype}{void}*\ element);}
+\DoxyCodeLine{00021\ \mbox{\hyperlink{oocError_8h_a1effaed6897d01c49b4771abc4185718}{OOC\_Error}}\ ooc\_abstractSequentialListRemoveAt(\textcolor{keywordtype}{void}*\ self,\ \textcolor{keywordtype}{size\_t}\ index);}
+\DoxyCodeLine{00022\ \textcolor{keywordtype}{int}\ ooc\_abstractSequentialListIndexOf(\textcolor{keywordtype}{void}*\ self,\ \textcolor{keywordtype}{void}*\ element);}
+\DoxyCodeLine{00023\ \textcolor{keywordtype}{int}\ ooc\_abstractSequentialListLastIndexOf(\textcolor{keywordtype}{void}*\ self,\ \textcolor{keywordtype}{void}*\ element);}
+\DoxyCodeLine{00024\ \textcolor{keywordtype}{void}*\ ooc\_abstractSequentialListGetListIterator(\textcolor{keywordtype}{void}*\ self);}
+\DoxyCodeLine{00025\ \textcolor{keywordtype}{void}*\ ooc\_abstractSequentialListGetListIteratorAt(\textcolor{keywordtype}{void}*\ self,\ \textcolor{keywordtype}{size\_t}\ index);}
+\DoxyCodeLine{00026\ }
+\DoxyCodeLine{00027\ \textcolor{preprocessor}{\#endif\ }\textcolor{comment}{/*\ OOC\_ABSTRACT\_SEQUENTIAL\_LIST\_H\_\ */}\textcolor{preprocessor}{}}
+
+\end{DoxyCode}
