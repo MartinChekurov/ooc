@@ -1,3 +1,4 @@
+
 #include "oocMap.h"
 #include "oocMap.r"
 #include "oocInterface.h"
@@ -8,7 +9,7 @@ static OOC_MapClass MapClassInstance;
 
 static void* ooc_mapClassInit(void) {
     if (ooc_classNew(&MapClassInstance,
-                    "Collection",
+                    "Map",
                     (size_t)0,
                     sizeof(const OOC_MapClass),
                     ooc_interfaceClass(),
@@ -31,10 +32,7 @@ size_t ooc_mapSize(void* self) {
         return 0;
     }
     const OOC_MapVtable* vtable = ooc_getInterfaceVtable(self, ooc_mapClass());
-    if (!vtable) {
-        return 0;
-    }
-    if (!vtable->size) {
+    if (!vtable || !vtable->size) {
         return 0;
     }
     return vtable->size(self);
@@ -45,80 +43,62 @@ bool ooc_mapIsEmpty(void* self) {
         return true;
     }
     const OOC_MapVtable* vtable = ooc_getInterfaceVtable(self, ooc_mapClass());
-    if (!vtable) {
-        return true;
-    }
-    if (!vtable->isEmpty) {
+    if (!vtable || !vtable->isEmpty) {
         return true;
     }
     return vtable->isEmpty(self);
 }
 
 bool ooc_mapContainsKey(void* self, void* key) {
-    if (!self || !key) {
+    if (!self) {
         return false;
     }
     const OOC_MapVtable* vtable = ooc_getInterfaceVtable(self, ooc_mapClass());
-    if (!vtable) {
-        return false;
-    }
-    if (!vtable->containsKey) {
+    if (!vtable || !vtable->containsKey) {
         return false;
     }
     return vtable->containsKey(self, key);
 }
 
 bool ooc_mapContainsValue(void* self, void* value) {
-    if (!self || !value) {
+    if (!self) {
         return false;
     }
     const OOC_MapVtable* vtable = ooc_getInterfaceVtable(self, ooc_mapClass());
-    if (!vtable) {
-        return false;
-    }
-    if (!vtable->containsValue) {
+    if (!vtable || !vtable->containsValue) {
         return false;
     }
     return vtable->containsValue(self, value);
 }
 
 void* ooc_mapGet(void* self, void* key) {
-    if (!self || !key) {
+    if (!self) {
         return NULL;
     }
     const OOC_MapVtable* vtable = ooc_getInterfaceVtable(self, ooc_mapClass());
-    if (!vtable) {
-        return NULL;
-    }
-    if (!vtable->get) {
+    if (!vtable || !vtable->get) {
         return NULL;
     }
     return vtable->get(self, key);
 }
 
 OOC_Error ooc_mapPut(void* self, void* key, void* value) {
-    if (!self || !key || !value) {
+    if (!self) {
         return OOC_ERROR_INVALID_ARGUMENT;
     }
     const OOC_MapVtable* vtable = ooc_getInterfaceVtable(self, ooc_mapClass());
-    if (!vtable) {
-        return OOC_ERROR_NOT_IMPLEMENTED;
-    }
-    if (!vtable->put) {
+    if (!vtable || !vtable->put) {
         return OOC_ERROR_NOT_IMPLEMENTED;
     }
     return vtable->put(self, key, value);
 }
 
 OOC_Error ooc_mapRemove(void* self, void* key) {
-    if (!self || !key) {
+    if (!self) {
         return OOC_ERROR_INVALID_ARGUMENT;
     }
     const OOC_MapVtable* vtable = ooc_getInterfaceVtable(self, ooc_mapClass());
-    if (!vtable) {
-        return OOC_ERROR_NOT_IMPLEMENTED;
-    }
-    if (!vtable->remove) {
+    if (!vtable || !vtable->remove) {
         return OOC_ERROR_NOT_IMPLEMENTED;
     }
     return vtable->remove(self, key);
@@ -129,10 +109,7 @@ OOC_Error ooc_mapClear(void* self) {
         return OOC_ERROR_INVALID_ARGUMENT;
     }
     const OOC_MapVtable* vtable = ooc_getInterfaceVtable(self, ooc_mapClass());
-    if (!vtable) {
-        return OOC_ERROR_NOT_IMPLEMENTED;
-    }
-    if (!vtable->clear) {
+    if (!vtable || !vtable->clear) {
         return OOC_ERROR_NOT_IMPLEMENTED;
     }
     return vtable->clear(self);
@@ -143,10 +120,7 @@ void* ooc_mapKeySet(void* self) {
         return NULL;
     }
     const OOC_MapVtable* vtable = ooc_getInterfaceVtable(self, ooc_mapClass());
-    if (!vtable) {
-        return NULL;
-    }
-    if (!vtable->keySet) {
+    if (!vtable || !vtable->keySet) {
         return NULL;
     }
     return vtable->keySet(self);
@@ -157,10 +131,7 @@ void* ooc_mapValues(void* self) {
         return NULL;
     }
     const OOC_MapVtable* vtable = ooc_getInterfaceVtable(self, ooc_mapClass());
-    if (!vtable) {
-        return NULL;
-    }
-    if (!vtable->values) {
+    if (!vtable || !vtable->values) {
         return NULL;
     }
     return vtable->values(self);

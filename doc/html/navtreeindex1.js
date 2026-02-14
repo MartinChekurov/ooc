@@ -1,5 +1,12 @@
 var NAVTREEINDEX1 =
 {
+"oocStringBuffer_8h.html#a1a3aad0863f8b6d42fcbee9ed08619cd":[1,0,0,6,0,21],
+"oocStringBuffer_8h.html#a1d5754aad7b3b0f0321fe5e056cc58af":[1,0,0,6,0,28],
+"oocStringBuffer_8h.html#a23c345c8c9d59a59782d6083a3ca0215":[1,0,0,6,0,3],
+"oocStringBuffer_8h.html#a293a66c1bc648987215c489032510fde":[1,0,0,6,0,33],
+"oocStringBuffer_8h.html#a33585d39e090c84b9edd41470c1bbe4a":[1,0,0,6,0,52],
+"oocStringBuffer_8h.html#a3fabb70ae636dd5a65e2f745c86b7263":[1,0,0,6,0,23],
+"oocStringBuffer_8h.html#a412b860ba060ff92c364e6dc01feaa0a":[1,0,0,6,0,47],
 "oocStringBuffer_8h.html#a44be39862530a80ad765f88d0c19caaf":[1,0,0,6,0,38],
 "oocStringBuffer_8h.html#a47bf84c515b086aa331e9e0bb42b47af":[1,0,0,6,0,17],
 "oocStringBuffer_8h.html#a47e1789aa7dc7abbee208dcb3149f23a":[1,0,0,6,0,2],

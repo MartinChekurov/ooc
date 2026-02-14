@@ -1,9 +1,7 @@
 #include "oocHashSet.h"
 #include "oocHashSet.r"
 #include "oocHashMap.h"
-#include "oocSet.h"
-#include "oocCollection.r"
-#include "oocIterable.r"
+#include "oocAbstractCollection.r"
 #include "oocObject.h"
 #include "oocObject.r"
 #include "oocMap.h"
@@ -88,20 +86,6 @@ static OOC_Error ooc_hashSetCtor(void* self, va_list* args) {
     if (error != OOC_ERROR_NONE) {
         return error;
     }
-    void* interface = ooc_new(ooc_setClass(),
-                              OOC_ITERABLE_METHOD_ITERATOR, ooc_hashSetGetIterator,
-                              OOC_COLLECTION_METHOD_SIZE, ooc_hashSetSize,
-                              OOC_COLLECTION_METHOD_IS_EMPTY, ooc_hashSetIsEmpty,
-                              OOC_COLLECTION_METHOD_CONTAINS, ooc_hashSetContains,
-                              OOC_COLLECTION_METHOD_ADD, ooc_hashSetAdd,
-                              OOC_COLLECTION_METHOD_REMOVE, ooc_hashSetRemove,
-                              OOC_COLLECTION_METHOD_CLEAR, ooc_hashSetClear,
-                              0);
-    error = ooc_addInterface(set, interface);
-    if (error != OOC_ERROR_NONE) {
-        ooc_destroy(interface);
-        return error;
-    }
     size_t initialCapacity = va_arg(*args, size_t);
     set->map = ooc_new(ooc_hashMapClass(), initialCapacity);
     if (!set->map) {
@@ -130,6 +114,13 @@ static void* ooc_hashSetClassInit(void) {
                     OOC_MODIFIER_NONE,
                     OOC_METHOD_CTOR, ooc_hashSetCtor,
                     OOC_METHOD_DTOR, ooc_hashSetDtor,
+                    OOC_ABSTRACT_COLLECTION_METHOD_ITERATOR, ooc_hashSetGetIterator,
+                    OOC_ABSTRACT_COLLECTION_METHOD_SIZE, ooc_hashSetSize,
+                    OOC_ABSTRACT_COLLECTION_METHOD_IS_EMPTY, ooc_hashSetIsEmpty,
+                    OOC_ABSTRACT_COLLECTION_METHOD_CONTAINS, ooc_hashSetContains,
+                    OOC_ABSTRACT_COLLECTION_METHOD_ADD, ooc_hashSetAdd,
+                    OOC_ABSTRACT_COLLECTION_METHOD_REMOVE, ooc_hashSetRemove,
+                    OOC_ABSTRACT_COLLECTION_METHOD_CLEAR, ooc_hashSetClear,
                     0) != OOC_ERROR_NONE) {
         return NULL;
     }

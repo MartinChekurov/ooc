@@ -1,20 +1,20 @@
 #ifndef OOC_HASHMAP_R_
 #define OOC_HASHMAP_R_
 
-#include "oocObject.r"
+#include "oocAbstractMap.r"
 
 typedef struct OOC_HashMap OOC_HashMap;
 typedef struct OOC_HashMapClass OOC_HashMapClass;
 
 struct OOC_HashMap {
-    OOC_Object object;
+    OOC_AbstractMap object;
     void* buckets;
     size_t size;
     float loadFactor;
 };
 
 struct OOC_HashMapClass {
-    OOC_Class class;
+    OOC_AbstractMapClass class;
 };
 
 #endif

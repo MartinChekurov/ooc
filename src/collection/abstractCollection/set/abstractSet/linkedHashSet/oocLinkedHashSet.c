@@ -1,8 +1,7 @@
 #include "oocLinkedHashSet.h"
 #include "oocLinkedHashSet.r"
 #include "oocLinkedHashMap.h"
-#include "oocSet.h"
-#include "oocIterable.r"
+#include "oocAbstractCollection.r"
 #include "oocObject.h"
 #include "oocObject.r"
 #include "oocHashSet.h"
@@ -31,9 +30,6 @@ static OOC_Error ooc_linkedHashSetCtor(void* self, va_list* args) {
     if (error != OOC_ERROR_NONE) {
         return error;
     }
-    ooc_overrideInterfaceFunctions(set, ooc_iterableClass(),
-                                    OOC_ITERABLE_METHOD_ITERATOR, ooc_linkedHashSetGetIterator,
-                                    0);
     size_t initialCapacity = va_arg(*args, size_t);
     set->map = ooc_new(ooc_linkedHashMapClass(), initialCapacity);
     if (!set->map) {
@@ -50,6 +46,7 @@ static void* ooc_linkedHashSetClassInit(void) {
                     ooc_hashSetClass(),
                     OOC_MODIFIER_NONE,
                     OOC_METHOD_CTOR, ooc_linkedHashSetCtor,
+                    OOC_ABSTRACT_COLLECTION_METHOD_ITERATOR, ooc_linkedHashSetGetIterator,
                     0) != OOC_ERROR_NONE) {
         return NULL;
     }

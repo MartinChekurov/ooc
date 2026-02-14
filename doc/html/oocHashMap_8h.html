@@ -94,22 +94,29 @@ $(function(){initNavTree('oocHashMap_8h.html','',''); });
 
 <p>HashMap implementation for the OOC (Object-Oriented C) framework.  
 <a href="#details">More...</a></p>
-
+<div class="textblock"><code>#include &quot;<a class="el" href="oocError_8h_source.html">oocError.h</a>&quot;</code><br />
+</div>
 <p><a href="oocHashMap_8h_source.html">Go to the source code of this file.</a></p>
 <table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 id="header-func-members" class="groupheader"><a id="func-members" name="func-members"></a>
 Functions</h2></td></tr>
-<tr class="memitem:aaf3263289ec5664a9554934eddb3e597" id="r_aaf3263289ec5664a9554934eddb3e597"><td class="memItemLeft" align="right" valign="top">void *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#aaf3263289ec5664a9554934eddb3e597">ooc_hashMapClass</a> ()</td></tr>
-<tr class="memdesc:aaf3263289ec5664a9554934eddb3e597"><td class="mdescLeft">&#160;</td><td class="mdescRight">Returns the HashMap class descriptor.  <br /></td></tr>
+<tr class="memitem:accb7a452414755c0d78c466325e0bf13" id="r_accb7a452414755c0d78c466325e0bf13"><td class="memItemLeft" align="right" valign="top">void *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#accb7a452414755c0d78c466325e0bf13">ooc_hashMapClass</a> (void)</td></tr>
+<tr class="memdesc:accb7a452414755c0d78c466325e0bf13"><td class="mdescLeft">&#160;</td><td class="mdescRight">Returns the HashMap class descriptor.  <br /></td></tr>
 <tr class="memitem:a7e0535a97813e85d558c33794a8b6004" id="r_a7e0535a97813e85d558c33794a8b6004"><td class="memItemLeft" align="right" valign="top">void *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a7e0535a97813e85d558c33794a8b6004">ooc_hashMapGetKeyIterator</a> (void *self)</td></tr>
 <tr class="memdesc:a7e0535a97813e85d558c33794a8b6004"><td class="mdescLeft">&#160;</td><td class="mdescRight">Returns an iterator over the keys contained in this HashMap.  <br /></td></tr>
+<tr class="memitem:ae154e6825ca02955f28846379d516f7d" id="r_ae154e6825ca02955f28846379d516f7d"><td class="memItemLeft" align="right" valign="top"><a class="el" href="oocError_8h.html#a1effaed6897d01c49b4771abc4185718">OOC_Error</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#ae154e6825ca02955f28846379d516f7d">ooc_hashMapPutEntry</a> (void *self, void *key, void *value)</td></tr>
+<tr class="memdesc:ae154e6825ca02955f28846379d516f7d"><td class="mdescLeft">&#160;</td><td class="mdescRight">Directly inserts or updates a key-value pair in the hash table.  <br /></td></tr>
+<tr class="memitem:a2a218962fd42267733836f3d09c758b1" id="r_a2a218962fd42267733836f3d09c758b1"><td class="memItemLeft" align="right" valign="top"><a class="el" href="oocError_8h.html#a1effaed6897d01c49b4771abc4185718">OOC_Error</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a2a218962fd42267733836f3d09c758b1">ooc_hashMapRemoveEntry</a> (void *self, void *key)</td></tr>
+<tr class="memdesc:a2a218962fd42267733836f3d09c758b1"><td class="mdescLeft">&#160;</td><td class="mdescRight">Directly removes a key from the hash table.  <br /></td></tr>
+<tr class="memitem:a2f45aca11ef2d9e833b5990b1e137988" id="r_a2f45aca11ef2d9e833b5990b1e137988"><td class="memItemLeft" align="right" valign="top"><a class="el" href="oocError_8h.html#a1effaed6897d01c49b4771abc4185718">OOC_Error</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a2f45aca11ef2d9e833b5990b1e137988">ooc_hashMapClearEntries</a> (void *self)</td></tr>
+<tr class="memdesc:a2f45aca11ef2d9e833b5990b1e137988"><td class="mdescLeft">&#160;</td><td class="mdescRight">Directly clears all entries from the hash table.  <br /></td></tr>
 </table>
 <a name="details" id="details"></a><h2 id="header-details" class="groupheader">Detailed Description</h2>
 <div class="textblock"><p>HashMap implementation for the OOC (Object-Oriented C) framework. </p>
 <p>This header defines the HashMap class that implements the Map interface using a hash table with separate chaining. It makes no guarantees about the iteration order of entries. This implementation permits null keys and null values. Performance: O(1) average case for get, put, and remove operations. </p>
 </div><a name="doc-func-members" id="doc-func-members"></a><h2 id="header-doc-func-members" class="groupheader">Function Documentation</h2>
-<a id="aaf3263289ec5664a9554934eddb3e597" name="aaf3263289ec5664a9554934eddb3e597"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#aaf3263289ec5664a9554934eddb3e597">&#9670;&#160;</a></span>ooc_hashMapClass()</h2>
+<a id="accb7a452414755c0d78c466325e0bf13" name="accb7a452414755c0d78c466325e0bf13"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#accb7a452414755c0d78c466325e0bf13">&#9670;&#160;</a></span>ooc_hashMapClass()</h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -117,7 +124,7 @@ Functions</h2></td></tr>
         <tr>
           <td class="memname">void * ooc_hashMapClass </td>
           <td>(</td>
-          <td class="paramname"><span class="paramname"><em></em></span></td><td>)</td>
+          <td class="paramtype">void</td>          <td class="paramname"><span class="paramname"><em></em></span></td><td>)</td>
           <td></td>
         </tr>
       </table>
@@ -128,9 +135,36 @@ Functions</h2></td></tr>
 <p>Constructor parameters:</p><ul>
 <li>initialCapacity (size_t): Initial capacity for the hash table, or 0 for default (16)</li>
 </ul>
-<p>Example: </p><div class="fragment"><div class="line"><span class="keywordtype">void</span>* map = ooc_new(<a class="code hl_function" href="#aaf3263289ec5664a9554934eddb3e597">ooc_hashMapClass</a>(), 16);</div>
-<div class="ttc" id="aoocHashMap_8h_html_aaf3263289ec5664a9554934eddb3e597"><div class="ttname"><a href="#aaf3263289ec5664a9554934eddb3e597">ooc_hashMapClass</a></div><div class="ttdeci">void * ooc_hashMapClass()</div><div class="ttdoc">Returns the HashMap class descriptor.</div><div class="ttdef"><b>Definition</b> oocHashMap.c:492</div></div>
+<p>Example: </p><div class="fragment"><div class="line"><span class="keywordtype">void</span>* map = ooc_new(<a class="code hl_function" href="#accb7a452414755c0d78c466325e0bf13">ooc_hashMapClass</a>(), 16);</div>
+<div class="ttc" id="aoocHashMap_8h_html_accb7a452414755c0d78c466325e0bf13"><div class="ttname"><a href="#accb7a452414755c0d78c466325e0bf13">ooc_hashMapClass</a></div><div class="ttdeci">void * ooc_hashMapClass(void)</div><div class="ttdoc">Returns the HashMap class descriptor.</div><div class="ttdef"><b>Definition</b> oocHashMap.c:515</div></div>
 </div><!-- fragment --> 
+</div>
+</div>
+<a id="a2f45aca11ef2d9e833b5990b1e137988" name="a2f45aca11ef2d9e833b5990b1e137988"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a2f45aca11ef2d9e833b5990b1e137988">&#9670;&#160;</a></span>ooc_hashMapClearEntries()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="oocError_8h.html#a1effaed6897d01c49b4771abc4185718">OOC_Error</a> ooc_hashMapClearEntries </td>
+          <td>(</td>
+          <td class="paramtype">void *</td>          <td class="paramname"><span class="paramname"><em>self</em></span></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Directly clears all entries from the hash table. </p>
+<p>This method bypasses the Map interface vtable. Used by subclasses.</p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">self</td><td>Pointer to a HashMap instance </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd>OOC_ERROR_NONE on success, appropriate error code on failure </dd></dl>
+
 </div>
 </div>
 <a id="a7e0535a97813e85d558c33794a8b6004" name="a7e0535a97813e85d558c33794a8b6004"></a>
@@ -150,7 +184,6 @@ Functions</h2></td></tr>
 
 <p>Returns an iterator over the keys contained in this HashMap. </p>
 <p>The returned iterator traverses all keys currently stored in the map. No guarantees are made about the order of iteration.</p>
-<p>The iterator reflects the state of the map at the time of creation. Structural modification of the map during iteration (except through the iterator’s own remove operation, if supported) results in undefined behavior.</p>
 <p>Ownership:</p><ul>
 <li>The caller owns the returned iterator and is responsible for destroying it using ooc_destroy().</li>
 <li>The map owns the keys returned by the iterator.</li>
@@ -161,15 +194,78 @@ Functions</h2></td></tr>
   </table>
   </dd>
 </dl>
-<dl class="section return"><dt>Returns</dt><dd>Pointer to an Iterator over the map’s keys, or NULL on error</dd></dl>
-<p>Example: </p><div class="fragment"><div class="line"><span class="keywordtype">void</span>* it = <a class="code hl_function" href="#a7e0535a97813e85d558c33794a8b6004">ooc_hashMapGetKeyIterator</a>(map);</div>
-<div class="line"><span class="keywordflow">while</span> (ooc_iteratorHasNext(it)) {</div>
-<div class="line">    <span class="keywordtype">void</span>* key = ooc_iteratorNext(it);</div>
-<div class="line">    <span class="comment">// use key</span></div>
-<div class="line">}</div>
-<div class="line">ooc_destroy(it);</div>
-<div class="ttc" id="aoocHashMap_8h_html_a7e0535a97813e85d558c33794a8b6004"><div class="ttname"><a href="#a7e0535a97813e85d558c33794a8b6004">ooc_hashMapGetKeyIterator</a></div><div class="ttdeci">void * ooc_hashMapGetKeyIterator(void *self)</div><div class="ttdoc">Returns an iterator over the keys contained in this HashMap.</div><div class="ttdef"><b>Definition</b> oocHashMap.c:416</div></div>
-</div><!-- fragment --> 
+<dl class="section return"><dt>Returns</dt><dd>Pointer to an Iterator over the map's keys, or NULL on error </dd></dl>
+
+</div>
+</div>
+<a id="ae154e6825ca02955f28846379d516f7d" name="ae154e6825ca02955f28846379d516f7d"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ae154e6825ca02955f28846379d516f7d">&#9670;&#160;</a></span>ooc_hashMapPutEntry()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="oocError_8h.html#a1effaed6897d01c49b4771abc4185718">OOC_Error</a> ooc_hashMapPutEntry </td>
+          <td>(</td>
+          <td class="paramtype">void *</td>          <td class="paramname"><span class="paramname"><em>self</em></span>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">void *</td>          <td class="paramname"><span class="paramname"><em>key</em></span>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">void *</td>          <td class="paramname"><span class="paramname"><em>value</em></span>&#160;)</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Directly inserts or updates a key-value pair in the hash table. </p>
+<p>This method bypasses the Map interface vtable and directly operates on the HashMap's internal hash table. Used by subclasses (e.g., LinkedHashMap) to avoid infinite recursion when overriding Map.put.</p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">self</td><td>Pointer to a HashMap instance </td></tr>
+    <tr><td class="paramname">key</td><td>Key to insert or update </td></tr>
+    <tr><td class="paramname">value</td><td>Value to associate with the key </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd>OOC_ERROR_NONE on success, appropriate error code on failure </dd></dl>
+
+</div>
+</div>
+<a id="a2a218962fd42267733836f3d09c758b1" name="a2a218962fd42267733836f3d09c758b1"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a2a218962fd42267733836f3d09c758b1">&#9670;&#160;</a></span>ooc_hashMapRemoveEntry()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="oocError_8h.html#a1effaed6897d01c49b4771abc4185718">OOC_Error</a> ooc_hashMapRemoveEntry </td>
+          <td>(</td>
+          <td class="paramtype">void *</td>          <td class="paramname"><span class="paramname"><em>self</em></span>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">void *</td>          <td class="paramname"><span class="paramname"><em>key</em></span>&#160;)</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Directly removes a key from the hash table. </p>
+<p>This method bypasses the Map interface vtable. Used by subclasses.</p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">self</td><td>Pointer to a HashMap instance </td></tr>
+    <tr><td class="paramname">key</td><td>Key to remove </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd>OOC_ERROR_NONE on success, OOC_ERROR_NOT_FOUND if key not present </dd></dl>
+
 </div>
 </div>
 </div><!-- contents -->

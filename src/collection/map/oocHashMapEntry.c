@@ -22,6 +22,9 @@ OOC_Error ooc_hashMapEntrySetKey(void* self, void* key) {
     }
     OOC_TYPE_CHECK(self, ooc_hashMapEntryClass(), OOC_ERROR_INVALID_OBJECT);
     OOC_HashMapEntry* entry = self;
+    if (entry->key != key) {
+        ooc_destroy(entry->key);
+    }
     entry->key = key;
     return OOC_ERROR_NONE;
 }
@@ -41,6 +44,9 @@ OOC_Error ooc_hashMapEntrySetValue(void* self, void* value) {
     }
     OOC_TYPE_CHECK(self, ooc_hashMapEntryClass(), OOC_ERROR_INVALID_OBJECT);
     OOC_HashMapEntry* entry = self;
+    if (entry->value != value) {
+        ooc_destroy(entry->value);
+    }
     entry->value = value;
     return OOC_ERROR_NONE;
 }
@@ -88,7 +94,7 @@ static void* ooc_hashMapEntryClassInit(void) {
                     OOC_METHOD_DTOR, ooc_hashMapEntryDtor,
                     0) != OOC_ERROR_NONE) {
         return NULL;
-                    }
+    }
     return &HashMapEntryClassInstance;
 }
 
