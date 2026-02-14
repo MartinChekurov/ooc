@@ -6,7 +6,7 @@
 #include "oocError.h"
 #include "oocList.h"
 #include "oocObject.h"
-#include "oocBaseIterator.r"
+#include "oocAbstractIterator.r"
 #include <stddef.h>
 #include <stdlib.h>
 #include <string.h>
@@ -18,13 +18,13 @@ typedef struct OOC_ArrayListIterator OOC_ArrayListIterator;
 typedef struct OOC_ArrayListIteratorClass OOC_ArrayListIteratorClass;
 
 struct OOC_ArrayListIterator {
-    OOC_BaseIterator object;
+    OOC_AbstractIterator object;
     OOC_ArrayList* list;
     size_t currentIndex;
 };
 
 struct OOC_ArrayListIteratorClass {
-    OOC_BaseIteratorClass class;
+    OOC_AbstractIteratorClass class;
 };
 
 static OOC_ArrayListClass* ArrayListClass;

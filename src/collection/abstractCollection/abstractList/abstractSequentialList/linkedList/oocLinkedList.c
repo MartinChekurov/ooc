@@ -1,4 +1,5 @@
 #include "oocLinkedList.h"
+#include "oocAbstractIterator.h"
 #include "oocCollection.h"
 
 #include "oocError.h"
@@ -6,12 +7,11 @@
 #include "oocAbstractSequentialList.h"
 #include "oocDeque.h"
 #include "oocList.h"
-#include "oocListIterator.h"
 #include "oocObject.h"
 #include "oocObject.r"
-#include "oocBaseIterator.r"
-#include "oocBaseListIterator.h"
-#include "oocBaseListIterator.r"
+#include "oocAbstractIterator.r"
+#include "oocAbstractListIterator.h"
+#include "oocAbstractListIterator.r"
 
 #include <stdlib.h>
 #include <stddef.h>
@@ -20,7 +20,7 @@ typedef struct OOC_LinkedListIterator OOC_LinkedListIterator;
 typedef struct OOC_LinkedListIteratorClass OOC_LinkedListIteratorClass;
 
 struct OOC_LinkedListIterator {
-    OOC_BaseListIterator baseListIterator;
+    OOC_AbstractListIterator abstractListIterator;
     OOC_LinkedList* list;
     OOC_LinkedListNode* next;
     OOC_LinkedListNode* lastReturned;
@@ -28,7 +28,7 @@ struct OOC_LinkedListIterator {
 };
 
 struct OOC_LinkedListIteratorClass {
-    OOC_BaseListIteratorClass class;
+    OOC_AbstractListIteratorClass class;
 };
 
 static OOC_LinkedListClass* LinkedListClass;
@@ -197,7 +197,7 @@ static void* ooc_linkedListIteratorNext(void* self) {
     if (!iterator->next) {
         return NULL;
     }
-    ooc_superBaseIteratorNext(iterator);
+    ooc_abstractListIteratorNext(iterator);
     iterator->lastReturned = iterator->next;
     iterator->next = iterator->next->next;
     iterator->nextIndex++;
@@ -209,7 +209,7 @@ static OOC_Error ooc_linkedListIteratorRemove(void* self) {
         return OOC_ERROR_INVALID_ARGUMENT;
     }
     OOC_LinkedListIterator* iterator = self;
-    OOC_Error error = ooc_superBaseIteratorRemove(iterator);
+    OOC_Error error = ooc_abstractListIteratorRemove(iterator);
     if (error != OOC_ERROR_NONE) {
         return error;
     }
@@ -253,6 +253,7 @@ static void* ooc_linkedListIteratorPrevious(void* self) {
     if (iterator->nextIndex == 0) {
         return NULL;
     }
+    ooc_abstractListIteratorPrevious(iterator);
     // If at the end (next is NULL), move to the tail
     if (iterator->next == NULL) {
         iterator->lastReturned = iterator->list->tail;
@@ -263,8 +264,8 @@ static void* ooc_linkedListIteratorPrevious(void* self) {
         iterator->next = iterator->next->prev;
     }
     iterator->nextIndex--;
-    OOC_BaseIterator* base = (OOC_BaseIterator*)iterator;
-    base->canRemove = true;
+    OOC_AbstractIterator* base = (OOC_AbstractIterator*)iterator;
+    base->canModify = true;
     return iterator->lastReturned ? iterator->lastReturned->data : NULL;
 }
 
@@ -289,6 +290,10 @@ static OOC_Error ooc_linkedListIteratorSet(void* self, void* element) {
         return OOC_ERROR_INVALID_ARGUMENT;
     }
     OOC_LinkedListIterator* iterator = self;
+    OOC_Error error = ooc_abstractListIteratorSet(self, element);
+    if (error == OOC_ERROR_INVALID_STATE) {
+        return error;
+    }
     if (!iterator->lastReturned) {
         return OOC_ERROR_NOT_FOUND;
     }
@@ -304,11 +309,14 @@ static OOC_Error ooc_linkedListIteratorAdd(void* self, void* element) {
         return OOC_ERROR_INVALID_ARGUMENT;
     }
     OOC_LinkedListIterator* iterator = self;
+    OOC_Error error = ooc_abstractListIteratorAdd(self, element);
+    if (error != OOC_ERROR_NONE) {
+        return error;
+    }
     OOC_LinkedListNode* node = ooc_linkedListCreateNode(element);
     if (!node) {
         return OOC_ERROR_OUT_OF_MEMORY;
     }
-    OOC_Error error = OOC_ERROR_NONE;
     if (iterator->next == NULL) {
         error = ooc_linkedListLinkLast(iterator->list, node);
     } else {
@@ -320,8 +328,6 @@ static OOC_Error ooc_linkedListIteratorAdd(void* self, void* element) {
     }
     iterator->nextIndex++;
     iterator->lastReturned = NULL;
-    OOC_BaseIterator* base = (OOC_BaseIterator*)iterator;
-    base->canRemove = false;
     return OOC_ERROR_NONE;
 }
 
@@ -353,18 +359,18 @@ static void* ooc_linkedListIteratorClassInit(void) {
                      "LinkedListIterator",
                      sizeof(OOC_LinkedListIterator),
                      sizeof(OOC_LinkedListIteratorClass),
-                     ooc_baseListIteratorClass(),
+                     ooc_abstractListIteratorClass(),
                      OOC_MODIFIER_NONE,
                      OOC_METHOD_CTOR, ooc_linkedListIteratorCtor,
-                     OOC_BASE_ITERATOR_METHOD_HAS_NEXT, ooc_linkedListIteratorHasNext,
-                     OOC_BASE_ITERATOR_METHOD_NEXT, ooc_linkedListIteratorNext,
-                     OOC_BASE_ITERATOR_METHOD_REMOVE, ooc_linkedListIteratorRemove,
-                     OOC_BASE_LIST_ITERATOR_METHOD_HAS_PREVIOUS, ooc_linkedListIteratorHasPrevious,
-                     OOC_BASE_LIST_ITERATOR_METHOD_PREVIOUS, ooc_linkedListIteratorPrevious,
-                     OOC_BASE_LIST_ITERATOR_METHOD_NEXT_INDEX, ooc_linkedListIteratorNextIndex,
-                     OOC_BASE_LIST_ITERATOR_METHOD_PREVIOUS_INDEX, ooc_linkedListIteratorPreviousIndex,
-                     OOC_BASE_LIST_ITERATOR_METHOD_SET, ooc_linkedListIteratorSet,
-                     OOC_BASE_LIST_ITERATOR_METHOD_ADD, ooc_linkedListIteratorAdd,
+                     OOC_ABSTRACT_ITERATOR_METHOD_HAS_NEXT, ooc_linkedListIteratorHasNext,
+                     OOC_ABSTRACT_ITERATOR_METHOD_NEXT, ooc_linkedListIteratorNext,
+                     OOC_ABSTRACT_ITERATOR_METHOD_REMOVE, ooc_linkedListIteratorRemove,
+                     OOC_ABSTRACT_LIST_ITERATOR_METHOD_HAS_PREVIOUS, ooc_linkedListIteratorHasPrevious,
+                     OOC_ABSTRACT_LIST_ITERATOR_METHOD_PREVIOUS, ooc_linkedListIteratorPrevious,
+                     OOC_ABSTRACT_LIST_ITERATOR_METHOD_NEXT_INDEX, ooc_linkedListIteratorNextIndex,
+                     OOC_ABSTRACT_LIST_ITERATOR_METHOD_PREVIOUS_INDEX, ooc_linkedListIteratorPreviousIndex,
+                     OOC_ABSTRACT_LIST_ITERATOR_METHOD_SET, ooc_linkedListIteratorSet,
+                     OOC_ABSTRACT_LIST_ITERATOR_METHOD_ADD, ooc_linkedListIteratorAdd,
                      0) != OOC_ERROR_NONE) {
         ooc_classDestroy(&LinkedListIteratorClassInstance);
         return NULL;

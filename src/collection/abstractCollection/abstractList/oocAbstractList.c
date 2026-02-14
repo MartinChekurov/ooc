@@ -1,39 +1,39 @@
 #include "oocAbstractList.h"
+#include "oocAbstractIterator.h"
 #include "oocAbstractList.r"
 
 #include "oocAbstractCollection.h"
 #include "oocCollection.h"
 #include "oocError.h"
 #include "oocList.h"
-#include "oocListIterator.h"
 #include "oocObject.h"
 #include "oocObject.r"
-#include "oocBaseIterator.r"
-#include "oocBaseListIterator.h"
-#include "oocBaseListIterator.r"
+#include "oocAbstractIterator.r"
+#include "oocAbstractListIterator.h"
+#include "oocAbstractListIterator.r"
 
 #include <stddef.h>
 
-typedef struct OOC_AbstractSequentialListIterator OOC_AbstractListIterator;
-typedef struct OOC_AbstractListIteratorClass OOC_AbstractListIteratorClass;
+typedef struct OOC_AbstractListIterator_ OOC_AbstractListIterator_;
+typedef struct OOC_AbstractListIteratorClass_ OOC_AbstractListIteratorClass_;
 
-struct OOC_AbstractSequentialListIterator {
-    OOC_BaseListIterator baseListIterator;
+struct OOC_AbstractListIterator_ {
+    OOC_AbstractListIterator baseListIterator;
     void* list;
     size_t nextIndex;
     int lastReturnedIndex;
 };
 
-struct OOC_AbstractListIteratorClass {
-    OOC_BaseListIteratorClass class;
+struct OOC_AbstractListIteratorClass_ {
+    OOC_AbstractListIteratorClass class;
 };
 
 static OOC_AbstractListClass* AbstractListClass;
 static OOC_AbstractListClass AbstractListClassInstance;
 static OOC_InterfaceImpl AbstractListInterfaces[1];
 
-static OOC_AbstractListIteratorClass* AbstractListIteratorClass;
-static OOC_AbstractListIteratorClass AbstractListIteratorClassInstance;
+static OOC_AbstractListIteratorClass_* AbstractListIteratorClass_;
+static OOC_AbstractListIteratorClass_ AbstractListIteratorClassInstance_;
 
 size_t ooc_abstractListSize(void* self) {
     return ooc_collectionSize(self);
@@ -113,35 +113,35 @@ int ooc_abstractListLastIndexOf(void* self, void* element) {
     return -1;
 }
 
-static bool ooc_abstractListIteratorHasNext(void* self) {
+static bool ooc_abstractListIteratorHasNext_(void* self) {
     if (!self) {
         return false;
     }
-    OOC_AbstractListIterator* iterator = self;
+    OOC_AbstractListIterator_* iterator = self;
     return iterator->nextIndex < ooc_collectionSize(iterator->list);
 }
 
-static void* ooc_abstractListIteratorNext(void* self) {
+static void* ooc_abstractListIteratorNext_(void* self) {
     if (!self) {
         return NULL;
     }
-    OOC_AbstractListIterator* iterator = self;
+    OOC_AbstractListIterator_* iterator = self;
     if (iterator->nextIndex >= ooc_collectionSize(iterator->list)) {
         return NULL;
     }
-    ooc_superBaseIteratorNext(iterator);
+    ooc_abstractListIteratorNext(iterator);
     void* value = ooc_listGetAt(iterator->list, iterator->nextIndex);
     iterator->lastReturnedIndex = iterator->nextIndex;
     iterator->nextIndex++;
     return value;
 }
 
-static OOC_Error ooc_abstractListIteratorRemove(void* self) {
+static OOC_Error ooc_abstractListIteratorRemove_(void* self) {
     if (!self) {
         return OOC_ERROR_INVALID_ARGUMENT;
     }
-    OOC_AbstractListIterator* iterator = self;
-    OOC_Error error = ooc_superBaseIteratorRemove(iterator);
+    OOC_AbstractListIterator_* iterator = self;
+    OOC_Error error = ooc_abstractListIteratorRemove(iterator);
     if (error != OOC_ERROR_NONE) {
         return error;
     }
@@ -156,44 +156,49 @@ static OOC_Error ooc_abstractListIteratorRemove(void* self) {
     return error;
 }
 
-static bool ooc_abstractListIteratorHasPrevious(void* self) {
-    OOC_AbstractListIterator* it = self;
+static bool ooc_abstractListIteratorHasPrevious_(void* self) {
+    OOC_AbstractListIterator_* it = self;
     return it && it->nextIndex > 0;
 }
 
-static void* ooc_abstractListIteratorPrevious(void* self) {
-    OOC_AbstractListIterator* it = self;
+static void* ooc_abstractListIteratorPrevious_(void* self) {
+    OOC_AbstractListIterator_* it = self;
     if (!it || it->nextIndex == 0) {
         return NULL;
     }
+    ooc_abstractListIteratorPrevious(it);
     it->nextIndex--;
     void* value = ooc_listGetAt(it->list, it->nextIndex);
     it->lastReturnedIndex = it->nextIndex;
-    OOC_BaseIterator* base = (OOC_BaseIterator*)it;
-    base->canRemove = true;
+    OOC_AbstractIterator* base = (OOC_AbstractIterator*)it;
+    base->canModify = true;
     return value;
 }
 
-static int ooc_abstractListIteratorNextIndex(void* self) {
-    OOC_AbstractListIterator* it = self;
+static int ooc_abstractListIteratorNextIndex_(void* self) {
+    OOC_AbstractListIterator_* it = self;
     if (!it) {
         return -1;
     }
     return (int)it->nextIndex;
 }
 
-static int ooc_abstractListIteratorPreviousIndex(void* self) {
-    OOC_AbstractListIterator* it = self;
+static int ooc_abstractListIteratorPreviousIndex_(void* self) {
+    OOC_AbstractListIterator_* it = self;
     if (!it) {
         return -1;
     }
     return (it->nextIndex == 0) ? -1 : (int)(it->nextIndex - 1);
 }
 
-static OOC_Error ooc_abstractListIteratorSet(void* self, void* element) {
-    OOC_AbstractListIterator* it = self;
+static OOC_Error ooc_abstractListIteratorSet_(void* self, void* element) {
+    OOC_AbstractListIterator_* it = self;
     if (!it) {
         return OOC_ERROR_INVALID_ARGUMENT;
+    }
+    OOC_Error error = ooc_abstractListIteratorSet(it, element);
+    if (error != OOC_ERROR_NONE) {
+        return error;
     }
     if (it->lastReturnedIndex < 0) {
         return OOC_ERROR_INVALID_STATE;
@@ -201,19 +206,23 @@ static OOC_Error ooc_abstractListIteratorSet(void* self, void* element) {
     return ooc_listSetAt(it->list, it->lastReturnedIndex, element);
 }
 
-static OOC_Error ooc_abstractListIteratorAdd(void* self, void* element) {
-    OOC_AbstractListIterator* it = self;
+static OOC_Error ooc_abstractListIteratorAdd_(void* self, void* element) {
+    OOC_AbstractListIterator_* it = self;
     if (!it) {
         return OOC_ERROR_INVALID_ARGUMENT;
     }
-    OOC_Error error = ooc_listInsertAt(it->list, it->nextIndex, element);
+    OOC_Error error = ooc_abstractListIteratorAdd(it, element);
+    if (error != OOC_ERROR_NONE) {
+        return error;
+    }
+    error = ooc_listInsertAt(it->list, it->nextIndex, element);
     if (error != OOC_ERROR_NONE) {
         return error;
     }
     it->nextIndex++;
     it->lastReturnedIndex = -1;
-    OOC_BaseIterator* base = (OOC_BaseIterator*)it;
-    base->canRemove = false;
+    OOC_AbstractIterator* base = (OOC_AbstractIterator*)it;
+    base->canModify = false;
     return OOC_ERROR_NONE;
 }
 
@@ -221,7 +230,7 @@ static OOC_Error ooc_abstractListIteratorCtor(void* self, va_list* args) {
     if (!self || !args) {
         return OOC_ERROR_INVALID_ARGUMENT;
     }
-    OOC_AbstractListIterator* iterator = self;
+    OOC_AbstractListIterator_* iterator = self;
     OOC_Error error = ooc_superCtor(iterator, args);
     if (error != OOC_ERROR_NONE) {
         return error;
@@ -239,36 +248,35 @@ static OOC_Error ooc_abstractListIteratorCtor(void* self, va_list* args) {
     return OOC_ERROR_NONE;
 }
 
-static void* ooc_abstractListIteratorClassInit(void) {
-    if (ooc_classNew(&AbstractListIteratorClassInstance,
+static void* ooc_abstractListIteratorClassInit_(void) {
+    if (ooc_classNew(&AbstractListIteratorClassInstance_,
                      "AbstractListIterator",
                      sizeof(OOC_AbstractListIterator),
                      sizeof(OOC_AbstractListIteratorClass),
-                     ooc_baseListIteratorClass(),
+                     ooc_abstractListIteratorClass(),
                      OOC_MODIFIER_FINAL,
                      OOC_METHOD_CTOR, ooc_abstractListIteratorCtor,
-                     OOC_BASE_ITERATOR_METHOD_HAS_NEXT, ooc_abstractListIteratorHasNext,
-                     OOC_BASE_ITERATOR_METHOD_NEXT, ooc_abstractListIteratorNext,
-                     OOC_BASE_ITERATOR_METHOD_REMOVE, ooc_abstractListIteratorRemove,
-                     OOC_BASE_LIST_ITERATOR_METHOD_HAS_PREVIOUS, ooc_abstractListIteratorHasPrevious,
-                     OOC_BASE_LIST_ITERATOR_METHOD_PREVIOUS, ooc_abstractListIteratorPrevious,
-                     OOC_BASE_LIST_ITERATOR_METHOD_NEXT_INDEX, ooc_abstractListIteratorNextIndex,
-                     OOC_BASE_LIST_ITERATOR_METHOD_PREVIOUS_INDEX, ooc_abstractListIteratorPreviousIndex,
-                     OOC_BASE_LIST_ITERATOR_METHOD_SET, ooc_abstractListIteratorSet,
-                     OOC_BASE_LIST_ITERATOR_METHOD_ADD, ooc_abstractListIteratorAdd,
+                     OOC_ABSTRACT_ITERATOR_METHOD_HAS_NEXT, ooc_abstractListIteratorHasNext_,
+                     OOC_ABSTRACT_ITERATOR_METHOD_NEXT, ooc_abstractListIteratorNext_,
+                     OOC_ABSTRACT_ITERATOR_METHOD_REMOVE, ooc_abstractListIteratorRemove_,
+                     OOC_ABSTRACT_LIST_ITERATOR_METHOD_HAS_PREVIOUS, ooc_abstractListIteratorHasPrevious_,
+                     OOC_ABSTRACT_LIST_ITERATOR_METHOD_PREVIOUS, ooc_abstractListIteratorPrevious_,
+                     OOC_ABSTRACT_LIST_ITERATOR_METHOD_NEXT_INDEX, ooc_abstractListIteratorNextIndex_,
+                     OOC_ABSTRACT_LIST_ITERATOR_METHOD_PREVIOUS_INDEX, ooc_abstractListIteratorPreviousIndex_,
+                     OOC_ABSTRACT_LIST_ITERATOR_METHOD_SET, ooc_abstractListIteratorSet_,
+                     OOC_ABSTRACT_LIST_ITERATOR_METHOD_ADD, ooc_abstractListIteratorAdd_,
                      0) != OOC_ERROR_NONE) {
-        ooc_classDestroy(&AbstractListIteratorClassInstance);
+        ooc_classDestroy(&AbstractListIteratorClassInstance_);
         return NULL;
     }
-
-    return &AbstractListIteratorClassInstance;
+    return &AbstractListIteratorClassInstance_;
 }
 
-static void* ooc_abstractListIteratorClass(void) {
-    if (!AbstractListIteratorClass) {
-        AbstractListIteratorClass = ooc_abstractListIteratorClassInit();
+static void* ooc_abstractListIteratorClass_(void) {
+    if (!AbstractListIteratorClass_) {
+        AbstractListIteratorClass_ = ooc_abstractListIteratorClassInit_();
     }
-    return AbstractListIteratorClass;
+    return AbstractListIteratorClass_;
 }
 
 void* ooc_abstractListGetIterator(void* self) {
@@ -280,7 +288,7 @@ void* ooc_abstractListGetListIterator(void* self) {
         return NULL;
     }
     OOC_TYPE_CHECK(self, ooc_abstractListClass(), NULL);
-    return ooc_new(ooc_abstractListIteratorClass(), self, 0, 0);
+    return ooc_new(ooc_abstractListIteratorClass_(), self, 0, 0);
 }
 
 void* ooc_abstractListGetListIteratorAt(void* self, size_t index) {
@@ -291,7 +299,7 @@ void* ooc_abstractListGetListIteratorAt(void* self, size_t index) {
     if (index > ooc_collectionSize(self)) {
         return NULL;
     }
-    return ooc_new(ooc_abstractListIteratorClass(), self, index, 0);
+    return ooc_new(ooc_abstractListIteratorClass_(), self, index, 0);
 }
 
 static void* ooc_abstractListClassInit(void) {

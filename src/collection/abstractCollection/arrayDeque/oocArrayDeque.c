@@ -3,8 +3,8 @@
 
 #include "oocAbstractCollection.h"
 #include "oocCollection.h"
-#include "oocBaseIterator.h"
-#include "oocBaseIterator.r"
+#include "oocAbstractIterator.h"
+#include "oocAbstractIterator.r"
 #include "oocDeque.h"
 #include "oocError.h"
 #include "oocObject.h"
@@ -32,14 +32,14 @@ typedef struct OOC_ArrayDequeIterator OOC_ArrayDequeIterator;
 typedef struct OOC_ArrayDequeIteratorClass OOC_ArrayDequeIteratorClass;
 
 struct OOC_ArrayDequeIterator {
-    OOC_BaseIterator baseIterator;
+    OOC_AbstractIterator baseIterator;
     OOC_ArrayDeque* deque;
     size_t index;
     size_t lastIndex;
 };
 
 struct OOC_ArrayDequeIteratorClass {
-    OOC_BaseIteratorClass class;
+    OOC_AbstractIteratorClass class;
 };
 
 static OOC_ArrayDequeClass* ArrayDequeClass;
@@ -112,7 +112,7 @@ static void* ooc_arrayDequeIteratorNext(void* self) {
     if (iterator->index >= iterator->deque->size) {
         return NULL;
     }
-    ooc_superBaseIteratorNext(iterator);
+    ooc_abstractIteratorNext(iterator);
     size_t physicalIndex = OOC_ARRAY_DEQUE_GET_PHYSICAL_INDEX(iterator->deque, iterator->deque->head, iterator->index);
     void* element = iterator->deque->elements[physicalIndex];
     iterator->lastIndex = iterator->index;
@@ -125,7 +125,7 @@ static OOC_Error ooc_arrayDequeIteratorRemove(void* self) {
         return OOC_ERROR_INVALID_ARGUMENT;
     }
     OOC_ArrayDequeIterator* iterator = self;
-    OOC_Error error = ooc_superBaseIteratorRemove(iterator);
+    OOC_Error error = ooc_abstractIteratorRemove(iterator);
     if (error != OOC_ERROR_NONE) {
         return error;
     }
@@ -161,12 +161,12 @@ static void* ooc_arrayDequeIteratorClassInit(void) {
                      "ArrayDequeIterator",
                      sizeof(OOC_ArrayDequeIterator),
                      sizeof(OOC_ArrayDequeIteratorClass),
-                     ooc_baseIteratorClass(),
+                     ooc_abstractIteratorClass(),
                      OOC_MODIFIER_NONE,
                      OOC_METHOD_CTOR, ooc_arrayDequeIteratorCtor,
-                     OOC_BASE_ITERATOR_METHOD_HAS_NEXT, ooc_arrayDequeIteratorHasNext,
-                     OOC_BASE_ITERATOR_METHOD_NEXT, ooc_arrayDequeIteratorNext,
-                     OOC_BASE_ITERATOR_METHOD_REMOVE, ooc_arrayDequeIteratorRemove,
+                     OOC_ABSTRACT_ITERATOR_METHOD_HAS_NEXT, ooc_arrayDequeIteratorHasNext,
+                     OOC_ABSTRACT_ITERATOR_METHOD_NEXT, ooc_arrayDequeIteratorNext,
+                     OOC_ABSTRACT_ITERATOR_METHOD_REMOVE, ooc_arrayDequeIteratorRemove,
                      0) != OOC_ERROR_NONE) {
         ooc_classDestroy(&ArrayDequeIteratorClassInstance);
         return NULL;
