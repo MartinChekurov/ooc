@@ -194,7 +194,7 @@ static void* ooc_linkedListIteratorNext(void* self) {
         return NULL;
     }
     OOC_LinkedListIterator* iterator = self;
-    if (!iterator->next) {
+    if (!ooc_linkedListIteratorHasNext(iterator)) {
         return NULL;
     }
     ooc_abstractListIteratorNext(iterator);
@@ -214,7 +214,7 @@ static OOC_Error ooc_linkedListIteratorRemove(void* self) {
         return error;
     }
     if (!iterator->lastReturned) {
-        return OOC_ERROR_NOT_FOUND;
+        return OOC_ERROR_INVALID_STATE;
     }
     // Determine if last operation was next() or previous()
     // After next(): lastReturned != next
@@ -250,7 +250,7 @@ static void* ooc_linkedListIteratorPrevious(void* self) {
         return NULL;
     }
     OOC_LinkedListIterator* iterator = self;
-    if (iterator->nextIndex == 0) {
+    if (ooc_linkedListIteratorHasPrevious(iterator)) {
         return NULL;
     }
     ooc_abstractListIteratorPrevious(iterator);
@@ -264,9 +264,9 @@ static void* ooc_linkedListIteratorPrevious(void* self) {
         iterator->next = iterator->next->prev;
     }
     iterator->nextIndex--;
-    OOC_AbstractIterator* base = (OOC_AbstractIterator*)iterator;
-    base->canModify = true;
-    return iterator->lastReturned ? iterator->lastReturned->data : NULL;
+    return iterator->lastReturned ? 
+           iterator->lastReturned->data : 
+           NULL;
 }
 
 static int ooc_linkedListIteratorNextIndex(void* self) {
@@ -291,11 +291,11 @@ static OOC_Error ooc_linkedListIteratorSet(void* self, void* element) {
     }
     OOC_LinkedListIterator* iterator = self;
     OOC_Error error = ooc_abstractListIteratorSet(self, element);
-    if (error == OOC_ERROR_INVALID_STATE) {
+    if (error != OOC_ERROR_NONE) {
         return error;
     }
     if (!iterator->lastReturned) {
-        return OOC_ERROR_NOT_FOUND;
+        return OOC_ERROR_INVALID_STATE;
     }
     if (iterator->lastReturned->data != element) {
         ooc_destroy(iterator->lastReturned->data);

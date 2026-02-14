@@ -109,7 +109,7 @@ static void* ooc_arrayDequeIteratorNext(void* self) {
         return NULL;
     }
     OOC_ArrayDequeIterator* iterator = self;
-    if (iterator->index >= iterator->deque->size) {
+    if (!ooc_arrayDequeIteratorHasNext(iterator)) {
         return NULL;
     }
     ooc_abstractIteratorNext(iterator);

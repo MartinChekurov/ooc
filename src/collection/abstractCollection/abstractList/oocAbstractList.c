@@ -126,7 +126,7 @@ static void* ooc_abstractListIteratorNext_(void* self) {
         return NULL;
     }
     OOC_AbstractListIterator_* iterator = self;
-    if (iterator->nextIndex >= ooc_collectionSize(iterator->list)) {
+    if (!ooc_abstractListIteratorHasNext_(iterator)) {
         return NULL;
     }
     ooc_abstractListIteratorNext(iterator);
@@ -145,6 +145,9 @@ static OOC_Error ooc_abstractListIteratorRemove_(void* self) {
     if (error != OOC_ERROR_NONE) {
         return error;
     }
+    if (iterator->lastReturnedIndex == -1) {
+        return OOC_ERROR_INVALID_STATE;
+    }
     error = ooc_listRemoveAt(iterator->list, iterator->lastReturnedIndex);
     if (error != OOC_ERROR_NONE) {
         return error;
@@ -157,72 +160,74 @@ static OOC_Error ooc_abstractListIteratorRemove_(void* self) {
 }
 
 static bool ooc_abstractListIteratorHasPrevious_(void* self) {
-    OOC_AbstractListIterator_* it = self;
-    return it && it->nextIndex > 0;
+    if (!self) {
+        return false;
+    }
+    OOC_AbstractListIterator_* iterator = self;
+    return iterator->nextIndex > 0;
 }
 
 static void* ooc_abstractListIteratorPrevious_(void* self) {
-    OOC_AbstractListIterator_* it = self;
-    if (!it || it->nextIndex == 0) {
+    if (!self) {
         return NULL;
     }
-    ooc_abstractListIteratorPrevious(it);
-    it->nextIndex--;
-    void* value = ooc_listGetAt(it->list, it->nextIndex);
-    it->lastReturnedIndex = it->nextIndex;
-    OOC_AbstractIterator* base = (OOC_AbstractIterator*)it;
-    base->canModify = true;
+    OOC_AbstractListIterator_* iterator = self;
+    if (!ooc_abstractListIteratorHasPrevious_(iterator)) {
+        return NULL;
+    }
+    ooc_abstractListIteratorPrevious(iterator);
+    iterator->nextIndex--;
+    void* value = ooc_listGetAt(iterator->list, iterator->nextIndex);
+    iterator->lastReturnedIndex = iterator->nextIndex;
     return value;
 }
 
 static int ooc_abstractListIteratorNextIndex_(void* self) {
-    OOC_AbstractListIterator_* it = self;
-    if (!it) {
+    if (!self) {
         return -1;
     }
-    return (int)it->nextIndex;
+    OOC_AbstractListIterator_* iterator = self;
+    return (int)iterator->nextIndex;
 }
 
 static int ooc_abstractListIteratorPreviousIndex_(void* self) {
-    OOC_AbstractListIterator_* it = self;
-    if (!it) {
+    if (!self) {
         return -1;
     }
-    return (it->nextIndex == 0) ? -1 : (int)(it->nextIndex - 1);
+    OOC_AbstractListIterator_* iterator = self;
+    return (iterator->nextIndex == 0) ? -1 : (int)(iterator->nextIndex - 1);
 }
 
 static OOC_Error ooc_abstractListIteratorSet_(void* self, void* element) {
-    OOC_AbstractListIterator_* it = self;
-    if (!it) {
+    if (!self) {
         return OOC_ERROR_INVALID_ARGUMENT;
     }
-    OOC_Error error = ooc_abstractListIteratorSet(it, element);
+    OOC_AbstractListIterator_* iterator = self;
+    OOC_Error error = ooc_abstractListIteratorSet(iterator, element);
     if (error != OOC_ERROR_NONE) {
         return error;
     }
-    if (it->lastReturnedIndex < 0) {
+    if (iterator->lastReturnedIndex < 0) {
         return OOC_ERROR_INVALID_STATE;
     }
-    return ooc_listSetAt(it->list, it->lastReturnedIndex, element);
+    return ooc_listSetAt(iterator->list, iterator->lastReturnedIndex, element);
 }
 
 static OOC_Error ooc_abstractListIteratorAdd_(void* self, void* element) {
-    OOC_AbstractListIterator_* it = self;
-    if (!it) {
+    if (!self) {
         return OOC_ERROR_INVALID_ARGUMENT;
     }
-    OOC_Error error = ooc_abstractListIteratorAdd(it, element);
+    OOC_AbstractListIterator_* iterator = self;
+    OOC_Error error = ooc_abstractListIteratorAdd(iterator, element);
     if (error != OOC_ERROR_NONE) {
         return error;
     }
-    error = ooc_listInsertAt(it->list, it->nextIndex, element);
+    error = ooc_listInsertAt(iterator->list, iterator->nextIndex, element);
     if (error != OOC_ERROR_NONE) {
         return error;
     }
-    it->nextIndex++;
-    it->lastReturnedIndex = -1;
-    OOC_AbstractIterator* base = (OOC_AbstractIterator*)it;
-    base->canModify = false;
+    iterator->nextIndex++;
+    iterator->lastReturnedIndex = -1;
     return OOC_ERROR_NONE;
 }
 
