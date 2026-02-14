@@ -97,4 +97,12 @@ void* ooc_mapKeySet(void* self);
  */
 void* ooc_mapValues(void* self);
 
+/**
+ * @brief Returns an iterator over the entries in the map
+ * @param self Map object instance
+ * @return Iterator object, or NULL on failure
+ * @note Each call to ooc_iteratorNext returns a HashMapEntry. Caller must destroy the iterator.
+ */
+void* ooc_mapGetIterator(void* self);
+
 #endif

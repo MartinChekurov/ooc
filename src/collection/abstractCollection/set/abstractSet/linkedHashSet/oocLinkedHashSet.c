@@ -5,7 +5,6 @@
 #include "oocObject.h"
 #include "oocObject.r"
 #include "oocHashSet.h"
-#include "oocIterable.h"
 #include <stdlib.h>
 
 static OOC_LinkedHashSetClass* LinkedHashSetClass;
@@ -17,7 +16,7 @@ static void* ooc_linkedHashSetGetIterator(void* self) {
     }
     OOC_TYPE_CHECK(self, ooc_linkedHashSetClass(), NULL);
     OOC_LinkedHashSet* set = self;
-    return ooc_linkedHashMapGetKeyIterator(set->map);
+    return ooc_linkedHashMapGetIterator(set->map);
 }
 
 static OOC_Error ooc_linkedHashSetCtor(void* self, va_list* args) {

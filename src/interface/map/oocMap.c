@@ -136,3 +136,14 @@ void* ooc_mapValues(void* self) {
     }
     return vtable->values(self);
 }
+
+void* ooc_mapGetIterator(void* self) {
+    if (!self) {
+        return NULL;
+    }
+    const OOC_MapVtable* vtable = ooc_getInterfaceVtable(self, ooc_mapClass());
+    if (!vtable || !vtable->getIterator) {
+        return NULL;
+    }
+    return vtable->getIterator(self);
+}

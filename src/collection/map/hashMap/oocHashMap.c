@@ -9,14 +9,13 @@
 #include "oocList.h"
 #include "oocArrayList.h"
 #include "oocLinkedList.h"
-#include "oocHashSet.h"
 #include "oocObject.h"
 #include "oocObject.r"
 #include "oocIterator.h"
 #include "oocIterable.h"
-#include "oocSet.h"
 #include "oocAbstractIterator.h"
 #include "oocAbstractIterator.r"
+#include <stddef.h>
 #include <stdlib.h>
 #include <string.h>
 
@@ -139,30 +138,6 @@ static void* ooc_hashMapGetByKey(void* self, void* key) {
     return NULL;
 }
 
-static void* ooc_hashMapGetByValue(void* self, void* value) {
-    if (!self) {
-        return NULL;
-    }
-    OOC_TYPE_CHECK(self, ooc_hashMapClass(), NULL);
-    OOC_HashMap* map = self;
-    void* bucketsIterator = ooc_listGetIterator(map->buckets);
-    while (ooc_iteratorHasNext(bucketsIterator)) {
-        void* bucket = ooc_iteratorNext(bucketsIterator);
-        void* bucketIterator = ooc_listGetIterator(bucket);
-        while (ooc_iteratorHasNext(bucketIterator)) {
-            void* entry = ooc_iteratorNext(bucketIterator);
-            if (ooc_equals(ooc_hashMapEntryGetValue(entry), value)) {
-                ooc_destroy(bucketIterator);
-                ooc_destroy(bucketsIterator);
-                return entry;
-            }
-        }
-        ooc_destroy(bucketIterator);
-    }
-    ooc_destroy(bucketsIterator);
-    return NULL;
-}
-
 size_t ooc_hashMapSize(void* self) {
     if (!self) {
         return 0;
@@ -173,28 +148,19 @@ size_t ooc_hashMapSize(void* self) {
 }
 
 bool ooc_hashMapIsEmpty(void* self) {
-    if (!self) {
-        return true;
-    }
-    OOC_TYPE_CHECK(self, ooc_hashMapClass(), true);
-    OOC_HashMap* map = self;
-    return map->size == 0;
+    return ooc_mapIsEmpty(self);
 }
 
 bool ooc_hashMapContainsKey(void* self, void* key) {
-    return ooc_hashMapGetByKey(self, key) != NULL;
+    return ooc_mapContainsKey(self, key);
 }
 
 bool ooc_hashMapContainsValue(void* self, void* value) {
-    return ooc_hashMapGetByValue(self, value) != NULL;
+    return ooc_mapContainsValue(self, value);
 }
 
 void* ooc_hashMapGet(void* self, void* key) {
-    void* entry = ooc_hashMapGetByKey(self, key);
-    if (!entry) {
-        return NULL;
-    }
-    return ooc_hashMapEntryGetValue(entry);
+    return ooc_mapGet(self, key);
 }
 
 OOC_Error ooc_hashMapPut(void* self, void* key, void* value) {
@@ -242,92 +208,19 @@ OOC_Error ooc_hashMapPut(void* self, void* key, void* value) {
 }
 
 OOC_Error ooc_hashMapRemove(void* self, void* key) {
-    if (!self) {
-        return OOC_ERROR_INVALID_ARGUMENT;
-    }
-    OOC_TYPE_CHECK(self, ooc_hashMapClass(), OOC_ERROR_INVALID_OBJECT);
-    OOC_HashMap* map = self;
-    void* bucket = ooc_hashMapKeyBucket(map, key);
-    if (!bucket) {
-        return OOC_ERROR_NOT_FOUND;
-    }
-    void* bucketIterator = ooc_listGetIterator(bucket);
-    while (ooc_iteratorHasNext(bucketIterator)) {
-        void* entry = ooc_iteratorNext(bucketIterator);
-        if (ooc_equals(ooc_hashMapEntryGetKey(entry), key)) {
-            ooc_iteratorRemove(bucketIterator);
-            map->size--;
-            ooc_destroy(bucketIterator);
-            return OOC_ERROR_NONE;
-        }
-    }
-    ooc_destroy(bucketIterator);
-    return OOC_ERROR_NOT_FOUND;
+    return ooc_mapRemove(self, key);
 }
 
 OOC_Error ooc_hashMapClear(void* self) {
-    if (!self) {
-        return OOC_ERROR_INVALID_ARGUMENT;
-    }
-    OOC_TYPE_CHECK(self, ooc_hashMapClass(), OOC_ERROR_INVALID_OBJECT);
-    OOC_HashMap* map = self;
-    size_t count = 0;
-    void* bucketsIterator = ooc_listGetIterator(map->buckets);
-    while (ooc_iteratorHasNext(bucketsIterator)) {
-        ooc_destroy(ooc_iteratorNext(bucketsIterator));
-        ooc_listSetAt(map->buckets, count++, NULL);
-    }
-    ooc_destroy(bucketsIterator);
-    map->size = 0;
-    return OOC_ERROR_NONE;
+    return ooc_mapClear(self);
 }
 
 void* ooc_hashMapKeySet(void* self) {
-    if (!self) {
-        return NULL;
-    }
-    OOC_TYPE_CHECK(self, ooc_hashMapClass(), NULL);
-    OOC_HashMap* map = self;
-    void* keySet = ooc_new(ooc_hashSetClass(), map->size);
-    if (!keySet) {
-        return NULL;
-    }
-    void* bucketsIterator = ooc_listGetIterator(map->buckets);
-    while (ooc_iteratorHasNext(bucketsIterator)) {
-        void* bucket = ooc_iteratorNext(bucketsIterator);
-        void* bucketIterator = ooc_listGetIterator(bucket);
-        while (ooc_iteratorHasNext(bucketIterator)) {
-            void* entry = ooc_iteratorNext(bucketIterator);
-            ooc_setAdd(keySet, ooc_hashMapEntryGetKey(entry));
-        }
-        ooc_destroy(bucketIterator);
-    }
-    ooc_destroy(bucketsIterator);
-    return keySet;
+    return ooc_mapKeySet(self);
 }
 
 void* ooc_hashMapValues(void* self) {
-    if (!self) {
-        return NULL;
-    }
-    OOC_TYPE_CHECK(self, ooc_hashMapClass(), NULL);
-    OOC_HashMap* map = self;
-    void* values = ooc_new(ooc_arrayListClass(), map->size);
-    if (!values) {
-        return NULL;
-    }
-    void* bucketsIterator = ooc_listGetIterator(map->buckets);
-    while (ooc_iteratorHasNext(bucketsIterator)) {
-        void* bucket = ooc_iteratorNext(bucketsIterator);
-        void* bucketIterator = ooc_listGetIterator(bucket);
-        while (ooc_iteratorHasNext(bucketIterator)) {
-            void* entry = ooc_iteratorNext(bucketIterator);
-            ooc_listAdd(values, ooc_hashMapEntryGetValue(entry));
-        }
-        ooc_destroy(bucketIterator);
-    }
-    ooc_destroy(bucketsIterator);
-    return values;
+    return ooc_mapValues(self);
 }
 
 static bool ooc_hashMapIteratorHasNext(void* self) {
@@ -492,15 +385,8 @@ static void* ooc_hashMapClassInit(void) {
                     OOC_METHOD_CTOR, ooc_hashMapCtor,
                     OOC_METHOD_DTOR, ooc_hashMapDtor,
                     OOC_ABSTRACT_MAP_METHOD_SIZE, ooc_hashMapSize,
-                    OOC_ABSTRACT_MAP_METHOD_IS_EMPTY, ooc_hashMapIsEmpty,
-                    OOC_ABSTRACT_MAP_METHOD_CONTAINS_KEY, ooc_hashMapContainsKey,
-                    OOC_ABSTRACT_MAP_METHOD_CONTAINS_VALUE, ooc_hashMapContainsValue,
-                    OOC_ABSTRACT_MAP_METHOD_GET, ooc_hashMapGet,
                     OOC_ABSTRACT_MAP_METHOD_PUT, ooc_hashMapPut,
-                    OOC_ABSTRACT_MAP_METHOD_REMOVE, ooc_hashMapRemove,
-                    OOC_ABSTRACT_MAP_METHOD_CLEAR, ooc_hashMapClear,
-                    OOC_ABSTRACT_MAP_METHOD_KEY_SET, ooc_hashMapKeySet,
-                    OOC_ABSTRACT_MAP_METHOD_VALUES, ooc_hashMapValues,
+                    OOC_ABSTRACT_MAP_METHOD_GET_ITERATOR, ooc_hashMapGetIterator,
                     0) != OOC_ERROR_NONE) {
         return NULL;
     }

@@ -28,7 +28,6 @@ OOC_Error ooc_linkedHashMapRemove(void* self, void* key);
 OOC_Error ooc_linkedHashMapClear(void* self);
 void* ooc_linkedHashMapKeySet(void* self);
 void* ooc_linkedHashMapValues(void* self);
-
 void* ooc_linkedHashMapGetIterator(void* self);
 
 #endif

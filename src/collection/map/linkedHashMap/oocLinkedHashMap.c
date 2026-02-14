@@ -6,12 +6,9 @@
 #include "oocMap.h"
 #include "oocList.h"
 #include "oocLinkedList.h"
-#include "oocLinkedHashSet.h"
-#include "oocArrayList.h"
 #include "oocObject.h"
 #include "oocObject.r"
 #include "oocIterator.h"
-#include "oocSet.h"
 #include "oocAbstractIterator.h"
 #include "oocAbstractIterator.r"
 #include <stddef.h>
@@ -56,7 +53,7 @@ bool ooc_linkedHashMapContainsValue(void* self, void* value) {
 }
 
 void* ooc_linkedHashMapGet(void* self, void* key) {
-    return ooc_mapGet(self, key);
+    return ooc_hashMapGet(self, key);
 }
 
 OOC_Error ooc_linkedHashMapPut(void* self, void* key, void* value) {
@@ -134,41 +131,11 @@ OOC_Error ooc_linkedHashMapClear(void* self) {
 }
 
 void* ooc_linkedHashMapKeySet(void* self) {
-    if (!self) {
-        return NULL;
-    }
-    OOC_TYPE_CHECK(self, ooc_linkedHashMapClass(), NULL);
-    OOC_LinkedHashMap* map = self;
-    void* keySet = ooc_new(ooc_linkedHashSetClass(), ooc_mapSize(map));
-    if (!keySet) {
-        return NULL;
-    }
-    void* listIterator = ooc_listGetIterator(map->insertionOrder);
-    while (ooc_iteratorHasNext(listIterator)) {
-        void* entry = ooc_iteratorNext(listIterator);
-        ooc_setAdd(keySet, ooc_hashMapEntryGetKey(entry));
-    }
-    ooc_destroy(listIterator);
-    return keySet;
+    return ooc_mapKeySet(self);
 }
 
 void* ooc_linkedHashMapValues(void* self) {
-    if (!self) {
-        return NULL;
-    }
-    OOC_TYPE_CHECK(self, ooc_linkedHashMapClass(), NULL);
-    OOC_LinkedHashMap* map = self;
-    void* values = ooc_new(ooc_arrayListClass(), ooc_mapSize(map));
-    if (!values) {
-        return NULL;
-    }
-    void* listIterator = ooc_listGetIterator(map->insertionOrder);
-    while (ooc_iteratorHasNext(listIterator)) {
-        void* entry = ooc_iteratorNext(listIterator);
-        ooc_listAdd(values, ooc_hashMapEntryGetValue(entry));
-    }
-    ooc_destroy(listIterator);
-    return values;
+    return ooc_mapValues(self);
 }
 
 static bool ooc_linkedHashMapIteratorHasNext(void* self) {
@@ -320,8 +287,7 @@ static void* ooc_linkedHashMapClassInit(void) {
                     OOC_ABSTRACT_MAP_METHOD_PUT, ooc_linkedHashMapPut,
                     OOC_ABSTRACT_MAP_METHOD_REMOVE, ooc_linkedHashMapRemove,
                     OOC_ABSTRACT_MAP_METHOD_CLEAR, ooc_linkedHashMapClear,
-                    OOC_ABSTRACT_MAP_METHOD_KEY_SET, ooc_linkedHashMapKeySet,
-                    OOC_ABSTRACT_MAP_METHOD_VALUES, ooc_linkedHashMapValues,
+                    OOC_ABSTRACT_MAP_METHOD_GET_ITERATOR, ooc_linkedHashMapGetIterator,
                     0) != OOC_ERROR_NONE) {
         return NULL;
     }

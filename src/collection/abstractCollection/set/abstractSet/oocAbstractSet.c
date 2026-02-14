@@ -2,7 +2,6 @@
 #include "oocAbstractSet.r"
 #include "oocAbstractCollection.h"
 #include "oocCollection.h"
-#include "oocCollection.r"
 #include "oocIterable.h"
 #include "oocIterator.h"
 #include "oocStringBuffer.h"

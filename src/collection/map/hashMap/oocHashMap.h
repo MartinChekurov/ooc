@@ -17,6 +17,8 @@
 
 void* ooc_hashMapClass(void);
 
+OOC_Error ooc_hashMapPut(void* self, void* key, void* value);
+
 size_t ooc_hashMapSize(void* self);
 bool ooc_hashMapIsEmpty(void* self);
 bool ooc_hashMapContainsKey(void* self, void* key);
@@ -27,7 +29,6 @@ OOC_Error ooc_hashMapRemove(void* self, void* key);
 OOC_Error ooc_hashMapClear(void* self);
 void* ooc_hashMapKeySet(void* self);
 void* ooc_hashMapValues(void* self);
-
 void* ooc_hashMapGetIterator(void* self);
 
 #endif

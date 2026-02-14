@@ -19,7 +19,7 @@ static void* ooc_hashSetGetIterator(void* self) {
     }
     OOC_TYPE_CHECK(self, ooc_hashSetClass(), NULL);
     OOC_HashSet* set = self;
-    return ooc_hashMapGetKeyIterator(set->map);
+    return ooc_hashMapGetIterator(set->map);
 }
 
 static size_t ooc_hashSetSize(void* self) {

@@ -3,8 +3,12 @@
 #include "oocMap.h"
 #include "oocObject.h"
 #include "oocObject.r"
-#include "oocIterable.h"
+#include "oocHashMapEntry.h"
 #include "oocIterator.h"
+#include "oocHashSet.h"
+#include "oocArrayList.h"
+#include "oocSet.h"
+#include "oocList.h"
 #include "oocStringBuffer.h"
 #include <stdlib.h>
 #include <string.h>
@@ -14,40 +18,169 @@ static OOC_AbstractMapClass AbstractMapClassInstance;
 
 static OOC_InterfaceImpl AbstractMapInterfaces[1];
 
-static bool ooc_abstractMapIsEmpty(void* self) {
+size_t ooc_abstractMapSize(void* self) {
+    return ooc_mapSize(self);
+}
+
+bool ooc_abstractMapIsEmpty(void* self) {
     return ooc_mapSize(self) == 0;
 }
 
-static bool ooc_abstractMapContainsValue(void* self, void* value) {
+bool ooc_abstractMapContainsKey(void* self, void* key) {
     if (!self) {
         return false;
     }
     OOC_TYPE_CHECK(self, ooc_abstractMapClass(), false);
-    void* keySet = ooc_mapKeySet(self);
-    if (!keySet) {
+    void* it = ooc_mapGetIterator(self);
+    if (!it) {
         return false;
     }
     bool found = false;
-    void* it = ooc_iterableGetIterator(keySet);
     while (ooc_iteratorHasNext(it)) {
-        void* key = ooc_iteratorNext(it);
-        void* val = ooc_mapGet(self, key);
-        if (ooc_equals(val, value)) {
+        void* entry = ooc_iteratorNext(it);
+        if (ooc_equals(ooc_hashMapEntryGetKey(entry), key)) {
             found = true;
             break;
         }
     }
     ooc_destroy(it);
-    ooc_destroy(keySet);
     return found;
 }
 
-static OOC_Error ooc_abstractMapPut(void* self, void* key, void* value) {
+bool ooc_abstractMapContainsValue(void* self, void* value) {
+    if (!self) {
+        return false;
+    }
+    OOC_TYPE_CHECK(self, ooc_abstractMapClass(), false);
+    void* it = ooc_mapGetIterator(self);
+    if (!it) {
+        return false;
+    }
+    bool found = false;
+    while (ooc_iteratorHasNext(it)) {
+        void* entry = ooc_iteratorNext(it);
+        if (ooc_equals(ooc_hashMapEntryGetValue(entry), value)) {
+            found = true;
+            break;
+        }
+    }
+    ooc_destroy(it);
+    return found;
+}
+
+void* ooc_abstractMapGet(void* self, void* key) {
+    if (!self) {
+        return NULL;
+    }
+    OOC_TYPE_CHECK(self, ooc_abstractMapClass(), NULL);
+    void* it = ooc_mapGetIterator(self);
+    if (!it) {
+        return NULL;
+    }
+    void* result = NULL;
+    while (ooc_iteratorHasNext(it)) {
+        void* entry = ooc_iteratorNext(it);
+        if (ooc_equals(ooc_hashMapEntryGetKey(entry), key)) {
+            result = ooc_hashMapEntryGetValue(entry);
+            break;
+        }
+    }
+    ooc_destroy(it);
+    return result;
+}
+
+OOC_Error ooc_abstractMapPut(void* self, void* key, void* value) {
     return OOC_ERROR_NOT_SUPPORTED;
 }
 
-static OOC_Error ooc_abstractMapRemove(void* self, void* key) {
-    return OOC_ERROR_NOT_SUPPORTED;
+OOC_Error ooc_abstractMapRemove(void* self, void* key) {
+    if (!self) {
+        return OOC_ERROR_INVALID_ARGUMENT;
+    }
+    OOC_TYPE_CHECK(self, ooc_abstractMapClass(), OOC_ERROR_INVALID_OBJECT);
+    void* it = ooc_mapGetIterator(self);
+    if (!it) {
+        return OOC_ERROR_NOT_FOUND;
+    }
+    OOC_Error error = OOC_ERROR_NOT_FOUND;
+    while (ooc_iteratorHasNext(it)) {
+        void* entry = ooc_iteratorNext(it);
+        if (ooc_equals(ooc_hashMapEntryGetKey(entry), key)) {
+            error = ooc_iteratorRemove(it);
+            break;
+        }
+    }
+    ooc_destroy(it);
+    return error;
+}
+
+OOC_Error ooc_abstractMapClear(void* self) {
+    if (!self) {
+        return OOC_ERROR_INVALID_ARGUMENT;
+    }
+    OOC_TYPE_CHECK(self, ooc_abstractMapClass(), OOC_ERROR_INVALID_OBJECT);
+    void* it = ooc_mapGetIterator(self);
+    if (!it) {
+        return OOC_ERROR_NONE;
+    }
+    OOC_Error error = OOC_ERROR_NONE;
+    while (ooc_iteratorHasNext(it)) {
+        ooc_iteratorNext(it);
+        error = ooc_iteratorRemove(it);
+        if (error != OOC_ERROR_NONE) {
+            break;
+        }
+    }
+    ooc_destroy(it);
+    return error;
+}
+
+void* ooc_abstractMapKeySet(void* self) {
+    if (!self) {
+        return NULL;
+    }
+    OOC_TYPE_CHECK(self, ooc_abstractMapClass(), NULL);
+    void* keySet = ooc_new(ooc_hashSetClass(), ooc_mapSize(self));
+    if (!keySet) {
+        return NULL;
+    }
+    void* it = ooc_mapGetIterator(self);
+    if (!it) {
+        ooc_destroy(keySet);
+        return NULL;
+    }
+    while (ooc_iteratorHasNext(it)) {
+        void* entry = ooc_iteratorNext(it);
+        ooc_setAdd(keySet, ooc_hashMapEntryGetKey(entry));
+    }
+    ooc_destroy(it);
+    return keySet;
+}
+
+void* ooc_abstractMapValues(void* self) {
+    if (!self) {
+        return NULL;
+    }
+    OOC_TYPE_CHECK(self, ooc_abstractMapClass(), NULL);
+    void* values = ooc_new(ooc_arrayListClass(), ooc_mapSize(self));
+    if (!values) {
+        return NULL;
+    }
+    void* it = ooc_mapGetIterator(self);
+    if (!it) {
+        ooc_destroy(values);
+        return NULL;
+    }
+    while (ooc_iteratorHasNext(it)) {
+        void* entry = ooc_iteratorNext(it);
+        ooc_listAdd(values, ooc_hashMapEntryGetValue(entry));
+    }
+    ooc_destroy(it);
+    return values;
+}
+
+void* ooc_abstractMapGetIterator(void* self) {
+    return ooc_mapGetIterator(self);
 }
 
 static char* ooc_abstractMapToString(const void* self) {
@@ -55,19 +188,13 @@ static char* ooc_abstractMapToString(const void* self) {
         return NULL;
     }
     OOC_TYPE_CHECK(self, ooc_abstractMapClass(), NULL);
-    void* keySet = ooc_mapKeySet((void*)self);
-    if (!keySet) {
-        return strdup("{}");
-    }
-    void* it = ooc_iterableGetIterator(keySet);
+    void* it = ooc_mapGetIterator((void*)self);
     if (!it) {
-        ooc_destroy(keySet);
         return strdup("{}");
     }
     void* buf = ooc_new(ooc_stringBufferClass(), "{");
     if (!buf) {
         ooc_destroy(it);
-        ooc_destroy(keySet);
         return NULL;
     }
     bool first = true;
@@ -76,13 +203,12 @@ static char* ooc_abstractMapToString(const void* self) {
             ooc_stringBufferAppendCString(buf, ", ");
         }
         first = false;
-        void* key = ooc_iteratorNext(it);
-        char* keyStr = ooc_toString(key);
+        void* entry = ooc_iteratorNext(it);
+        char* keyStr = ooc_toString(ooc_hashMapEntryGetKey(entry));
         ooc_stringBufferAppendCString(buf, keyStr ? keyStr : "null");
         free(keyStr);
         ooc_stringBufferAppendCString(buf, "=");
-        void* val = ooc_mapGet((void*)self, key);
-        char* valStr = ooc_toString(val);
+        char* valStr = ooc_toString(ooc_hashMapEntryGetValue(entry));
         ooc_stringBufferAppendCString(buf, valStr ? valStr : "null");
         free(valStr);
     }
@@ -90,7 +216,6 @@ static char* ooc_abstractMapToString(const void* self) {
     char* result = ooc_stringBufferToCString(buf);
     ooc_destroy(buf);
     ooc_destroy(it);
-    ooc_destroy(keySet);
     return result;
 }
 
@@ -107,19 +232,19 @@ static bool ooc_abstractMapEquals(const void* self, const void* other) {
     if (selfSize != ooc_mapSize((void*)other)) {
         return false;
     }
-    void* keySet = ooc_mapKeySet((void*)self);
-    if (!keySet) {
+    void* it = ooc_mapGetIterator((void*)self);
+    if (!it) {
         return selfSize == 0;
     }
     bool equal = true;
-    void* it = ooc_iterableGetIterator(keySet);
     while (ooc_iteratorHasNext(it)) {
-        void* key = ooc_iteratorNext(it);
+        void* entry = ooc_iteratorNext(it);
+        void* key = ooc_hashMapEntryGetKey(entry);
         if (!ooc_mapContainsKey((void*)other, key)) {
             equal = false;
             break;
         }
-        void* selfVal = ooc_mapGet((void*)self, key);
+        void* selfVal = ooc_hashMapEntryGetValue(entry);
         void* otherVal = ooc_mapGet((void*)other, key);
         if (!ooc_equals(selfVal, otherVal)) {
             equal = false;
@@ -127,7 +252,6 @@ static bool ooc_abstractMapEquals(const void* self, const void* other) {
         }
     }
     ooc_destroy(it);
-    ooc_destroy(keySet);
     return equal;
 }
 
@@ -136,19 +260,16 @@ static size_t ooc_abstractMapHash(const void* self) {
         return 0;
     }
     OOC_TYPE_CHECK(self, ooc_abstractMapClass(), 0);
-    size_t hash = 0;
-    void* keySet = ooc_mapKeySet((void*)self);
-    if (!keySet) {
+    void* it = ooc_mapGetIterator((void*)self);
+    if (!it) {
         return 0;
     }
-    void* it = ooc_iterableGetIterator(keySet);
+    size_t hash = 0;
     while (ooc_iteratorHasNext(it)) {
-        void* key = ooc_iteratorNext(it);
-        void* val = ooc_mapGet((void*)self, key);
-        hash += ooc_hashCode(key) ^ ooc_hashCode(val);
+        void* entry = ooc_iteratorNext(it);
+        hash += ooc_hashCode(ooc_hashMapEntryGetKey(entry)) ^ ooc_hashCode(ooc_hashMapEntryGetValue(entry));
     }
     ooc_destroy(it);
-    ooc_destroy(keySet);
     return hash;
 }
 
@@ -164,9 +285,14 @@ static void* ooc_abstractMapClassInit(void) {
                     OOC_METHOD_HASH, ooc_abstractMapHash,
                     OOC_METHOD_COMPARE, NULL,
                     OOC_ABSTRACT_MAP_METHOD_IS_EMPTY, ooc_abstractMapIsEmpty,
+                    OOC_ABSTRACT_MAP_METHOD_CONTAINS_KEY, ooc_abstractMapContainsKey,
                     OOC_ABSTRACT_MAP_METHOD_CONTAINS_VALUE, ooc_abstractMapContainsValue,
+                    OOC_ABSTRACT_MAP_METHOD_GET, ooc_abstractMapGet,
                     OOC_ABSTRACT_MAP_METHOD_PUT, ooc_abstractMapPut,
                     OOC_ABSTRACT_MAP_METHOD_REMOVE, ooc_abstractMapRemove,
+                    OOC_ABSTRACT_MAP_METHOD_CLEAR, ooc_abstractMapClear,
+                    OOC_ABSTRACT_MAP_METHOD_KEY_SET, ooc_abstractMapKeySet,
+                    OOC_ABSTRACT_MAP_METHOD_VALUES, ooc_abstractMapValues,
                     0) != OOC_ERROR_NONE) {
         ooc_classDestroy(&AbstractMapClassInstance);
         return NULL;

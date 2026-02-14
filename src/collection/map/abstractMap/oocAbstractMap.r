@@ -26,5 +26,6 @@ struct OOC_AbstractMapClass {
 #define OOC_ABSTRACT_MAP_METHOD_CLEAR          offsetof(OOC_AbstractMapClass, mapVtable.clear)
 #define OOC_ABSTRACT_MAP_METHOD_KEY_SET        offsetof(OOC_AbstractMapClass, mapVtable.keySet)
 #define OOC_ABSTRACT_MAP_METHOD_VALUES         offsetof(OOC_AbstractMapClass, mapVtable.values)
+#define OOC_ABSTRACT_MAP_METHOD_GET_ITERATOR   offsetof(OOC_AbstractMapClass, mapVtable.getIterator)
 
 #endif

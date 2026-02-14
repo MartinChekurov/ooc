@@ -20,6 +20,7 @@ struct OOC_MapVtable {
     OOC_Error (*clear)(void* self);
     void* (*keySet)(void* self);
     void* (*values)(void* self);
+    void* (*getIterator)(void* self);
 };
 
 struct OOC_MapClass {
@@ -37,5 +38,6 @@ struct OOC_MapClass {
 #define OOC_MAP_METHOD_CLEAR            offsetof(OOC_MapClass, vtable.clear)
 #define OOC_MAP_METHOD_KEY_SET          offsetof(OOC_MapClass, vtable.keySet)
 #define OOC_MAP_METHOD_VALUES           offsetof(OOC_MapClass, vtable.values)
+#define OOC_MAP_METHOD_GET_ITERATOR    offsetof(OOC_MapClass, vtable.getIterator)
 
 #endif
