@@ -12,14 +12,14 @@
 #include <string.h>
 
 void test_hash_map_create_destroy(void) {
-    void* map = ooc_new(ooc_hashMapClass(), (size_t)0);
+    void* map = ooc_new(ooc_hashMapClass(), (size_t)16);
     TEST_ASSERT_NOT_NULL(map);
     TEST_ASSERT_TRUE(ooc_isInstanceOf(map, ooc_hashMapClass()));
     ooc_destroy(map);
 }
 
 void test_hash_map_put_get_single(void) {
-    void* map = ooc_new(ooc_hashMapClass(), (size_t)0);
+    void* map = ooc_new(ooc_hashMapClass(), (size_t)16);
     void* key = ooc_new(ooc_stringClass(), "key1");
     void* val = ooc_new(ooc_stringClass(), "val1");
 
@@ -30,13 +30,11 @@ void test_hash_map_put_get_single(void) {
     TEST_ASSERT_NOT_NULL(result);
     TEST_ASSERT_TRUE(ooc_equals(result, val));
 
-    ooc_destroy(key);
-    ooc_destroy(val);
     ooc_destroy(map);
 }
 
 void test_hash_map_put_get_multiple(void) {
-    void* map = ooc_new(ooc_hashMapClass(), (size_t)0);
+    void* map = ooc_new(ooc_hashMapClass(), (size_t)16);
     void* k1 = ooc_new(ooc_stringClass(), "a");
     void* v1 = ooc_new(ooc_stringClass(), "1");
     void* k2 = ooc_new(ooc_stringClass(), "b");
@@ -53,17 +51,11 @@ void test_hash_map_put_get_multiple(void) {
     TEST_ASSERT_TRUE(ooc_equals(ooc_mapGet(map, k2), v2));
     TEST_ASSERT_TRUE(ooc_equals(ooc_mapGet(map, k3), v3));
 
-    ooc_destroy(k1);
-    ooc_destroy(v1);
-    ooc_destroy(k2);
-    ooc_destroy(v2);
-    ooc_destroy(k3);
-    ooc_destroy(v3);
     ooc_destroy(map);
 }
 
 void test_hash_map_put_overwrite(void) {
-    void* map = ooc_new(ooc_hashMapClass(), (size_t)0);
+    void* map = ooc_new(ooc_hashMapClass(), (size_t)16);
     void* key = ooc_new(ooc_stringClass(), "key");
     void* v1 = ooc_new(ooc_stringClass(), "old");
     void* v2 = ooc_new(ooc_stringClass(), "new");
@@ -74,14 +66,11 @@ void test_hash_map_put_overwrite(void) {
     TEST_ASSERT_EQUAL(1, ooc_mapSize(map));
     TEST_ASSERT_TRUE(ooc_equals(ooc_mapGet(map, key), v2));
 
-    ooc_destroy(key);
-    ooc_destroy(v1);
-    ooc_destroy(v2);
     ooc_destroy(map);
 }
 
 void test_hash_map_contains_key(void) {
-    void* map = ooc_new(ooc_hashMapClass(), (size_t)0);
+    void* map = ooc_new(ooc_hashMapClass(), (size_t)16);
     void* key = ooc_new(ooc_stringClass(), "key");
     void* val = ooc_new(ooc_stringClass(), "val");
     void* other = ooc_new(ooc_stringClass(), "other");
@@ -91,14 +80,12 @@ void test_hash_map_contains_key(void) {
     TEST_ASSERT_TRUE(ooc_mapContainsKey(map, key));
     TEST_ASSERT_FALSE(ooc_mapContainsKey(map, other));
 
-    ooc_destroy(key);
-    ooc_destroy(val);
     ooc_destroy(other);
     ooc_destroy(map);
 }
 
 void test_hash_map_contains_value(void) {
-    void* map = ooc_new(ooc_hashMapClass(), (size_t)0);
+    void* map = ooc_new(ooc_hashMapClass(), (size_t)16);
     void* key = ooc_new(ooc_stringClass(), "key");
     void* val = ooc_new(ooc_stringClass(), "val");
     void* other = ooc_new(ooc_stringClass(), "other");
@@ -108,14 +95,12 @@ void test_hash_map_contains_value(void) {
     TEST_ASSERT_TRUE(ooc_mapContainsValue(map, val));
     TEST_ASSERT_FALSE(ooc_mapContainsValue(map, other));
 
-    ooc_destroy(key);
-    ooc_destroy(val);
     ooc_destroy(other);
     ooc_destroy(map);
 }
 
 void test_hash_map_remove(void) {
-    void* map = ooc_new(ooc_hashMapClass(), (size_t)0);
+    void* map = ooc_new(ooc_hashMapClass(), (size_t)16);
     void* k1 = ooc_new(ooc_stringClass(), "a");
     void* v1 = ooc_new(ooc_stringClass(), "1");
     void* k2 = ooc_new(ooc_stringClass(), "b");
@@ -129,15 +114,11 @@ void test_hash_map_remove(void) {
     TEST_ASSERT_FALSE(ooc_mapContainsKey(map, k1));
     TEST_ASSERT_TRUE(ooc_mapContainsKey(map, k2));
 
-    ooc_destroy(k1);
-    ooc_destroy(v1);
-    ooc_destroy(k2);
-    ooc_destroy(v2);
     ooc_destroy(map);
 }
 
 void test_hash_map_size_and_empty(void) {
-    void* map = ooc_new(ooc_hashMapClass(), (size_t)0);
+    void* map = ooc_new(ooc_hashMapClass(), (size_t)16);
     TEST_ASSERT_TRUE(ooc_mapIsEmpty(map));
     TEST_ASSERT_EQUAL(0, ooc_mapSize(map));
 
@@ -147,13 +128,11 @@ void test_hash_map_size_and_empty(void) {
     TEST_ASSERT_FALSE(ooc_mapIsEmpty(map));
     TEST_ASSERT_EQUAL(1, ooc_mapSize(map));
 
-    ooc_destroy(key);
-    ooc_destroy(val);
     ooc_destroy(map);
 }
 
 void test_hash_map_clear(void) {
-    void* map = ooc_new(ooc_hashMapClass(), (size_t)0);
+    void* map = ooc_new(ooc_hashMapClass(), (size_t)16);
     void* key = ooc_new(ooc_stringClass(), "a");
     void* val = ooc_new(ooc_stringClass(), "1");
     ooc_mapPut(map, key, val);
@@ -162,13 +141,11 @@ void test_hash_map_clear(void) {
     TEST_ASSERT_EQUAL(0, ooc_mapSize(map));
     TEST_ASSERT_TRUE(ooc_mapIsEmpty(map));
 
-    ooc_destroy(key);
-    ooc_destroy(val);
     ooc_destroy(map);
 }
 
 void test_hash_map_iterator(void) {
-    void* map = ooc_new(ooc_hashMapClass(), (size_t)0);
+    void* map = ooc_new(ooc_hashMapClass(), (size_t)16);
     void* k1 = ooc_new(ooc_stringClass(), "a");
     void* v1 = ooc_new(ooc_stringClass(), "1");
     void* k2 = ooc_new(ooc_stringClass(), "b");
@@ -192,15 +169,11 @@ void test_hash_map_iterator(void) {
     TEST_ASSERT_EQUAL(2, count);
 
     ooc_destroy(it);
-    ooc_destroy(k1);
-    ooc_destroy(v1);
-    ooc_destroy(k2);
-    ooc_destroy(v2);
     ooc_destroy(map);
 }
 
 void test_hash_map_iterator_remove(void) {
-    void* map = ooc_new(ooc_hashMapClass(), (size_t)0);
+    void* map = ooc_new(ooc_hashMapClass(), (size_t)16);
     void* k1 = ooc_new(ooc_stringClass(), "a");
     void* v1 = ooc_new(ooc_stringClass(), "1");
     void* k2 = ooc_new(ooc_stringClass(), "b");
@@ -216,15 +189,11 @@ void test_hash_map_iterator_remove(void) {
 
     TEST_ASSERT_EQUAL(1, ooc_mapSize(map));
 
-    ooc_destroy(k1);
-    ooc_destroy(v1);
-    ooc_destroy(k2);
-    ooc_destroy(v2);
     ooc_destroy(map);
 }
 
 void test_hash_map_key_set(void) {
-    void* map = ooc_new(ooc_hashMapClass(), (size_t)0);
+    void* map = ooc_new(ooc_hashMapClass(), (size_t)16);
     void* k1 = ooc_new(ooc_stringClass(), "a");
     void* v1 = ooc_new(ooc_stringClass(), "1");
     void* k2 = ooc_new(ooc_stringClass(), "b");
@@ -239,16 +208,11 @@ void test_hash_map_key_set(void) {
     TEST_ASSERT_TRUE(ooc_collectionContains(keySet, k1));
     TEST_ASSERT_TRUE(ooc_collectionContains(keySet, k2));
 
-    ooc_destroy(keySet);
-    ooc_destroy(k1);
-    ooc_destroy(v1);
-    ooc_destroy(k2);
-    ooc_destroy(v2);
     ooc_destroy(map);
 }
 
 void test_hash_map_values(void) {
-    void* map = ooc_new(ooc_hashMapClass(), (size_t)0);
+    void* map = ooc_new(ooc_hashMapClass(), (size_t)16);
     void* k1 = ooc_new(ooc_stringClass(), "a");
     void* v1 = ooc_new(ooc_stringClass(), "1");
     void* k2 = ooc_new(ooc_stringClass(), "b");
@@ -263,17 +227,12 @@ void test_hash_map_values(void) {
     TEST_ASSERT_TRUE(ooc_collectionContains(values, v1));
     TEST_ASSERT_TRUE(ooc_collectionContains(values, v2));
 
-    ooc_destroy(values);
-    ooc_destroy(k1);
-    ooc_destroy(v1);
-    ooc_destroy(k2);
-    ooc_destroy(v2);
     ooc_destroy(map);
 }
 
 void test_hash_map_equals(void) {
-    void* map1 = ooc_new(ooc_hashMapClass(), (size_t)0);
-    void* map2 = ooc_new(ooc_hashMapClass(), (size_t)0);
+    void* map1 = ooc_new(ooc_hashMapClass(), (size_t)16);
+    void* map2 = ooc_new(ooc_hashMapClass(), (size_t)16);
 
     void* k1a = ooc_new(ooc_stringClass(), "a");
     void* v1a = ooc_new(ooc_stringClass(), "1");
@@ -290,19 +249,13 @@ void test_hash_map_equals(void) {
     ooc_mapPut(map2, k2, v2);
     TEST_ASSERT_FALSE(ooc_equals(map1, map2));
 
-    ooc_destroy(k1a);
-    ooc_destroy(v1a);
-    ooc_destroy(k1b);
-    ooc_destroy(v1b);
-    ooc_destroy(k2);
-    ooc_destroy(v2);
     ooc_destroy(map1);
     ooc_destroy(map2);
 }
 
 void test_hash_map_hash_code(void) {
-    void* map1 = ooc_new(ooc_hashMapClass(), (size_t)0);
-    void* map2 = ooc_new(ooc_hashMapClass(), (size_t)0);
+    void* map1 = ooc_new(ooc_hashMapClass(), (size_t)16);
+    void* map2 = ooc_new(ooc_hashMapClass(), (size_t)16);
 
     void* k1a = ooc_new(ooc_stringClass(), "a");
     void* v1a = ooc_new(ooc_stringClass(), "1");
@@ -314,16 +267,12 @@ void test_hash_map_hash_code(void) {
 
     TEST_ASSERT_EQUAL(ooc_hashCode(map1), ooc_hashCode(map2));
 
-    ooc_destroy(k1a);
-    ooc_destroy(v1a);
-    ooc_destroy(k1b);
-    ooc_destroy(v1b);
     ooc_destroy(map1);
     ooc_destroy(map2);
 }
 
 void test_hash_map_to_string(void) {
-    void* map = ooc_new(ooc_hashMapClass(), (size_t)0);
+    void* map = ooc_new(ooc_hashMapClass(), (size_t)16);
     void* key = ooc_new(ooc_stringClass(), "a");
     void* val = ooc_new(ooc_stringClass(), "1");
     ooc_mapPut(map, key, val);
@@ -336,13 +285,11 @@ void test_hash_map_to_string(void) {
     TEST_ASSERT_NOT_NULL(strstr(str, "="));
     free(str);
 
-    ooc_destroy(key);
-    ooc_destroy(val);
     ooc_destroy(map);
 }
 
 void test_hash_map_clone(void) {
-    void* map = ooc_new(ooc_hashMapClass(), (size_t)0);
+    void* map = ooc_new(ooc_hashMapClass(), (size_t)16);
     void* k1 = ooc_new(ooc_stringClass(), "a");
     void* v1 = ooc_new(ooc_stringClass(), "1");
     void* k2 = ooc_new(ooc_stringClass(), "b");
@@ -363,12 +310,6 @@ void test_hash_map_clone(void) {
     TEST_ASSERT_EQUAL(2, ooc_mapSize(map));
     TEST_ASSERT_EQUAL(3, ooc_mapSize(clone));
 
-    ooc_destroy(k1);
-    ooc_destroy(v1);
-    ooc_destroy(k2);
-    ooc_destroy(v2);
-    ooc_destroy(k3);
-    ooc_destroy(v3);
     ooc_destroy(map);
     ooc_destroy(clone);
 }
