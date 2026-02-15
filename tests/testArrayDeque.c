@@ -102,7 +102,9 @@ void test_array_deque_remove_by_value(void) {
 
     TEST_ASSERT_EQUAL(OOC_ERROR_NONE, ooc_collectionRemove(deque, s1));
     TEST_ASSERT_EQUAL(1, ooc_collectionSize(deque));
-    TEST_ASSERT_FALSE(ooc_collectionContains(deque, s1));
+    void* removedProbe = ooc_new(ooc_stringClass(), "a");
+    TEST_ASSERT_FALSE(ooc_collectionContains(deque, removedProbe));
+    ooc_destroy(removedProbe);
 
     ooc_destroy(deque);
 }

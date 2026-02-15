@@ -11,14 +11,14 @@
 #include <string.h>
 
 void test_hash_set_create_destroy(void) {
-    void* set = ooc_new(ooc_hashSetClass(), (size_t)0);
+    void* set = ooc_new(ooc_hashSetClass(), (size_t)16);
     TEST_ASSERT_NOT_NULL(set);
     TEST_ASSERT_TRUE(ooc_isInstanceOf(set, ooc_hashSetClass()));
     ooc_destroy(set);
 }
 
 void test_hash_set_add_and_size(void) {
-    void* set = ooc_new(ooc_hashSetClass(), (size_t)0);
+    void* set = ooc_new(ooc_hashSetClass(), (size_t)16);
     void* s1 = ooc_new(ooc_stringClass(), "a");
     void* s2 = ooc_new(ooc_stringClass(), "b");
     void* s3 = ooc_new(ooc_stringClass(), "c");
@@ -28,14 +28,11 @@ void test_hash_set_add_and_size(void) {
     ooc_collectionAdd(set, s3);
     TEST_ASSERT_EQUAL(3, ooc_collectionSize(set));
 
-    ooc_destroy(s1);
-    ooc_destroy(s2);
-    ooc_destroy(s3);
     ooc_destroy(set);
 }
 
 void test_hash_set_no_duplicates(void) {
-    void* set = ooc_new(ooc_hashSetClass(), (size_t)0);
+    void* set = ooc_new(ooc_hashSetClass(), (size_t)16);
     void* s1 = ooc_new(ooc_stringClass(), "a");
     void* s2 = ooc_new(ooc_stringClass(), "a");
 
@@ -43,13 +40,11 @@ void test_hash_set_no_duplicates(void) {
     ooc_collectionAdd(set, s2);
     TEST_ASSERT_EQUAL(1, ooc_collectionSize(set));
 
-    ooc_destroy(s1);
-    ooc_destroy(s2);
     ooc_destroy(set);
 }
 
 void test_hash_set_contains(void) {
-    void* set = ooc_new(ooc_hashSetClass(), (size_t)0);
+    void* set = ooc_new(ooc_hashSetClass(), (size_t)16);
     void* s1 = ooc_new(ooc_stringClass(), "a");
     void* s2 = ooc_new(ooc_stringClass(), "b");
 
@@ -60,13 +55,11 @@ void test_hash_set_contains(void) {
     TEST_ASSERT_FALSE(ooc_collectionContains(set, s2));
 
     ooc_destroy(lookup);
-    ooc_destroy(s1);
-    ooc_destroy(s2);
     ooc_destroy(set);
 }
 
 void test_hash_set_remove(void) {
-    void* set = ooc_new(ooc_hashSetClass(), (size_t)0);
+    void* set = ooc_new(ooc_hashSetClass(), (size_t)16);
     void* s1 = ooc_new(ooc_stringClass(), "a");
     void* s2 = ooc_new(ooc_stringClass(), "b");
 
@@ -76,16 +69,16 @@ void test_hash_set_remove(void) {
 
     TEST_ASSERT_EQUAL(OOC_ERROR_NONE, ooc_collectionRemove(set, s1));
     TEST_ASSERT_EQUAL(1, ooc_collectionSize(set));
-    TEST_ASSERT_FALSE(ooc_collectionContains(set, s1));
+    void* removedProbe = ooc_new(ooc_stringClass(), "a");
+    TEST_ASSERT_FALSE(ooc_collectionContains(set, removedProbe));
+    ooc_destroy(removedProbe);
     TEST_ASSERT_TRUE(ooc_collectionContains(set, s2));
 
-    ooc_destroy(s1);
-    ooc_destroy(s2);
     ooc_destroy(set);
 }
 
 void test_hash_set_clear(void) {
-    void* set = ooc_new(ooc_hashSetClass(), (size_t)0);
+    void* set = ooc_new(ooc_hashSetClass(), (size_t)16);
     void* s1 = ooc_new(ooc_stringClass(), "a");
     ooc_collectionAdd(set, s1);
 
@@ -93,12 +86,11 @@ void test_hash_set_clear(void) {
     TEST_ASSERT_EQUAL(0, ooc_collectionSize(set));
     TEST_ASSERT_TRUE(ooc_collectionIsEmpty(set));
 
-    ooc_destroy(s1);
     ooc_destroy(set);
 }
 
 void test_hash_set_iterator(void) {
-    void* set = ooc_new(ooc_hashSetClass(), (size_t)0);
+    void* set = ooc_new(ooc_hashSetClass(), (size_t)16);
     void* s1 = ooc_new(ooc_stringClass(), "a");
     void* s2 = ooc_new(ooc_stringClass(), "b");
     ooc_collectionAdd(set, s1);
@@ -118,13 +110,11 @@ void test_hash_set_iterator(void) {
     TEST_ASSERT_EQUAL(2, count);
 
     ooc_destroy(it);
-    ooc_destroy(s1);
-    ooc_destroy(s2);
     ooc_destroy(set);
 }
 
 void test_hash_set_iterator_remove(void) {
-    void* set = ooc_new(ooc_hashSetClass(), (size_t)0);
+    void* set = ooc_new(ooc_hashSetClass(), (size_t)16);
     void* s1 = ooc_new(ooc_stringClass(), "a");
     void* s2 = ooc_new(ooc_stringClass(), "b");
     ooc_collectionAdd(set, s1);
@@ -137,37 +127,34 @@ void test_hash_set_iterator_remove(void) {
 
     TEST_ASSERT_EQUAL(1, ooc_collectionSize(set));
 
-    ooc_destroy(s1);
-    ooc_destroy(s2);
     ooc_destroy(set);
 }
 
 void test_hash_set_contains_all(void) {
-    void* set1 = ooc_new(ooc_hashSetClass(), (size_t)0);
-    void* set2 = ooc_new(ooc_hashSetClass(), (size_t)0);
+    void* set1 = ooc_new(ooc_hashSetClass(), (size_t)16);
+    void* set2 = ooc_new(ooc_hashSetClass(), (size_t)16);
     void* s1 = ooc_new(ooc_stringClass(), "a");
     void* s2 = ooc_new(ooc_stringClass(), "b");
     void* s3 = ooc_new(ooc_stringClass(), "c");
+    void* t1 = ooc_new(ooc_stringClass(), "a");
+    void* t2 = ooc_new(ooc_stringClass(), "b");
 
     ooc_collectionAdd(set1, s1);
     ooc_collectionAdd(set1, s2);
     ooc_collectionAdd(set1, s3);
-    ooc_collectionAdd(set2, s1);
-    ooc_collectionAdd(set2, s2);
+    ooc_collectionAdd(set2, t1);
+    ooc_collectionAdd(set2, t2);
 
     TEST_ASSERT_TRUE(ooc_collectionContainsAll(set1, set2));
     TEST_ASSERT_FALSE(ooc_collectionContainsAll(set2, set1));
 
-    ooc_destroy(s1);
-    ooc_destroy(s2);
-    ooc_destroy(s3);
     ooc_destroy(set1);
     ooc_destroy(set2);
 }
 
 void test_hash_set_equals(void) {
-    void* set1 = ooc_new(ooc_hashSetClass(), (size_t)0);
-    void* set2 = ooc_new(ooc_hashSetClass(), (size_t)0);
+    void* set1 = ooc_new(ooc_hashSetClass(), (size_t)16);
+    void* set2 = ooc_new(ooc_hashSetClass(), (size_t)16);
     void* s1a = ooc_new(ooc_stringClass(), "a");
     void* s2a = ooc_new(ooc_stringClass(), "b");
     void* s1b = ooc_new(ooc_stringClass(), "b");
@@ -181,17 +168,13 @@ void test_hash_set_equals(void) {
 
     TEST_ASSERT_TRUE(ooc_equals(set1, set2));
 
-    ooc_destroy(s1a);
-    ooc_destroy(s2a);
-    ooc_destroy(s1b);
-    ooc_destroy(s2b);
     ooc_destroy(set1);
     ooc_destroy(set2);
 }
 
 void test_hash_set_hash_code(void) {
-    void* set1 = ooc_new(ooc_hashSetClass(), (size_t)0);
-    void* set2 = ooc_new(ooc_hashSetClass(), (size_t)0);
+    void* set1 = ooc_new(ooc_hashSetClass(), (size_t)16);
+    void* set2 = ooc_new(ooc_hashSetClass(), (size_t)16);
     void* s1a = ooc_new(ooc_stringClass(), "a");
     void* s2a = ooc_new(ooc_stringClass(), "b");
     void* s1b = ooc_new(ooc_stringClass(), "a");
@@ -204,16 +187,12 @@ void test_hash_set_hash_code(void) {
 
     TEST_ASSERT_EQUAL(ooc_hashCode(set1), ooc_hashCode(set2));
 
-    ooc_destroy(s1a);
-    ooc_destroy(s2a);
-    ooc_destroy(s1b);
-    ooc_destroy(s2b);
     ooc_destroy(set1);
     ooc_destroy(set2);
 }
 
 void test_hash_set_to_string(void) {
-    void* set = ooc_new(ooc_hashSetClass(), (size_t)0);
+    void* set = ooc_new(ooc_hashSetClass(), (size_t)16);
     void* s1 = ooc_new(ooc_stringClass(), "a");
     ooc_collectionAdd(set, s1);
 
@@ -223,12 +202,11 @@ void test_hash_set_to_string(void) {
     TEST_ASSERT_TRUE(str[strlen(str) - 1] == '}');
     free(str);
 
-    ooc_destroy(s1);
     ooc_destroy(set);
 }
 
 void test_hash_set_clone(void) {
-    void* set = ooc_new(ooc_hashSetClass(), (size_t)0);
+    void* set = ooc_new(ooc_hashSetClass(), (size_t)16);
     void* s1 = ooc_new(ooc_stringClass(), "a");
     void* s2 = ooc_new(ooc_stringClass(), "b");
     ooc_collectionAdd(set, s1);
@@ -245,15 +223,12 @@ void test_hash_set_clone(void) {
     TEST_ASSERT_EQUAL(2, ooc_collectionSize(set));
     TEST_ASSERT_EQUAL(3, ooc_collectionSize(clone));
 
-    ooc_destroy(s1);
-    ooc_destroy(s2);
-    ooc_destroy(s3);
     ooc_destroy(set);
     ooc_destroy(clone);
 }
 
 void test_hash_set_empty(void) {
-    void* set = ooc_new(ooc_hashSetClass(), (size_t)0);
+    void* set = ooc_new(ooc_hashSetClass(), (size_t)16);
     TEST_ASSERT_TRUE(ooc_collectionIsEmpty(set));
     TEST_ASSERT_EQUAL(0, ooc_collectionSize(set));
 

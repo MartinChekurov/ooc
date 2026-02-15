@@ -339,7 +339,9 @@ void test_linked_list_remove_by_value(void) {
 
     TEST_ASSERT_EQUAL(OOC_ERROR_NONE, ooc_collectionRemove(list, s1));
     TEST_ASSERT_EQUAL(1, ooc_collectionSize(list));
-    TEST_ASSERT_FALSE(ooc_collectionContains(list, s1));
+    void* removedProbe = ooc_new(ooc_stringClass(), "a");
+    TEST_ASSERT_FALSE(ooc_collectionContains(list, removedProbe));
+    ooc_destroy(removedProbe);
 
     ooc_destroy(list);
 }

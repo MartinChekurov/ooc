@@ -398,7 +398,9 @@ void test_array_list_remove_by_value(void) {
 
     TEST_ASSERT_EQUAL(OOC_ERROR_NONE, ooc_collectionRemove(list, s2));
     TEST_ASSERT_EQUAL(2, ooc_collectionSize(list));
-    TEST_ASSERT_FALSE(ooc_collectionContains(list, s2));
+    void* removedProbe = ooc_new(ooc_stringClass(), "b");
+    TEST_ASSERT_FALSE(ooc_collectionContains(list, removedProbe));
+    ooc_destroy(removedProbe);
 
     ooc_destroy(list);
 }
