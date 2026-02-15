@@ -12,7 +12,6 @@ typedef struct OOC_ListIteratorClass OOC_ListIteratorClass;
 
 
 struct OOC_ListIteratorVtable {
-    OOC_IteratorVtable iteratorVtable;
     bool      (*hasPrevious)(void* self);
     void*     (*previous)(void* self);
     int       (*nextIndex)(void* self);

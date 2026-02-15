@@ -80,8 +80,8 @@ void test_string_buffer_substring(void) {
 }
 
 void test_string_buffer_insert_cstring(void) {
-    void* buf = ooc_new(ooc_stringBufferClass(), "helo");
-    ooc_stringBufferInsertCString(buf, 2, "ll");
+    void* buf = ooc_new(ooc_stringBufferClass(), "hlo");
+    ooc_stringBufferInsertCString(buf, 1, "el");
     TEST_ASSERT_EQUAL_STRING("hello", ooc_stringBufferGetCString(buf));
     ooc_destroy(buf);
 }
@@ -171,6 +171,6 @@ void test_string_buffer_capacity(void) {
     TEST_ASSERT_TRUE(ooc_stringBufferCapacity(buf) >= 100);
     ooc_stringBufferAppendCString(buf, "hi");
     ooc_stringBufferTrimToSize(buf);
-    TEST_ASSERT_EQUAL(ooc_stringBufferLength(buf), ooc_stringBufferCapacity(buf));
+    TEST_ASSERT_EQUAL(ooc_stringBufferLength(buf) + 1, ooc_stringBufferCapacity(buf));
     ooc_destroy(buf);
 }

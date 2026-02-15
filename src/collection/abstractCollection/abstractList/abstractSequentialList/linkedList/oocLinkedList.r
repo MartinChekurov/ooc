@@ -3,6 +3,7 @@
 
 #include "oocAbstractSequentialList.r"
 #include "oocDeque.r"
+#include "oocQueue.r"
 #include "oocError.h"
 #include <stddef.h>
 
@@ -25,12 +26,13 @@ struct OOC_LinkedList {
 
 struct OOC_LinkedListClass {
     OOC_AbstractSequentialListClass class;
+    OOC_QueueVtable queueVtable;
     OOC_DequeVtable dequeVtable;
 };
 
-#define OOC_LINKED_LIST_METHOD_OFFER        offsetof(OOC_LinkedListClass, dequeVtable.queueVtable.offer)
-#define OOC_LINKED_LIST_METHOD_POLL         offsetof(OOC_LinkedListClass, dequeVtable.queueVtable.poll)
-#define OOC_LINKED_LIST_METHOD_PEEK         offsetof(OOC_LinkedListClass, dequeVtable.queueVtable.peek)
+#define OOC_LINKED_LIST_METHOD_OFFER        offsetof(OOC_LinkedListClass, queueVtable.offer)
+#define OOC_LINKED_LIST_METHOD_POLL         offsetof(OOC_LinkedListClass, queueVtable.poll)
+#define OOC_LINKED_LIST_METHOD_PEEK         offsetof(OOC_LinkedListClass, queueVtable.peek)
 #define OOC_LINKED_LIST_METHOD_ADD_FIRST    offsetof(OOC_LinkedListClass, dequeVtable.addFirst)
 #define OOC_LINKED_LIST_METHOD_ADD_LAST     offsetof(OOC_LinkedListClass, dequeVtable.addLast)
 #define OOC_LINKED_LIST_METHOD_REMOVE_FIRST offsetof(OOC_LinkedListClass, dequeVtable.removeFirst)

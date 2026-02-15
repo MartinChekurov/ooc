@@ -8,6 +8,7 @@
 #include "oocDeque.h"
 #include "oocError.h"
 #include "oocObject.h"
+#include "oocQueue.h"
 
 #include <limits.h>
 #include <stddef.h>
@@ -44,7 +45,7 @@ struct OOC_ArrayDequeIteratorClass {
 
 static OOC_ArrayDequeClass* ArrayDequeClass;
 static OOC_ArrayDequeClass ArrayDequeClassInstance;
-static OOC_InterfaceImpl ArrayDequeInterfaces[1];
+static OOC_InterfaceImpl ArrayDequeInterfaces[2];
 
 static OOC_ArrayDequeIteratorClass* ArrayDequeIteratorClass;
 static OOC_ArrayDequeIteratorClass ArrayDequeIteratorClassInstance;
@@ -401,8 +402,10 @@ static void* ooc_arrayDequeClassInit(void) {
         return NULL;
     }
 
-    ArrayDequeInterfaces[0].interfaceClass = ooc_dequeClass();
-    ArrayDequeInterfaces[0].vtableOffset = offsetof(OOC_ArrayDequeClass, dequeVtable);
+    ArrayDequeInterfaces[0].interfaceClass = ooc_queueClass();
+    ArrayDequeInterfaces[0].vtableOffset = offsetof(OOC_ArrayDequeClass, queueVtable);
+    ArrayDequeInterfaces[1].interfaceClass = ooc_dequeClass();
+    ArrayDequeInterfaces[1].vtableOffset = offsetof(OOC_ArrayDequeClass, dequeVtable);
 
     if (ooc_classSetInterface(&ArrayDequeClassInstance,
                               ArrayDequeInterfaces,

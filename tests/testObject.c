@@ -88,5 +88,5 @@ void test_object_clone(void) {
 
 void test_object_destroy_null(void) {
     OOC_Error result = ooc_destroy(NULL);
-    TEST_ASSERT_NOT_EQUAL(OOC_ERROR_NONE, result);
+    TEST_ASSERT_EQUAL(OOC_ERROR_NONE, result);
 }

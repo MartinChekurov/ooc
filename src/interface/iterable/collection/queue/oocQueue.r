@@ -9,7 +9,6 @@ typedef struct OOC_QueueVtable OOC_QueueVtable;
 typedef struct OOC_QueueClass OOC_QueueClass;
 
 struct OOC_QueueVtable {
-    OOC_CollectionVtable collectionVtable;
     OOC_Error (*offer)(void* self, void* element);
     void* (*poll)(void* self);
     void* (*peek)(void* self);

@@ -10,7 +10,6 @@ typedef struct OOC_CollectionClass OOC_CollectionClass;
 typedef struct OOC_CollectionVtable OOC_CollectionVtable;
 
 struct OOC_CollectionVtable {
-    OOC_IterableVtable iterableVtable;
     size_t (*size)(void* self);
     bool (*isEmpty)(void* self);
     bool (*contains)(void* self, void* element);

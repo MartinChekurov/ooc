@@ -13,7 +13,7 @@
 static OOC_AbstractCollectionClass* AbstractCollectionClass;
 static OOC_AbstractCollectionClass AbstractCollectionClassInstance;
 
-static OOC_InterfaceImpl AbstractCollectiionInterfaces[1];
+static OOC_InterfaceImpl AbstractCollectiionInterfaces[2];
 
 static char* ooc_abstractCollectionToString(const void* self) {
     OOC_TYPE_CHECK(self, ooc_abstractCollectionClass(), NULL);
@@ -196,11 +196,13 @@ static void* ooc_abstractCollectionClassInit(void) {
         ooc_classDestroy(&AbstractCollectionClassInstance);
         return NULL;
     }
-    AbstractCollectiionInterfaces[0].interfaceClass = ooc_collectionClass();
-    AbstractCollectiionInterfaces[0].vtableOffset = offsetof(OOC_AbstractCollectionClass, collectionVtable);
+    AbstractCollectiionInterfaces[0].interfaceClass = ooc_iterableClass();
+    AbstractCollectiionInterfaces[0].vtableOffset = offsetof(OOC_AbstractCollectionClass, iterableVtable);
+    AbstractCollectiionInterfaces[1].interfaceClass = ooc_collectionClass();
+    AbstractCollectiionInterfaces[1].vtableOffset = offsetof(OOC_AbstractCollectionClass, collectionVtable);
     if (ooc_classSetInterface(&AbstractCollectionClassInstance,
                         AbstractCollectiionInterfaces,
-                        1) != OOC_ERROR_NONE) {
+                        2) != OOC_ERROR_NONE) {
         ooc_classDestroy(&AbstractCollectionClassInstance);
         return NULL;
     }

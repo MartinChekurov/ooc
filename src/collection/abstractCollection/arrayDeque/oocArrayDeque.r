@@ -2,6 +2,7 @@
 #define OOC_ARRAY_DEQUE_R_
 
 #include "oocAbstractCollection.r"
+#include "oocQueue.r"
 #include "oocDeque.r"
 #include <stddef.h>
 
@@ -19,12 +20,13 @@ struct OOC_ArrayDeque {
 
 struct OOC_ArrayDequeClass {
     OOC_AbstractCollectionClass class;
+    OOC_QueueVtable queueVtable;
     OOC_DequeVtable dequeVtable;
 };
 
-#define OOC_ARRAY_DEQUE_METHOD_OFFER        offsetof(OOC_ArrayDequeClass, dequeVtable.queueVtable.offer)
-#define OOC_ARRAY_DEQUE_METHOD_POLL         offsetof(OOC_ArrayDequeClass, dequeVtable.queueVtable.poll)
-#define OOC_ARRAY_DEQUE_METHOD_PEEK         offsetof(OOC_ArrayDequeClass, dequeVtable.queueVtable.peek)
+#define OOC_ARRAY_DEQUE_METHOD_OFFER        offsetof(OOC_ArrayDequeClass, queueVtable.offer)
+#define OOC_ARRAY_DEQUE_METHOD_POLL         offsetof(OOC_ArrayDequeClass, queueVtable.poll)
+#define OOC_ARRAY_DEQUE_METHOD_PEEK         offsetof(OOC_ArrayDequeClass, queueVtable.peek)
 #define OOC_ARRAY_DEQUE_METHOD_ADD_FIRST    offsetof(OOC_ArrayDequeClass, dequeVtable.addFirst)
 #define OOC_ARRAY_DEQUE_METHOD_ADD_LAST     offsetof(OOC_ArrayDequeClass, dequeVtable.addLast)
 #define OOC_ARRAY_DEQUE_METHOD_REMOVE_FIRST offsetof(OOC_ArrayDequeClass, dequeVtable.removeFirst)

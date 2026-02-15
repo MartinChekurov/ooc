@@ -133,7 +133,12 @@ static void* ooc_objectClone(const void* self) {
     if (!size) {
         return NULL;
     }
-    return malloc(size);
+    OOC_Object* obj = malloc(size);
+    if (!obj) {
+        return NULL;
+    }
+    obj->class = (void*)ooc_classOf(self);
+    return obj;
 }
 
 static void* ooc_objectClassInit(void) {
@@ -340,8 +345,7 @@ static const OOC_InterfaceImpl* ooc_classFindInterfaceImpl(const OOC_Class* clas
     for (const OOC_Class* c = class; c; c = c->super) {
         for (int i = 0; i < c->interfaceCount; i++) {
             const OOC_InterfaceImpl* impl = &c->interfaceImpls[i];
-            if (impl->interfaceClass == targetIface ||
-                ooc_ifaceExtends(impl->interfaceClass, targetIface)) {
+            if (impl->interfaceClass == targetIface) {
                 return impl;
             }
         }

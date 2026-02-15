@@ -57,6 +57,15 @@ static bool ooc_stringEquals(const void* self, const void* other) {
     return ooc_equals(str1->stringBuffer, str2->stringBuffer);
 }
 
+static size_t ooc_stringHash(const void* self) {
+    if (!self) {
+        return 0;
+    }
+    OOC_TYPE_CHECK(self, ooc_stringClass(), 0);
+    const OOC_String* string = self;
+    return ooc_hashCode(string->stringBuffer);
+}
+
 static int ooc_stringCompare(const void* self, const void* other) {
     if (!self || !other) {
         return -1;
@@ -87,6 +96,7 @@ static void* ooc_stringClassInit(void) {
                     OOC_METHOD_DTOR, ooc_stringDestructor,
                     OOC_METHOD_TO_STRING, ooc_stringToString,
                     OOC_METHOD_EQUALS, ooc_stringEquals,
+                    OOC_METHOD_HASH, ooc_stringHash,
                     OOC_METHOD_COMPARE, ooc_stringCompare,
                     OOC_METHOD_CLONE, ooc_stringClone,
                     0) != OOC_ERROR_NONE) {

@@ -73,6 +73,19 @@ static bool ooc_stringBufferEquals(const void* self, const void* other) {
     return strcmp(str1->data, str2->data) == 0;
 }
 
+static size_t ooc_stringBufferHash(const void* self) {
+    if (!self) {
+        return 0;
+    }
+    OOC_TYPE_CHECK(self, ooc_stringBufferClass(), 0);
+    const OOC_StringBuffer* buffer = self;
+    size_t hash = 0;
+    for (size_t i = 0; i < buffer->length; i++) {
+        hash = hash * 31 + (unsigned char)buffer->data[i];
+    }
+    return hash;
+}
+
 static int ooc_stringBufferCompare(const void* self, const void* other) {
     if (!self || !other) {
         return -1;
@@ -104,6 +117,7 @@ static void* ooc_stringBufferClassInit(void) {
                     OOC_METHOD_DTOR, ooc_stringBufferDestructor,
                     OOC_METHOD_TO_STRING, ooc_stringBufferToString_,
                     OOC_METHOD_EQUALS, ooc_stringBufferEquals,
+                    OOC_METHOD_HASH, ooc_stringBufferHash,
                     OOC_METHOD_COMPARE, ooc_stringBufferCompare,
                     OOC_METHOD_CLONE, ooc_stringBufferClone,
                     0) != OOC_ERROR_NONE) {

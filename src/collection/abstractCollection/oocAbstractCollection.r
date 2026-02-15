@@ -2,6 +2,7 @@
 #define OOC_ABSTRACT_COLLECTION_R_
 
 #include "oocObject.r"
+#include "oocIterable.r"
 #include "oocCollection.r"
 
 typedef struct OOC_AbstractCollection OOC_AbstractCollection;
@@ -13,10 +14,11 @@ struct OOC_AbstractCollection {
 
 struct OOC_AbstractCollectionClass {
     OOC_Class class;
+    OOC_IterableVtable iterableVtable;
     OOC_CollectionVtable collectionVtable;
 };
 
-#define OOC_ABSTRACT_COLLECTION_METHOD_ITERATOR      offsetof(OOC_AbstractCollectionClass, collectionVtable.iterableVtable.iterator)
+#define OOC_ABSTRACT_COLLECTION_METHOD_ITERATOR      offsetof(OOC_AbstractCollectionClass, iterableVtable.iterator)
 #define OOC_ABSTRACT_COLLECTION_METHOD_SIZE          offsetof(OOC_AbstractCollectionClass, collectionVtable.size)
 #define OOC_ABSTRACT_COLLECTION_METHOD_IS_EMPTY      offsetof(OOC_AbstractCollectionClass, collectionVtable.isEmpty)
 #define OOC_ABSTRACT_COLLECTION_METHOD_CONTAINS      offsetof(OOC_AbstractCollectionClass, collectionVtable.contains)

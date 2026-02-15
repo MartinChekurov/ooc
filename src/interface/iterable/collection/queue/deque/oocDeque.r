@@ -8,7 +8,6 @@ typedef struct OOC_DequeVtable OOC_DequeVtable;
 typedef struct OOC_DequeClass OOC_DequeClass;
 
 struct OOC_DequeVtable {
-    OOC_QueueVtable queueVtable;
     OOC_Error (*addFirst)(void* self, void* element);
     OOC_Error (*addLast)(void* self, void* element);
     void* (*removeFirst)(void* self);

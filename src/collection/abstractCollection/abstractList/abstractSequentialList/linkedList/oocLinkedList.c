@@ -11,6 +11,7 @@
 #include "oocAbstractIterator.r"
 #include "oocAbstractListIterator.h"
 #include "oocAbstractListIterator.r"
+#include "oocQueue.h"
 
 #include <stdlib.h>
 #include <stddef.h>
@@ -36,7 +37,7 @@ static OOC_LinkedListClass LinkedListClassInstance;
 static OOC_LinkedListIteratorClass* LinkedListIteratorClass;
 static OOC_LinkedListIteratorClass LinkedListIteratorClassInstance;
 
-static OOC_InterfaceImpl LinkedListInterfaces[1];
+static OOC_InterfaceImpl LinkedListInterfaces[2];
 
 static OOC_Error ooc_linkedListNodeDestroy(OOC_LinkedListNode* node) {
     if (!node) {
@@ -611,12 +612,14 @@ static void* ooc_linkedListClassInit(void) {
         return NULL;
     }
 
-    LinkedListInterfaces[0].interfaceClass = ooc_dequeClass();
-    LinkedListInterfaces[0].vtableOffset = offsetof(OOC_LinkedListClass, dequeVtable);
+    LinkedListInterfaces[0].interfaceClass = ooc_queueClass();
+    LinkedListInterfaces[0].vtableOffset = offsetof(OOC_LinkedListClass, queueVtable);
+    LinkedListInterfaces[1].interfaceClass = ooc_dequeClass();
+    LinkedListInterfaces[1].vtableOffset = offsetof(OOC_LinkedListClass, dequeVtable);
 
     if (ooc_classSetInterface(&LinkedListClassInstance,
                               LinkedListInterfaces,
-                              1) != OOC_ERROR_NONE) {
+                                     2) != OOC_ERROR_NONE) {
         ooc_classDestroy(&LinkedListClassInstance);
         return NULL;
     }

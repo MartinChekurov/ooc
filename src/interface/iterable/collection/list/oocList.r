@@ -9,7 +9,6 @@ typedef struct OOC_ListVtable OOC_ListVtable;
 typedef struct OOC_ListClass OOC_ListClass;
 
 struct OOC_ListVtable {
-    OOC_CollectionVtable collectionVtable;
     void* (*getAt)(void* self, size_t index);
     OOC_Error (*setAt)(void* self, size_t index, void* element);
     OOC_Error (*insertAt)(void* self, size_t index, void* element);
