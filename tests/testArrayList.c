@@ -112,12 +112,15 @@ void test_array_list_contains_all(void) {
     void* s1 = ooc_new(ooc_stringClass(), "a");
     void* s2 = ooc_new(ooc_stringClass(), "b");
     void* s3 = ooc_new(ooc_stringClass(), "c");
+    void* t1 = ooc_new(ooc_stringClass(), "a");
+    void* t2 = ooc_new(ooc_stringClass(), "b");
 
     ooc_collectionAdd(list1, s1);
     ooc_collectionAdd(list1, s2);
     ooc_collectionAdd(list1, s3);
-    ooc_collectionAdd(list2, s1);
-    ooc_collectionAdd(list2, s2);
+    ooc_collectionAdd(list2, t1);
+    ooc_collectionAdd(list2, t2);
+
 
     TEST_ASSERT_TRUE(ooc_collectionContainsAll(list1, list2));
     TEST_ASSERT_FALSE(ooc_collectionContainsAll(list2, list1));

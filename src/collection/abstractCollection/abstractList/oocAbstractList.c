@@ -1,4 +1,5 @@
 #include "oocAbstractList.h"
+#include "oocAbstractIterator.h"
 #include "oocAbstractList.r"
 
 #include "oocAbstractCollection.h"
@@ -133,7 +134,7 @@ static void* ooc_abstractListIteratorNext_(void* self) {
     if (!ooc_abstractListIteratorHasNext_(iterator)) {
         return NULL;
     }
-    ooc_abstractListIteratorNext(iterator);
+    ooc_abstractIteratorNext(iterator);
     void* value = ooc_listGetAt(iterator->list, iterator->nextIndex);
     iterator->lastReturnedIndex = iterator->nextIndex;
     iterator->nextIndex++;
@@ -145,7 +146,7 @@ static OOC_Error ooc_abstractListIteratorRemove_(void* self) {
         return OOC_ERROR_INVALID_ARGUMENT;
     }
     OOC_AbstractListIterator_* iterator = self;
-    OOC_Error error = ooc_abstractListIteratorRemove(iterator);
+    OOC_Error error = ooc_abstractIteratorRemove(iterator);
     if (error != OOC_ERROR_NONE) {
         return error;
     }
