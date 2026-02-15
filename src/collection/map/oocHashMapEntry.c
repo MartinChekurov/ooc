@@ -57,7 +57,7 @@ static OOC_Error ooc_hashMapEntryCtor(void* self, va_list* args) {
     }
     OOC_TYPE_CHECK(self, ooc_hashMapEntryClass(), OOC_ERROR_INVALID_OBJECT);
     OOC_HashMapEntry* entry = self;
-    OOC_Error error = ooc_superCtor(entry, args);
+    OOC_Error error = ooc_superCtor(ooc_hashMapEntryClass(), entry, args);
     if (error != OOC_ERROR_NONE) {
         return error;
     }
@@ -80,7 +80,7 @@ static OOC_Error ooc_hashMapEntryDtor(void* self) {
         ooc_destroy(entry->value);
         entry->value = NULL;
     }
-    return ooc_superDtor(entry);
+    return ooc_superDtor(ooc_hashMapEntryClass(), entry);
 }
 
 static void* ooc_hashMapEntryClassInit(void) {

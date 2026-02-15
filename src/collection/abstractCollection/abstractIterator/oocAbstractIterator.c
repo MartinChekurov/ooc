@@ -43,7 +43,7 @@ static OOC_Error ooc_abstractIteratorCtor(void* self, va_list* args) {
     }
     OOC_TYPE_CHECK(self, ooc_abstractIteratorClass(), OOC_ERROR_INVALID_OBJECT);
     OOC_AbstractIterator* iterator = self;
-    OOC_Error error = ooc_superCtor(iterator, args);
+    OOC_Error error = ooc_superCtor(ooc_abstractIteratorClass(), iterator, args);
     if (error != OOC_ERROR_NONE) {
         return error;
     }

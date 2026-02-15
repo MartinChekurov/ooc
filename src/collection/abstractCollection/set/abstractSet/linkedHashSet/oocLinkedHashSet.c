@@ -15,7 +15,7 @@ static OOC_Error ooc_linkedHashSetCtor(void* self, va_list* args) {
     }
     OOC_TYPE_CHECK(self, ooc_linkedHashSetClass(), OOC_ERROR_INVALID_OBJECT);
     OOC_LinkedHashSet* set = self;
-    OOC_Error error = ooc_superCtor(set, args);
+    OOC_Error error = ooc_superCtor(ooc_linkedHashSetClass(), set, args);
     if (error != OOC_ERROR_NONE) {
         return error;
     }

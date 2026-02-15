@@ -37,6 +37,8 @@ static OOC_InterfaceImpl AbstractListInterfaces[1];
 static OOC_AbstractListIteratorClass_* AbstractListIteratorClass_;
 static OOC_AbstractListIteratorClass_ AbstractListIteratorClassInstance_;
 
+static void* ooc_abstractListIteratorClass_(void);
+
 size_t ooc_abstractListSize(void* self) {
     return ooc_collectionSize(self);
 }
@@ -238,7 +240,7 @@ static OOC_Error ooc_abstractListIteratorCtor(void* self, va_list* args) {
         return OOC_ERROR_INVALID_ARGUMENT;
     }
     OOC_AbstractListIterator_* iterator = self;
-    OOC_Error error = ooc_superCtor(iterator, args);
+    OOC_Error error = ooc_superCtor(ooc_abstractListIteratorClass_(), iterator, args);
     if (error != OOC_ERROR_NONE) {
         return error;
     }
@@ -258,8 +260,8 @@ static OOC_Error ooc_abstractListIteratorCtor(void* self, va_list* args) {
 static void* ooc_abstractListIteratorClassInit_(void) {
     if (ooc_classNew(&AbstractListIteratorClassInstance_,
                      "AbstractListIterator",
-                     sizeof(OOC_AbstractListIterator),
-                     sizeof(OOC_AbstractListIteratorClass),
+                     sizeof(OOC_AbstractListIterator_),
+                     sizeof(OOC_AbstractListIteratorClass_),
                      ooc_abstractListIteratorClass(),
                      OOC_MODIFIER_FINAL,
                      OOC_METHOD_CTOR, ooc_abstractListIteratorCtor,

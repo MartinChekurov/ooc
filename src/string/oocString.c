@@ -16,7 +16,7 @@ static OOC_Error ooc_stringConstructor(void* self, va_list* args) {
         return OOC_ERROR_INVALID_ARGUMENT;
     }
     OOC_TYPE_CHECK(self, ooc_stringClass(), OOC_ERROR_INVALID_OBJECT);
-    OOC_Error error = ooc_superCtor(self, args);
+    OOC_Error error = ooc_superCtor(ooc_stringClass(), self, args);
     if (error != OOC_ERROR_NONE) {
         return error;
     }
@@ -39,7 +39,7 @@ static OOC_Error ooc_stringDestructor(void* self) {
     if (error != OOC_ERROR_NONE) {
         return error;
     }
-    return ooc_superDtor(self);
+    return ooc_superDtor(ooc_stringClass(), self);
 }
 
 static char* ooc_stringToString(const void* self) {

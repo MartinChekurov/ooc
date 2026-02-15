@@ -50,6 +50,8 @@ static OOC_InterfaceImpl ArrayDequeInterfaces[2];
 static OOC_ArrayDequeIteratorClass* ArrayDequeIteratorClass;
 static OOC_ArrayDequeIteratorClass ArrayDequeIteratorClassInstance;
 
+static void* ooc_arrayDequeIteratorClass(void);
+
 static OOC_Error ooc_arrayDequeEnsureCapacity(OOC_ArrayDeque* deque, size_t minCapacity) {
     if (!deque) {
         return OOC_ERROR_INVALID_ARGUMENT;
@@ -143,7 +145,7 @@ static OOC_Error ooc_arrayDequeIteratorCtor(void* self, va_list* args) {
         return OOC_ERROR_INVALID_ARGUMENT;
     }
     OOC_ArrayDequeIterator* iterator = self;
-    OOC_Error error = ooc_superCtor(iterator, args);
+    OOC_Error error = ooc_superCtor(ooc_arrayDequeIteratorClass(), iterator, args);
     if (error != OOC_ERROR_NONE) {
         return error;
     }
@@ -336,7 +338,7 @@ static OOC_Error ooc_arrayDequeCtor(void* self, va_list* args) {
     }
     OOC_TYPE_CHECK(self, ooc_arrayDequeClass(), OOC_ERROR_INVALID_OBJECT);
     OOC_ArrayDeque* deque = self;
-    OOC_Error error = ooc_superCtor(deque, args);
+    OOC_Error error = ooc_superCtor(ooc_arrayDequeClass(), deque, args);
     if (error != OOC_ERROR_NONE) {
         return error;
     }
@@ -371,7 +373,7 @@ static OOC_Error ooc_arrayDequeDtor(void* self) {
     deque->size = 0;
     deque->head = 0;
     deque->tail = 0;
-    return ooc_superDtor(self);
+    return ooc_superDtor(ooc_arrayDequeClass(), self);
 }
 
 static void* ooc_arrayDequeClassInit(void) {

@@ -186,7 +186,7 @@ static OOC_Error ooc_linkedHashMapIteratorCtor(void* self, va_list* args) {
     }
     OOC_TYPE_CHECK(self, ooc_linkedHashMapIteratorClass(), OOC_ERROR_INVALID_OBJECT);
     OOC_LinkedHashMapIterator* iterator = self;
-    OOC_Error error = ooc_superCtor(iterator, args);
+    OOC_Error error = ooc_superCtor(ooc_linkedHashMapIteratorClass(), iterator, args);
     if (error != OOC_ERROR_NONE) {
         return error;
     }
@@ -210,7 +210,7 @@ static OOC_Error ooc_linkedHashMapIteratorDtor(void* self) {
     OOC_LinkedHashMapIterator* iterator = self;
     ooc_destroy(iterator->listIterator);
     iterator->listIterator = NULL;
-    return ooc_superDtor(self);
+    return ooc_superDtor(ooc_linkedHashMapIteratorClass(), self);
 }
 
 static void* ooc_linkedHashMapIteratorClassInit(void) {
@@ -252,7 +252,7 @@ static OOC_Error ooc_linkedHashMapCtor(void* self, va_list* args) {
     }
     OOC_TYPE_CHECK(self, ooc_linkedHashMapClass(), OOC_ERROR_INVALID_OBJECT);
     OOC_LinkedHashMap* map = self;
-    OOC_Error error = ooc_superCtor(map, args);
+    OOC_Error error = ooc_superCtor(ooc_linkedHashMapClass(), map, args);
     if (error != OOC_ERROR_NONE) {
         return error;
     }
@@ -271,7 +271,7 @@ static OOC_Error ooc_linkedHashMapDtor(void* self) {
     OOC_LinkedHashMap* map = self;
     ooc_destroy(map->insertionOrder);
     map->insertionOrder = NULL;
-    return ooc_superDtor(map);
+    return ooc_superDtor(ooc_linkedHashMapClass(), map);
 }
 
 static void* ooc_linkedHashMapClassInit(void) {

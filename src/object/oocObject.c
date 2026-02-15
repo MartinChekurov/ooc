@@ -410,36 +410,32 @@ const void* ooc_classGetInterfaceVtable(const void* class, const void* interface
     return ((char*)c + impl->vtableOffset);
 }
 
-static const void* ooc_super(const void* self) {
-    return ooc_classSuper(ooc_classOf(self));
+OOC_Error ooc_superCtor(const void* class, void* self, va_list* args) {
+    return ooc_classCtor(ooc_classSuper(class), self, args);
 }
 
-OOC_Error ooc_superCtor(void* self, va_list* args) {
-    return ooc_classCtor(ooc_super(self), self, args);
+OOC_Error ooc_superDtor(const void* class, void* self) {
+    return ooc_classDtor(ooc_classSuper(class), self);
 }
 
-OOC_Error ooc_superDtor(void* self) {
-    return ooc_classDtor(ooc_super(self), self);
+char* ooc_superToString(const void* class, const void* self) {
+    return ooc_classToString(ooc_classSuper(class), self);
 }
 
-char* ooc_superToString(const void* self) {
-    return ooc_classToString(ooc_super(self), self);
+bool ooc_superEquals(const void* class, const void* self, const void* other) {
+    return ooc_classEquals(ooc_classSuper(class), self, other);
 }
 
-bool ooc_superEquals(const void* self, const void* other) {
-    return ooc_classEquals(ooc_super(self), self, other);
+size_t ooc_superHashCode(const void* class, const void* self) {
+    return ooc_classHashCode(ooc_classSuper(class), self);
 }
 
-size_t ooc_superHashCode(const void* self) {
-    return ooc_classHashCode(ooc_super(self), self);
+int ooc_superCompare(const void* class, const void* self, const void* other) {
+    return ooc_classCompare(ooc_classSuper(class), self, other);
 }
 
-int ooc_superCompare(const void* self, const void* other) {
-    return ooc_classCompare(ooc_super(self), self, other);
-}
-
-void* ooc_superClone(const void* self) {
-    return ooc_classClone(ooc_super(self), self);
+void* ooc_superClone(const void* class, const void* self) {
+    return ooc_classClone(ooc_classSuper(class), self);
 }
 
 void* ooc_new(void* class, ...) {

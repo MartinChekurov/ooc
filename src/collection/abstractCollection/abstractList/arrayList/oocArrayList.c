@@ -214,7 +214,7 @@ static OOC_Error ooc_arrayListCtor(void* self, va_list* args) {
     }
     OOC_TYPE_CHECK(self, ooc_arrayListClass(), OOC_ERROR_INVALID_OBJECT);
     OOC_ArrayList* list = self;
-    OOC_Error error = ooc_superCtor(list, args);
+    OOC_Error error = ooc_superCtor(ooc_arrayListClass(), list, args);
     if (error != OOC_ERROR_NONE) {
         return error;
     }
@@ -244,7 +244,7 @@ static OOC_Error ooc_arrayListDtor(void* self) {
     list->elements = NULL;
     list->size = 0;
     list->capacity = 0;
-    return ooc_superDtor(self);
+    return ooc_superDtor(ooc_arrayListClass(), self);
 }
 
 static void* ooc_arrayListClassInit(void) {

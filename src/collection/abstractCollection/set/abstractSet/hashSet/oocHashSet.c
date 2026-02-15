@@ -73,7 +73,7 @@ static OOC_Error ooc_hashSetIteratorCtor(void* self, va_list* args) {
     }
     OOC_TYPE_CHECK(self, ooc_hashSetIteratorClass(), OOC_ERROR_INVALID_OBJECT);
     OOC_HashSetIterator* iterator = self;
-    OOC_Error error = ooc_superCtor(iterator, args);
+    OOC_Error error = ooc_superCtor(ooc_hashSetIteratorClass(), iterator, args);
     if (error != OOC_ERROR_NONE) {
         return error;
     }
@@ -96,7 +96,7 @@ static OOC_Error ooc_hashSetIteratorDtor(void* self) {
     OOC_HashSetIterator* iterator = self;
     ooc_destroy(iterator->mapIterator);
     iterator->mapIterator = NULL;
-    return ooc_superDtor(self);
+    return ooc_superDtor(ooc_hashSetIteratorClass(), self);
 }
 
 static void* ooc_hashSetIteratorClassInit(void) {
@@ -156,7 +156,7 @@ static OOC_Error ooc_hashSetCtor(void* self, va_list* args) {
     }
     OOC_TYPE_CHECK(self, ooc_hashSetClass(), OOC_ERROR_INVALID_OBJECT);
     OOC_HashSet* set = self;
-    OOC_Error error = ooc_superCtor(set, args);
+    OOC_Error error = ooc_superCtor(ooc_hashSetClass(), set, args);
     if (error != OOC_ERROR_NONE) {
         return error;
     }
@@ -176,7 +176,7 @@ static OOC_Error ooc_hashSetDtor(void* self) {
     OOC_HashSet* set = self;
     ooc_destroy(set->map);
     set->map = NULL;
-    return ooc_superDtor(set);
+    return ooc_superDtor(ooc_hashSetClass(), set);
 }
 
 static void* ooc_hashSetClassInit(void) {

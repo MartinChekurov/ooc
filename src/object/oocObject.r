@@ -73,13 +73,13 @@ OOC_Error   ooc_classVerifyMethods          (const void* class, size_t start, si
 OOC_Error   ooc_classOverrideMethods        (void* class, va_list* args);
 OOC_Error   ooc_classOverrideMethodsv       (void* class, ...);
 
-OOC_Error   ooc_superCtor           (void* self, va_list* args);
-OOC_Error   ooc_superDtor           (void* self);
-char*       ooc_superToString       (const void* self);
-bool        ooc_superEquals         (const void* self, const void* other);
-size_t      ooc_superHashCode       (const void* self);
-int         ooc_superCompare        (const void* self, const void* other);
-void*       ooc_superClone          (const void* self);
+OOC_Error   ooc_superCtor           (const void* class, void* self, va_list* args);
+OOC_Error   ooc_superDtor           (const void* class, void* self);
+char*       ooc_superToString       (const void* class, const void* self);
+bool        ooc_superEquals         (const void* class, const void* self, const void* other);
+size_t      ooc_superHashCode       (const void* class, const void* self);
+int         ooc_superCompare        (const void* class, const void* self, const void* other);
+void*       ooc_superClone          (const void* class, const void* self);
 
 #define OOC_METHOD(class, method)   offsetof(class, method)
 #define OOC_METHOD_CTOR             OOC_METHOD(OOC_Class, ctor)

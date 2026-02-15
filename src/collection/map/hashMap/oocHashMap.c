@@ -278,7 +278,7 @@ static OOC_Error ooc_hashMapIteratorCtor(void* self, va_list* args) {
     }
     OOC_TYPE_CHECK(self, ooc_hashMapIteratorClass(), OOC_ERROR_INVALID_OBJECT);
     OOC_HashMapIterator* iterator = self;
-    OOC_Error error = ooc_superCtor(iterator, args);
+    OOC_Error error = ooc_superCtor(ooc_hashMapIteratorClass(), iterator, args);
     if (error != OOC_ERROR_NONE) {
         return error;
     }
@@ -301,7 +301,7 @@ static OOC_Error ooc_hashMapIteratorDtor(void* self) {
     iterator->bucketsIterator = NULL;
     ooc_destroy(iterator->currentBucketIterator);
     iterator->currentBucketIterator = NULL;
-    return ooc_superDtor(self);
+    return ooc_superDtor(ooc_hashMapIteratorClass(), self);
 }
 
 static void* ooc_hashMapIteratorClassInit(void) {
@@ -343,7 +343,7 @@ static OOC_Error ooc_hashMapCtor(void* self, va_list* args) {
     }
     OOC_TYPE_CHECK(self, ooc_hashMapClass(), OOC_ERROR_INVALID_OBJECT);
     OOC_HashMap* map = self;
-    OOC_Error error = ooc_superCtor(map, args);
+    OOC_Error error = ooc_superCtor(ooc_hashMapClass(), map, args);
     if (error != OOC_ERROR_NONE) {
         return error;
     }
@@ -370,7 +370,7 @@ static OOC_Error ooc_hashMapDtor(void* self) {
     map->buckets = NULL;
     map->size = 0;
     map->loadFactor = 0;
-    return ooc_superDtor(map);
+    return ooc_superDtor(ooc_hashMapClass(), map);
 }
 
 static void* ooc_hashMapClassInit(void) {

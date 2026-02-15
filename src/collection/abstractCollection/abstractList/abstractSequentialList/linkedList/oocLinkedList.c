@@ -37,6 +37,8 @@ static OOC_LinkedListClass LinkedListClassInstance;
 static OOC_LinkedListIteratorClass* LinkedListIteratorClass;
 static OOC_LinkedListIteratorClass LinkedListIteratorClassInstance;
 
+static void* ooc_linkedListIteratorClass(void);
+
 static OOC_InterfaceImpl LinkedListInterfaces[2];
 
 static OOC_Error ooc_linkedListNodeDestroy(OOC_LinkedListNode* node) {
@@ -336,7 +338,7 @@ static OOC_Error ooc_linkedListIteratorCtor(void* self, va_list* args) {
         return OOC_ERROR_INVALID_ARGUMENT;
     }
     OOC_LinkedListIterator* iterator = self;
-    OOC_Error error = ooc_superCtor(iterator, args);
+    OOC_Error error = ooc_superCtor(ooc_linkedListIteratorClass(), iterator, args);
     if (error != OOC_ERROR_NONE) {
         return error;
     }
@@ -559,7 +561,7 @@ static OOC_Error ooc_linkedListCtor(void* self, va_list* args) {
     }
     OOC_TYPE_CHECK(self, ooc_linkedListClass(), OOC_ERROR_INVALID_OBJECT);
     OOC_LinkedList* list = self;
-    OOC_Error error = ooc_superCtor(list, args);
+    OOC_Error error = ooc_superCtor(ooc_linkedListClass(), list, args);
     if (error != OOC_ERROR_NONE) {
         return error;
     }
@@ -582,7 +584,7 @@ static OOC_Error ooc_linkedListDtor(void* self) {
     list->head = NULL;
     list->tail = NULL;
     list->size = 0;
-    return ooc_superDtor(self);
+    return ooc_superDtor(ooc_linkedListClass(), self);
 }
 
 static void* ooc_linkedListClassInit(void) {
