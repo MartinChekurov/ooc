@@ -43,7 +43,7 @@ static OOC_HashMapIteratorClass HashMapIteratorClassInstance;
 void* ooc_hashMapIteratorClass(void);
 
 static size_t ooc_hashMapHashFunction(void* key, size_t capacity) {
-    if (!key) {
+    if (!key || !capacity) {
         return 0;
     }
     size_t hash = ooc_hashCode(key);

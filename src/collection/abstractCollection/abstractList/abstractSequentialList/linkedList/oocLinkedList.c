@@ -1,4 +1,5 @@
 #include "oocLinkedList.h"
+#include "oocAbstractIterator.h"
 #include "oocCollection.h"
 
 #include "oocError.h"
@@ -169,18 +170,11 @@ static OOC_LinkedListNode* ooc_linkedListNodeAt(OOC_LinkedList* list, size_t ind
     if (!list || index >= list->size) {
         return NULL;
     }
-    if (index < (list->size >> 1)) {
-        OOC_LinkedListNode* x = list->head;
-        for (size_t i = 0; i < index; i++) {
-            x = x->next;
-        }
-        return x;
+    OOC_LinkedListNode* node = list->head;
+    for (size_t i = 0; i < index && node; i++) {
+        node = node->next;
     }
-    OOC_LinkedListNode* x = list->tail;
-    for (size_t i = list->size - 1; i > index; i++) {
-        x = x->prev;
-    }
-    return x;
+    return node;
 }
 
 static bool ooc_linkedListIteratorHasNext(void* self) {
@@ -199,7 +193,7 @@ static void* ooc_linkedListIteratorNext(void* self) {
     if (!ooc_linkedListIteratorHasNext(iterator)) {
         return NULL;
     }
-    ooc_abstractListIteratorNext(iterator);
+    ooc_abstractIteratorNext(iterator);
     iterator->lastReturned = iterator->next;
     iterator->next = iterator->next->next;
     iterator->nextIndex++;
@@ -211,7 +205,7 @@ static OOC_Error ooc_linkedListIteratorRemove(void* self) {
         return OOC_ERROR_INVALID_ARGUMENT;
     }
     OOC_LinkedListIterator* iterator = self;
-    OOC_Error error = ooc_abstractListIteratorRemove(iterator);
+    OOC_Error error = ooc_abstractIteratorRemove(iterator);
     if (error != OOC_ERROR_NONE) {
         return error;
     }
