@@ -124,6 +124,8 @@ Functions</h2></td></tr>
 <tr class="memdesc:a41042a92706d7e41eec9b69a30bd7f2f"><td class="mdescLeft">&#160;</td><td class="mdescRight">Returns a Set view of the keys contained in the map.  <br /></td></tr>
 <tr class="memitem:a2f109628628c088d8f417b2b78f51400" id="r_a2f109628628c088d8f417b2b78f51400"><td class="memItemLeft" align="right" valign="top">void *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a2f109628628c088d8f417b2b78f51400">ooc_mapValues</a> (void *self)</td></tr>
 <tr class="memdesc:a2f109628628c088d8f417b2b78f51400"><td class="mdescLeft">&#160;</td><td class="mdescRight">Returns a Collection view of the values contained in the map.  <br /></td></tr>
+<tr class="memitem:a70f8071b71b32f13c2fb9b542416281f" id="r_a70f8071b71b32f13c2fb9b542416281f"><td class="memItemLeft" align="right" valign="top">void *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a70f8071b71b32f13c2fb9b542416281f">ooc_mapGetIterator</a> (void *self)</td></tr>
+<tr class="memdesc:a70f8071b71b32f13c2fb9b542416281f"><td class="mdescLeft">&#160;</td><td class="mdescRight">Returns an iterator over the entries in the map.  <br /></td></tr>
 </table>
 <a name="details" id="details"></a><h2 id="header-details" class="groupheader">Detailed Description</h2>
 <div class="textblock"><p>Map interface for the OOC (Object-Oriented C) framework. </p>
@@ -265,6 +267,33 @@ Functions</h2></td></tr>
   </dd>
 </dl>
 <dl class="section return"><dt>Returns</dt><dd>The value to which the key is mapped, or NULL if the map contains no mapping for the key </dd></dl>
+
+</div>
+</div>
+<a id="a70f8071b71b32f13c2fb9b542416281f" name="a70f8071b71b32f13c2fb9b542416281f"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a70f8071b71b32f13c2fb9b542416281f">&#9670;&#160;</a></span>ooc_mapGetIterator()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void * ooc_mapGetIterator </td>
+          <td>(</td>
+          <td class="paramtype">void *</td>          <td class="paramname"><span class="paramname"><em>self</em></span></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Returns an iterator over the entries in the map. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">self</td><td>Map object instance </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd>Iterator object, or NULL on failure </dd></dl>
+<dl class="section note"><dt>Note</dt><dd>Each call to ooc_iteratorNext returns a HashMapEntry. Caller must destroy the iterator. </dd></dl>
 
 </div>
 </div>

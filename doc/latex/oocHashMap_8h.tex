@@ -6,141 +6,50 @@ Hash\+Map implementation for the OOC (Object-\/\+Oriented C) framework.
 
 
 {\ttfamily \#include "{}ooc\+Error.\+h"{}}\newline
+{\ttfamily \#include $<$stdbool.\+h$>$}\newline
+{\ttfamily \#include $<$stddef.\+h$>$}\newline
 \doxysubsubsection*{Functions}
 \begin{DoxyCompactItemize}
 \item 
-void \texorpdfstring{$\ast$}{*} \mbox{\hyperlink{oocHashMap_8h_accb7a452414755c0d78c466325e0bf13}{ooc\+\_\+hash\+Map\+Class}} (void)
-\begin{DoxyCompactList}\small\item\em Returns the Hash\+Map class descriptor. \end{DoxyCompactList}\item 
-void \texorpdfstring{$\ast$}{*} \mbox{\hyperlink{oocHashMap_8h_a7e0535a97813e85d558c33794a8b6004}{ooc\+\_\+hash\+Map\+Get\+Key\+Iterator}} (void \texorpdfstring{$\ast$}{*}self)
-\begin{DoxyCompactList}\small\item\em Returns an iterator over the keys contained in this Hash\+Map. \end{DoxyCompactList}\item 
-\mbox{\hyperlink{oocError_8h_a1effaed6897d01c49b4771abc4185718}{OOC\+\_\+\+Error}} \mbox{\hyperlink{oocHashMap_8h_ae154e6825ca02955f28846379d516f7d}{ooc\+\_\+hash\+Map\+Put\+Entry}} (void \texorpdfstring{$\ast$}{*}self, void \texorpdfstring{$\ast$}{*}key, void \texorpdfstring{$\ast$}{*}value)
-\begin{DoxyCompactList}\small\item\em Directly inserts or updates a key-\/value pair in the hash table. \end{DoxyCompactList}\item 
-\mbox{\hyperlink{oocError_8h_a1effaed6897d01c49b4771abc4185718}{OOC\+\_\+\+Error}} \mbox{\hyperlink{oocHashMap_8h_a2a218962fd42267733836f3d09c758b1}{ooc\+\_\+hash\+Map\+Remove\+Entry}} (void \texorpdfstring{$\ast$}{*}self, void \texorpdfstring{$\ast$}{*}key)
-\begin{DoxyCompactList}\small\item\em Directly removes a key from the hash table. \end{DoxyCompactList}\item 
-\mbox{\hyperlink{oocError_8h_a1effaed6897d01c49b4771abc4185718}{OOC\+\_\+\+Error}} \mbox{\hyperlink{oocHashMap_8h_a2f45aca11ef2d9e833b5990b1e137988}{ooc\+\_\+hash\+Map\+Clear\+Entries}} (void \texorpdfstring{$\ast$}{*}self)
-\begin{DoxyCompactList}\small\item\em Directly clears all entries from the hash table. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\Hypertarget{oocHashMap_8h_accb7a452414755c0d78c466325e0bf13}\label{oocHashMap_8h_accb7a452414755c0d78c466325e0bf13} 
+void \texorpdfstring{$\ast$}{*} {\bfseries ooc\+\_\+hash\+Map\+Class} (void)
+\item 
+\Hypertarget{oocHashMap_8h_aa001968739a8b5986ed9bcb2a4894d9d}\label{oocHashMap_8h_aa001968739a8b5986ed9bcb2a4894d9d} 
+\mbox{\hyperlink{oocError_8h_a1effaed6897d01c49b4771abc4185718}{OOC\+\_\+\+Error}} {\bfseries ooc\+\_\+hash\+Map\+Put} (void \texorpdfstring{$\ast$}{*}self, void \texorpdfstring{$\ast$}{*}key, void \texorpdfstring{$\ast$}{*}value)
+\item 
+\Hypertarget{oocHashMap_8h_a490cd36610ccc99b181cc07c3a9c6a85}\label{oocHashMap_8h_a490cd36610ccc99b181cc07c3a9c6a85} 
+size\+\_\+t {\bfseries ooc\+\_\+hash\+Map\+Size} (void \texorpdfstring{$\ast$}{*}self)
+\item 
+\Hypertarget{oocHashMap_8h_ad9f72f4c456511605e32c47185902988}\label{oocHashMap_8h_ad9f72f4c456511605e32c47185902988} 
+bool {\bfseries ooc\+\_\+hash\+Map\+Is\+Empty} (void \texorpdfstring{$\ast$}{*}self)
+\item 
+\Hypertarget{oocHashMap_8h_a33806009882cc9fad8e4187b9491eaa2}\label{oocHashMap_8h_a33806009882cc9fad8e4187b9491eaa2} 
+bool {\bfseries ooc\+\_\+hash\+Map\+Contains\+Key} (void \texorpdfstring{$\ast$}{*}self, void \texorpdfstring{$\ast$}{*}key)
+\item 
+\Hypertarget{oocHashMap_8h_aeb54e31b00de5c530adacb6536190146}\label{oocHashMap_8h_aeb54e31b00de5c530adacb6536190146} 
+bool {\bfseries ooc\+\_\+hash\+Map\+Contains\+Value} (void \texorpdfstring{$\ast$}{*}self, void \texorpdfstring{$\ast$}{*}value)
+\item 
+\Hypertarget{oocHashMap_8h_a549797405b71f62a79bb8d65ec54d28a}\label{oocHashMap_8h_a549797405b71f62a79bb8d65ec54d28a} 
+void \texorpdfstring{$\ast$}{*} {\bfseries ooc\+\_\+hash\+Map\+Get} (void \texorpdfstring{$\ast$}{*}self, void \texorpdfstring{$\ast$}{*}key)
+\item 
+\Hypertarget{oocHashMap_8h_a01263152972d082049f9407e33011817}\label{oocHashMap_8h_a01263152972d082049f9407e33011817} 
+\mbox{\hyperlink{oocError_8h_a1effaed6897d01c49b4771abc4185718}{OOC\+\_\+\+Error}} {\bfseries ooc\+\_\+hash\+Map\+Remove} (void \texorpdfstring{$\ast$}{*}self, void \texorpdfstring{$\ast$}{*}key)
+\item 
+\Hypertarget{oocHashMap_8h_a9bebd8c7d0bda2f21a89c4e0def0ae47}\label{oocHashMap_8h_a9bebd8c7d0bda2f21a89c4e0def0ae47} 
+\mbox{\hyperlink{oocError_8h_a1effaed6897d01c49b4771abc4185718}{OOC\+\_\+\+Error}} {\bfseries ooc\+\_\+hash\+Map\+Clear} (void \texorpdfstring{$\ast$}{*}self)
+\item 
+\Hypertarget{oocHashMap_8h_ac027dcb8034be5f6e7a50fd55ef47d4e}\label{oocHashMap_8h_ac027dcb8034be5f6e7a50fd55ef47d4e} 
+void \texorpdfstring{$\ast$}{*} {\bfseries ooc\+\_\+hash\+Map\+Key\+Set} (void \texorpdfstring{$\ast$}{*}self)
+\item 
+\Hypertarget{oocHashMap_8h_a4b429d329b37556b5d49b149ce7f3fc3}\label{oocHashMap_8h_a4b429d329b37556b5d49b149ce7f3fc3} 
+void \texorpdfstring{$\ast$}{*} {\bfseries ooc\+\_\+hash\+Map\+Values} (void \texorpdfstring{$\ast$}{*}self)
+\item 
+\Hypertarget{oocHashMap_8h_acdbd3d421026f4d62fc16ef202126859}\label{oocHashMap_8h_acdbd3d421026f4d62fc16ef202126859} 
+void \texorpdfstring{$\ast$}{*} {\bfseries ooc\+\_\+hash\+Map\+Get\+Iterator} (void \texorpdfstring{$\ast$}{*}self)
+\end{DoxyCompactItemize}
 
 
 \doxysubsection{Detailed Description}
 Hash\+Map implementation for the OOC (Object-\/\+Oriented C) framework. 
 
 This header defines the Hash\+Map class that implements the Map interface using a hash table with separate chaining. It makes no guarantees about the iteration order of entries. This implementation permits null keys and null values. Performance\+: O(1) average case for get, put, and remove operations. 
-
-\label{doc-func-members}
-\Hypertarget{oocHashMap_8h_doc-func-members}
-\doxysubsection{Function Documentation}
-\Hypertarget{oocHashMap_8h_accb7a452414755c0d78c466325e0bf13}\index{oocHashMap.h@{oocHashMap.h}!ooc\_hashMapClass@{ooc\_hashMapClass}}
-\index{ooc\_hashMapClass@{ooc\_hashMapClass}!oocHashMap.h@{oocHashMap.h}}
-\doxysubsubsection{\texorpdfstring{ooc\_hashMapClass()}{ooc\_hashMapClass()}}
-{\footnotesize\ttfamily \label{oocHashMap_8h_accb7a452414755c0d78c466325e0bf13} 
-void \texorpdfstring{$\ast$}{*} ooc\+\_\+hash\+Map\+Class (\begin{DoxyParamCaption}\item[{void}]{}{}\end{DoxyParamCaption})}
-
-
-
-Returns the Hash\+Map class descriptor. 
-
-\begin{DoxyReturn}{Returns}
-Pointer to the Hash\+Map class object
-\end{DoxyReturn}
-Constructor parameters\+:
-\begin{DoxyItemize}
-\item initial\+Capacity (size\+\_\+t)\+: Initial capacity for the hash table, or 0 for default (16)
-\end{DoxyItemize}
-
-Example\+: 
-\begin{DoxyCode}{0}
-\DoxyCodeLine{\textcolor{keywordtype}{void}*\ map\ =\ ooc\_new(\mbox{\hyperlink{oocHashMap_8h_accb7a452414755c0d78c466325e0bf13}{ooc\_hashMapClass}}(),\ 16);}
-
-\end{DoxyCode}
- \Hypertarget{oocHashMap_8h_a2f45aca11ef2d9e833b5990b1e137988}\index{oocHashMap.h@{oocHashMap.h}!ooc\_hashMapClearEntries@{ooc\_hashMapClearEntries}}
-\index{ooc\_hashMapClearEntries@{ooc\_hashMapClearEntries}!oocHashMap.h@{oocHashMap.h}}
-\doxysubsubsection{\texorpdfstring{ooc\_hashMapClearEntries()}{ooc\_hashMapClearEntries()}}
-{\footnotesize\ttfamily \label{oocHashMap_8h_a2f45aca11ef2d9e833b5990b1e137988} 
-\mbox{\hyperlink{oocError_8h_a1effaed6897d01c49b4771abc4185718}{OOC\+\_\+\+Error}} ooc\+\_\+hash\+Map\+Clear\+Entries (\begin{DoxyParamCaption}\item[{void \texorpdfstring{$\ast$}{*}}]{self}{}\end{DoxyParamCaption})}
-
-
-
-Directly clears all entries from the hash table. 
-
-This method bypasses the Map interface vtable. Used by subclasses.
-
-
-\begin{DoxyParams}{Parameters}
-{\em self} & Pointer to a Hash\+Map instance \\
-\hline
-\end{DoxyParams}
-\begin{DoxyReturn}{Returns}
-OOC\+\_\+\+ERROR\+\_\+\+NONE on success, appropriate error code on failure 
-\end{DoxyReturn}
-\Hypertarget{oocHashMap_8h_a7e0535a97813e85d558c33794a8b6004}\index{oocHashMap.h@{oocHashMap.h}!ooc\_hashMapGetKeyIterator@{ooc\_hashMapGetKeyIterator}}
-\index{ooc\_hashMapGetKeyIterator@{ooc\_hashMapGetKeyIterator}!oocHashMap.h@{oocHashMap.h}}
-\doxysubsubsection{\texorpdfstring{ooc\_hashMapGetKeyIterator()}{ooc\_hashMapGetKeyIterator()}}
-{\footnotesize\ttfamily \label{oocHashMap_8h_a7e0535a97813e85d558c33794a8b6004} 
-void \texorpdfstring{$\ast$}{*} ooc\+\_\+hash\+Map\+Get\+Key\+Iterator (\begin{DoxyParamCaption}\item[{void \texorpdfstring{$\ast$}{*}}]{self}{}\end{DoxyParamCaption})}
-
-
-
-Returns an iterator over the keys contained in this Hash\+Map. 
-
-The returned iterator traverses all keys currently stored in the map. No guarantees are made about the order of iteration.
-
-Ownership\+:
-\begin{DoxyItemize}
-\item The caller owns the returned iterator and is responsible for destroying it using ooc\+\_\+destroy().
-\item The map owns the keys returned by the iterator.
-\end{DoxyItemize}
-
-
-\begin{DoxyParams}{Parameters}
-{\em self} & Pointer to a Hash\+Map instance \\
-\hline
-\end{DoxyParams}
-\begin{DoxyReturn}{Returns}
-Pointer to an Iterator over the map\textquotesingle{}s keys, or NULL on error 
-\end{DoxyReturn}
-\Hypertarget{oocHashMap_8h_ae154e6825ca02955f28846379d516f7d}\index{oocHashMap.h@{oocHashMap.h}!ooc\_hashMapPutEntry@{ooc\_hashMapPutEntry}}
-\index{ooc\_hashMapPutEntry@{ooc\_hashMapPutEntry}!oocHashMap.h@{oocHashMap.h}}
-\doxysubsubsection{\texorpdfstring{ooc\_hashMapPutEntry()}{ooc\_hashMapPutEntry()}}
-{\footnotesize\ttfamily \label{oocHashMap_8h_ae154e6825ca02955f28846379d516f7d} 
-\mbox{\hyperlink{oocError_8h_a1effaed6897d01c49b4771abc4185718}{OOC\+\_\+\+Error}} ooc\+\_\+hash\+Map\+Put\+Entry (\begin{DoxyParamCaption}\item[{void \texorpdfstring{$\ast$}{*}}]{self}{, }\item[{void \texorpdfstring{$\ast$}{*}}]{key}{, }\item[{void \texorpdfstring{$\ast$}{*}}]{value}{}\end{DoxyParamCaption})}
-
-
-
-Directly inserts or updates a key-\/value pair in the hash table. 
-
-This method bypasses the Map interface vtable and directly operates on the Hash\+Map\textquotesingle{}s internal hash table. Used by subclasses (e.\+g., Linked\+Hash\+Map) to avoid infinite recursion when overriding Map.\+put.
-
-
-\begin{DoxyParams}{Parameters}
-{\em self} & Pointer to a Hash\+Map instance \\
-\hline
-{\em key} & Key to insert or update \\
-\hline
-{\em value} & Value to associate with the key \\
-\hline
-\end{DoxyParams}
-\begin{DoxyReturn}{Returns}
-OOC\+\_\+\+ERROR\+\_\+\+NONE on success, appropriate error code on failure 
-\end{DoxyReturn}
-\Hypertarget{oocHashMap_8h_a2a218962fd42267733836f3d09c758b1}\index{oocHashMap.h@{oocHashMap.h}!ooc\_hashMapRemoveEntry@{ooc\_hashMapRemoveEntry}}
-\index{ooc\_hashMapRemoveEntry@{ooc\_hashMapRemoveEntry}!oocHashMap.h@{oocHashMap.h}}
-\doxysubsubsection{\texorpdfstring{ooc\_hashMapRemoveEntry()}{ooc\_hashMapRemoveEntry()}}
-{\footnotesize\ttfamily \label{oocHashMap_8h_a2a218962fd42267733836f3d09c758b1} 
-\mbox{\hyperlink{oocError_8h_a1effaed6897d01c49b4771abc4185718}{OOC\+\_\+\+Error}} ooc\+\_\+hash\+Map\+Remove\+Entry (\begin{DoxyParamCaption}\item[{void \texorpdfstring{$\ast$}{*}}]{self}{, }\item[{void \texorpdfstring{$\ast$}{*}}]{key}{}\end{DoxyParamCaption})}
-
-
-
-Directly removes a key from the hash table. 
-
-This method bypasses the Map interface vtable. Used by subclasses.
-
-
-\begin{DoxyParams}{Parameters}
-{\em self} & Pointer to a Hash\+Map instance \\
-\hline
-{\em key} & Key to remove \\
-\hline
-\end{DoxyParams}
-\begin{DoxyReturn}{Returns}
-OOC\+\_\+\+ERROR\+\_\+\+NONE on success, OOC\+\_\+\+ERROR\+\_\+\+NOT\+\_\+\+FOUND if key not present 
-\end{DoxyReturn}

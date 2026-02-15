@@ -7,8 +7,24 @@
 \DoxyCodeLine{00011\ \textcolor{preprocessor}{\#ifndef\ OOC\_ABSTRACT\_MAP\_H\_}}
 \DoxyCodeLine{00012\ \textcolor{preprocessor}{\#define\ OOC\_ABSTRACT\_MAP\_H\_}}
 \DoxyCodeLine{00013\ }
-\DoxyCodeLine{00018\ \textcolor{keywordtype}{void}*\ \mbox{\hyperlink{oocAbstractMap_8h_acdc4528308d9e0f2b27105e77a5c3656}{ooc\_abstractMapClass}}(\textcolor{keywordtype}{void});}
-\DoxyCodeLine{00019\ }
-\DoxyCodeLine{00020\ \textcolor{preprocessor}{\#endif}}
+\DoxyCodeLine{00014\ \textcolor{preprocessor}{\#include\ "{}\mbox{\hyperlink{oocError_8h}{oocError.h}}"{}}}
+\DoxyCodeLine{00015\ \textcolor{preprocessor}{\#include\ <stdbool.h>}}
+\DoxyCodeLine{00016\ \textcolor{preprocessor}{\#include\ <stddef.h>}}
+\DoxyCodeLine{00017\ }
+\DoxyCodeLine{00022\ \textcolor{keywordtype}{void}*\ \mbox{\hyperlink{oocAbstractMap_8h_acdc4528308d9e0f2b27105e77a5c3656}{ooc\_abstractMapClass}}(\textcolor{keywordtype}{void});}
+\DoxyCodeLine{00023\ }
+\DoxyCodeLine{00024\ \textcolor{keywordtype}{size\_t}\ ooc\_abstractMapSize(\textcolor{keywordtype}{void}*\ self);}
+\DoxyCodeLine{00025\ \textcolor{keywordtype}{bool}\ ooc\_abstractMapIsEmpty(\textcolor{keywordtype}{void}*\ self);}
+\DoxyCodeLine{00026\ \textcolor{keywordtype}{bool}\ ooc\_abstractMapContainsKey(\textcolor{keywordtype}{void}*\ self,\ \textcolor{keywordtype}{void}*\ key);}
+\DoxyCodeLine{00027\ \textcolor{keywordtype}{bool}\ ooc\_abstractMapContainsValue(\textcolor{keywordtype}{void}*\ self,\ \textcolor{keywordtype}{void}*\ value);}
+\DoxyCodeLine{00028\ \textcolor{keywordtype}{void}*\ ooc\_abstractMapGet(\textcolor{keywordtype}{void}*\ self,\ \textcolor{keywordtype}{void}*\ key);}
+\DoxyCodeLine{00029\ \mbox{\hyperlink{oocError_8h_a1effaed6897d01c49b4771abc4185718}{OOC\_Error}}\ ooc\_abstractMapPut(\textcolor{keywordtype}{void}*\ self,\ \textcolor{keywordtype}{void}*\ key,\ \textcolor{keywordtype}{void}*\ value);}
+\DoxyCodeLine{00030\ \mbox{\hyperlink{oocError_8h_a1effaed6897d01c49b4771abc4185718}{OOC\_Error}}\ ooc\_abstractMapRemove(\textcolor{keywordtype}{void}*\ self,\ \textcolor{keywordtype}{void}*\ key);}
+\DoxyCodeLine{00031\ \mbox{\hyperlink{oocError_8h_a1effaed6897d01c49b4771abc4185718}{OOC\_Error}}\ ooc\_abstractMapClear(\textcolor{keywordtype}{void}*\ self);}
+\DoxyCodeLine{00032\ \textcolor{keywordtype}{void}*\ ooc\_abstractMapKeySet(\textcolor{keywordtype}{void}*\ self);}
+\DoxyCodeLine{00033\ \textcolor{keywordtype}{void}*\ ooc\_abstractMapValues(\textcolor{keywordtype}{void}*\ self);}
+\DoxyCodeLine{00034\ \textcolor{keywordtype}{void}*\ ooc\_abstractMapGetIterator(\textcolor{keywordtype}{void}*\ self);}
+\DoxyCodeLine{00035\ }
+\DoxyCodeLine{00036\ \textcolor{preprocessor}{\#endif}}
 
 \end{DoxyCode}

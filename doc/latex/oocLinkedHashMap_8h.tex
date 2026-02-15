@@ -5,82 +5,51 @@
 Linked\+Hash\+Map implementation for the OOC (Object-\/\+Oriented C) framework.  
 
 
+{\ttfamily \#include "{}ooc\+Error.\+h"{}}\newline
+{\ttfamily \#include $<$stdbool.\+h$>$}\newline
+{\ttfamily \#include $<$stddef.\+h$>$}\newline
 \doxysubsubsection*{Functions}
 \begin{DoxyCompactItemize}
 \item 
-void \texorpdfstring{$\ast$}{*} \mbox{\hyperlink{oocLinkedHashMap_8h_ac05b1102a501d60b25c12a24886c0c88}{ooc\+\_\+linked\+Hash\+Map\+Class}} ()
-\begin{DoxyCompactList}\small\item\em Returns the Linked\+Hash\+Map class descriptor. \end{DoxyCompactList}\item 
-void \texorpdfstring{$\ast$}{*} \mbox{\hyperlink{oocLinkedHashMap_8h_a5a210cc9db429ca8891861f64a781494}{ooc\+\_\+linked\+Hash\+Map\+Get\+Key\+Iterator}} (void \texorpdfstring{$\ast$}{*}self)
-\begin{DoxyCompactList}\small\item\em Returns an iterator over the keys contained in this Linked\+Hash\+Map. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\Hypertarget{oocLinkedHashMap_8h_ac05b1102a501d60b25c12a24886c0c88}\label{oocLinkedHashMap_8h_ac05b1102a501d60b25c12a24886c0c88} 
+void \texorpdfstring{$\ast$}{*} {\bfseries ooc\+\_\+linked\+Hash\+Map\+Class} ()
+\item 
+\Hypertarget{oocLinkedHashMap_8h_aa896dc4cbf7d8ad610903b0b4247c7a4}\label{oocLinkedHashMap_8h_aa896dc4cbf7d8ad610903b0b4247c7a4} 
+size\+\_\+t {\bfseries ooc\+\_\+linked\+Hash\+Map\+Size} (void \texorpdfstring{$\ast$}{*}self)
+\item 
+\Hypertarget{oocLinkedHashMap_8h_ae04686d4e699c1bd58424b5f757a3f27}\label{oocLinkedHashMap_8h_ae04686d4e699c1bd58424b5f757a3f27} 
+bool {\bfseries ooc\+\_\+linked\+Hash\+Map\+Is\+Empty} (void \texorpdfstring{$\ast$}{*}self)
+\item 
+\Hypertarget{oocLinkedHashMap_8h_a6f53ff37c8713abdb5a76af197e7876d}\label{oocLinkedHashMap_8h_a6f53ff37c8713abdb5a76af197e7876d} 
+bool {\bfseries ooc\+\_\+linked\+Hash\+Map\+Contains\+Key} (void \texorpdfstring{$\ast$}{*}self, void \texorpdfstring{$\ast$}{*}key)
+\item 
+\Hypertarget{oocLinkedHashMap_8h_ae16b06caff62cea71cb89af6f0d16de5}\label{oocLinkedHashMap_8h_ae16b06caff62cea71cb89af6f0d16de5} 
+bool {\bfseries ooc\+\_\+linked\+Hash\+Map\+Contains\+Value} (void \texorpdfstring{$\ast$}{*}self, void \texorpdfstring{$\ast$}{*}value)
+\item 
+\Hypertarget{oocLinkedHashMap_8h_ad18da4706ded9cc5833ffc9379d85717}\label{oocLinkedHashMap_8h_ad18da4706ded9cc5833ffc9379d85717} 
+void \texorpdfstring{$\ast$}{*} {\bfseries ooc\+\_\+linked\+Hash\+Map\+Get} (void \texorpdfstring{$\ast$}{*}self, void \texorpdfstring{$\ast$}{*}key)
+\item 
+\Hypertarget{oocLinkedHashMap_8h_a71221a9ebaf49fc7c3d167597385539e}\label{oocLinkedHashMap_8h_a71221a9ebaf49fc7c3d167597385539e} 
+\mbox{\hyperlink{oocError_8h_a1effaed6897d01c49b4771abc4185718}{OOC\+\_\+\+Error}} {\bfseries ooc\+\_\+linked\+Hash\+Map\+Put} (void \texorpdfstring{$\ast$}{*}self, void \texorpdfstring{$\ast$}{*}key, void \texorpdfstring{$\ast$}{*}value)
+\item 
+\Hypertarget{oocLinkedHashMap_8h_a198e7ea833c8f2bd6150dc761b085682}\label{oocLinkedHashMap_8h_a198e7ea833c8f2bd6150dc761b085682} 
+\mbox{\hyperlink{oocError_8h_a1effaed6897d01c49b4771abc4185718}{OOC\+\_\+\+Error}} {\bfseries ooc\+\_\+linked\+Hash\+Map\+Remove} (void \texorpdfstring{$\ast$}{*}self, void \texorpdfstring{$\ast$}{*}key)
+\item 
+\Hypertarget{oocLinkedHashMap_8h_acbfb9c2136067febd839a152d63cc006}\label{oocLinkedHashMap_8h_acbfb9c2136067febd839a152d63cc006} 
+\mbox{\hyperlink{oocError_8h_a1effaed6897d01c49b4771abc4185718}{OOC\+\_\+\+Error}} {\bfseries ooc\+\_\+linked\+Hash\+Map\+Clear} (void \texorpdfstring{$\ast$}{*}self)
+\item 
+\Hypertarget{oocLinkedHashMap_8h_a9be2c94d5f6d214391f3fdedcba8a1d6}\label{oocLinkedHashMap_8h_a9be2c94d5f6d214391f3fdedcba8a1d6} 
+void \texorpdfstring{$\ast$}{*} {\bfseries ooc\+\_\+linked\+Hash\+Map\+Key\+Set} (void \texorpdfstring{$\ast$}{*}self)
+\item 
+\Hypertarget{oocLinkedHashMap_8h_add8684f36266577992b1235772436260}\label{oocLinkedHashMap_8h_add8684f36266577992b1235772436260} 
+void \texorpdfstring{$\ast$}{*} {\bfseries ooc\+\_\+linked\+Hash\+Map\+Values} (void \texorpdfstring{$\ast$}{*}self)
+\item 
+\Hypertarget{oocLinkedHashMap_8h_a070993dbcedb0afbe2dc1d20d7125c49}\label{oocLinkedHashMap_8h_a070993dbcedb0afbe2dc1d20d7125c49} 
+void \texorpdfstring{$\ast$}{*} {\bfseries ooc\+\_\+linked\+Hash\+Map\+Get\+Iterator} (void \texorpdfstring{$\ast$}{*}self)
+\end{DoxyCompactItemize}
 
 
 \doxysubsection{Detailed Description}
 Linked\+Hash\+Map implementation for the OOC (Object-\/\+Oriented C) framework. 
 
 This header defines the Linked\+Hash\+Map class that implements the Map interface using a hash table with separate chaining and a doubly-\/linked list running through all entries to maintain insertion order. This implementation permits null keys and null values. Performance\+: O(1) average case for get, put, and remove operations. Iteration order\+: Entries are returned in the order they were inserted. 
-
-\label{doc-func-members}
-\Hypertarget{oocLinkedHashMap_8h_doc-func-members}
-\doxysubsection{Function Documentation}
-\Hypertarget{oocLinkedHashMap_8h_ac05b1102a501d60b25c12a24886c0c88}\index{oocLinkedHashMap.h@{oocLinkedHashMap.h}!ooc\_linkedHashMapClass@{ooc\_linkedHashMapClass}}
-\index{ooc\_linkedHashMapClass@{ooc\_linkedHashMapClass}!oocLinkedHashMap.h@{oocLinkedHashMap.h}}
-\doxysubsubsection{\texorpdfstring{ooc\_linkedHashMapClass()}{ooc\_linkedHashMapClass()}}
-{\footnotesize\ttfamily \label{oocLinkedHashMap_8h_ac05b1102a501d60b25c12a24886c0c88} 
-void \texorpdfstring{$\ast$}{*} ooc\+\_\+linked\+Hash\+Map\+Class (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})}
-
-
-
-Returns the Linked\+Hash\+Map class descriptor. 
-
-\begin{DoxyReturn}{Returns}
-Pointer to the Linked\+Hash\+Map class object
-\end{DoxyReturn}
-Constructor parameters\+:
-\begin{DoxyItemize}
-\item initial\+Capacity (size\+\_\+t)\+: Initial capacity for the hash table, or 0 for default (16)
-\end{DoxyItemize}
-
-Example\+: 
-\begin{DoxyCode}{0}
-\DoxyCodeLine{\textcolor{keywordtype}{void}*\ map\ =\ ooc\_new(\mbox{\hyperlink{oocLinkedHashMap_8h_ac05b1102a501d60b25c12a24886c0c88}{ooc\_linkedHashMapClass}}(),\ 16);}
-
-\end{DoxyCode}
- \Hypertarget{oocLinkedHashMap_8h_a5a210cc9db429ca8891861f64a781494}\index{oocLinkedHashMap.h@{oocLinkedHashMap.h}!ooc\_linkedHashMapGetKeyIterator@{ooc\_linkedHashMapGetKeyIterator}}
-\index{ooc\_linkedHashMapGetKeyIterator@{ooc\_linkedHashMapGetKeyIterator}!oocLinkedHashMap.h@{oocLinkedHashMap.h}}
-\doxysubsubsection{\texorpdfstring{ooc\_linkedHashMapGetKeyIterator()}{ooc\_linkedHashMapGetKeyIterator()}}
-{\footnotesize\ttfamily \label{oocLinkedHashMap_8h_a5a210cc9db429ca8891861f64a781494} 
-void \texorpdfstring{$\ast$}{*} ooc\+\_\+linked\+Hash\+Map\+Get\+Key\+Iterator (\begin{DoxyParamCaption}\item[{void \texorpdfstring{$\ast$}{*}}]{self}{}\end{DoxyParamCaption})}
-
-
-
-Returns an iterator over the keys contained in this Linked\+Hash\+Map. 
-
-The returned iterator traverses the keys in the order in which they were inserted into the map.
-
-The iterator reflects the state of the map at the time of creation. Structural modification of the map during iteration (except through the iterator’s own remove operation, if supported) results in undefined behavior.
-
-Ownership\+:
-\begin{DoxyItemize}
-\item The caller owns the returned iterator and is responsible for destroying it using ooc\+\_\+destroy().
-\item The map owns the keys returned by the iterator.
-\end{DoxyItemize}
-
-
-\begin{DoxyParams}{Parameters}
-{\em self} & Pointer to a Linked\+Hash\+Map instance \\
-\hline
-\end{DoxyParams}
-\begin{DoxyReturn}{Returns}
-Pointer to an Iterator over the map’s keys in insertion order, or NULL on error
-\end{DoxyReturn}
-Example\+: 
-\begin{DoxyCode}{0}
-\DoxyCodeLine{\textcolor{keywordtype}{void}*\ it\ =\ \mbox{\hyperlink{oocLinkedHashMap_8h_a5a210cc9db429ca8891861f64a781494}{ooc\_linkedHashMapGetKeyIterator}}(map);}
-\DoxyCodeLine{\textcolor{keywordflow}{while}\ (ooc\_iteratorHasNext(it))\ \{}
-\DoxyCodeLine{\ \ \ \ \textcolor{keywordtype}{void}*\ key\ =\ ooc\_iteratorNext(it);}
-\DoxyCodeLine{\ \ \ \ \textcolor{comment}{//\ use\ key}}
-\DoxyCodeLine{\}}
-\DoxyCodeLine{ooc\_destroy(it);}
-
-\end{DoxyCode}
- 

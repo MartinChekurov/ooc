@@ -5,6 +5,7 @@ var oocMap_8h =
     [ "ooc_mapContainsKey", "oocMap_8h.html#a83844a09983fd1a6f276192da71f769a", null ],
     [ "ooc_mapContainsValue", "oocMap_8h.html#a76086f5391f9c21dddb756bc6411107e", null ],
     [ "ooc_mapGet", "oocMap_8h.html#a1497b9d81cec535c79a03e7309e6f79a", null ],
+    [ "ooc_mapGetIterator", "oocMap_8h.html#a70f8071b71b32f13c2fb9b542416281f", null ],
     [ "ooc_mapIsEmpty", "oocMap_8h.html#a51440432c5bccbda3ab91e8cb522621f", null ],
     [ "ooc_mapKeySet", "oocMap_8h.html#a41042a92706d7e41eec9b69a30bd7f2f", null ],
     [ "ooc_mapPut", "oocMap_8h.html#a42fe3fff73293f5bef103e52059cb22e", null ],

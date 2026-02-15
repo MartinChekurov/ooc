@@ -23,7 +23,7 @@ static void* ooc_dequeClassInit(void) {
     return &DequeClassInstance;
 }
 
-void* ooc_queueGetIterator(void* self) {
+void* ooc_dueueGetIterator(void* self) {
     return ooc_iterableGetIterator(self);
 }
 

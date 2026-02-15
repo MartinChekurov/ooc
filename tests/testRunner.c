@@ -1,59 +1,206 @@
 #include "unity.h"
 #include "testObject.h"
 #include "testString.h"
-#include "testInterface.h"
-#include "oocError.h"
-#include "oocObject.h"
+#include "testStringBuffer.h"
+#include "testArrayList.h"
+#include "testLinkedList.h"
+#include "testHashSet.h"
+#include "testLinkedHashSet.h"
+#include "testHashMap.h"
+#include "testLinkedHashMap.h"
+#include "testArrayDeque.h"
 
 void setUp(void) {
-    // Called before each test - add any setup code here
-    // OOC_Error   ooc_classDestroy   (void* class);
-    // ooc_classDestroy(ooc_objectClass());
 }
 
 void tearDown(void) {
-    // Called after each test - add any cleanup code here
 }
 
 int main(void) {
     UNITY_BEGIN();
 
-    // Object tests
-    printf("Running Object Tests...\n");
+    /* Object tests */
     RUN_TEST(test_object_class_creation);
     RUN_TEST(test_object_creation_and_destruction);
     RUN_TEST(test_object_class_info);
     RUN_TEST(test_object_instanceof);
-    RUN_TEST(test_object_equality);
+    RUN_TEST(test_object_equals);
     RUN_TEST(test_object_hash_code);
     RUN_TEST(test_object_to_string);
     RUN_TEST(test_object_clone);
+    RUN_TEST(test_object_destroy_null);
 
-    // Interface tests
-    printf("\nRunning Interface Tests...\n");
-    RUN_TEST(test_interface_class_creation);
-    RUN_TEST(test_interface_instantiation);
-    RUN_TEST(test_interface_constructor);
-    RUN_TEST(test_interface_implementation);
-    RUN_TEST(test_interface_multiple_implementations);
-    RUN_TEST(test_interface_inheritance);
-    RUN_TEST(test_interface_binding);
-    RUN_TEST(test_interface_polymorphism);
-
-    // String tests
-    printf("\nRunning String Tests...\n");
-    RUN_TEST(test_string_class_creation);
-    RUN_TEST(test_string_from_int);
-    RUN_TEST(test_string_from_bool);
+    /* String tests */
+    RUN_TEST(test_string_create_destroy);
     RUN_TEST(test_string_length);
     RUN_TEST(test_string_char_at);
+    RUN_TEST(test_string_is_empty);
     RUN_TEST(test_string_substring);
     RUN_TEST(test_string_concat);
     RUN_TEST(test_string_starts_with);
     RUN_TEST(test_string_ends_with);
-    RUN_TEST(test_string_index_of);
-    RUN_TEST(test_string_is_empty);
-    RUN_TEST(test_string_buffer_operations);
+    RUN_TEST(test_string_index_of_char);
+    RUN_TEST(test_string_last_index_of_char);
+    RUN_TEST(test_string_index_of_string);
+    RUN_TEST(test_string_replace_char);
+    RUN_TEST(test_string_to_lower_upper);
+    RUN_TEST(test_string_trim);
+    RUN_TEST(test_string_contains);
+    RUN_TEST(test_string_to_cstring);
+    RUN_TEST(test_string_equals_and_hash);
+    RUN_TEST(test_string_clone);
+    RUN_TEST(test_string_static_from_int);
+    RUN_TEST(test_string_static_from_bool);
+    RUN_TEST(test_string_static_length);
+    RUN_TEST(test_string_static_char_at);
+    RUN_TEST(test_string_static_substring);
+    RUN_TEST(test_string_static_concat);
+    RUN_TEST(test_string_static_index_of);
+
+    /* StringBuffer tests */
+    RUN_TEST(test_string_buffer_create_destroy);
+    RUN_TEST(test_string_buffer_length_and_empty);
+    RUN_TEST(test_string_buffer_append_cstring);
+    RUN_TEST(test_string_buffer_append_char);
+    RUN_TEST(test_string_buffer_append_int);
+    RUN_TEST(test_string_buffer_append_bool);
+    RUN_TEST(test_string_buffer_char_at);
+    RUN_TEST(test_string_buffer_set_char_at);
+    RUN_TEST(test_string_buffer_substring);
+    RUN_TEST(test_string_buffer_insert_cstring);
+    RUN_TEST(test_string_buffer_delete);
+    RUN_TEST(test_string_buffer_delete_char_at);
+    RUN_TEST(test_string_buffer_replace_cstring);
+    RUN_TEST(test_string_buffer_index_of);
+    RUN_TEST(test_string_buffer_starts_ends_contains);
+    RUN_TEST(test_string_buffer_to_cstring);
+    RUN_TEST(test_string_buffer_clear);
+    RUN_TEST(test_string_buffer_reverse);
+    RUN_TEST(test_string_buffer_trim);
+    RUN_TEST(test_string_buffer_case);
+    RUN_TEST(test_string_buffer_capacity);
+
+    /* ArrayList tests */
+    RUN_TEST(test_array_list_create_destroy);
+    RUN_TEST(test_array_list_add_and_size);
+    RUN_TEST(test_array_list_get_at);
+    RUN_TEST(test_array_list_set_at);
+    RUN_TEST(test_array_list_insert_at);
+    RUN_TEST(test_array_list_remove_at);
+    RUN_TEST(test_array_list_contains);
+    RUN_TEST(test_array_list_contains_all);
+    RUN_TEST(test_array_list_index_of);
+    RUN_TEST(test_array_list_last_index_of);
+    RUN_TEST(test_array_list_clear);
+    RUN_TEST(test_array_list_iterator);
+    RUN_TEST(test_array_list_iterator_remove);
+    RUN_TEST(test_array_list_list_iterator);
+    RUN_TEST(test_array_list_list_iterator_at);
+    RUN_TEST(test_array_list_equals);
+    RUN_TEST(test_array_list_hash_code);
+    RUN_TEST(test_array_list_to_string);
+    RUN_TEST(test_array_list_clone);
+    RUN_TEST(test_array_list_capacity);
+    RUN_TEST(test_array_list_empty_list);
+    RUN_TEST(test_array_list_interface_dispatch);
+    RUN_TEST(test_array_list_remove_by_value);
+
+    /* LinkedList tests */
+    RUN_TEST(test_linked_list_create_destroy);
+    RUN_TEST(test_linked_list_add_and_size);
+    RUN_TEST(test_linked_list_get_at);
+    RUN_TEST(test_linked_list_set_at);
+    RUN_TEST(test_linked_list_insert_at);
+    RUN_TEST(test_linked_list_remove_at);
+    RUN_TEST(test_linked_list_contains);
+    RUN_TEST(test_linked_list_index_of);
+    RUN_TEST(test_linked_list_last_index_of);
+    RUN_TEST(test_linked_list_clear);
+    RUN_TEST(test_linked_list_iterator);
+    RUN_TEST(test_linked_list_iterator_remove);
+    RUN_TEST(test_linked_list_list_iterator);
+    RUN_TEST(test_linked_list_equals_with_arraylist);
+    RUN_TEST(test_linked_list_queue_operations);
+    RUN_TEST(test_linked_list_deque_operations);
+    RUN_TEST(test_linked_list_stack_operations);
+    RUN_TEST(test_linked_list_empty_deque_edge_cases);
+    RUN_TEST(test_linked_list_clone);
+    RUN_TEST(test_linked_list_to_string);
+    RUN_TEST(test_linked_list_hash_code);
+    RUN_TEST(test_linked_list_remove_by_value);
+
+    /* HashSet tests */
+    RUN_TEST(test_hash_set_create_destroy);
+    RUN_TEST(test_hash_set_add_and_size);
+    RUN_TEST(test_hash_set_no_duplicates);
+    RUN_TEST(test_hash_set_contains);
+    RUN_TEST(test_hash_set_remove);
+    RUN_TEST(test_hash_set_clear);
+    RUN_TEST(test_hash_set_iterator);
+    RUN_TEST(test_hash_set_iterator_remove);
+    RUN_TEST(test_hash_set_contains_all);
+    RUN_TEST(test_hash_set_equals);
+    RUN_TEST(test_hash_set_hash_code);
+    RUN_TEST(test_hash_set_to_string);
+    RUN_TEST(test_hash_set_clone);
+    RUN_TEST(test_hash_set_empty);
+
+    /* LinkedHashSet tests */
+    RUN_TEST(test_linked_hash_set_create_destroy);
+    RUN_TEST(test_linked_hash_set_insertion_order);
+    RUN_TEST(test_linked_hash_set_no_duplicates);
+    RUN_TEST(test_linked_hash_set_remove_and_readd);
+    RUN_TEST(test_linked_hash_set_equals_with_hash_set);
+    RUN_TEST(test_linked_hash_set_clone);
+    RUN_TEST(test_linked_hash_set_to_string);
+    RUN_TEST(test_linked_hash_set_clear);
+    RUN_TEST(test_linked_hash_set_contains);
+    RUN_TEST(test_linked_hash_set_iterator_remove);
+
+    /* HashMap tests */
+    RUN_TEST(test_hash_map_create_destroy);
+    RUN_TEST(test_hash_map_put_get_single);
+    RUN_TEST(test_hash_map_put_get_multiple);
+    RUN_TEST(test_hash_map_put_overwrite);
+    RUN_TEST(test_hash_map_contains_key);
+    RUN_TEST(test_hash_map_contains_value);
+    RUN_TEST(test_hash_map_remove);
+    RUN_TEST(test_hash_map_size_and_empty);
+    RUN_TEST(test_hash_map_clear);
+    RUN_TEST(test_hash_map_iterator);
+    RUN_TEST(test_hash_map_iterator_remove);
+    RUN_TEST(test_hash_map_key_set);
+    RUN_TEST(test_hash_map_values);
+    RUN_TEST(test_hash_map_equals);
+    RUN_TEST(test_hash_map_hash_code);
+    RUN_TEST(test_hash_map_to_string);
+    RUN_TEST(test_hash_map_clone);
+
+    /* LinkedHashMap tests */
+    RUN_TEST(test_linked_hash_map_create_destroy);
+    RUN_TEST(test_linked_hash_map_insertion_order);
+    RUN_TEST(test_linked_hash_map_update_preserves_order);
+    RUN_TEST(test_linked_hash_map_remove_and_readd);
+    RUN_TEST(test_linked_hash_map_equals_with_hash_map);
+    RUN_TEST(test_linked_hash_map_clone);
+    RUN_TEST(test_linked_hash_map_clear);
+    RUN_TEST(test_linked_hash_map_key_set_order);
+    RUN_TEST(test_linked_hash_map_values_order);
+    RUN_TEST(test_linked_hash_map_iterator_remove);
+
+    /* ArrayDeque tests */
+    RUN_TEST(test_array_deque_create_destroy);
+    RUN_TEST(test_array_deque_queue_operations);
+    RUN_TEST(test_array_deque_deque_operations);
+    RUN_TEST(test_array_deque_stack_operations);
+    RUN_TEST(test_array_deque_contains);
+    RUN_TEST(test_array_deque_remove_by_value);
+    RUN_TEST(test_array_deque_size_and_clear);
+    RUN_TEST(test_array_deque_iterator);
+    RUN_TEST(test_array_deque_empty_edge_cases);
+    RUN_TEST(test_array_deque_to_string);
+    RUN_TEST(test_array_deque_clone);
+    RUN_TEST(test_array_deque_add_many);
 
     return UNITY_END();
 }

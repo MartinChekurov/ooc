@@ -32,7 +32,9 @@ void \texorpdfstring{$\ast$}{*} \mbox{\hyperlink{oocMap_8h_a1497b9d81cec535c79a0
 void \texorpdfstring{$\ast$}{*} \mbox{\hyperlink{oocMap_8h_a41042a92706d7e41eec9b69a30bd7f2f}{ooc\+\_\+map\+Key\+Set}} (void \texorpdfstring{$\ast$}{*}self)
 \begin{DoxyCompactList}\small\item\em Returns a Set view of the keys contained in the map. \end{DoxyCompactList}\item 
 void \texorpdfstring{$\ast$}{*} \mbox{\hyperlink{oocMap_8h_a2f109628628c088d8f417b2b78f51400}{ooc\+\_\+map\+Values}} (void \texorpdfstring{$\ast$}{*}self)
-\begin{DoxyCompactList}\small\item\em Returns a Collection view of the values contained in the map. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\begin{DoxyCompactList}\small\item\em Returns a Collection view of the values contained in the map. \end{DoxyCompactList}\item 
+void \texorpdfstring{$\ast$}{*} \mbox{\hyperlink{oocMap_8h_a70f8071b71b32f13c2fb9b542416281f}{ooc\+\_\+map\+Get\+Iterator}} (void \texorpdfstring{$\ast$}{*}self)
+\begin{DoxyCompactList}\small\item\em Returns an iterator over the entries in the map. \end{DoxyCompactList}\end{DoxyCompactItemize}
 
 
 \doxysubsection{Detailed Description}
@@ -134,6 +136,27 @@ Returns the value to which the specified key is mapped.
 \begin{DoxyReturn}{Returns}
 The value to which the key is mapped, or NULL if the map contains no mapping for the key 
 \end{DoxyReturn}
+\Hypertarget{oocMap_8h_a70f8071b71b32f13c2fb9b542416281f}\index{oocMap.h@{oocMap.h}!ooc\_mapGetIterator@{ooc\_mapGetIterator}}
+\index{ooc\_mapGetIterator@{ooc\_mapGetIterator}!oocMap.h@{oocMap.h}}
+\doxysubsubsection{\texorpdfstring{ooc\_mapGetIterator()}{ooc\_mapGetIterator()}}
+{\footnotesize\ttfamily \label{oocMap_8h_a70f8071b71b32f13c2fb9b542416281f} 
+void \texorpdfstring{$\ast$}{*} ooc\+\_\+map\+Get\+Iterator (\begin{DoxyParamCaption}\item[{void \texorpdfstring{$\ast$}{*}}]{self}{}\end{DoxyParamCaption})}
+
+
+
+Returns an iterator over the entries in the map. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em self} & Map object instance \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+Iterator object, or NULL on failure 
+\end{DoxyReturn}
+\begin{DoxyNote}{Note}
+Each call to ooc\+\_\+iterator\+Next returns a Hash\+Map\+Entry. Caller must destroy the iterator. 
+\end{DoxyNote}
 \Hypertarget{oocMap_8h_a51440432c5bccbda3ab91e8cb522621f}\index{oocMap.h@{oocMap.h}!ooc\_mapIsEmpty@{ooc\_mapIsEmpty}}
 \index{ooc\_mapIsEmpty@{ooc\_mapIsEmpty}!oocMap.h@{oocMap.h}}
 \doxysubsubsection{\texorpdfstring{ooc\_mapIsEmpty()}{ooc\_mapIsEmpty()}}

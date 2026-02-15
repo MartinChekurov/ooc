@@ -5,11 +5,47 @@
 Abstract base class for Map implementations in the OOC framework.  
 
 
+{\ttfamily \#include "{}ooc\+Error.\+h"{}}\newline
+{\ttfamily \#include $<$stdbool.\+h$>$}\newline
+{\ttfamily \#include $<$stddef.\+h$>$}\newline
 \doxysubsubsection*{Functions}
 \begin{DoxyCompactItemize}
 \item 
 void \texorpdfstring{$\ast$}{*} \mbox{\hyperlink{oocAbstractMap_8h_acdc4528308d9e0f2b27105e77a5c3656}{ooc\+\_\+abstract\+Map\+Class}} (void)
-\begin{DoxyCompactList}\small\item\em Returns the Abstract\+Map class descriptor. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\begin{DoxyCompactList}\small\item\em Returns the Abstract\+Map class descriptor. \end{DoxyCompactList}\item 
+\Hypertarget{oocAbstractMap_8h_ad4ee56e3f309839a3d62ecc4db1f8df9}\label{oocAbstractMap_8h_ad4ee56e3f309839a3d62ecc4db1f8df9} 
+size\+\_\+t {\bfseries ooc\+\_\+abstract\+Map\+Size} (void \texorpdfstring{$\ast$}{*}self)
+\item 
+\Hypertarget{oocAbstractMap_8h_a293be5263145c3a138995f22199741e5}\label{oocAbstractMap_8h_a293be5263145c3a138995f22199741e5} 
+bool {\bfseries ooc\+\_\+abstract\+Map\+Is\+Empty} (void \texorpdfstring{$\ast$}{*}self)
+\item 
+\Hypertarget{oocAbstractMap_8h_adb21f08b904a30c8d96459fe984133a8}\label{oocAbstractMap_8h_adb21f08b904a30c8d96459fe984133a8} 
+bool {\bfseries ooc\+\_\+abstract\+Map\+Contains\+Key} (void \texorpdfstring{$\ast$}{*}self, void \texorpdfstring{$\ast$}{*}key)
+\item 
+\Hypertarget{oocAbstractMap_8h_a9d9983de8ed3a6a4f3a31ad9f4fe72a5}\label{oocAbstractMap_8h_a9d9983de8ed3a6a4f3a31ad9f4fe72a5} 
+bool {\bfseries ooc\+\_\+abstract\+Map\+Contains\+Value} (void \texorpdfstring{$\ast$}{*}self, void \texorpdfstring{$\ast$}{*}value)
+\item 
+\Hypertarget{oocAbstractMap_8h_a07debf2c9c1cd46388648c485d3a8769}\label{oocAbstractMap_8h_a07debf2c9c1cd46388648c485d3a8769} 
+void \texorpdfstring{$\ast$}{*} {\bfseries ooc\+\_\+abstract\+Map\+Get} (void \texorpdfstring{$\ast$}{*}self, void \texorpdfstring{$\ast$}{*}key)
+\item 
+\Hypertarget{oocAbstractMap_8h_aeffedb27e698a52633e0aa7c07429f6f}\label{oocAbstractMap_8h_aeffedb27e698a52633e0aa7c07429f6f} 
+\mbox{\hyperlink{oocError_8h_a1effaed6897d01c49b4771abc4185718}{OOC\+\_\+\+Error}} {\bfseries ooc\+\_\+abstract\+Map\+Put} (void \texorpdfstring{$\ast$}{*}self, void \texorpdfstring{$\ast$}{*}key, void \texorpdfstring{$\ast$}{*}value)
+\item 
+\Hypertarget{oocAbstractMap_8h_aa6d0c5c4d44fbe6635bd6df14bda6209}\label{oocAbstractMap_8h_aa6d0c5c4d44fbe6635bd6df14bda6209} 
+\mbox{\hyperlink{oocError_8h_a1effaed6897d01c49b4771abc4185718}{OOC\+\_\+\+Error}} {\bfseries ooc\+\_\+abstract\+Map\+Remove} (void \texorpdfstring{$\ast$}{*}self, void \texorpdfstring{$\ast$}{*}key)
+\item 
+\Hypertarget{oocAbstractMap_8h_ac7e897a6c42e60fabeb053956bfba9b0}\label{oocAbstractMap_8h_ac7e897a6c42e60fabeb053956bfba9b0} 
+\mbox{\hyperlink{oocError_8h_a1effaed6897d01c49b4771abc4185718}{OOC\+\_\+\+Error}} {\bfseries ooc\+\_\+abstract\+Map\+Clear} (void \texorpdfstring{$\ast$}{*}self)
+\item 
+\Hypertarget{oocAbstractMap_8h_a09bb51e3d0c7d369b33f984e989c21f9}\label{oocAbstractMap_8h_a09bb51e3d0c7d369b33f984e989c21f9} 
+void \texorpdfstring{$\ast$}{*} {\bfseries ooc\+\_\+abstract\+Map\+Key\+Set} (void \texorpdfstring{$\ast$}{*}self)
+\item 
+\Hypertarget{oocAbstractMap_8h_aa9a9e29dff83a65e10e04295eb59bf2a}\label{oocAbstractMap_8h_aa9a9e29dff83a65e10e04295eb59bf2a} 
+void \texorpdfstring{$\ast$}{*} {\bfseries ooc\+\_\+abstract\+Map\+Values} (void \texorpdfstring{$\ast$}{*}self)
+\item 
+\Hypertarget{oocAbstractMap_8h_a13553a47ea32b45ee1a642f2b54ef97b}\label{oocAbstractMap_8h_a13553a47ea32b45ee1a642f2b54ef97b} 
+void \texorpdfstring{$\ast$}{*} {\bfseries ooc\+\_\+abstract\+Map\+Get\+Iterator} (void \texorpdfstring{$\ast$}{*}self)
+\end{DoxyCompactItemize}
 
 
 \doxysubsection{Detailed Description}

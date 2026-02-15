@@ -94,85 +94,43 @@ $(function(){initNavTree('oocLinkedHashMap_8h.html','',''); });
 
 <p>LinkedHashMap implementation for the OOC (Object-Oriented C) framework.  
 <a href="#details">More...</a></p>
-
+<div class="textblock"><code>#include &quot;<a class="el" href="oocError_8h_source.html">oocError.h</a>&quot;</code><br />
+<code>#include &lt;stdbool.h&gt;</code><br />
+<code>#include &lt;stddef.h&gt;</code><br />
+</div>
 <p><a href="oocLinkedHashMap_8h_source.html">Go to the source code of this file.</a></p>
 <table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 id="header-func-members" class="groupheader"><a id="func-members" name="func-members"></a>
 Functions</h2></td></tr>
-<tr class="memitem:ac05b1102a501d60b25c12a24886c0c88" id="r_ac05b1102a501d60b25c12a24886c0c88"><td class="memItemLeft" align="right" valign="top">void *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#ac05b1102a501d60b25c12a24886c0c88">ooc_linkedHashMapClass</a> ()</td></tr>
-<tr class="memdesc:ac05b1102a501d60b25c12a24886c0c88"><td class="mdescLeft">&#160;</td><td class="mdescRight">Returns the LinkedHashMap class descriptor.  <br /></td></tr>
-<tr class="memitem:a5a210cc9db429ca8891861f64a781494" id="r_a5a210cc9db429ca8891861f64a781494"><td class="memItemLeft" align="right" valign="top">void *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a5a210cc9db429ca8891861f64a781494">ooc_linkedHashMapGetKeyIterator</a> (void *self)</td></tr>
-<tr class="memdesc:a5a210cc9db429ca8891861f64a781494"><td class="mdescLeft">&#160;</td><td class="mdescRight">Returns an iterator over the keys contained in this LinkedHashMap.  <br /></td></tr>
+<tr class="memitem:ac05b1102a501d60b25c12a24886c0c88" id="r_ac05b1102a501d60b25c12a24886c0c88"><td class="memItemLeft" align="right" valign="top"><a id="ac05b1102a501d60b25c12a24886c0c88" name="ac05b1102a501d60b25c12a24886c0c88"></a>
+void *&#160;</td><td class="memItemRight" valign="bottom"><b>ooc_linkedHashMapClass</b> ()</td></tr>
+<tr class="memitem:aa896dc4cbf7d8ad610903b0b4247c7a4" id="r_aa896dc4cbf7d8ad610903b0b4247c7a4"><td class="memItemLeft" align="right" valign="top"><a id="aa896dc4cbf7d8ad610903b0b4247c7a4" name="aa896dc4cbf7d8ad610903b0b4247c7a4"></a>
+size_t&#160;</td><td class="memItemRight" valign="bottom"><b>ooc_linkedHashMapSize</b> (void *self)</td></tr>
+<tr class="memitem:ae04686d4e699c1bd58424b5f757a3f27" id="r_ae04686d4e699c1bd58424b5f757a3f27"><td class="memItemLeft" align="right" valign="top"><a id="ae04686d4e699c1bd58424b5f757a3f27" name="ae04686d4e699c1bd58424b5f757a3f27"></a>
+bool&#160;</td><td class="memItemRight" valign="bottom"><b>ooc_linkedHashMapIsEmpty</b> (void *self)</td></tr>
+<tr class="memitem:a6f53ff37c8713abdb5a76af197e7876d" id="r_a6f53ff37c8713abdb5a76af197e7876d"><td class="memItemLeft" align="right" valign="top"><a id="a6f53ff37c8713abdb5a76af197e7876d" name="a6f53ff37c8713abdb5a76af197e7876d"></a>
+bool&#160;</td><td class="memItemRight" valign="bottom"><b>ooc_linkedHashMapContainsKey</b> (void *self, void *key)</td></tr>
+<tr class="memitem:ae16b06caff62cea71cb89af6f0d16de5" id="r_ae16b06caff62cea71cb89af6f0d16de5"><td class="memItemLeft" align="right" valign="top"><a id="ae16b06caff62cea71cb89af6f0d16de5" name="ae16b06caff62cea71cb89af6f0d16de5"></a>
+bool&#160;</td><td class="memItemRight" valign="bottom"><b>ooc_linkedHashMapContainsValue</b> (void *self, void *value)</td></tr>
+<tr class="memitem:ad18da4706ded9cc5833ffc9379d85717" id="r_ad18da4706ded9cc5833ffc9379d85717"><td class="memItemLeft" align="right" valign="top"><a id="ad18da4706ded9cc5833ffc9379d85717" name="ad18da4706ded9cc5833ffc9379d85717"></a>
+void *&#160;</td><td class="memItemRight" valign="bottom"><b>ooc_linkedHashMapGet</b> (void *self, void *key)</td></tr>
+<tr class="memitem:a71221a9ebaf49fc7c3d167597385539e" id="r_a71221a9ebaf49fc7c3d167597385539e"><td class="memItemLeft" align="right" valign="top"><a id="a71221a9ebaf49fc7c3d167597385539e" name="a71221a9ebaf49fc7c3d167597385539e"></a>
+<a class="el" href="oocError_8h.html#a1effaed6897d01c49b4771abc4185718">OOC_Error</a>&#160;</td><td class="memItemRight" valign="bottom"><b>ooc_linkedHashMapPut</b> (void *self, void *key, void *value)</td></tr>
+<tr class="memitem:a198e7ea833c8f2bd6150dc761b085682" id="r_a198e7ea833c8f2bd6150dc761b085682"><td class="memItemLeft" align="right" valign="top"><a id="a198e7ea833c8f2bd6150dc761b085682" name="a198e7ea833c8f2bd6150dc761b085682"></a>
+<a class="el" href="oocError_8h.html#a1effaed6897d01c49b4771abc4185718">OOC_Error</a>&#160;</td><td class="memItemRight" valign="bottom"><b>ooc_linkedHashMapRemove</b> (void *self, void *key)</td></tr>
+<tr class="memitem:acbfb9c2136067febd839a152d63cc006" id="r_acbfb9c2136067febd839a152d63cc006"><td class="memItemLeft" align="right" valign="top"><a id="acbfb9c2136067febd839a152d63cc006" name="acbfb9c2136067febd839a152d63cc006"></a>
+<a class="el" href="oocError_8h.html#a1effaed6897d01c49b4771abc4185718">OOC_Error</a>&#160;</td><td class="memItemRight" valign="bottom"><b>ooc_linkedHashMapClear</b> (void *self)</td></tr>
+<tr class="memitem:a9be2c94d5f6d214391f3fdedcba8a1d6" id="r_a9be2c94d5f6d214391f3fdedcba8a1d6"><td class="memItemLeft" align="right" valign="top"><a id="a9be2c94d5f6d214391f3fdedcba8a1d6" name="a9be2c94d5f6d214391f3fdedcba8a1d6"></a>
+void *&#160;</td><td class="memItemRight" valign="bottom"><b>ooc_linkedHashMapKeySet</b> (void *self)</td></tr>
+<tr class="memitem:add8684f36266577992b1235772436260" id="r_add8684f36266577992b1235772436260"><td class="memItemLeft" align="right" valign="top"><a id="add8684f36266577992b1235772436260" name="add8684f36266577992b1235772436260"></a>
+void *&#160;</td><td class="memItemRight" valign="bottom"><b>ooc_linkedHashMapValues</b> (void *self)</td></tr>
+<tr class="memitem:a070993dbcedb0afbe2dc1d20d7125c49" id="r_a070993dbcedb0afbe2dc1d20d7125c49"><td class="memItemLeft" align="right" valign="top"><a id="a070993dbcedb0afbe2dc1d20d7125c49" name="a070993dbcedb0afbe2dc1d20d7125c49"></a>
+void *&#160;</td><td class="memItemRight" valign="bottom"><b>ooc_linkedHashMapGetIterator</b> (void *self)</td></tr>
 </table>
 <a name="details" id="details"></a><h2 id="header-details" class="groupheader">Detailed Description</h2>
 <div class="textblock"><p>LinkedHashMap implementation for the OOC (Object-Oriented C) framework. </p>
 <p>This header defines the LinkedHashMap class that implements the Map interface using a hash table with separate chaining and a doubly-linked list running through all entries to maintain insertion order. This implementation permits null keys and null values. Performance: O(1) average case for get, put, and remove operations. Iteration order: Entries are returned in the order they were inserted. </p>
-</div><a name="doc-func-members" id="doc-func-members"></a><h2 id="header-doc-func-members" class="groupheader">Function Documentation</h2>
-<a id="ac05b1102a501d60b25c12a24886c0c88" name="ac05b1102a501d60b25c12a24886c0c88"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#ac05b1102a501d60b25c12a24886c0c88">&#9670;&#160;</a></span>ooc_linkedHashMapClass()</h2>
-
-<div class="memitem">
-<div class="memproto">
-      <table class="memname">
-        <tr>
-          <td class="memname">void * ooc_linkedHashMapClass </td>
-          <td>(</td>
-          <td class="paramname"><span class="paramname"><em></em></span></td><td>)</td>
-          <td></td>
-        </tr>
-      </table>
-</div><div class="memdoc">
-
-<p>Returns the LinkedHashMap class descriptor. </p>
-<dl class="section return"><dt>Returns</dt><dd>Pointer to the LinkedHashMap class object</dd></dl>
-<p>Constructor parameters:</p><ul>
-<li>initialCapacity (size_t): Initial capacity for the hash table, or 0 for default (16)</li>
-</ul>
-<p>Example: </p><div class="fragment"><div class="line"><span class="keywordtype">void</span>* map = ooc_new(<a class="code hl_function" href="#ac05b1102a501d60b25c12a24886c0c88">ooc_linkedHashMapClass</a>(), 16);</div>
-<div class="ttc" id="aoocLinkedHashMap_8h_html_ac05b1102a501d60b25c12a24886c0c88"><div class="ttname"><a href="#ac05b1102a501d60b25c12a24886c0c88">ooc_linkedHashMapClass</a></div><div class="ttdeci">void * ooc_linkedHashMapClass()</div><div class="ttdoc">Returns the LinkedHashMap class descriptor.</div><div class="ttdef"><b>Definition</b> oocLinkedHashMap.c:291</div></div>
-</div><!-- fragment --> 
-</div>
-</div>
-<a id="a5a210cc9db429ca8891861f64a781494" name="a5a210cc9db429ca8891861f64a781494"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a5a210cc9db429ca8891861f64a781494">&#9670;&#160;</a></span>ooc_linkedHashMapGetKeyIterator()</h2>
-
-<div class="memitem">
-<div class="memproto">
-      <table class="memname">
-        <tr>
-          <td class="memname">void * ooc_linkedHashMapGetKeyIterator </td>
-          <td>(</td>
-          <td class="paramtype">void *</td>          <td class="paramname"><span class="paramname"><em>self</em></span></td><td>)</td>
-          <td></td>
-        </tr>
-      </table>
-</div><div class="memdoc">
-
-<p>Returns an iterator over the keys contained in this LinkedHashMap. </p>
-<p>The returned iterator traverses the keys in the order in which they were inserted into the map.</p>
-<p>The iterator reflects the state of the map at the time of creation. Structural modification of the map during iteration (except through the iterator’s own remove operation, if supported) results in undefined behavior.</p>
-<p>Ownership:</p><ul>
-<li>The caller owns the returned iterator and is responsible for destroying it using ooc_destroy().</li>
-<li>The map owns the keys returned by the iterator.</li>
-</ul>
-<dl class="params"><dt>Parameters</dt><dd>
-  <table class="params">
-    <tr><td class="paramname">self</td><td>Pointer to a LinkedHashMap instance </td></tr>
-  </table>
-  </dd>
-</dl>
-<dl class="section return"><dt>Returns</dt><dd>Pointer to an Iterator over the map’s keys in insertion order, or NULL on error</dd></dl>
-<p>Example: </p><div class="fragment"><div class="line"><span class="keywordtype">void</span>* it = <a class="code hl_function" href="#a5a210cc9db429ca8891861f64a781494">ooc_linkedHashMapGetKeyIterator</a>(map);</div>
-<div class="line"><span class="keywordflow">while</span> (ooc_iteratorHasNext(it)) {</div>
-<div class="line">    <span class="keywordtype">void</span>* key = ooc_iteratorNext(it);</div>
-<div class="line">    <span class="comment">// use key</span></div>
-<div class="line">}</div>
-<div class="line">ooc_destroy(it);</div>
-<div class="ttc" id="aoocLinkedHashMap_8h_html_a5a210cc9db429ca8891861f64a781494"><div class="ttname"><a href="#a5a210cc9db429ca8891861f64a781494">ooc_linkedHashMapGetKeyIterator</a></div><div class="ttdeci">void * ooc_linkedHashMapGetKeyIterator(void *self)</div><div class="ttdoc">Returns an iterator over the keys contained in this LinkedHashMap.</div><div class="ttdef"><b>Definition</b> oocLinkedHashMap.c:233</div></div>
-</div><!-- fragment --> 
-</div>
-</div>
-</div><!-- contents -->
+</div></div><!-- contents -->
 </div><!-- doc-content -->
 <div id="page-nav" class="page-nav-panel">
 <div id="page-nav-resize-handle"></div>
