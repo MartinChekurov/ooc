@@ -3,7 +3,10 @@
 #include "oocAbstractList.r"
 
 #include "oocAbstractCollection.h"
+#include "oocAbstractCollection.r"
 #include "oocCollection.h"
+#include "oocIterable.h"
+#include "oocIterator.h"
 #include "oocError.h"
 #include "oocList.h"
 #include "oocObject.h"
@@ -307,6 +310,35 @@ void* ooc_abstractListGetListIteratorAt(void* self, size_t index) {
     return ooc_new(ooc_abstractListIteratorClass_(), self, index, 0);
 }
 
+static bool ooc_abstractListEquals(const void* self, const void* other) {
+    if (!self || !other) {
+        return false;
+    }
+    if (self == other) {
+        return true;
+    }
+    OOC_TYPE_CHECK(self, ooc_abstractListClass(), false);
+    OOC_TYPE_CHECK(other, ooc_abstractListClass(), false);
+    size_t selfSize = ooc_collectionSize((void*)self);
+    if (selfSize != ooc_collectionSize((void*)other)) {
+        return false;
+    }
+    void* it1 = ooc_iterableGetIterator((void*)self);
+    void* it2 = ooc_iterableGetIterator((void*)other);
+    bool equal = true;
+    while (ooc_iteratorHasNext(it1)) {
+        void* e1 = ooc_iteratorNext(it1);
+        void* e2 = ooc_iteratorNext(it2);
+        if (!ooc_equals(e1, e2)) {
+            equal = false;
+            break;
+        }
+    }
+    ooc_destroy(it1);
+    ooc_destroy(it2);
+    return equal;
+}
+
 static void* ooc_abstractListClassInit(void) {
     if (ooc_classNew(&AbstractListClassInstance,
                      "AbstractList",
@@ -314,6 +346,7 @@ static void* ooc_abstractListClassInit(void) {
                      sizeof(OOC_AbstractListClass),
                      ooc_abstractCollectionClass(),
                      OOC_MODIFIER_ABSTRACT,
+                     OOC_METHOD_EQUALS, ooc_abstractListEquals,
                      OOC_ABSTRACT_COLLECTION_METHOD_ITERATOR, ooc_abstractListGetIterator,
                      OOC_ABSTRACT_COLLECTION_METHOD_ADD, ooc_abstractListAdd,
                      OOC_ABSTRACT_LIST_METHOD_SET_AT, ooc_abstractListSetAt,

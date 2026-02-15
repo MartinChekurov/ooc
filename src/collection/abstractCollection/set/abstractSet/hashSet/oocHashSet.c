@@ -1,25 +1,135 @@
 #include "oocHashSet.h"
 #include "oocHashSet.r"
 #include "oocHashMap.h"
+#include "oocHashMapEntry.h"
 #include "oocAbstractCollection.r"
+#include "oocAbstractIterator.h"
+#include "oocAbstractIterator.r"
 #include "oocObject.h"
 #include "oocObject.r"
 #include "oocMap.h"
+#include "oocIterator.h"
 #include "oocAbstractSet.h"
 #include <stdlib.h>
+
+typedef struct OOC_HashSetIterator OOC_HashSetIterator;
+typedef struct OOC_HashSetIteratorClass OOC_HashSetIteratorClass;
+
+struct OOC_HashSetIterator {
+    OOC_AbstractIterator object;
+    void* mapIterator;
+};
+
+struct OOC_HashSetIteratorClass {
+    OOC_AbstractIteratorClass class;
+};
 
 static OOC_HashSetClass* HashSetClass;
 static OOC_HashSetClass HashSetClassInstance;
 
-static void* DUMMY_VALUE = (void*)1;
+static OOC_HashSetIteratorClass* HashSetIteratorClass;
+static OOC_HashSetIteratorClass HashSetIteratorClassInstance;
+
+static void* DUMMY_VALUE = NULL;
+
+void* ooc_hashSetIteratorClass(void);
+
+static bool ooc_hashSetIteratorHasNext(void* self) {
+    if (!self) {
+        return false;
+    }
+    OOC_TYPE_CHECK(self, ooc_hashSetIteratorClass(), false);
+    OOC_HashSetIterator* iterator = self;
+    return ooc_iteratorHasNext(iterator->mapIterator);
+}
+
+static void* ooc_hashSetIteratorNext(void* self) {
+    if (!self) {
+        return NULL;
+    }
+    OOC_TYPE_CHECK(self, ooc_hashSetIteratorClass(), NULL);
+    OOC_HashSetIterator* iterator = self;
+    ooc_abstractIteratorNext(iterator);
+    void* entry = ooc_iteratorNext(iterator->mapIterator);
+    return ooc_hashMapEntryGetKey(entry);
+}
+
+static OOC_Error ooc_hashSetIteratorRemove(void* self) {
+    if (!self) {
+        return OOC_ERROR_NULL_POINTER;
+    }
+    OOC_TYPE_CHECK(self, ooc_hashSetIteratorClass(), OOC_ERROR_INVALID_OBJECT);
+    OOC_HashSetIterator* iterator = self;
+    OOC_Error error = ooc_abstractIteratorRemove(iterator);
+    if (error != OOC_ERROR_NONE) {
+        return error;
+    }
+    return ooc_iteratorRemove(iterator->mapIterator);
+}
+
+static OOC_Error ooc_hashSetIteratorCtor(void* self, va_list* args) {
+    if (!self || !args) {
+        return OOC_ERROR_INVALID_ARGUMENT;
+    }
+    OOC_TYPE_CHECK(self, ooc_hashSetIteratorClass(), OOC_ERROR_INVALID_OBJECT);
+    OOC_HashSetIterator* iterator = self;
+    OOC_Error error = ooc_superCtor(iterator, args);
+    if (error != OOC_ERROR_NONE) {
+        return error;
+    }
+    OOC_HashSet* set = va_arg(*args, OOC_HashSet*);
+    if (!set) {
+        return OOC_ERROR_INVALID_ARGUMENT;
+    }
+    iterator->mapIterator = ooc_mapGetIterator(set->map);
+    if (!iterator->mapIterator) {
+        return OOC_ERROR_OUT_OF_MEMORY;
+    }
+    return OOC_ERROR_NONE;
+}
+
+static OOC_Error ooc_hashSetIteratorDtor(void* self) {
+    if (!self) {
+        return OOC_ERROR_INVALID_ARGUMENT;
+    }
+    OOC_TYPE_CHECK(self, ooc_hashSetIteratorClass(), OOC_ERROR_INVALID_OBJECT);
+    OOC_HashSetIterator* iterator = self;
+    ooc_destroy(iterator->mapIterator);
+    iterator->mapIterator = NULL;
+    return ooc_superDtor(self);
+}
+
+static void* ooc_hashSetIteratorClassInit(void) {
+    if (ooc_classNew(&HashSetIteratorClassInstance,
+                    "HashSetIterator",
+                    sizeof(OOC_HashSetIterator),
+                    sizeof(OOC_HashSetIteratorClass),
+                    ooc_abstractIteratorClass(),
+                    OOC_MODIFIER_NONE,
+                    OOC_METHOD_CTOR, ooc_hashSetIteratorCtor,
+                    OOC_METHOD_DTOR, ooc_hashSetIteratorDtor,
+                    OOC_ABSTRACT_ITERATOR_METHOD_HAS_NEXT, ooc_hashSetIteratorHasNext,
+                    OOC_ABSTRACT_ITERATOR_METHOD_NEXT, ooc_hashSetIteratorNext,
+                    OOC_ABSTRACT_ITERATOR_METHOD_REMOVE, ooc_hashSetIteratorRemove,
+                    0) != OOC_ERROR_NONE) {
+        return NULL;
+    }
+    return &HashSetIteratorClassInstance;
+}
+
+void* ooc_hashSetIteratorClass(void) {
+    if (!HashSetIteratorClass) {
+        HashSetIteratorClass = ooc_hashSetIteratorClassInit();
+    }
+    return HashSetIteratorClass;
+}
 
 static void* ooc_hashSetGetIterator(void* self) {
     if (!self) {
         return NULL;
     }
     OOC_TYPE_CHECK(self, ooc_hashSetClass(), NULL);
-    OOC_HashSet* set = self;
-    return ooc_hashMapGetIterator(set->map);
+    return ooc_new(ooc_hashSetIteratorClass(), self);
 }
 
 static size_t ooc_hashSetSize(void* self) {
@@ -31,24 +141,6 @@ static size_t ooc_hashSetSize(void* self) {
     return ooc_mapSize(set->map);
 }
 
-static bool ooc_hashSetIsEmpty(void* self) {
-    if (!self) {
-        return true;
-    }
-    OOC_TYPE_CHECK(self, ooc_hashSetClass(), true);
-    OOC_HashSet* set = self;
-    return ooc_mapIsEmpty(set->map);
-}
-
-static bool ooc_hashSetContains(void* self, void* element) {
-    if (!self) {
-        return false;
-    }
-    OOC_TYPE_CHECK(self, ooc_hashSetClass(), false);
-    OOC_HashSet* set = self;
-    return ooc_mapContainsKey(set->map, element);
-}
-
 static OOC_Error ooc_hashSetAdd(void* self, void* element) {
     if (!self) {
         return OOC_ERROR_INVALID_ARGUMENT;
@@ -56,24 +148,6 @@ static OOC_Error ooc_hashSetAdd(void* self, void* element) {
     OOC_TYPE_CHECK(self, ooc_hashSetClass(), OOC_ERROR_INVALID_OBJECT);
     OOC_HashSet* set = self;
     return ooc_mapPut(set->map, element, DUMMY_VALUE);
-}
-
-static OOC_Error ooc_hashSetRemove(void* self, void* element) {
-    if (!self) {
-        return OOC_ERROR_INVALID_ARGUMENT;
-    }
-    OOC_TYPE_CHECK(self, ooc_hashSetClass(), OOC_ERROR_INVALID_OBJECT);
-    OOC_HashSet* set = self;
-    return ooc_mapRemove(set->map, element);
-}
-
-static OOC_Error ooc_hashSetClear(void* self) {
-    if (!self) {
-        return OOC_ERROR_INVALID_ARGUMENT;
-    }
-    OOC_TYPE_CHECK(self, ooc_hashSetClass(), OOC_ERROR_INVALID_OBJECT);
-    OOC_HashSet* set = self;
-    return ooc_mapClear(set->map);
 }
 
 static OOC_Error ooc_hashSetCtor(void* self, va_list* args) {
@@ -116,11 +190,7 @@ static void* ooc_hashSetClassInit(void) {
                     OOC_METHOD_DTOR, ooc_hashSetDtor,
                     OOC_ABSTRACT_COLLECTION_METHOD_ITERATOR, ooc_hashSetGetIterator,
                     OOC_ABSTRACT_COLLECTION_METHOD_SIZE, ooc_hashSetSize,
-                    OOC_ABSTRACT_COLLECTION_METHOD_IS_EMPTY, ooc_hashSetIsEmpty,
-                    OOC_ABSTRACT_COLLECTION_METHOD_CONTAINS, ooc_hashSetContains,
                     OOC_ABSTRACT_COLLECTION_METHOD_ADD, ooc_hashSetAdd,
-                    OOC_ABSTRACT_COLLECTION_METHOD_REMOVE, ooc_hashSetRemove,
-                    OOC_ABSTRACT_COLLECTION_METHOD_CLEAR, ooc_hashSetClear,
                     0) != OOC_ERROR_NONE) {
         return NULL;
     }

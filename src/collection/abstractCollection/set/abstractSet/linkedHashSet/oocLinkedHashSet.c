@@ -1,7 +1,6 @@
 #include "oocLinkedHashSet.h"
 #include "oocLinkedHashSet.r"
 #include "oocLinkedHashMap.h"
-#include "oocAbstractCollection.r"
 #include "oocObject.h"
 #include "oocObject.r"
 #include "oocHashSet.h"
@@ -9,15 +8,6 @@
 
 static OOC_LinkedHashSetClass* LinkedHashSetClass;
 static OOC_LinkedHashSetClass LinkedHashSetClassInstance;
-
-static void* ooc_linkedHashSetGetIterator(void* self) {
-    if (!self) {
-        return NULL;
-    }
-    OOC_TYPE_CHECK(self, ooc_linkedHashSetClass(), NULL);
-    OOC_LinkedHashSet* set = self;
-    return ooc_linkedHashMapGetIterator(set->map);
-}
 
 static OOC_Error ooc_linkedHashSetCtor(void* self, va_list* args) {
     if (!self || !args) {
@@ -29,9 +19,10 @@ static OOC_Error ooc_linkedHashSetCtor(void* self, va_list* args) {
     if (error != OOC_ERROR_NONE) {
         return error;
     }
-    size_t initialCapacity = va_arg(*args, size_t);
-    set->map = ooc_new(ooc_linkedHashMapClass(), initialCapacity);
-    if (!set->map) {
+    /* Super ctor created a HashMap; replace it with a LinkedHashMap */
+    ooc_destroy(set->object.map);
+    set->object.map = ooc_new(ooc_linkedHashMapClass(), (size_t)0);
+    if (!set->object.map) {
         return OOC_ERROR_OUT_OF_MEMORY;
     }
     return OOC_ERROR_NONE;
@@ -45,7 +36,6 @@ static void* ooc_linkedHashSetClassInit(void) {
                     ooc_hashSetClass(),
                     OOC_MODIFIER_NONE,
                     OOC_METHOD_CTOR, ooc_linkedHashSetCtor,
-                    OOC_ABSTRACT_COLLECTION_METHOD_ITERATOR, ooc_linkedHashSetGetIterator,
                     0) != OOC_ERROR_NONE) {
         return NULL;
     }

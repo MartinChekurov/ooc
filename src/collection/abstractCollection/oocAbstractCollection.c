@@ -44,13 +44,37 @@ static char* ooc_abstractCollectionToString(const void* self) {
     return result;
 }
 
+static size_t ooc_abstractCollectionHash(const void* self) {
+    if (!self) {
+        return 0;
+    }
+    OOC_TYPE_CHECK(self, ooc_abstractCollectionClass(), 0);
+    size_t hash = 0;
+    void* it = ooc_iterableGetIterator((void*)self);
+    if (!it) {
+        return 0;
+    }
+    while (ooc_iteratorHasNext(it)) {
+        void* elem = ooc_iteratorNext(it);
+        hash += ooc_hashCode(elem);
+    }
+    ooc_destroy(it);
+    return hash;
+}
+
 static void* ooc_abstractCollectionClone(const void* self) {
+    if (!self) {
+        return NULL;
+    }
     OOC_TYPE_CHECK(self, ooc_abstractCollectionClass(), NULL);
-    void* clone = ooc_superClone(self);
+    void* clone = ooc_new((void*)ooc_classOf(self), (size_t)0);
     if (!clone) {
         return NULL;
     }
     void* iterator = ooc_iterableGetIterator((void*)self);
+    if (!iterator) {
+        return clone;
+    }
     while (ooc_iteratorHasNext(iterator)) {
         void* elem = ooc_iteratorNext(iterator);
         void* elemClone = ooc_clone(elem);
@@ -160,6 +184,7 @@ static void* ooc_abstractCollectionClassInit(void) {
                     ooc_objectClass(),
                     OOC_MODIFIER_ABSTRACT,
                     OOC_METHOD_TO_STRING, ooc_abstractCollectionToString,
+                    OOC_METHOD_HASH, ooc_abstractCollectionHash,
                     OOC_METHOD_CLONE, ooc_abstractCollectionClone,
                     OOC_ABSTRACT_COLLECTION_METHOD_IS_EMPTY, ooc_abstractCollectionIsEmpty,
                     OOC_ABSTRACT_COLLECTION_METHOD_CONTAINS, ooc_abstractCollectionContains,

@@ -48,35 +48,17 @@ static bool ooc_abstractSetEquals(const void* self, const void* other) {
     if (!self || !other) {
         return false;
     }
-    OOC_TYPE_CHECK(self, ooc_abstractCollectionClass(), false);
-    OOC_TYPE_CHECK(other, ooc_abstractCollectionClass(), false);
-    if (!ooc_superEquals(self, other)) {
-        return false;
+    if (self == other) {
+        return true;
     }
+    OOC_TYPE_CHECK(self, ooc_abstractSetClass(), false);
+    OOC_TYPE_CHECK(other, ooc_abstractSetClass(), false);
     size_t selfSize = ooc_collectionSize((void*)self);
     if (selfSize != ooc_collectionSize((void*)other)) {
         return false;
     }
     return ooc_collectionContainsAll((void*)self, (void*)other) &&
            ooc_collectionContainsAll((void*)other, (void*)self);
-}
-
-static size_t ooc_abstractSetHash(const void* self) {
-    if (!self) {
-        return 0;
-    }
-    OOC_TYPE_CHECK(self, ooc_abstractSetClass(), 0);
-    size_t hash = 0;
-    void* it = ooc_iterableGetIterator((void*)self);
-    if (!it) {
-        return 0;
-    }
-    while (ooc_iteratorHasNext(it)) {
-        void* elem = ooc_iteratorNext(it);
-        hash += ooc_hashCode(elem);
-    }
-    ooc_destroy(it);
-    return hash;
 }
 
 static void* ooc_abstractSetClassInit(void) {
@@ -87,9 +69,7 @@ static void* ooc_abstractSetClassInit(void) {
                     ooc_abstractCollectionClass(),
                     OOC_MODIFIER_ABSTRACT,
                     OOC_METHOD_EQUALS,    ooc_abstractSetEquals,
-                    OOC_METHOD_HASH,      ooc_abstractSetHash,
                     OOC_METHOD_TO_STRING, ooc_abstractSetToString,
-                    OOC_METHOD_COMPARE, NULL,
                     0) != OOC_ERROR_NONE) {
         return NULL;
     }

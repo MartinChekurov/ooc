@@ -68,13 +68,11 @@ OOC_Error ooc_linkedHashMapPut(void* self, void* key, void* value) {
         return error;
     }
     if (!exists) {
-        void* entry = ooc_new(ooc_hashMapEntryClass(), NULL, NULL);
+        void* entry = ooc_new(ooc_hashMapEntryClass(), ooc_clone(key), ooc_clone(value));
         if (!entry) {
             ooc_hashMapRemove(self, key);
             return OOC_ERROR_OUT_OF_MEMORY;
         }
-        ooc_hashMapEntrySetKey(entry, key);
-        ooc_hashMapEntrySetValue(entry, value);
         error = ooc_listAdd(map->insertionOrder, entry);
         if (error != OOC_ERROR_NONE) {
             ooc_destroy(entry);
@@ -86,7 +84,7 @@ OOC_Error ooc_linkedHashMapPut(void* self, void* key, void* value) {
         while (ooc_iteratorHasNext(listIterator)) {
             void* orderEntry = ooc_iteratorNext(listIterator);
             if (ooc_equals(ooc_hashMapEntryGetKey(orderEntry), key)) {
-                ooc_hashMapEntrySetValue(orderEntry, value);
+                ooc_hashMapEntrySetValue(orderEntry, ooc_clone(value));
                 break;
             }
         }
@@ -105,9 +103,10 @@ OOC_Error ooc_linkedHashMapRemove(void* self, void* key) {
     while (ooc_iteratorHasNext(listIterator)) {
         void* entry = ooc_iteratorNext(listIterator);
         if (ooc_equals(ooc_hashMapEntryGetKey(entry), key)) {
+            ooc_hashMapRemove(self, key);
             ooc_iteratorRemove(listIterator);
             ooc_destroy(listIterator);
-            return ooc_hashMapRemove(self, key);
+            return OOC_ERROR_NONE;
         }
     }
     ooc_destroy(listIterator);
@@ -169,11 +168,11 @@ static OOC_Error ooc_linkedHashMapIteratorRemove(void* self) {
         return error;
     }
     void* key = ooc_hashMapEntryGetKey(iterator->lastEntry);
-    error = ooc_iteratorRemove(iterator->listIterator);
+    error = ooc_hashMapRemove(iterator->map, key);
     if (error != OOC_ERROR_NONE) {
         return error;
     }
-    error = ooc_hashMapRemove(iterator->map, key);
+    error = ooc_iteratorRemove(iterator->listIterator);
     if (error != OOC_ERROR_NONE) {
         return error;
     }

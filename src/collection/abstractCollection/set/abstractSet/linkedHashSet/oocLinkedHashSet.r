@@ -8,7 +8,6 @@ typedef struct OOC_LinkedHashSetClass OOC_LinkedHashSetClass;
 
 struct OOC_LinkedHashSet {
     OOC_HashSet object;
-    void* map;
 };
 
 struct OOC_LinkedHashSetClass {

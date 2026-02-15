@@ -273,6 +273,33 @@ static size_t ooc_abstractMapHash(const void* self) {
     return hash;
 }
 
+static void* ooc_abstractMapClone(const void* self) {
+    if (!self) {
+        return NULL;
+    }
+    OOC_TYPE_CHECK(self, ooc_abstractMapClass(), NULL);
+    void* clone = ooc_new((void*)ooc_classOf(self), (size_t)0);
+    if (!clone) {
+        return NULL;
+    }
+    void* it = ooc_mapGetIterator((void*)self);
+    if (!it) {
+        return clone;
+    }
+    while (ooc_iteratorHasNext(it)) {
+        void* entry = ooc_iteratorNext(it);
+        void* key = ooc_clone(ooc_hashMapEntryGetKey(entry));
+        void* value = ooc_clone(ooc_hashMapEntryGetValue(entry));
+        if (ooc_mapPut(clone, key, value) != OOC_ERROR_NONE) {
+            ooc_destroy(it);
+            ooc_destroy(clone);
+            return NULL;
+        }
+    }
+    ooc_destroy(it);
+    return clone;
+}
+
 static void* ooc_abstractMapClassInit(void) {
     if (ooc_classNew(&AbstractMapClassInstance,
                     "AbstractMap",
@@ -283,7 +310,7 @@ static void* ooc_abstractMapClassInit(void) {
                     OOC_METHOD_TO_STRING, ooc_abstractMapToString,
                     OOC_METHOD_EQUALS, ooc_abstractMapEquals,
                     OOC_METHOD_HASH, ooc_abstractMapHash,
-                    OOC_METHOD_COMPARE, NULL,
+                    OOC_METHOD_CLONE, ooc_abstractMapClone,
                     OOC_ABSTRACT_MAP_METHOD_IS_EMPTY, ooc_abstractMapIsEmpty,
                     OOC_ABSTRACT_MAP_METHOD_CONTAINS_KEY, ooc_abstractMapContainsKey,
                     OOC_ABSTRACT_MAP_METHOD_CONTAINS_VALUE, ooc_abstractMapContainsValue,
