@@ -1,5 +1,4 @@
 #include "oocLinkedList.h"
-#include "oocAbstractIterator.h"
 #include "oocCollection.h"
 
 #include "oocError.h"

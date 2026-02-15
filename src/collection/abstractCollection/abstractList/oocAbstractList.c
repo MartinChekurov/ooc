@@ -1,5 +1,4 @@
 #include "oocAbstractList.h"
-#include "oocAbstractIterator.h"
 #include "oocAbstractList.r"
 
 #include "oocAbstractCollection.h"
