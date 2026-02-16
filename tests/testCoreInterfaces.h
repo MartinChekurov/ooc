@@ -8,5 +8,6 @@ void test_set_interface_null_safety(void);
 void test_queue_and_deque_interface_null_safety(void);
 void test_iterator_interface_null_safety(void);
 void test_map_interface_null_safety(void);
+void test_interface_non_implementer_behavior(void);
 
 #endif

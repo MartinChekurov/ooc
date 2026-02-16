@@ -17,6 +17,8 @@
 #include "oocAbstractIterator.h"
 #include "oocAbstractListIterator.h"
 #include "oocAbstractMap.h"
+#include "oocString.h"
+#include "oocObject.h"
 
 void test_interface_and_abstract_class_singletons(void) {
     TEST_ASSERT_NOT_NULL(ooc_interfaceClass());
@@ -123,4 +125,34 @@ void test_map_interface_null_safety(void) {
     TEST_ASSERT_EQUAL(OOC_ERROR_INVALID_ARGUMENT, ooc_mapClear(NULL));
     TEST_ASSERT_NULL(ooc_mapKeySet(NULL));
     TEST_ASSERT_NULL(ooc_mapValues(NULL));
+}
+
+void test_interface_non_implementer_behavior(void) {
+    void* str = ooc_new(ooc_stringClass(), "plain object");
+    TEST_ASSERT_NOT_NULL(str);
+
+    TEST_ASSERT_NULL(ooc_iterableGetIterator(str));
+    TEST_ASSERT_EQUAL_UINT64(0, ooc_collectionSize(str));
+    TEST_ASSERT_TRUE(ooc_collectionIsEmpty(str));
+    TEST_ASSERT_FALSE(ooc_collectionContains(str, NULL));
+    TEST_ASSERT_FALSE(ooc_collectionContainsAll(str, str));
+    TEST_ASSERT_EQUAL(OOC_ERROR_NO_CLASS, ooc_collectionAdd(str, NULL));
+    TEST_ASSERT_EQUAL(OOC_ERROR_NO_CLASS, ooc_collectionRemove(str, NULL));
+    TEST_ASSERT_EQUAL(OOC_ERROR_NO_CLASS, ooc_collectionClear(str));
+
+    TEST_ASSERT_NULL(ooc_listGetAt(str, 0));
+    TEST_ASSERT_EQUAL(OOC_ERROR_NO_CLASS, ooc_listSetAt(str, 0, NULL));
+    TEST_ASSERT_EQUAL(OOC_ERROR_NO_CLASS, ooc_listInsertAt(str, 0, NULL));
+    TEST_ASSERT_EQUAL(OOC_ERROR_NO_CLASS, ooc_listRemoveAt(str, 0));
+    TEST_ASSERT_EQUAL(-1, ooc_listIndexOf(str, NULL));
+    TEST_ASSERT_EQUAL(-1, ooc_listLastIndexOf(str, NULL));
+    TEST_ASSERT_NULL(ooc_listGetListIterator(str));
+    TEST_ASSERT_NULL(ooc_listGetListIteratorAt(str, 0));
+
+    TEST_ASSERT_EQUAL(OOC_ERROR_NOT_IMPLEMENTED, ooc_mapPut(str, NULL, NULL));
+    TEST_ASSERT_EQUAL(OOC_ERROR_NOT_IMPLEMENTED, ooc_mapRemove(str, NULL));
+    TEST_ASSERT_EQUAL(OOC_ERROR_NOT_IMPLEMENTED, ooc_mapClear(str));
+    TEST_ASSERT_NULL(ooc_mapGetIterator(str));
+
+    ooc_destroy(str);
 }

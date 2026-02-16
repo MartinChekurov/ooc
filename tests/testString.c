@@ -222,3 +222,64 @@ void test_string_static_index_of(void) {
     TEST_ASSERT_EQUAL(-1, ooc_StringIndexOfChar("hello", 'z'));
     TEST_ASSERT_EQUAL(6, ooc_StringIndexOfString("hello world", "world"));
 }
+
+void test_string_static_format_and_convert_helpers(void) {
+    char* formatted = ooc_StringFormat("%s:%d", "id", 17);
+    TEST_ASSERT_EQUAL_STRING("id:17", formatted);
+    free(formatted);
+
+    char* dbl = ooc_StringFromDouble(12.5);
+    TEST_ASSERT_EQUAL_STRING("12.5", dbl);
+    free(dbl);
+
+    char* chr = ooc_StringFromChar('Q');
+    TEST_ASSERT_EQUAL_STRING("Q", chr);
+    free(chr);
+
+    TEST_ASSERT_NULL(ooc_StringFormat(NULL));
+}
+
+void test_string_static_buffer_operations(void) {
+    char buffer[32] = {0};
+
+    TEST_ASSERT_EQUAL(OOC_ERROR_NONE, ooc_StringFormatAt(buffer, sizeof(buffer), "%s-%d", "v", 4));
+    TEST_ASSERT_EQUAL_STRING("v-4", buffer);
+
+    TEST_ASSERT_EQUAL(OOC_ERROR_NONE, ooc_StringFromDoubleAt(buffer, sizeof(buffer), 3.5));
+    TEST_ASSERT_EQUAL_STRING("3.5", buffer);
+
+    TEST_ASSERT_EQUAL(OOC_ERROR_NONE, ooc_StringFromCharAt(buffer, sizeof(buffer), 'A'));
+    TEST_ASSERT_EQUAL_STRING("A", buffer);
+
+    TEST_ASSERT_EQUAL(OOC_ERROR_NONE, ooc_StringSubstringAt(buffer, sizeof(buffer), "abcdef", 1, 4));
+    TEST_ASSERT_EQUAL_STRING("bcd", buffer);
+
+    TEST_ASSERT_EQUAL(OOC_ERROR_NONE, ooc_StringConcatAt(buffer, sizeof(buffer), "ab", "cd"));
+    TEST_ASSERT_EQUAL_STRING("abcd", buffer);
+
+    TEST_ASSERT_EQUAL(OOC_ERROR_INVALID_ARGUMENT, ooc_StringFormatAt(NULL, sizeof(buffer), "%d", 1));
+    TEST_ASSERT_EQUAL(OOC_ERROR_BUFFER_TOO_SMALL, ooc_StringConcatAt(buffer, 4, "ab", "cd"));
+}
+
+void test_string_static_mutating_helpers(void) {
+    char mutableStr[32] = "  AabA  ";
+
+    TEST_ASSERT_EQUAL(OOC_ERROR_NONE, ooc_StringSetCharAt(mutableStr, 2, 'Z'));
+    TEST_ASSERT_EQUAL(OOC_ERROR_NONE, ooc_StringReplaceChar(mutableStr, 'A', 'x'));
+    TEST_ASSERT_EQUAL(OOC_ERROR_NONE, ooc_StringToLowerCase(mutableStr));
+    TEST_ASSERT_EQUAL(OOC_ERROR_NONE, ooc_StringToUpperCase(mutableStr));
+    TEST_ASSERT_EQUAL(OOC_ERROR_NONE, ooc_StringReverse(mutableStr));
+    TEST_ASSERT_EQUAL_STRING("  XBAZ  ", mutableStr);
+
+    TEST_ASSERT_EQUAL_PTR(mutableStr, ooc_StringTrim(mutableStr));
+    TEST_ASSERT_EQUAL_STRING("XBAZ", mutableStr);
+    TEST_ASSERT_TRUE(ooc_StringStartsWithString(mutableStr, "XB"));
+    TEST_ASSERT_TRUE(ooc_StringEndsWithString(mutableStr, "AZ"));
+    TEST_ASSERT_TRUE(ooc_StringContainsString(mutableStr, "BA"));
+    TEST_ASSERT_EQUAL(3, ooc_StringLastIndexOfChar("abca", 'a'));
+    TEST_ASSERT_EQUAL(3, ooc_StringLastIndexOfString("abcabc", "abc"));
+
+    TEST_ASSERT_EQUAL(OOC_ERROR_INVALID_ARGUMENT, ooc_StringSetCharAt(mutableStr, 99, 'X'));
+    TEST_ASSERT_EQUAL(OOC_ERROR_INVALID_ARGUMENT, ooc_StringReplaceChar(NULL, 'a', 'b'));
+    TEST_ASSERT_EQUAL(OOC_ERROR_INVALID_ARGUMENT, ooc_StringReverse(NULL));
+}

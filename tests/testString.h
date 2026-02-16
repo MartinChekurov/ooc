@@ -26,5 +26,8 @@ void test_string_static_char_at(void);
 void test_string_static_substring(void);
 void test_string_static_concat(void);
 void test_string_static_index_of(void);
+void test_string_static_format_and_convert_helpers(void);
+void test_string_static_buffer_operations(void);
+void test_string_static_mutating_helpers(void);
 
 #endif
