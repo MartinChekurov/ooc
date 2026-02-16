@@ -88,6 +88,7 @@ static bool ooc_hashMapRehash(OOC_HashMap* map) {
     }
     OOC_TYPE_CHECK(map, ooc_hashMapClass(), false);
     size_t oldCapacity = ooc_hashMapCapacity(map);
+    size_t oldSize = map->size;
     void* oldBuckets = map->buckets;
     size_t newCapacity = oldCapacity * 2;
     map->buckets = ooc_hashMapCreateBuckets(newCapacity);
@@ -105,20 +106,62 @@ static bool ooc_hashMapRehash(OOC_HashMap* map) {
         void* bucketIterator = ooc_listGetIterator(bucket);
         while (ooc_iteratorHasNext(bucketIterator)) {
             void* entry = ooc_iteratorNext(bucketIterator);
-            size_t newIndex = ooc_hashMapHashFunction(ooc_hashMapEntryGetKey(entry), newCapacity);
+            void* keyClone = ooc_clone(ooc_hashMapEntryGetKey(entry));
+            if (!keyClone) {
+                ooc_destroy(bucketIterator);
+                ooc_destroy(bucketsIterator);
+                ooc_destroy(map->buckets);
+                map->buckets = oldBuckets;
+                map->size = oldSize;
+                return false;
+            }
+            void* value = ooc_hashMapEntryGetValue(entry);
+            void* valueClone = value ? ooc_clone(value) : NULL;
+            if (value && !valueClone) {
+                ooc_destroy(keyClone);
+                ooc_destroy(bucketIterator);
+                ooc_destroy(bucketsIterator);
+                ooc_destroy(map->buckets);
+                map->buckets = oldBuckets;
+                map->size = oldSize;
+                return false;
+            }
+            void* clonedEntry = ooc_new(ooc_hashMapEntryClass(), keyClone, valueClone);
+            if (!clonedEntry) {
+                ooc_destroy(keyClone);
+                ooc_destroy(valueClone);
+                ooc_destroy(bucketIterator);
+                ooc_destroy(bucketsIterator);
+                ooc_destroy(map->buckets);
+                map->buckets = oldBuckets;
+                map->size = oldSize;
+                return false;
+            }
+            size_t newIndex = ooc_hashMapHashFunction(ooc_hashMapEntryGetKey(clonedEntry), newCapacity);
             void* newBucket = ooc_listGetAt(map->buckets, newIndex);
             if (!newBucket) {
                 newBucket = ooc_new(ooc_linkedListClass());
                 if (!newBucket) {
+                    ooc_destroy(clonedEntry);
                     ooc_destroy(bucketIterator);
                     ooc_destroy(bucketsIterator);
                     ooc_destroy(map->buckets);
                     map->buckets = oldBuckets;
+                    map->size = oldSize;
                     return false;
                 }
                 ooc_listSetAt(map->buckets, newIndex, newBucket);
             }
-            ooc_listAdd(newBucket, entry);
+            OOC_Error addError = ooc_listAdd(newBucket, clonedEntry);
+            if (addError != OOC_ERROR_NONE) {
+                ooc_destroy(clonedEntry);
+                ooc_destroy(bucketIterator);
+                ooc_destroy(bucketsIterator);
+                ooc_destroy(map->buckets);
+                map->buckets = oldBuckets;
+                map->size = oldSize;
+                return false;
+            }
             map->size++;
         }
         ooc_destroy(bucketIterator);
@@ -183,9 +226,11 @@ OOC_Error ooc_hashMapPut(void* self, void* key, void* value) {
     OOC_HashMap* map = self;
     void* existingEntry = ooc_hashMapGetByKey(map, key);
     if (existingEntry) {
-        ooc_hashMapEntrySetKey(existingEntry, key);
-        ooc_hashMapEntrySetValue(existingEntry, value);
-        return OOC_ERROR_NONE;
+        void* valueClone = value ? ooc_clone(value) : NULL;
+        if (value && !valueClone) {
+            return OOC_ERROR_OUT_OF_MEMORY;
+        }
+        return ooc_hashMapEntrySetValue(existingEntry, valueClone);
     }
     size_t capacity = ooc_hashMapCapacity(map);
     if ((float)(map->size + 1) / capacity > map->loadFactor) {
@@ -194,8 +239,19 @@ OOC_Error ooc_hashMapPut(void* self, void* key, void* value) {
         }
         capacity = ooc_hashMapCapacity(map);
     }
-    void* entry = ooc_new(ooc_hashMapEntryClass(), NULL, NULL);
+    void* keyClone = key ? ooc_clone(key) : NULL;
+    if (!keyClone) {
+        return OOC_ERROR_OUT_OF_MEMORY;
+    }
+    void* valueClone = value ? ooc_clone(value) : NULL;
+    if (value && !valueClone) {
+        ooc_destroy(keyClone);
+        return OOC_ERROR_OUT_OF_MEMORY;
+    }
+    void* entry = ooc_new(ooc_hashMapEntryClass(), keyClone, valueClone);
     if (!entry) {
+        ooc_destroy(keyClone);
+        ooc_destroy(valueClone);
         return OOC_ERROR_OUT_OF_MEMORY;
     }
     size_t index = ooc_hashMapHashFunction(key, capacity);
@@ -210,8 +266,6 @@ OOC_Error ooc_hashMapPut(void* self, void* key, void* value) {
     }
     OOC_Error error = ooc_listAdd(bucket, entry);
     if (error == OOC_ERROR_NONE) {
-        ooc_hashMapEntrySetKey(entry, key);
-        ooc_hashMapEntrySetValue(entry, value);
         map->size++;
     } else {
         ooc_destroy(entry);
