@@ -57,7 +57,7 @@ void test_linked_hash_set_no_duplicates(void) {
     void* it = ooc_iterableGetIterator(set);
     void* e1 = ooc_iteratorNext(it);
     void* e2 = ooc_iteratorNext(it);
-    TEST_ASSERT_TRUE(ooc_equals(e1, s1));
+    TEST_ASSERT_TRUE(ooc_equals(e1, dup));
     TEST_ASSERT_TRUE(ooc_equals(e2, s2));
 
     ooc_destroy(it);
