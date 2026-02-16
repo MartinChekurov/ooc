@@ -151,7 +151,8 @@ void* ooc_abstractMapKeySet(void* self) {
     }
     while (ooc_iteratorHasNext(it)) {
         void* entry = ooc_iteratorNext(it);
-        ooc_setAdd(keySet, ooc_hashMapEntryGetKey(entry));
+        void* key = ooc_hashMapEntryGetKey(entry);
+        ooc_setAdd(keySet, key ? ooc_clone(key) : NULL);
     }
     ooc_destroy(it);
     return keySet;
@@ -173,7 +174,8 @@ void* ooc_abstractMapValues(void* self) {
     }
     while (ooc_iteratorHasNext(it)) {
         void* entry = ooc_iteratorNext(it);
-        ooc_listAdd(values, ooc_hashMapEntryGetValue(entry));
+        void* value = ooc_hashMapEntryGetValue(entry);
+        ooc_listAdd(values, value ? ooc_clone(value) : NULL);
     }
     ooc_destroy(it);
     return values;

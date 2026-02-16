@@ -170,6 +170,7 @@ void test_linked_hash_set_contains(void) {
     TEST_ASSERT_TRUE(ooc_collectionContains(set, s1));
     TEST_ASSERT_FALSE(ooc_collectionContains(set, s2));
 
+    ooc_destroy(s2);
     ooc_destroy(set);
 }
 
