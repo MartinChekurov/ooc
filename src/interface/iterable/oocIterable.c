@@ -32,7 +32,7 @@ void* ooc_iterableGetIterator(void* self) {
         return NULL;
     }
     const OOC_IterableVtable* vtable = ooc_getInterfaceVtable(self, ooc_iterableClass());
-    if (!vtable || !vtable->iterator(self)) {
+    if (!vtable || !vtable->iterator) {
         return NULL;
     }
     return vtable->iterator(self);
