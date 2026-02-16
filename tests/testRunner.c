@@ -29,6 +29,7 @@ int main(void) {
     RUN_TEST(test_queue_and_deque_interface_null_safety);
     RUN_TEST(test_iterator_interface_null_safety);
     RUN_TEST(test_map_interface_null_safety);
+    RUN_TEST(test_interface_non_implementer_behavior);
 
     /* HashMapEntry tests */
     RUN_TEST(test_hash_map_entry_create_get_set_destroy);
@@ -71,6 +72,9 @@ int main(void) {
     RUN_TEST(test_string_static_substring);
     RUN_TEST(test_string_static_concat);
     RUN_TEST(test_string_static_index_of);
+    RUN_TEST(test_string_static_format_and_convert_helpers);
+    RUN_TEST(test_string_static_buffer_operations);
+    RUN_TEST(test_string_static_mutating_helpers);
 
     /* StringBuffer tests */
     RUN_TEST(test_string_buffer_create_destroy);
