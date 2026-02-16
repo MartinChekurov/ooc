@@ -55,6 +55,7 @@ void test_hash_set_contains(void) {
     TEST_ASSERT_FALSE(ooc_collectionContains(set, s2));
 
     ooc_destroy(lookup);
+    ooc_destroy(s2);
     ooc_destroy(set);
 }
 

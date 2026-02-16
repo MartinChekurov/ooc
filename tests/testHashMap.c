@@ -212,6 +212,7 @@ void test_hash_map_key_set(void) {
     TEST_ASSERT_TRUE(ooc_collectionContains(keySet, k1));
     TEST_ASSERT_TRUE(ooc_collectionContains(keySet, k2));
 
+    ooc_destroy(keySet);
     ooc_destroy(map);
 }
 
@@ -231,6 +232,7 @@ void test_hash_map_values(void) {
     TEST_ASSERT_TRUE(ooc_collectionContains(values, v1));
     TEST_ASSERT_TRUE(ooc_collectionContains(values, v2));
 
+    ooc_destroy(values);
     ooc_destroy(map);
 }
 
