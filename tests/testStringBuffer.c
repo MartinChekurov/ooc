@@ -1,7 +1,6 @@
 #include "unity.h"
 #include "oocStringBuffer.h"
 #include "oocObject.h"
-#include "oocError.h"
 #include <stdlib.h>
 #include <string.h>
 

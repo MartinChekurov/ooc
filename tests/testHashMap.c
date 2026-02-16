@@ -6,7 +6,6 @@
 #include "oocError.h"
 #include "oocMap.h"
 #include "oocCollection.h"
-#include "oocIterable.h"
 #include "oocIterator.h"
 #include <stdlib.h>
 #include <string.h>
