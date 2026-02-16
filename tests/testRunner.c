@@ -9,6 +9,8 @@
 #include "testHashMap.h"
 #include "testLinkedHashMap.h"
 #include "testArrayDeque.h"
+#include "testCoreInterfaces.h"
+#include "testHashMapEntry.h"
 
 void setUp(void) {
 }
@@ -18,6 +20,19 @@ void tearDown(void) {
 
 int main(void) {
     UNITY_BEGIN();
+
+    /* Core interface and abstract class tests */
+    RUN_TEST(test_interface_and_abstract_class_singletons);
+    RUN_TEST(test_collection_interface_null_safety);
+    RUN_TEST(test_list_interface_null_safety);
+    RUN_TEST(test_set_interface_null_safety);
+    RUN_TEST(test_queue_and_deque_interface_null_safety);
+    RUN_TEST(test_iterator_interface_null_safety);
+    RUN_TEST(test_map_interface_null_safety);
+
+    /* HashMapEntry tests */
+    RUN_TEST(test_hash_map_entry_create_get_set_destroy);
+    RUN_TEST(test_hash_map_entry_null_and_invalid_argument_handling);
 
     /* Object tests */
     RUN_TEST(test_object_class_creation);
