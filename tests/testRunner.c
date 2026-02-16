@@ -130,7 +130,7 @@ int main(void) {
     RUN_TEST(test_linked_list_remove_by_value);
 
     /* HashSet tests */
-    /*RUN_TEST(test_hash_set_create_destroy);
+    RUN_TEST(test_hash_set_create_destroy);
     RUN_TEST(test_hash_set_add_and_size);
     RUN_TEST(test_hash_set_no_duplicates);
     RUN_TEST(test_hash_set_contains);
@@ -143,10 +143,10 @@ int main(void) {
     RUN_TEST(test_hash_set_hash_code);
     RUN_TEST(test_hash_set_to_string);
     RUN_TEST(test_hash_set_clone);
-    RUN_TEST(test_hash_set_empty);*/
+    RUN_TEST(test_hash_set_empty);
 
     /* LinkedHashSet tests */
-    /*RUN_TEST(test_linked_hash_set_create_destroy);
+    RUN_TEST(test_linked_hash_set_create_destroy);
     RUN_TEST(test_linked_hash_set_insertion_order);
     RUN_TEST(test_linked_hash_set_no_duplicates);
     RUN_TEST(test_linked_hash_set_remove_and_readd);
@@ -155,10 +155,10 @@ int main(void) {
     RUN_TEST(test_linked_hash_set_to_string);
     RUN_TEST(test_linked_hash_set_clear);
     RUN_TEST(test_linked_hash_set_contains);
-    RUN_TEST(test_linked_hash_set_iterator_remove);*/
+    RUN_TEST(test_linked_hash_set_iterator_remove);
 
     /* HashMap tests */
-    /*RUN_TEST(test_hash_map_create_destroy);
+    RUN_TEST(test_hash_map_create_destroy);
     RUN_TEST(test_hash_map_put_get_single);
     RUN_TEST(test_hash_map_put_get_multiple);
     RUN_TEST(test_hash_map_put_overwrite);
@@ -174,10 +174,10 @@ int main(void) {
     RUN_TEST(test_hash_map_equals);
     RUN_TEST(test_hash_map_hash_code);
     RUN_TEST(test_hash_map_to_string);
-    RUN_TEST(test_hash_map_clone);*/
+    RUN_TEST(test_hash_map_clone);
 
     /* LinkedHashMap tests */
-    /*RUN_TEST(test_linked_hash_map_create_destroy);
+    RUN_TEST(test_linked_hash_map_create_destroy);
     RUN_TEST(test_linked_hash_map_insertion_order);
     RUN_TEST(test_linked_hash_map_update_preserves_order);
     RUN_TEST(test_linked_hash_map_remove_and_readd);
@@ -186,7 +186,7 @@ int main(void) {
     RUN_TEST(test_linked_hash_map_clear);
     RUN_TEST(test_linked_hash_map_key_set_order);
     RUN_TEST(test_linked_hash_map_values_order);
-    RUN_TEST(test_linked_hash_map_iterator_remove);*/
+    RUN_TEST(test_linked_hash_map_iterator_remove);
 
     /* ArrayDeque tests */
     RUN_TEST(test_array_deque_create_destroy);

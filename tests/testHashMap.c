@@ -111,7 +111,11 @@ void test_hash_map_remove(void) {
 
     TEST_ASSERT_EQUAL(OOC_ERROR_NONE, ooc_mapRemove(map, k1));
     TEST_ASSERT_EQUAL(1, ooc_mapSize(map));
-    TEST_ASSERT_FALSE(ooc_mapContainsKey(map, k1));
+
+    void* removedProbe = ooc_new(ooc_stringClass(), "a");
+    TEST_ASSERT_FALSE(ooc_mapContainsKey(map, removedProbe));
+    ooc_destroy(removedProbe);
+
     TEST_ASSERT_TRUE(ooc_mapContainsKey(map, k2));
 
     ooc_destroy(map);

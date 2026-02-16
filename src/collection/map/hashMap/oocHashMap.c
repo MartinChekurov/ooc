@@ -4,8 +4,10 @@
 #include "oocAbstractMap.h"
 #include "oocAbstractMap.r"
 #include "oocMap.h"
+#include "oocCollection.h"
 #include "oocList.h"
 #include "oocArrayList.h"
+#include "oocArrayList.r"
 #include "oocLinkedList.h"
 #include "oocObject.h"
 #include "oocObject.r"
@@ -87,43 +89,65 @@ static bool ooc_hashMapRehash(OOC_HashMap* map) {
         return false;
     }
     OOC_TYPE_CHECK(map, ooc_hashMapClass(), false);
+
     size_t oldCapacity = ooc_hashMapCapacity(map);
-    void* oldBuckets = map->buckets;
+    OOC_ArrayList* oldBuckets = (OOC_ArrayList*)map->buckets;
     size_t newCapacity = oldCapacity * 2;
-    map->buckets = ooc_hashMapCreateBuckets(newCapacity);
-    if (!map->buckets) {
-        map->buckets = oldBuckets;
+
+    void* newBuckets = ooc_hashMapCreateBuckets(newCapacity);
+    if (!newBuckets) {
         return false;
     }
+
+    map->buckets = newBuckets;
     map->size = 0;
-    void* bucketsIterator = ooc_listGetIterator(oldBuckets);
-    while (ooc_iteratorHasNext(bucketsIterator)) {
-        void* bucket = ooc_iteratorNext(bucketsIterator);
+
+    for (size_t i = 0; i < oldCapacity; i++) {
+        void* bucket = oldBuckets->elements[i];
         if (!bucket) {
             continue;
         }
-        void* bucketIterator = ooc_listGetIterator(bucket);
-        while (ooc_iteratorHasNext(bucketIterator)) {
-            void* entry = ooc_iteratorNext(bucketIterator);
+
+        while (!ooc_collectionIsEmpty(bucket)) {
+            void* entry = ooc_linkedListRemoveFirst(bucket);
+            if (!entry) {
+                continue;
+            }
+
             size_t newIndex = ooc_hashMapHashFunction(ooc_hashMapEntryGetKey(entry), newCapacity);
             void* newBucket = ooc_listGetAt(map->buckets, newIndex);
             if (!newBucket) {
                 newBucket = ooc_new(ooc_linkedListClass());
                 if (!newBucket) {
-                    ooc_destroy(bucketIterator);
-                    ooc_destroy(bucketsIterator);
+                    ooc_destroy(entry);
                     ooc_destroy(map->buckets);
-                    map->buckets = oldBuckets;
+                    map->buckets = (void*)oldBuckets;
                     return false;
                 }
-                ooc_listSetAt(map->buckets, newIndex, newBucket);
+                OOC_Error setError = ooc_listSetAt(map->buckets, newIndex, newBucket);
+                if (setError != OOC_ERROR_NONE) {
+                    ooc_destroy(newBucket);
+                    ooc_destroy(entry);
+                    ooc_destroy(map->buckets);
+                    map->buckets = (void*)oldBuckets;
+                    return false;
+                }
             }
-            ooc_listAdd(newBucket, entry);
+
+            OOC_Error addError = ooc_listAdd(newBucket, entry);
+            if (addError != OOC_ERROR_NONE) {
+                ooc_destroy(entry);
+                ooc_destroy(map->buckets);
+                map->buckets = (void*)oldBuckets;
+                return false;
+            }
             map->size++;
         }
-        ooc_destroy(bucketIterator);
+
+        ooc_destroy(bucket);
+        oldBuckets->elements[i] = NULL;
     }
-    ooc_destroy(bucketsIterator);
+
     ooc_destroy(oldBuckets);
     return true;
 }
