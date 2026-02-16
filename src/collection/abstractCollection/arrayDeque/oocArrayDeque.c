@@ -411,7 +411,7 @@ static void* ooc_arrayDequeClassInit(void) {
 
     if (ooc_classSetInterface(&ArrayDequeClassInstance,
                               ArrayDequeInterfaces,
-                              1) != OOC_ERROR_NONE) {
+                              2) != OOC_ERROR_NONE) {
         ooc_classDestroy(&ArrayDequeClassInstance);
         return NULL;
     }

@@ -383,7 +383,11 @@ static void* ooc_linkedListIteratorClass(void) {
 }
 
 void* ooc_linkedListGetIterator(void* self) {
-    return ooc_collectionGetIterator(self);
+    if (!self) {
+        return NULL;
+    }
+    OOC_TYPE_CHECK(self, ooc_linkedListClass(), NULL);
+    return ooc_new(ooc_linkedListIteratorClass(), self, (size_t)0, 0);
 }
 
 size_t ooc_linkedListSize(void* self) {
@@ -590,6 +594,7 @@ static void* ooc_linkedListClassInit(void) {
                      OOC_MODIFIER_NONE,
                      OOC_METHOD_CTOR, ooc_linkedListCtor,
                      OOC_METHOD_DTOR, ooc_linkedListDtor,
+                     OOC_ABSTRACT_COLLECTION_METHOD_ITERATOR, ooc_linkedListGetIterator,
                      OOC_ABSTRACT_COLLECTION_METHOD_SIZE, ooc_linkedListSize,
                      OOC_ABSTRACT_LIST_METHOD_GET_LIST_ITERATOR_AT, ooc_linkedListGetListIteratorAt,
                      OOC_LINKED_LIST_METHOD_OFFER, ooc_linkedListOffer,

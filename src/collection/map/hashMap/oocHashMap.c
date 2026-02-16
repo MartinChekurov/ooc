@@ -71,6 +71,17 @@ static void* ooc_hashMapKeyBucket(OOC_HashMap* map, void* key) {
     return ooc_listGetAt(map->buckets, ooc_hashMapKeyIndex(map, key));
 }
 
+static void* ooc_hashMapCreateBuckets(size_t capacity) {
+    void* buckets = ooc_new(ooc_arrayListClass(), capacity);
+    if (!buckets) {
+        return NULL;
+    }
+    for (size_t i = 0; i < capacity; i++) {
+        ooc_listInsertAt(buckets, i, NULL);
+    }
+    return buckets;
+}
+
 static bool ooc_hashMapRehash(OOC_HashMap* map) {
     if (!map) {
         return false;
@@ -79,7 +90,7 @@ static bool ooc_hashMapRehash(OOC_HashMap* map) {
     size_t oldCapacity = ooc_hashMapCapacity(map);
     void* oldBuckets = map->buckets;
     size_t newCapacity = oldCapacity * 2;
-    map->buckets = ooc_new(ooc_arrayListClass(), newCapacity);
+    map->buckets = ooc_hashMapCreateBuckets(newCapacity);
     if (!map->buckets) {
         map->buckets = oldBuckets;
         return false;
@@ -88,6 +99,9 @@ static bool ooc_hashMapRehash(OOC_HashMap* map) {
     void* bucketsIterator = ooc_listGetIterator(oldBuckets);
     while (ooc_iteratorHasNext(bucketsIterator)) {
         void* bucket = ooc_iteratorNext(bucketsIterator);
+        if (!bucket) {
+            continue;
+        }
         void* bucketIterator = ooc_listGetIterator(bucket);
         while (ooc_iteratorHasNext(bucketIterator)) {
             void* entry = ooc_iteratorNext(bucketIterator);
@@ -206,11 +220,51 @@ OOC_Error ooc_hashMapPut(void* self, void* key, void* value) {
 }
 
 OOC_Error ooc_hashMapRemove(void* self, void* key) {
-    return ooc_mapRemove(self, key);
+    if (!self) {
+        return OOC_ERROR_INVALID_ARGUMENT;
+    }
+    OOC_TYPE_CHECK(self, ooc_hashMapClass(), OOC_ERROR_INVALID_OBJECT);
+    OOC_HashMap* map = self;
+    void* bucket = ooc_hashMapKeyBucket(map, key);
+    if (!bucket) {
+        return OOC_ERROR_NOT_FOUND;
+    }
+    void* bucketIterator = ooc_listGetIterator(bucket);
+    while (ooc_iteratorHasNext(bucketIterator)) {
+        void* entry = ooc_iteratorNext(bucketIterator);
+        if (ooc_equals(ooc_hashMapEntryGetKey(entry), key)) {
+            OOC_Error error = ooc_iteratorRemove(bucketIterator);
+            ooc_destroy(bucketIterator);
+            if (error == OOC_ERROR_NONE) {
+                map->size--;
+            }
+            return error;
+        }
+    }
+    ooc_destroy(bucketIterator);
+    return OOC_ERROR_NOT_FOUND;
 }
 
 OOC_Error ooc_hashMapClear(void* self) {
-    return ooc_mapClear(self);
+    if (!self) {
+        return OOC_ERROR_INVALID_ARGUMENT;
+    }
+    OOC_TYPE_CHECK(self, ooc_hashMapClass(), OOC_ERROR_INVALID_OBJECT);
+    OOC_HashMap* map = self;
+    size_t capacity = ooc_hashMapCapacity(map);
+    for (size_t i = 0; i < capacity; i++) {
+        void* bucket = ooc_listGetAt(map->buckets, i);
+        if (bucket) {
+            void* bucketIterator = ooc_listGetIterator(bucket);
+            while (ooc_iteratorHasNext(bucketIterator)) {
+                ooc_iteratorNext(bucketIterator);
+                ooc_iteratorRemove(bucketIterator);
+            }
+            ooc_destroy(bucketIterator);
+        }
+    }
+    map->size = 0;
+    return OOC_ERROR_NONE;
 }
 
 void* ooc_hashMapKeySet(void* self) {
@@ -237,7 +291,7 @@ static bool ooc_hashMapIteratorHasNext(void* self) {
             return false;
         }
         void* bucket = ooc_iteratorNext(iterator->bucketsIterator);
-        if (ooc_listSize(bucket) > 0) {
+        if (bucket && ooc_listSize(bucket) > 0) {
             iterator->currentBucketIterator = ooc_iterableGetIterator(bucket);
         }
     }
@@ -250,6 +304,9 @@ static void* ooc_hashMapIteratorNext(void* self) {
     }
     OOC_TYPE_CHECK(self, ooc_hashMapIteratorClass(), NULL);
     OOC_HashMapIterator* iterator = self;
+    if (!ooc_hashMapIteratorHasNext(self)) {
+        return NULL;
+    }
     ooc_abstractIteratorNext(iterator);
     return ooc_iteratorNext(iterator->currentBucketIterator);
 }
@@ -353,7 +410,7 @@ static OOC_Error ooc_hashMapCtor(void* self, va_list* args) {
     }
     map->size = 0;
     map->loadFactor = OOC_HASH_MAP_DEFAULT_LOAD_FACTOR;
-    map->buckets = ooc_new(ooc_arrayListClass(), initialCapacity);
+    map->buckets = ooc_hashMapCreateBuckets(initialCapacity);
     if (!map->buckets) {
         return OOC_ERROR_OUT_OF_MEMORY;
     }
@@ -384,6 +441,8 @@ static void* ooc_hashMapClassInit(void) {
                     OOC_METHOD_DTOR, ooc_hashMapDtor,
                     OOC_ABSTRACT_MAP_METHOD_SIZE, ooc_hashMapSize,
                     OOC_ABSTRACT_MAP_METHOD_PUT, ooc_hashMapPut,
+                    OOC_ABSTRACT_MAP_METHOD_REMOVE, ooc_hashMapRemove,
+                    OOC_ABSTRACT_MAP_METHOD_CLEAR, ooc_hashMapClear,
                     OOC_ABSTRACT_MAP_METHOD_GET_ITERATOR, ooc_hashMapGetIterator,
                     0) != OOC_ERROR_NONE) {
         return NULL;

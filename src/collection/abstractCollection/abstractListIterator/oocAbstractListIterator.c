@@ -55,7 +55,7 @@ OOC_Error ooc_abstractListIteratorSet(void* self, void* element) {
     if (!iterator->canModify) {
         return OOC_ERROR_INVALID_STATE;
     }
-    return OOC_ERROR_NOT_SUPPORTED;
+    return OOC_ERROR_NONE;
 }
 
 OOC_Error ooc_abstractListIteratorAdd(void* self, void* element) {
@@ -65,7 +65,7 @@ OOC_Error ooc_abstractListIteratorAdd(void* self, void* element) {
     OOC_TYPE_CHECK(self, ooc_abstractListIteratorClass(), OOC_ERROR_INVALID_OBJECT);
     OOC_AbstractIterator* iterator = self;
     iterator->canModify = false;
-    return OOC_ERROR_NOT_SUPPORTED;
+    return OOC_ERROR_NONE;
 }
 
 static void* ooc_abstractListIteratorClassInit(void) {
