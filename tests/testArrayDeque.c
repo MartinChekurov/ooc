@@ -32,6 +32,8 @@ void test_array_deque_queue_operations(void) {
     TEST_ASSERT_EQUAL_PTR(s1, polled);
     TEST_ASSERT_EQUAL(1, ooc_collectionSize(deque));
 
+    ooc_destroy(polled);
+    ooc_destroy(ooc_queuePoll(deque));
     ooc_destroy(deque);
 }
 
@@ -57,6 +59,9 @@ void test_array_deque_deque_operations(void) {
 
     TEST_ASSERT_EQUAL(1, ooc_collectionSize(deque));
 
+    ooc_destroy(first);
+    ooc_destroy(last);
+    ooc_destroy(ooc_dequeRemoveFirst(deque));
     ooc_destroy(deque);
 }
 
@@ -70,9 +75,11 @@ void test_array_deque_stack_operations(void) {
 
     void* popped = ooc_dequeGetPop(deque);
     TEST_ASSERT_EQUAL_PTR(s2, popped);
+    ooc_destroy(popped);
 
     popped = ooc_dequeGetPop(deque);
     TEST_ASSERT_EQUAL_PTR(s1, popped);
+    ooc_destroy(popped);
 
     TEST_ASSERT_TRUE(ooc_collectionIsEmpty(deque));
 
