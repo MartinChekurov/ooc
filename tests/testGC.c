@@ -320,3 +320,48 @@ void test_gc_move_root_to_caller_slot(void) {
 
     ooc_gcShutdown();
 }
+
+void test_gc_duplicate_root_registration_is_ignored(void) {
+    ooc_gcInit();
+
+    void* rooted = ooc_new(ooc_objectClass());
+    void* other = ooc_new(ooc_objectClass());
+    TEST_ASSERT_EQUAL(2, ooc_gcObjectCount());
+
+    ooc_gcAddRoot((void**)&rooted);
+    ooc_gcAddRoot((void**)&rooted);
+    TEST_ASSERT_EQUAL(1, ooc_gcRootCount());
+
+    ooc_gcRun();
+    TEST_ASSERT_EQUAL(1, ooc_gcObjectCount());
+    TEST_ASSERT_NOT_NULL(rooted);
+
+    ooc_gcRemoveRoot((void**)&rooted);
+    ooc_gcRun();
+    TEST_ASSERT_EQUAL(0, ooc_gcObjectCount());
+
+    (void)other;
+
+    ooc_gcShutdown();
+}
+
+void test_gc_root_introspection_helpers(void) {
+    ooc_gcInit();
+
+    void* rooted = ooc_new(ooc_objectClass());
+    TEST_ASSERT_FALSE(ooc_gcHasRoot((void**)&rooted));
+    TEST_ASSERT_EQUAL(0, ooc_gcRootCount());
+
+    ooc_gcAddRoot((void**)&rooted);
+    TEST_ASSERT_TRUE(ooc_gcHasRoot((void**)&rooted));
+    TEST_ASSERT_EQUAL(1, ooc_gcRootCount());
+
+    ooc_gcRemoveRoot((void**)&rooted);
+    TEST_ASSERT_FALSE(ooc_gcHasRoot((void**)&rooted));
+    TEST_ASSERT_EQUAL(0, ooc_gcRootCount());
+
+    ooc_gcRun();
+    TEST_ASSERT_EQUAL(0, ooc_gcObjectCount());
+
+    ooc_gcShutdown();
+}
