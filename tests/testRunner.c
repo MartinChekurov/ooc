@@ -238,6 +238,9 @@ int main(void) {
     RUN_TEST(test_gc_hashmap_with_strings);
     RUN_TEST(test_gc_arraylist_with_strings);
     RUN_TEST(test_gc_nested_collections);
+    RUN_TEST(test_gc_scoped_root_macro);
+    RUN_TEST(test_gc_new_rooted_macro);
+    RUN_TEST(test_gc_new_scoped_macro);
 
     return UNITY_END();
 }
