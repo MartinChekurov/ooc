@@ -16,5 +16,7 @@ void test_gc_new_scoped_macro(void);
 void test_gc_new_in_across_functions(void);
 
 void test_gc_move_root_to_caller_slot(void);
+void test_gc_duplicate_root_registration_is_ignored(void);
+void test_gc_root_introspection_helpers(void);
 
 #endif

@@ -41,6 +41,11 @@ void ooc_gcAddRoot(void** root) {
     if (!root) {
         return;
     }
+
+    if (ooc_gcHasRoot(root)) {
+        return;
+    }
+
     if (gc_root_count == gc_root_capacity) {
         size_t new_cap = gc_root_capacity ? gc_root_capacity * 2 : 8;
         void** new_roots = realloc(gc_roots, new_cap * sizeof(void*));
@@ -137,4 +142,22 @@ void ooc_gcUnregister(void* obj) {
 
 size_t ooc_gcObjectCount(void) {
     return gc_object_count;
+}
+
+size_t ooc_gcRootCount(void) {
+    return gc_root_count;
+}
+
+bool ooc_gcHasRoot(void** root) {
+    if (!root) {
+        return false;
+    }
+
+    for (size_t i = 0; i < gc_root_count; i++) {
+        if (gc_roots[i] == root) {
+            return true;
+        }
+    }
+
+    return false;
 }

@@ -2,6 +2,7 @@
 #define OOC_GC_H_
 
 #include <stddef.h>
+#include <stdbool.h>
 #include "oocObject.h"
 
 #if defined(__GNUC__) || defined(__clang__)
@@ -51,6 +52,16 @@ void ooc_gcMark(void* obj);
  * @brief Returns the number of currently tracked objects.
  */
 size_t ooc_gcObjectCount(void);
+
+/**
+ * @brief Returns the number of currently registered root slots.
+ */
+size_t ooc_gcRootCount(void);
+
+/**
+ * @brief Returns whether a given root slot is currently registered.
+ */
+bool ooc_gcHasRoot(void** root);
 
 void ooc_gcRegister(void* obj);
 void ooc_gcUnregister(void* obj);
