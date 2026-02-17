@@ -18,5 +18,6 @@ void test_hash_map_equals(void);
 void test_hash_map_hash_code(void);
 void test_hash_map_to_string(void);
 void test_hash_map_clone(void);
+void test_hash_map_supports_null_key_and_value(void);
 
 #endif

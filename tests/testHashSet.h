@@ -15,5 +15,6 @@ void test_hash_set_hash_code(void);
 void test_hash_set_to_string(void);
 void test_hash_set_clone(void);
 void test_hash_set_empty(void);
+void test_hash_set_allows_single_null_element(void);
 
 #endif

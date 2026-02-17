@@ -212,3 +212,15 @@ void test_array_deque_add_many(void) {
 
     ooc_destroy(deque);
 }
+
+void test_array_deque_allows_null_elements(void) {
+    void* deque = ooc_new(ooc_arrayDequeClass(), (size_t)0);
+
+    TEST_ASSERT_EQUAL(OOC_ERROR_NONE, ooc_collectionAdd(deque, NULL));
+    TEST_ASSERT_EQUAL(1, ooc_collectionSize(deque));
+    TEST_ASSERT_TRUE(ooc_collectionContains(deque, NULL));
+    TEST_ASSERT_EQUAL(OOC_ERROR_NONE, ooc_collectionRemove(deque, NULL));
+    TEST_ASSERT_TRUE(ooc_collectionIsEmpty(deque));
+
+    ooc_destroy(deque);
+}

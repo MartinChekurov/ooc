@@ -240,3 +240,16 @@ void test_hash_set_empty(void) {
 
     ooc_destroy(set);
 }
+
+void test_hash_set_allows_single_null_element(void) {
+    void* set = ooc_new(ooc_hashSetClass(), (size_t)0);
+
+    TEST_ASSERT_EQUAL(OOC_ERROR_NONE, ooc_collectionAdd(set, NULL));
+    TEST_ASSERT_EQUAL(OOC_ERROR_NONE, ooc_collectionAdd(set, NULL));
+    TEST_ASSERT_EQUAL(1, ooc_collectionSize(set));
+    TEST_ASSERT_TRUE(ooc_collectionContains(set, NULL));
+    TEST_ASSERT_EQUAL(OOC_ERROR_NONE, ooc_collectionRemove(set, NULL));
+    TEST_ASSERT_TRUE(ooc_collectionIsEmpty(set));
+
+    ooc_destroy(set);
+}

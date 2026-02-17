@@ -352,3 +352,17 @@ void test_linked_list_remove_by_value(void) {
 
     ooc_destroy(list);
 }
+
+void test_linked_list_allows_null_elements(void) {
+    void* list = ooc_new(ooc_linkedListClass());
+
+    TEST_ASSERT_EQUAL(OOC_ERROR_NONE, ooc_collectionAdd(list, NULL));
+    TEST_ASSERT_EQUAL(1, ooc_collectionSize(list));
+    TEST_ASSERT_TRUE(ooc_collectionContains(list, NULL));
+    TEST_ASSERT_EQUAL(0, ooc_listIndexOf(list, NULL));
+    TEST_ASSERT_EQUAL(0, ooc_listLastIndexOf(list, NULL));
+    TEST_ASSERT_EQUAL(OOC_ERROR_NONE, ooc_collectionRemove(list, NULL));
+    TEST_ASSERT_TRUE(ooc_collectionIsEmpty(list));
+
+    ooc_destroy(list);
+}

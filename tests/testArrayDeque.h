@@ -13,5 +13,6 @@ void test_array_deque_empty_edge_cases(void);
 void test_array_deque_to_string(void);
 void test_array_deque_clone(void);
 void test_array_deque_add_many(void);
+void test_array_deque_allows_null_elements(void);
 
 #endif

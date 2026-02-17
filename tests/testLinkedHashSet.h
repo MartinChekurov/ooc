@@ -11,5 +11,6 @@ void test_linked_hash_set_to_string(void);
 void test_linked_hash_set_clear(void);
 void test_linked_hash_set_contains(void);
 void test_linked_hash_set_iterator_remove(void);
+void test_linked_hash_set_allows_single_null_element(void);
 
 #endif

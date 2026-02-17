@@ -295,6 +295,9 @@ char* ooc_classToString(const void* class, const void* self) {
 }
 
 bool ooc_classEquals(const void* class, const void* self, const void* other) {
+    if (self == other) {
+        return true;
+    }
     if (!class || !self || !other) {
         return false;
     }
