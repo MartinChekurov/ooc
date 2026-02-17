@@ -60,14 +60,14 @@ static size_t ooc_hashMapCapacity(OOC_HashMap* map) {
 }
 
 static size_t ooc_hashMapKeyIndex(OOC_HashMap* map, void* key) {
-    if (!map || !key) {
+    if (!map) {
         return 0;
     }
     return ooc_hashMapHashFunction(key, ooc_hashMapCapacity(map));
 }
 
 static void* ooc_hashMapKeyBucket(OOC_HashMap* map, void* key) {
-    if (!map || !key) {
+    if (!map) {
         return NULL;
     }
     return ooc_listGetAt(map->buckets, ooc_hashMapKeyIndex(map, key));

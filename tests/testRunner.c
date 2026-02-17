@@ -123,6 +123,7 @@ int main(void) {
     RUN_TEST(test_array_list_empty_list);
     RUN_TEST(test_array_list_interface_dispatch);
     RUN_TEST(test_array_list_remove_by_value);
+    RUN_TEST(test_array_list_allows_null_elements);
 
     /* LinkedList tests */
     RUN_TEST(test_linked_list_create_destroy);
@@ -147,6 +148,7 @@ int main(void) {
     RUN_TEST(test_linked_list_to_string);
     RUN_TEST(test_linked_list_hash_code);
     RUN_TEST(test_linked_list_remove_by_value);
+    RUN_TEST(test_linked_list_allows_null_elements);
 
     /* HashSet tests */
     RUN_TEST(test_hash_set_create_destroy);
@@ -163,6 +165,7 @@ int main(void) {
     RUN_TEST(test_hash_set_to_string);
     RUN_TEST(test_hash_set_clone);
     RUN_TEST(test_hash_set_empty);
+    RUN_TEST(test_hash_set_allows_single_null_element);
 
     /* LinkedHashSet tests */
     RUN_TEST(test_linked_hash_set_create_destroy);
@@ -175,6 +178,7 @@ int main(void) {
     RUN_TEST(test_linked_hash_set_clear);
     RUN_TEST(test_linked_hash_set_contains);
     RUN_TEST(test_linked_hash_set_iterator_remove);
+    RUN_TEST(test_linked_hash_set_allows_single_null_element);
 
     /* HashMap tests */
     RUN_TEST(test_hash_map_create_destroy);
@@ -194,6 +198,7 @@ int main(void) {
     RUN_TEST(test_hash_map_hash_code);
     RUN_TEST(test_hash_map_to_string);
     RUN_TEST(test_hash_map_clone);
+    RUN_TEST(test_hash_map_supports_null_key_and_value);
 
     /* LinkedHashMap tests */
     RUN_TEST(test_linked_hash_map_create_destroy);
@@ -206,6 +211,7 @@ int main(void) {
     RUN_TEST(test_linked_hash_map_key_set_order);
     RUN_TEST(test_linked_hash_map_values_order);
     RUN_TEST(test_linked_hash_map_iterator_remove);
+    RUN_TEST(test_linked_hash_map_supports_null_key_and_value);
 
     /* ArrayDeque tests */
     RUN_TEST(test_array_deque_create_destroy);
@@ -220,6 +226,7 @@ int main(void) {
     RUN_TEST(test_array_deque_to_string);
     RUN_TEST(test_array_deque_clone);
     RUN_TEST(test_array_deque_add_many);
+    RUN_TEST(test_array_deque_allows_null_elements);
 
     return UNITY_END();
 }

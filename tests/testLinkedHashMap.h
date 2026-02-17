@@ -11,5 +11,6 @@ void test_linked_hash_map_clear(void);
 void test_linked_hash_map_key_set_order(void);
 void test_linked_hash_map_values_order(void);
 void test_linked_hash_map_iterator_remove(void);
+void test_linked_hash_map_supports_null_key_and_value(void);
 
 #endif

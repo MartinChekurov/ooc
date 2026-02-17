@@ -318,3 +318,17 @@ void test_hash_map_clone(void) {
     ooc_destroy(map);
     ooc_destroy(clone);
 }
+
+void test_hash_map_supports_null_key_and_value(void) {
+    void* map = ooc_new(ooc_hashMapClass(), (size_t)0);
+
+    TEST_ASSERT_EQUAL(OOC_ERROR_NONE, ooc_mapPut(map, NULL, NULL));
+    TEST_ASSERT_EQUAL(1, ooc_mapSize(map));
+    TEST_ASSERT_TRUE(ooc_mapContainsKey(map, NULL));
+    TEST_ASSERT_TRUE(ooc_mapContainsValue(map, NULL));
+    TEST_ASSERT_NULL(ooc_mapGet(map, NULL));
+    TEST_ASSERT_EQUAL(OOC_ERROR_NONE, ooc_mapRemove(map, NULL));
+    TEST_ASSERT_TRUE(ooc_mapIsEmpty(map));
+
+    ooc_destroy(map);
+}

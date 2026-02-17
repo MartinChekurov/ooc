@@ -24,5 +24,6 @@ void test_array_list_capacity(void);
 void test_array_list_empty_list(void);
 void test_array_list_interface_dispatch(void);
 void test_array_list_remove_by_value(void);
+void test_array_list_allows_null_elements(void);
 
 #endif

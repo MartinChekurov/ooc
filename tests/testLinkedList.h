@@ -23,5 +23,6 @@ void test_linked_list_clone(void);
 void test_linked_list_to_string(void);
 void test_linked_list_hash_code(void);
 void test_linked_list_remove_by_value(void);
+void test_linked_list_allows_null_elements(void);
 
 #endif
