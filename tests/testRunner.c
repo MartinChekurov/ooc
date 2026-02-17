@@ -241,6 +241,8 @@ int main(void) {
     RUN_TEST(test_gc_scoped_root_macro);
     RUN_TEST(test_gc_new_rooted_macro);
     RUN_TEST(test_gc_new_scoped_macro);
+    RUN_TEST(test_gc_new_in_across_functions);
+    RUN_TEST(test_gc_move_root_to_caller_slot);
 
     return UNITY_END();
 }

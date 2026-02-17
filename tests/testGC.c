@@ -273,3 +273,50 @@ void test_gc_new_scoped_macro(void) {
 
     ooc_gcShutdown();
 }
+
+
+static void helper_create_rooted_in_caller_slot(void** out) {
+    OOC_GC_NEW_IN(out, ooc_stringClass(), "cross-fn");
+}
+
+void test_gc_new_in_across_functions(void) {
+    ooc_gcInit();
+
+    void* value = NULL;
+    helper_create_rooted_in_caller_slot(&value);
+    TEST_ASSERT_NOT_NULL(value);
+
+    ooc_gcRun();
+    TEST_ASSERT_NOT_NULL(value);
+
+    OOC_GC_UNROOT(value);
+    ooc_gcRun();
+    TEST_ASSERT_EQUAL(0, ooc_gcObjectCount());
+
+    ooc_gcShutdown();
+}
+
+static void helper_create_and_move_root_to_caller(void** out) {
+    void* local = ooc_new(ooc_stringClass(), "moved-root");
+    OOC_GC_ROOT(local);
+
+    *out = local;
+    OOC_GC_MOVE_ROOT(&local, out);
+}
+
+void test_gc_move_root_to_caller_slot(void) {
+    ooc_gcInit();
+
+    void* escaped = NULL;
+    helper_create_and_move_root_to_caller(&escaped);
+    TEST_ASSERT_NOT_NULL(escaped);
+
+    ooc_gcRun();
+    TEST_ASSERT_NOT_NULL(escaped);
+
+    OOC_GC_UNROOT(escaped);
+    ooc_gcRun();
+    TEST_ASSERT_EQUAL(0, ooc_gcObjectCount());
+
+    ooc_gcShutdown();
+}
