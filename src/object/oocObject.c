@@ -1,5 +1,6 @@
 #include "oocObject.h"
 #include "oocObject.r"
+#include "oocGC.h"
 
 #include <stdint.h>
 #include <stdio.h>
@@ -133,12 +134,18 @@ static void* ooc_objectClone(const void* self) {
     if (!size) {
         return NULL;
     }
-    OOC_Object* obj = malloc(size);
+    OOC_Object* obj = calloc(1, size);
     if (!obj) {
         return NULL;
     }
     obj->class = (void*)ooc_classOf(self);
+    ooc_gcRegister(obj);
     return obj;
+}
+
+static void ooc_objectGcMark(void* self, void* gc) {
+    (void)self;
+    (void)gc;
 }
 
 static void* ooc_objectClassInit(void) {
@@ -158,6 +165,7 @@ static void* ooc_objectClassInit(void) {
     ObjectClassInstance.hash = ooc_objectHash;
     ObjectClassInstance.compare = ooc_objectCompare;
     ObjectClassInstance.clone = ooc_objectClone;
+    ObjectClassInstance.gc_mark = ooc_objectGcMark;
 
     return &ObjectClassInstance;
 }
@@ -462,6 +470,7 @@ void* ooc_new(void* class, ...) {
         ooc_destroy(obj);
         return NULL;
     }
+    ooc_gcRegister(obj);
     return obj;
 }
 
@@ -473,6 +482,7 @@ OOC_Error ooc_destroy(void* self) {
     if (!class) {
         return OOC_ERROR_NO_CLASS;
     }
+    ooc_gcUnregister(self);
     if (class->dtor) {
         OOC_Error error = class->dtor(self);
         if (error != OOC_ERROR_NONE) {

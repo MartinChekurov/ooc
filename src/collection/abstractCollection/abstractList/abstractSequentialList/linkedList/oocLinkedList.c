@@ -14,6 +14,7 @@
 #include "oocAbstractListIterator.r"
 #include "oocQueue.h"
 
+#include "oocGC.h"
 #include <stdlib.h>
 #include <stddef.h>
 
@@ -46,7 +47,6 @@ static OOC_Error ooc_linkedListNodeDestroy(OOC_LinkedListNode* node) {
     if (!node) {
         return OOC_ERROR_INVALID_ARGUMENT;
     }
-    ooc_destroy(node->data);
     free(node);
     return OOC_ERROR_NONE;
 }
@@ -293,10 +293,7 @@ static OOC_Error ooc_linkedListIteratorSet(void* self, void* element) {
     if (!iterator->lastReturned) {
         return OOC_ERROR_INVALID_STATE;
     }
-    if (iterator->lastReturned->data != element) {
-        ooc_destroy(iterator->lastReturned->data);
-        iterator->lastReturned->data = element;
-    }
+    iterator->lastReturned->data = element;
     return OOC_ERROR_NONE;
 }
 
@@ -585,6 +582,12 @@ static OOC_Error ooc_linkedListDtor(void* self) {
     return ooc_superDtor(ooc_linkedListClass(), self);
 }
 
+static void ooc_linkedListGcMark(void* self, void* gc) {
+    OOC_LinkedList* list = self;
+    for (OOC_LinkedListNode* n = list->head; n; n = n->next)
+        ooc_gcMark(n->data);
+}
+
 static void* ooc_linkedListClassInit(void) {
     if (ooc_classNew(&LinkedListClassInstance,
                      "LinkedList",
@@ -594,6 +597,7 @@ static void* ooc_linkedListClassInit(void) {
                      OOC_MODIFIER_NONE,
                      OOC_METHOD_CTOR, ooc_linkedListCtor,
                      OOC_METHOD_DTOR, ooc_linkedListDtor,
+                     OOC_METHOD_GC_MARK, ooc_linkedListGcMark,
                      OOC_ABSTRACT_COLLECTION_METHOD_ITERATOR, ooc_linkedListGetIterator,
                      OOC_ABSTRACT_COLLECTION_METHOD_SIZE, ooc_linkedListSize,
                      OOC_ABSTRACT_LIST_METHOD_GET_LIST_ITERATOR_AT, ooc_linkedListGetListIteratorAt,

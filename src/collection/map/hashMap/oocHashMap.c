@@ -15,6 +15,7 @@
 #include "oocIterable.h"
 #include "oocAbstractIterator.h"
 #include "oocAbstractIterator.r"
+#include "oocGC.h"
 #include <stddef.h>
 #include <stdlib.h>
 #include <string.h>
@@ -119,16 +120,11 @@ static bool ooc_hashMapRehash(OOC_HashMap* map) {
             if (!newBucket) {
                 newBucket = ooc_new(ooc_linkedListClass());
                 if (!newBucket) {
-                    ooc_destroy(entry);
-                    ooc_destroy(map->buckets);
                     map->buckets = (void*)oldBuckets;
                     return false;
                 }
                 OOC_Error setError = ooc_listSetAt(map->buckets, newIndex, newBucket);
                 if (setError != OOC_ERROR_NONE) {
-                    ooc_destroy(newBucket);
-                    ooc_destroy(entry);
-                    ooc_destroy(map->buckets);
                     map->buckets = (void*)oldBuckets;
                     return false;
                 }
@@ -136,19 +132,14 @@ static bool ooc_hashMapRehash(OOC_HashMap* map) {
 
             OOC_Error addError = ooc_listAdd(newBucket, entry);
             if (addError != OOC_ERROR_NONE) {
-                ooc_destroy(entry);
-                ooc_destroy(map->buckets);
                 map->buckets = (void*)oldBuckets;
                 return false;
             }
             map->size++;
         }
 
-        ooc_destroy(bucket);
         oldBuckets->elements[i] = NULL;
     }
-
-    ooc_destroy(oldBuckets);
     return true;
 }
 
@@ -227,7 +218,6 @@ OOC_Error ooc_hashMapPut(void* self, void* key, void* value) {
     if (!bucket) {
         bucket = ooc_new(ooc_linkedListClass());
         if (!bucket) {
-            ooc_destroy(entry);
             return OOC_ERROR_OUT_OF_MEMORY;
         }
         ooc_listSetAt(map->buckets, index, bucket);
@@ -237,8 +227,6 @@ OOC_Error ooc_hashMapPut(void* self, void* key, void* value) {
         ooc_hashMapEntrySetKey(entry, key);
         ooc_hashMapEntrySetValue(entry, value);
         map->size++;
-    } else {
-        ooc_destroy(entry);
     }
     return error;
 }
@@ -447,11 +435,15 @@ static OOC_Error ooc_hashMapDtor(void* self) {
     }
     OOC_TYPE_CHECK(self, ooc_hashMapClass(), OOC_ERROR_INVALID_OBJECT);
     OOC_HashMap* map = self;
-    ooc_destroy(map->buckets);
     map->buckets = NULL;
     map->size = 0;
     map->loadFactor = 0;
     return ooc_superDtor(ooc_hashMapClass(), map);
+}
+
+static void ooc_hashMapGcMark(void* self, void* gc) {
+    OOC_HashMap* map = self;
+    ooc_gcMark(map->buckets);
 }
 
 static void* ooc_hashMapClassInit(void) {
@@ -463,6 +455,7 @@ static void* ooc_hashMapClassInit(void) {
                     OOC_MODIFIER_NONE,
                     OOC_METHOD_CTOR, ooc_hashMapCtor,
                     OOC_METHOD_DTOR, ooc_hashMapDtor,
+                    OOC_METHOD_GC_MARK, ooc_hashMapGcMark,
                     OOC_ABSTRACT_MAP_METHOD_SIZE, ooc_hashMapSize,
                     OOC_ABSTRACT_MAP_METHOD_PUT, ooc_hashMapPut,
                     OOC_ABSTRACT_MAP_METHOD_REMOVE, ooc_hashMapRemove,

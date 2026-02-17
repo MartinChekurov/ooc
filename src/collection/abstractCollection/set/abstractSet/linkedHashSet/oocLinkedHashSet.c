@@ -20,7 +20,6 @@ static OOC_Error ooc_linkedHashSetCtor(void* self, va_list* args) {
         return error;
     }
     /* Super ctor created a HashMap; replace it with a LinkedHashMap */
-    ooc_destroy(set->object.map);
     set->object.map = ooc_new(ooc_linkedHashMapClass(), (size_t)0);
     if (!set->object.map) {
         return OOC_ERROR_OUT_OF_MEMORY;

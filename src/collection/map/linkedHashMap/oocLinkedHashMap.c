@@ -11,6 +11,7 @@
 #include "oocIterator.h"
 #include "oocAbstractIterator.h"
 #include "oocAbstractIterator.r"
+#include "oocGC.h"
 #include <stddef.h>
 #include <string.h>
 
@@ -75,7 +76,6 @@ OOC_Error ooc_linkedHashMapPut(void* self, void* key, void* value) {
         }
         error = ooc_listAdd(map->insertionOrder, entry);
         if (error != OOC_ERROR_NONE) {
-            ooc_destroy(entry);
             ooc_hashMapRemove(self, key);
             return error;
         }
@@ -269,9 +269,14 @@ static OOC_Error ooc_linkedHashMapDtor(void* self) {
     }
     OOC_TYPE_CHECK(self, ooc_linkedHashMapClass(), OOC_ERROR_INVALID_OBJECT);
     OOC_LinkedHashMap* map = self;
-    ooc_destroy(map->insertionOrder);
     map->insertionOrder = NULL;
     return ooc_superDtor(ooc_linkedHashMapClass(), map);
+}
+
+static void ooc_linkedHashMapGcMark(void* self, void* gc) {
+    OOC_LinkedHashMap* map = self;
+    ooc_gcMark(map->hashMap.buckets);
+    ooc_gcMark(map->insertionOrder);
 }
 
 static void* ooc_linkedHashMapClassInit(void) {
@@ -283,6 +288,7 @@ static void* ooc_linkedHashMapClassInit(void) {
                     OOC_MODIFIER_NONE,
                     OOC_METHOD_CTOR, ooc_linkedHashMapCtor,
                     OOC_METHOD_DTOR, ooc_linkedHashMapDtor,
+                    OOC_METHOD_GC_MARK, ooc_linkedHashMapGcMark,
                     OOC_ABSTRACT_MAP_METHOD_PUT, ooc_linkedHashMapPut,
                     OOC_ABSTRACT_MAP_METHOD_REMOVE, ooc_linkedHashMapRemove,
                     OOC_ABSTRACT_MAP_METHOD_CLEAR, ooc_linkedHashMapClear,

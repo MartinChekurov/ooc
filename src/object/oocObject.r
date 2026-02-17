@@ -42,10 +42,13 @@ struct OOC_Class {
     size_t (*hash)(const void* self);
     int (*compare)(const void* self, const void* other);
     void* (*clone)(const void* self);
+    void (*gc_mark)(void* self, void* gc);
 };
 
 struct OOC_Object {
     OOC_Class* class;
+    bool gc_marked;
+    struct OOC_Object* gc_next;
 };
 
 OOC_Error   ooc_classNew       (void* class, ...);
@@ -89,5 +92,6 @@ void*       ooc_superClone          (const void* class, const void* self);
 #define OOC_METHOD_HASH             OOC_METHOD(OOC_Class, hash)
 #define OOC_METHOD_COMPARE          OOC_METHOD(OOC_Class, compare)
 #define OOC_METHOD_CLONE            OOC_METHOD(OOC_Class, clone)
+#define OOC_METHOD_GC_MARK          OOC_METHOD(OOC_Class, gc_mark)
 
 #endif

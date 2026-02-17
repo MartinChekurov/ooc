@@ -10,6 +10,7 @@
 #include "oocObject.h"
 #include "oocQueue.h"
 
+#include "oocGC.h"
 #include <limits.h>
 #include <stddef.h>
 #include <stdint.h>
@@ -95,7 +96,7 @@ static OOC_Error ooc_arrayDequeDeleteAt(OOC_ArrayDeque* deque, size_t index) {
     }
     OOC_ARRAY_DEQUE_DECREMENT_INDEX(deque, deque->tail);
     deque->size--;
-    ooc_destroy(removed);
+    (void)removed;
     return OOC_ERROR_NONE;
 }
 
@@ -376,6 +377,14 @@ static OOC_Error ooc_arrayDequeDtor(void* self) {
     return ooc_superDtor(ooc_arrayDequeClass(), self);
 }
 
+static void ooc_arrayDequeGcMark(void* self, void* gc) {
+    OOC_ArrayDeque* deque = self;
+    for (size_t i = 0; i < deque->size; i++) {
+        size_t idx = (deque->head + i) % deque->capacity;
+        ooc_gcMark(deque->elements[idx]);
+    }
+}
+
 static void* ooc_arrayDequeClassInit(void) {
     if (ooc_classNew(&ArrayDequeClassInstance,
                      "ArrayDeque",
@@ -385,6 +394,7 @@ static void* ooc_arrayDequeClassInit(void) {
                      OOC_MODIFIER_NONE,
                      OOC_METHOD_CTOR, ooc_arrayDequeCtor,
                      OOC_METHOD_DTOR, ooc_arrayDequeDtor,
+                     OOC_METHOD_GC_MARK, ooc_arrayDequeGcMark,
                      OOC_ABSTRACT_COLLECTION_METHOD_ITERATOR, ooc_arrayDequeGetIterator,
                      OOC_ABSTRACT_COLLECTION_METHOD_SIZE, ooc_arrayDequeSize,
                      OOC_ABSTRACT_COLLECTION_METHOD_ADD, ooc_arrayDequeAdd,

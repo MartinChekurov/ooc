@@ -7,6 +7,7 @@
 #include "oocList.h"
 #include "oocObject.h"
 #include "oocAbstractIterator.r"
+#include "oocGC.h"
 #include <stddef.h>
 #include <stdlib.h>
 #include <string.h>
@@ -93,10 +94,7 @@ OOC_Error ooc_arrayListSetAt(void* self, size_t index, void* element) {
     if (index >= list->size) {
         return OOC_ERROR_INVALID_ARGUMENT;
     }
-    if (list->elements[index] != element) {
-        ooc_destroy(list->elements[index]);
-        list->elements[index] = element;
-    }
+    list->elements[index] = element;
     return OOC_ERROR_NONE;
 }
 
@@ -130,7 +128,6 @@ OOC_Error ooc_arrayListRemoveAt(void* self, size_t index) {
     if (index >= list->size) {
         return OOC_ERROR_INVALID_ARGUMENT;
     }
-    ooc_destroy(list->elements[index]);
     if (index < list->size - 1) {
         memmove(list->elements + index,
                 list->elements + index + 1,
@@ -247,6 +244,12 @@ static OOC_Error ooc_arrayListDtor(void* self) {
     return ooc_superDtor(ooc_arrayListClass(), self);
 }
 
+static void ooc_arrayListGcMark(void* self, void* gc) {
+    OOC_ArrayList* list = self;
+    for (size_t i = 0; i < list->size; i++)
+        ooc_gcMark(list->elements[i]);
+}
+
 static void* ooc_arrayListClassInit(void) {
     if (ooc_classNew(&ArrayListClassInstance,
                     "ArrayList",
@@ -256,6 +259,7 @@ static void* ooc_arrayListClassInit(void) {
                     OOC_MODIFIER_NONE,
                     OOC_METHOD_CTOR, ooc_arrayListCtor,
                     OOC_METHOD_DTOR, ooc_arrayListDtor,
+                    OOC_METHOD_GC_MARK, ooc_arrayListGcMark,
                     OOC_ABSTRACT_COLLECTION_METHOD_SIZE, ooc_arrayListSize,
                     OOC_ABSTRACT_LIST_METHOD_GET_AT, ooc_arrayListGetAt,
                     OOC_ABSTRACT_LIST_METHOD_SET_AT, ooc_arrayListSetAt,

@@ -2,6 +2,7 @@
 #include "oocString.r"
 #include "oocObject.h"
 #include "oocStringBuffer.h"
+#include "oocGC.h"
 #include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
@@ -35,10 +36,7 @@ static OOC_Error ooc_stringDestructor(void* self) {
     }
     OOC_TYPE_CHECK(self, ooc_stringClass(), OOC_ERROR_INVALID_OBJECT);
     OOC_String* string = self;
-    OOC_Error error = ooc_destroy(string->stringBuffer);
-    if (error != OOC_ERROR_NONE) {
-        return error;
-    }
+    string->stringBuffer = NULL;
     return ooc_superDtor(ooc_stringClass(), self);
 }
 
@@ -85,6 +83,11 @@ static void* ooc_stringClone(const void* self) {
     return ooc_new(ooc_stringClass(), ooc_stringGetCString(self));
 }
 
+static void ooc_stringGcMark(void* self, void* gc) {
+    OOC_String* string = self;
+    ooc_gcMark(string->stringBuffer);
+}
+
 static void* ooc_stringClassInit(void) {
     if (ooc_classNew(&StringClassInstance,
                     "String",
@@ -94,6 +97,7 @@ static void* ooc_stringClassInit(void) {
                     OOC_MODIFIER_FINAL,
                     OOC_METHOD_CTOR, ooc_stringConstructor,
                     OOC_METHOD_DTOR, ooc_stringDestructor,
+                    OOC_METHOD_GC_MARK, ooc_stringGcMark,
                     OOC_METHOD_TO_STRING, ooc_stringToString,
                     OOC_METHOD_EQUALS, ooc_stringEquals,
                     OOC_METHOD_HASH, ooc_stringHash,

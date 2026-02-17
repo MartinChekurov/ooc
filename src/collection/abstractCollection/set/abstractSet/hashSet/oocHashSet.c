@@ -10,6 +10,7 @@
 #include "oocMap.h"
 #include "oocIterator.h"
 #include "oocAbstractSet.h"
+#include "oocGC.h"
 #include <stdlib.h>
 
 typedef struct OOC_HashSetIterator OOC_HashSetIterator;
@@ -174,9 +175,13 @@ static OOC_Error ooc_hashSetDtor(void* self) {
     }
     OOC_TYPE_CHECK(self, ooc_hashSetClass(), OOC_ERROR_INVALID_OBJECT);
     OOC_HashSet* set = self;
-    ooc_destroy(set->map);
     set->map = NULL;
     return ooc_superDtor(ooc_hashSetClass(), set);
+}
+
+static void ooc_hashSetGcMark(void* self, void* gc) {
+    OOC_HashSet* set = self;
+    ooc_gcMark(set->map);
 }
 
 static void* ooc_hashSetClassInit(void) {
@@ -188,6 +193,7 @@ static void* ooc_hashSetClassInit(void) {
                     OOC_MODIFIER_NONE,
                     OOC_METHOD_CTOR, ooc_hashSetCtor,
                     OOC_METHOD_DTOR, ooc_hashSetDtor,
+                    OOC_METHOD_GC_MARK, ooc_hashSetGcMark,
                     OOC_ABSTRACT_COLLECTION_METHOD_ITERATOR, ooc_hashSetGetIterator,
                     OOC_ABSTRACT_COLLECTION_METHOD_SIZE, ooc_hashSetSize,
                     OOC_ABSTRACT_COLLECTION_METHOD_ADD, ooc_hashSetAdd,

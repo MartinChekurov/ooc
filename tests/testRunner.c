@@ -11,6 +11,7 @@
 #include "testArrayDeque.h"
 #include "testCoreInterfaces.h"
 #include "testHashMapEntry.h"
+#include "testGC.h"
 
 void setUp(void) {
 }
@@ -227,6 +228,16 @@ int main(void) {
     RUN_TEST(test_array_deque_clone);
     RUN_TEST(test_array_deque_add_many);
     RUN_TEST(test_array_deque_allows_null_elements);
+
+    /* GC tests */
+    RUN_TEST(test_gc_init_shutdown);
+    RUN_TEST(test_gc_object_tracking);
+    RUN_TEST(test_gc_sweep_unreachable);
+    RUN_TEST(test_gc_keep_reachable);
+    RUN_TEST(test_gc_multiple_roots);
+    RUN_TEST(test_gc_hashmap_with_strings);
+    RUN_TEST(test_gc_arraylist_with_strings);
+    RUN_TEST(test_gc_nested_collections);
 
     return UNITY_END();
 }

@@ -2,6 +2,7 @@
 #include "oocHashMapEntry.r"
 #include "oocObject.h"
 #include "oocObject.r"
+#include "oocGC.h"
 #include <stdlib.h>
 
 static OOC_HashMapEntryClass* HashMapEntryClass;
@@ -22,9 +23,6 @@ OOC_Error ooc_hashMapEntrySetKey(void* self, void* key) {
     }
     OOC_TYPE_CHECK(self, ooc_hashMapEntryClass(), OOC_ERROR_INVALID_OBJECT);
     OOC_HashMapEntry* entry = self;
-    if (entry->key != key) {
-        ooc_destroy(entry->key);
-    }
     entry->key = key;
     return OOC_ERROR_NONE;
 }
@@ -44,9 +42,6 @@ OOC_Error ooc_hashMapEntrySetValue(void* self, void* value) {
     }
     OOC_TYPE_CHECK(self, ooc_hashMapEntryClass(), OOC_ERROR_INVALID_OBJECT);
     OOC_HashMapEntry* entry = self;
-    if (entry->value != value) {
-        ooc_destroy(entry->value);
-    }
     entry->value = value;
     return OOC_ERROR_NONE;
 }
@@ -72,15 +67,15 @@ static OOC_Error ooc_hashMapEntryDtor(void* self) {
     }
     OOC_TYPE_CHECK(self, ooc_hashMapEntryClass(), OOC_ERROR_INVALID_OBJECT);
     OOC_HashMapEntry* entry = self;
-    if (entry->key) {
-        ooc_destroy(entry->key);
-        entry->key = NULL;
-    }
-    if (entry->value) {
-        ooc_destroy(entry->value);
-        entry->value = NULL;
-    }
+    entry->key = NULL;
+    entry->value = NULL;
     return ooc_superDtor(ooc_hashMapEntryClass(), entry);
+}
+
+static void ooc_hashMapEntryGcMark(void* self, void* gc) {
+    OOC_HashMapEntry* entry = self;
+    ooc_gcMark(entry->key);
+    ooc_gcMark(entry->value);
 }
 
 static void* ooc_hashMapEntryClassInit(void) {
@@ -92,6 +87,7 @@ static void* ooc_hashMapEntryClassInit(void) {
                     OOC_MODIFIER_NONE,
                     OOC_METHOD_CTOR, ooc_hashMapEntryCtor,
                     OOC_METHOD_DTOR, ooc_hashMapEntryDtor,
+                    OOC_METHOD_GC_MARK, ooc_hashMapEntryGcMark,
                     0) != OOC_ERROR_NONE) {
         return NULL;
     }
