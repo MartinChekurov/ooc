@@ -12,6 +12,7 @@
 #include "testCoreInterfaces.h"
 #include "testHashMapEntry.h"
 #include "testGC.h"
+#include "testNumber.h"
 
 void setUp(void) {
 }
@@ -245,6 +246,19 @@ int main(void) {
     RUN_TEST(test_gc_move_root_to_caller_slot);
     RUN_TEST(test_gc_duplicate_root_registration_is_ignored);
     RUN_TEST(test_gc_root_introspection_helpers);
+
+    /* Number tests */
+    RUN_TEST(test_number_char);
+    RUN_TEST(test_number_uchar);
+    RUN_TEST(test_number_short);
+    RUN_TEST(test_number_ushort);
+    RUN_TEST(test_number_integer);
+    RUN_TEST(test_number_uinteger);
+    RUN_TEST(test_number_long);
+    RUN_TEST(test_number_ulong);
+    RUN_TEST(test_number_float);
+    RUN_TEST(test_number_double);
+    RUN_TEST(test_number_instanceof);
 
     return UNITY_END();
 }

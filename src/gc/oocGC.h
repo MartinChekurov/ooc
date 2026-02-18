@@ -3,7 +3,6 @@
 
 #include <stddef.h>
 #include <stdbool.h>
-#include "oocObject.h"
 
 #if defined(__GNUC__) || defined(__clang__)
 #define OOC_GC_HAS_SCOPED_ROOTS 1
