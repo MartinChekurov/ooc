@@ -10,6 +10,7 @@
 #include "oocSet.h"
 #include "oocList.h"
 #include "oocStringBuffer.h"
+#include "oocString.h"
 #include <stdlib.h>
 #include <string.h>
 
@@ -192,7 +193,7 @@ static char* ooc_abstractMapToString(const void* self) {
     OOC_TYPE_CHECK(self, ooc_abstractMapClass(), NULL);
     void* it = ooc_mapGetIterator((void*)self);
     if (!it) {
-        return strdup("{}");
+        return ooc_StringFormat("%s", "{}");
     }
     void* buf = ooc_new(ooc_stringBufferClass(), "{");
     if (!buf) {

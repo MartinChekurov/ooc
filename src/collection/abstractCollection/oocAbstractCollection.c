@@ -7,6 +7,7 @@
 #include "oocCollection.h"
 #include "oocIterator.h"
 #include "oocStringBuffer.h"
+#include "oocString.h"
 #include <stdlib.h>
 #include <string.h>
 
@@ -19,7 +20,7 @@ static char* ooc_abstractCollectionToString(const void* self) {
     OOC_TYPE_CHECK(self, ooc_abstractCollectionClass(), NULL);
     void* it = ooc_iterableGetIterator((void*)self);
     if (!it) {
-        return strdup("[]");
+        return ooc_StringFormat("%s", "[]");
     }
     void* buf = ooc_new(ooc_stringBufferClass(), "[");
     if (!buf) {
