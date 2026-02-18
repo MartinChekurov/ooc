@@ -1,8 +1,8 @@
-get_files(${CMAKE_CURRENT_SOURCE_DIR}/*.c c_files)
-get_paths(${CMAKE_CURRENT_SOURCE_DIR}/*.h headers_paths)
+ooc_collect_sources(unity_sources ${CMAKE_CURRENT_SOURCE_DIR})
+ooc_collect_include_dirs(unity_include_dirs ${CMAKE_CURRENT_SOURCE_DIR})
 
-add_library(unity STATIC ${c_files})
+add_library(unity STATIC ${unity_sources})
 
 target_include_directories(unity
-    PRIVATE ${headers_paths}
+    PUBLIC ${unity_include_dirs}
 )

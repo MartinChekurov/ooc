@@ -1,17 +1,16 @@
-enable_testing()
+ooc_collect_sources(test_sources ${CMAKE_CURRENT_SOURCE_DIR})
+ooc_collect_include_dirs(project_include_dirs ${CMAKE_SOURCE_DIR}/src)
 
-get_files(${CMAKE_CURRENT_SOURCE_DIR}/*.c c_files)
-get_paths(${CMAKE_SOURCE_DIR}/*.h headers_paths)
-
-add_executable(run_tests ${c_files})
+add_executable(run_tests ${test_sources})
 
 target_include_directories(run_tests
-    PRIVATE ${headers_paths}
+    PRIVATE ${project_include_dirs}
 )
 
 target_link_libraries(run_tests
-    ${PROJECT_NAME}
-    unity
+    PRIVATE
+        ${PROJECT_NAME}
+        unity
 )
 
 add_test(NAME ooc_tests COMMAND run_tests)
