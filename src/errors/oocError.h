@@ -67,6 +67,10 @@ enum OOC_Error {
     OOC_ERROR_NO_PARENT,
     OOC_ERROR_ABSTRACT_METHOD_NOT_IMPLEMENTED,
     OOC_ERROR_OUT_OF_BOUNDS,
+    /** @brief Data on disk does not match expected format or is corrupt */
+    OOC_ERROR_INVALID_FORMAT,
+    /** @brief No free inodes or data blocks available */
+    OOC_ERROR_NO_SPACE,
     /** @brief Total count of error codes (must be last) */
     OOC_ERROR_COUNT
 };
