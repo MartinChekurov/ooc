@@ -317,378 +317,112 @@ static uint32_t ooc_fsGetPtrsPerBlock(OOC_Fs* fs) {
     return fs->superblock.blockSize / (uint32_t)sizeof(uint32_t);
 }
 
-static OOC_Error ooc_fsResolveBlockPtr(OOC_Fs* fs, const OOC_FsInodeDisk* inode,
-                                        uint32_t logicalIndex, uint32_t* outAbsBlock) {
+typedef enum {
+    OOC_FS_WALK_DATA,   /* slot holds a data block address */
+    OOC_FS_WALK_TABLE,  /* slot holds a table block address */
+} OOC_FsWalkEvent;
+
+typedef struct OOC_FsWalk OOC_FsWalk;
+
+typedef struct OOC_FsBlockVisit {
+    OOC_FsWalkEvent  event;
+    uint32_t         logicalIndex;   /* DATA: logical block index; TABLE: base index of subtree */
+    uint32_t         physicalIndex;  /* current block number at this slot (0 = unallocated) */
+} OOC_FsBlockVisit;
+
+typedef OOC_Error (*OOC_FsBlockVisitor)(OOC_FsWalk* walk, OOC_FsBlockVisit* visit);
+
+struct OOC_FsWalk {
+    OOC_Fs*            fs;
+    OOC_FsInodeDisk*   inode;
+    OOC_FsBlockVisitor visitor;
+    void*              ctx;
+};
+
+static OOC_Error ooc_fsWalkIndirect(OOC_FsWalk* walk, uint32_t tableAbsBlock,
+                                     uint32_t level, uint32_t* logicalBase) {
+    OOC_Fs* fs = walk->fs;
     uint32_t ptrsPerBlock = ooc_fsGetPtrsPerBlock(fs);
 
-    if (logicalIndex < OOC_FS_DIRECT_BLOCKS) {
-        *outAbsBlock = inode->direct[logicalIndex];
-        return OOC_ERROR_NONE;
-    }
-    logicalIndex -= OOC_FS_DIRECT_BLOCKS;
-
     uint32_t* buf = malloc(fs->superblock.blockSize);
-    if (!buf) {
-        return OOC_ERROR_OUT_OF_MEMORY;
-    }
+    if (!buf) return OOC_ERROR_OUT_OF_MEMORY;
 
-    uint64_t rangeSize = ptrsPerBlock;
-    for (uint32_t level = 0; level < OOC_FS_INDIRECT_LEVELS; level++) {
-        if ((uint64_t)logicalIndex < rangeSize) {
-            /* Decompose logicalIndex: indices[0]=innermost, indices[level]=outermost */
-            uint32_t indices[OOC_FS_INDIRECT_LEVELS];
-            uint32_t tmp = logicalIndex;
-            for (uint32_t d = 0; d <= level; d++) {
-                indices[d] = tmp % ptrsPerBlock;
-                tmp /= ptrsPerBlock;
+    OOC_Error err = ooc_abstractBlockDeviceRead(fs->device, tableAbsBlock, buf);
+    if (err != OOC_ERROR_NONE) { free(buf); return err; }
+
+    for (uint32_t i = 0; i < ptrsPerBlock; i++) {
+        if (level == 0) {
+            OOC_FsBlockVisit visit = {
+                .event         = OOC_FS_WALK_DATA,
+                .logicalIndex  = *logicalBase,
+                .physicalIndex = buf[i],
+            };
+            err = walk->visitor(walk, &visit);
+            (*logicalBase)++;
+            if (err != OOC_ERROR_NONE) { free(buf); return err; }
+        } else {
+            uint32_t subtreeSize = 1;
+            for (uint32_t l = 0; l < level; l++) subtreeSize *= ptrsPerBlock;
+
+            OOC_FsBlockVisit visit = {
+                .event         = OOC_FS_WALK_TABLE,
+                .logicalIndex  = *logicalBase,
+                .physicalIndex = buf[i],
+            };
+            err = walk->visitor(walk, &visit);
+            if (err != OOC_ERROR_NONE) { free(buf); return err; }
+
+            if (buf[i] != 0) {
+                err = ooc_fsWalkIndirect(walk, buf[i], level - 1, logicalBase);
+                if (err != OOC_ERROR_NONE) { free(buf); return err; }
+            } else {
+                *logicalBase += subtreeSize;
             }
-            /* Walk from outermost to innermost, reusing buf */
-            uint32_t block = inode->indirect[level];
-            for (int d = (int)level; d >= 0; d--) {
-                if (block == 0) {
-                    free(buf);
-                    *outAbsBlock = 0;
-                    return OOC_ERROR_NONE;
-                }
-                OOC_Error err = ooc_abstractBlockDeviceRead(fs->device, block, buf);
-                if (err != OOC_ERROR_NONE) {
-                    free(buf);
-                    return err;
-                }
-                block = buf[indices[d]];
-            }
-            free(buf);
-            *outAbsBlock = block;
-            return OOC_ERROR_NONE;
         }
-        logicalIndex -= (uint32_t)rangeSize;
-        rangeSize *= ptrsPerBlock;
     }
 
     free(buf);
-    return OOC_ERROR_OUT_OF_BOUNDS;
+    return OOC_ERROR_NONE;
 }
 
-static OOC_Error ooc_fsSetBlockPtr(OOC_Fs* fs, OOC_FsInodeDisk* inode,
-                                   uint32_t logicalIndex, uint32_t absBlock) {
+static OOC_Error ooc_fsWalkBlocks(OOC_FsWalk* walk) {
+    OOC_FsInodeDisk* inode = walk->inode;
+    OOC_Fs* fs = walk->fs;
+    uint32_t logicalBase = 0;
+
+    for (uint32_t i = 0; i < OOC_FS_DIRECT_BLOCKS; i++) {
+        OOC_FsBlockVisit visit = {
+            .event         = OOC_FS_WALK_DATA,
+            .logicalIndex  = logicalBase,
+            .physicalIndex = inode->direct[i],
+        };
+        OOC_Error err = walk->visitor(walk, &visit);
+        logicalBase++;
+        if (err != OOC_ERROR_NONE) return err;
+    }
+
     uint32_t ptrsPerBlock = ooc_fsGetPtrsPerBlock(fs);
-
-    if (logicalIndex < OOC_FS_DIRECT_BLOCKS) {
-        inode->direct[logicalIndex] = absBlock;
-        return OOC_ERROR_NONE;
-    }
-    logicalIndex -= OOC_FS_DIRECT_BLOCKS;
-
-    uint32_t* buf = malloc(fs->superblock.blockSize);
-    if (!buf) {
-        return OOC_ERROR_OUT_OF_MEMORY;
-    }
-
-    uint64_t rangeSize = ptrsPerBlock;
     for (uint32_t level = 0; level < OOC_FS_INDIRECT_LEVELS; level++) {
-        if ((uint64_t)logicalIndex < rangeSize) {
-            uint32_t indices[OOC_FS_INDIRECT_LEVELS];
-            uint32_t tmp = logicalIndex;
-            for (uint32_t d = 0; d <= level; d++) {
-                indices[d] = tmp % ptrsPerBlock;
-                tmp /= ptrsPerBlock;
-            }
-            /* Allocate root table block if needed */
-            if (inode->indirect[level] == 0) {
-                uint8_t* zero = calloc(1, fs->superblock.blockSize);
-                if (!zero) {
-                    free(buf);
-                    return OOC_ERROR_OUT_OF_MEMORY;
-                }
-                uint32_t relIdx;
-                OOC_Error err = ooc_fsAddDataBlock(fs, zero, &relIdx);
-                free(zero);
-                if (err != OOC_ERROR_NONE) {
-                    free(buf);
-                    return err;
-                }
-                inode->indirect[level] = fs->superblock.dataBlock + relIdx;
-            }
-            /* Walk from outermost to innermost, allocating table blocks on demand */
-            uint32_t block = inode->indirect[level];
-            for (int d = (int)level; d >= 0; d--) {
-                OOC_Error err = ooc_abstractBlockDeviceRead(fs->device, block, buf);
-                if (err != OOC_ERROR_NONE) {
-                    free(buf);
-                    return err;
-                }
-                if (d == 0) {
-                    buf[indices[0]] = absBlock;
-                    err = ooc_abstractBlockDeviceWrite(fs->device, block, buf);
-                    free(buf);
-                    return err;
-                }
-                if (buf[indices[d]] == 0) {
-                    uint8_t* zero = calloc(1, fs->superblock.blockSize);
-                    if (!zero) {
-                        free(buf);
-                        return OOC_ERROR_OUT_OF_MEMORY;
-                    }
-                    uint32_t relIdx;
-                    err = ooc_fsAddDataBlock(fs, zero, &relIdx);
-                    free(zero);
-                    if (err != OOC_ERROR_NONE) {
-                        free(buf);
-                        return err;
-                    }
-                    buf[indices[d]] = fs->superblock.dataBlock + relIdx;
-                    err = ooc_abstractBlockDeviceWrite(fs->device, block, buf);
-                    if (err != OOC_ERROR_NONE) {
-                        free(buf);
-                        return err;
-                    }
-                }
-                block = buf[indices[d]];
-            }
-            free(buf);
-            return OOC_ERROR_NONE;
-        }
-        logicalIndex -= (uint32_t)rangeSize;
-        rangeSize *= ptrsPerBlock;
-    }
+        uint32_t subtreeSize = 1;
+        for (uint32_t l = 0; l <= level; l++) subtreeSize *= ptrsPerBlock;
 
-    free(buf);
-    return OOC_ERROR_OUT_OF_BOUNDS;
-}
+        OOC_FsBlockVisit visit = {
+            .event         = OOC_FS_WALK_TABLE,
+            .logicalIndex  = logicalBase,
+            .physicalIndex = inode->indirect[level],
+        };
+        OOC_Error err = walk->visitor(walk, &visit);
+        if (err != OOC_ERROR_NONE) return err;
 
-/*
- * Frees all data blocks at logical indices >= keepBlocks.
- * Updates fs->superblock.freeBlocks in memory; does NOT write superblock.
- * Updates inode block-pointer fields in memory; does NOT write the inode.
- */
-static OOC_Error ooc_fsFreeTailBlocks(OOC_Fs* fs, OOC_FsInodeDisk* inode, uint32_t keepBlocks) {
-    uint32_t ptrsPerBlock = ooc_fsGetPtrsPerBlock(fs);
-    OOC_Error err;
-
-    for (uint32_t i = keepBlocks; i < OOC_FS_DIRECT_BLOCKS; i++) {
-        if (inode->direct[i] != 0) {
-            uint32_t relIdx = inode->direct[i] - fs->superblock.dataBlock;
-            err = ooc_fsClearDataBit(fs, relIdx);
-            if (err != OOC_ERROR_NONE) {
-                return err;
-            }
-            fs->superblock.freeBlocks++;
-            inode->direct[i] = 0;
-        }
-    }
-
-    if (inode->indirect[0] != 0) {
-        uint32_t indStart = (keepBlocks > OOC_FS_DIRECT_BLOCKS)
-                          ? keepBlocks - OOC_FS_DIRECT_BLOCKS : 0;
-        if (indStart < ptrsPerBlock) {
-            uint32_t* indBuf = malloc(fs->superblock.blockSize);
-            if (!indBuf) {
-                return OOC_ERROR_OUT_OF_MEMORY;
-            }
-            err = ooc_abstractBlockDeviceRead(fs->device, inode->indirect[0], indBuf);
-            if (err != OOC_ERROR_NONE) {
-                free(indBuf);
-                return err;
-            }
-            bool dirty = false;
-            for (uint32_t j = indStart; j < ptrsPerBlock; j++) {
-                if (indBuf[j] != 0) {
-                    uint32_t relIdx = indBuf[j] - fs->superblock.dataBlock;
-                    err = ooc_fsClearDataBit(fs, relIdx);
-                    if (err != OOC_ERROR_NONE) {
-                        free(indBuf);
-                        return err;
-                    }
-                    fs->superblock.freeBlocks++;
-                    indBuf[j] = 0;
-                    dirty = true;
-                }
-            }
-            if (indStart == 0) {
-                free(indBuf);
-                uint32_t relIdx = inode->indirect - fs->superblock.dataBlock;
-                err = ooc_fsClearDataBit(fs, relIdx);
-                if (err != OOC_ERROR_NONE) {
-                    return err;
-                }
-                fs->superblock.freeBlocks++;
-                inode->indirect[0] = 0;
-            } else if (dirty) {
-                err = ooc_abstractBlockDeviceWrite(fs->device, inode->indirect[0], indBuf);
-                free(indBuf);
-                if (err != OOC_ERROR_NONE) {
-                    return err;
-                }
-            } else {
-                free(indBuf);
-            }
-        }
-    }
-
-    if (inode->indirect[1] != 0) {
-        uint32_t dblBase  = OOC_FS_DIRECT_BLOCKS + ptrsPerBlock;
-        uint32_t dblStart = (keepBlocks > dblBase) ? keepBlocks - dblBase : 0;
-
-        if ((uint64_t)dblStart < (uint64_t)ptrsPerBlock * ptrsPerBlock) {
-            uint32_t outerStart = dblStart / ptrsPerBlock;
-
-            uint32_t* outerBuf = malloc(fs->superblock.blockSize);
-            if (!outerBuf) {
-                return OOC_ERROR_OUT_OF_MEMORY;
-            }
-            err = ooc_abstractBlockDeviceRead(fs->device, inode->indirect[1], outerBuf);
-            if (err != OOC_ERROR_NONE) {
-                free(outerBuf);
-                return err;
-            }
-
-            bool outerDirty = false;
-            for (uint32_t outer = outerStart; outer < ptrsPerBlock; outer++) {
-                if (outerBuf[outer] == 0) {
-                    continue;
-                }
-                uint32_t innerStart = (outer == outerStart && dblStart % ptrsPerBlock != 0)
-                                    ? dblStart % ptrsPerBlock : 0;
-
-                uint32_t* innerBuf = malloc(fs->superblock.blockSize);
-                if (!innerBuf) {
-                    free(outerBuf);
-                    return OOC_ERROR_OUT_OF_MEMORY;
-                }
-                err = ooc_abstractBlockDeviceRead(fs->device, outerBuf[outer], innerBuf);
-                if (err != OOC_ERROR_NONE) {
-                    free(innerBuf);
-                    free(outerBuf);
-                    return err;
-                }
-                bool innerDirty = false;
-                for (uint32_t inner = innerStart; inner < ptrsPerBlock; inner++) {
-                    if (innerBuf[inner] != 0) {
-                        uint32_t relIdx = innerBuf[inner] - fs->superblock.dataBlock;
-                        err = ooc_fsClearDataBit(fs, relIdx);
-                        if (err != OOC_ERROR_NONE) {
-                            free(innerBuf);
-                            free(outerBuf);
-                            return err;
-                        }
-                        fs->superblock.freeBlocks++;
-                        innerBuf[inner] = 0;
-                        innerDirty = true;
-                    }
-                }
-                if (innerStart == 0) {
-                    free(innerBuf);
-                    uint32_t relIdx = outerBuf[outer] - fs->superblock.dataBlock;
-                    err = ooc_fsClearDataBit(fs, relIdx);
-                    if (err != OOC_ERROR_NONE) {
-                        free(outerBuf);
-                        return err;
-                    }
-                    fs->superblock.freeBlocks++;
-                    outerBuf[outer] = 0;
-                    outerDirty = true;
-                } else if (innerDirty) {
-                    err = ooc_abstractBlockDeviceWrite(fs->device, outerBuf[outer], innerBuf);
-                    free(innerBuf);
-                    if (err != OOC_ERROR_NONE) {
-                        free(outerBuf);
-                        return err;
-                    }
-                } else {
-                    free(innerBuf);
-                }
-            }
-
-            if (dblStart == 0) {
-                free(outerBuf);
-                uint32_t relIdx = inode->doubleIndirect - fs->superblock.dataBlock;
-                err = ooc_fsClearDataBit(fs, relIdx);
-                if (err != OOC_ERROR_NONE) {
-                    return err;
-                }
-                fs->superblock.freeBlocks++;
-                inode->indirect[1] = 0;
-            } else if (outerDirty) {
-                err = ooc_abstractBlockDeviceWrite(fs->device, inode->indirect[1], outerBuf);
-                free(outerBuf);
-                if (err != OOC_ERROR_NONE) {
-                    return err;
-                }
-            } else {
-                free(outerBuf);
-            }
+        if (inode->indirect[level] != 0) {
+            err = ooc_fsWalkIndirect(walk, inode->indirect[level], level, &logicalBase);
+            if (err != OOC_ERROR_NONE) return err;
+        } else {
+            logicalBase += subtreeSize;
         }
     }
 
     return OOC_ERROR_NONE;
-}
-
-static uint32_t ooc_fsInodeGetBlockCount(OOC_Fs* fs, const OOC_FsInodeDisk* inode) {
-    if (inode->size == 0) {
-        return 0;
-    }
-    return (inode->size + fs->superblock.blockSize - 1) / fs->superblock.blockSize;
-}
-
-static OOC_Error ooc_fsInodeReadBlock(OOC_Fs* fs, const OOC_FsInodeDisk* inode,
-                                       uint32_t logicalIndex, void* buf) {
-    uint32_t absBlock;
-    OOC_Error err = ooc_fsResolveBlockPtr(fs, inode, logicalIndex, &absBlock);
-    if (err != OOC_ERROR_NONE) {
-        return err;
-    }
-    if (absBlock == 0) {
-        memset(buf, 0, fs->superblock.blockSize);
-        return OOC_ERROR_NONE;
-    }
-    return ooc_abstractBlockDeviceRead(fs->device, absBlock, buf);
-}
-
-static OOC_Error ooc_fsInodeWriteBlock(OOC_Fs* fs, const OOC_FsInodeDisk* inode,
-                                        uint32_t logicalIndex, const void* buf) {
-    uint32_t absBlock;
-    OOC_Error err = ooc_fsResolveBlockPtr(fs, inode, logicalIndex, &absBlock);
-    if (err != OOC_ERROR_NONE) {
-        return err;
-    }
-    if (absBlock == 0) {
-        return OOC_ERROR_NOT_FOUND;
-    }
-    return ooc_abstractBlockDeviceWrite(fs->device, absBlock, buf);
-}
-
-static OOC_Error ooc_fsInodeAppendBlock(OOC_Fs* fs, OOC_FsInodeDisk* inode,
-                                         uint32_t inodeNum, const void* buf) {
-    uint32_t logicalIndex = ooc_fsInodeGetBlockCount(fs, inode);
-    uint32_t relIdx;
-    OOC_Error err = ooc_fsAddDataBlock(fs, buf, &relIdx);
-    if (err != OOC_ERROR_NONE) {
-        return err;
-    }
-    uint32_t absBlock = fs->superblock.dataBlock + relIdx;
-    err = ooc_fsSetBlockPtr(fs, inode, logicalIndex, absBlock);
-    if (err != OOC_ERROR_NONE) {
-        return err;
-    }
-    inode->size = (logicalIndex + 1) * fs->superblock.blockSize;
-    return ooc_fsWriteInode(fs, inodeNum, inode);
-}
-
-static OOC_Error ooc_fsInodePopBlock(OOC_Fs* fs, OOC_FsInodeDisk* inode, uint32_t inodeNum) {
-    uint32_t count = ooc_fsInodeGetBlockCount(fs, inode);
-    if (count == 0) {
-        return OOC_ERROR_NOT_FOUND;
-    }
-    OOC_Error err = ooc_fsFreeTailBlocks(fs, inode, count - 1);
-    if (err != OOC_ERROR_NONE) {
-        return err;
-    }
-    inode->size = (count - 1) * fs->superblock.blockSize;
-    err = ooc_fsWriteInode(fs, inodeNum, inode);
-    if (err != OOC_ERROR_NONE) {
-        return err;
-    }
-    return ooc_fsWriteSuperblock(fs);
 }
 
 static OOC_Error ooc_fsCalculateLayout(OOC_Fs* fs) {
