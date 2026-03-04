@@ -71,6 +71,9 @@ enum OOC_Error {
     OOC_ERROR_INVALID_FORMAT,
     /** @brief No free inodes or data blocks available */
     OOC_ERROR_NO_SPACE,
+    OOC_ERROR_NO_INODE,
+    /** @brief Early termination requested by a walker visitor (not a real error) */
+    OOC_ERROR_STOP,
     /** @brief Total count of error codes (must be last) */
     OOC_ERROR_COUNT
 };

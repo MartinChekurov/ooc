@@ -74,12 +74,11 @@ typedef struct OOC_FsDirentDisk {
 } OOC_FsDirentDisk;                     /* 64 bytes */
 
 /*
- * Opaque file handle returned by ooc_fsFileCreate and directory lookups.
- * The caller must not inspect or modify its contents directly.
+ * Complete definition of the opaque OOC_FsFile handle (forward-declared in oocFs.h).
  */
-typedef struct OOC_FsFile {
+struct OOC_FsFile {
     uint32_t inodeNum;
-} OOC_FsFile;
+};
 
 /*
  * In-memory OOC_Fs object.

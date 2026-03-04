@@ -247,7 +247,9 @@ static OOC_Error ooc_fsWriteInode(OOC_Fs* fs, uint32_t inodeNum, const OOC_FsIno
     return err;
 }
 
-static OOC_Error ooc_fsAddInode(OOC_Fs* fs, const OOC_FsInodeDisk* inode, uint32_t* outInodeNum) {
+/* Reserve an inode number (find free, set bitmap, update superblock)
+ * without writing the inode data — caller does that separately. */
+static OOC_Error ooc_fsAllocInode(OOC_Fs* fs, uint32_t* outInodeNum) {
     OOC_Error err = ooc_fsGetFreeInode(fs, outInodeNum);
     if (err != OOC_ERROR_NONE) {
         return err;
@@ -257,7 +259,11 @@ static OOC_Error ooc_fsAddInode(OOC_Fs* fs, const OOC_FsInodeDisk* inode, uint32
         return err;
     }
     fs->superblock.freeInodes--;
-    err = ooc_fsWriteSuperblock(fs);
+    return ooc_fsWriteSuperblock(fs);
+}
+
+static OOC_Error ooc_fsAddInode(OOC_Fs* fs, const OOC_FsInodeDisk* inode, uint32_t* outInodeNum) {
+    OOC_Error err = ooc_fsAllocInode(fs, outInodeNum);
     if (err != OOC_ERROR_NONE) {
         return err;
     }
@@ -317,17 +323,31 @@ static uint32_t ooc_fsGetPtrsPerBlock(OOC_Fs* fs) {
     return fs->superblock.blockSize / (uint32_t)sizeof(uint32_t);
 }
 
+static OOC_FsFile* ooc_fsAllocFileHandle(uint32_t inodeNum) {
+    OOC_FsFile* f = malloc(sizeof(OOC_FsFile));
+    if (f) {
+        f->inodeNum = inodeNum;
+    }
+    return f;
+}
+
+void ooc_fsFileClose(OOC_FsFile* file) {
+    free(file);
+}
+
 typedef enum {
-    OOC_FS_WALK_DATA,   /* slot holds a data block address */
-    OOC_FS_WALK_TABLE,  /* slot holds a table block address */
+    OOC_FS_WALK_DATA,
+    OOC_FS_WALK_TABLE,
 } OOC_FsWalkEvent;
 
 typedef struct OOC_FsWalk OOC_FsWalk;
 
 typedef struct OOC_FsBlockVisit {
     OOC_FsWalkEvent  event;
-    uint32_t         logicalIndex;   /* DATA: logical block index; TABLE: base index of subtree */
-    uint32_t         physicalIndex;  /* current block number at this slot (0 = unallocated) */
+    uint32_t         logicalIndex;
+    uint32_t*        slot;            /* pointer to this slot in the walker's in-memory buffer */
+    uint32_t         containingBlock; /* physical address of the block holding this slot; 0 = inode */
+    void*            containingBuf;   /* full in-memory buffer of containingBlock; NULL if inode */
 } OOC_FsBlockVisit;
 
 typedef OOC_Error (*OOC_FsBlockVisitor)(OOC_FsWalk* walk, OOC_FsBlockVisit* visit);
@@ -335,95 +355,570 @@ typedef OOC_Error (*OOC_FsBlockVisitor)(OOC_FsWalk* walk, OOC_FsBlockVisit* visi
 struct OOC_FsWalk {
     OOC_Fs*            fs;
     OOC_FsInodeDisk*   inode;
+    uint32_t           inodeNum;
     OOC_FsBlockVisitor visitor;
     void*              ctx;
+    /* internal traversal state */
+    uint32_t           logicalBase;
+    uint32_t*          slotPtr;
+    uint32_t           containingBlock;
+    void*              containingBuf;
+    uint32_t           level;
 };
 
-static OOC_Error ooc_fsWalkIndirect(OOC_FsWalk* walk, uint32_t tableAbsBlock,
-                                     uint32_t level, uint32_t* logicalBase) {
+static OOC_Error ooc_fsWalkIndirect(OOC_FsWalk* walk) {
     OOC_Fs* fs = walk->fs;
     uint32_t ptrsPerBlock = ooc_fsGetPtrsPerBlock(fs);
 
+    /* Capture traversal state as locals before emitting the TABLE event
+     * (visitor may modify the struct) and before recursion overwrites fields. */
+    uint32_t  level          = walk->level;
+    uint32_t* slotPtr        = walk->slotPtr;
+    uint32_t  containingBlock = walk->containingBlock;
+    void*     containingBuf   = walk->containingBuf;
+
+    OOC_FsBlockVisit selfVisit = {
+        .event           = OOC_FS_WALK_TABLE,
+        .logicalIndex    = walk->logicalBase,
+        .slot            = slotPtr,
+        .containingBlock = containingBlock,
+        .containingBuf   = containingBuf,
+    };
+    OOC_Error err = walk->visitor(walk, &selfVisit);
+    if (err != OOC_ERROR_NONE) {
+        return err;
+    }
+    uint32_t tableAbsBlock = *slotPtr;
+    if (tableAbsBlock == 0) {
+        uint32_t subtreeSize = 1;
+        for (uint32_t l = 0; l <= level; l++) {
+            subtreeSize *= ptrsPerBlock;
+        }
+        walk->logicalBase += subtreeSize;
+        return OOC_ERROR_NONE;
+    }
     uint32_t* buf = malloc(fs->superblock.blockSize);
-    if (!buf) return OOC_ERROR_OUT_OF_MEMORY;
-
-    OOC_Error err = ooc_abstractBlockDeviceRead(fs->device, tableAbsBlock, buf);
-    if (err != OOC_ERROR_NONE) { free(buf); return err; }
-
+    if (!buf) {
+        return OOC_ERROR_OUT_OF_MEMORY;
+    }
+    err = ooc_abstractBlockDeviceRead(fs->device, tableAbsBlock, buf);
+    if (err != OOC_ERROR_NONE) {
+        free(buf);
+        return err;
+    }
     for (uint32_t i = 0; i < ptrsPerBlock; i++) {
         if (level == 0) {
-            OOC_FsBlockVisit visit = {
-                .event         = OOC_FS_WALK_DATA,
-                .logicalIndex  = *logicalBase,
-                .physicalIndex = buf[i],
-            };
-            err = walk->visitor(walk, &visit);
-            (*logicalBase)++;
-            if (err != OOC_ERROR_NONE) { free(buf); return err; }
-        } else {
-            uint32_t subtreeSize = 1;
-            for (uint32_t l = 0; l < level; l++) subtreeSize *= ptrsPerBlock;
-
-            OOC_FsBlockVisit visit = {
-                .event         = OOC_FS_WALK_TABLE,
-                .logicalIndex  = *logicalBase,
-                .physicalIndex = buf[i],
-            };
-            err = walk->visitor(walk, &visit);
-            if (err != OOC_ERROR_NONE) { free(buf); return err; }
-
             if (buf[i] != 0) {
-                err = ooc_fsWalkIndirect(walk, buf[i], level - 1, logicalBase);
-                if (err != OOC_ERROR_NONE) { free(buf); return err; }
-            } else {
-                *logicalBase += subtreeSize;
+                OOC_FsBlockVisit visit = {
+                    .event           = OOC_FS_WALK_DATA,
+                    .logicalIndex    = walk->logicalBase,
+                    .slot            = &buf[i],
+                    .containingBlock = tableAbsBlock,
+                    .containingBuf   = buf,
+                };
+                err = walk->visitor(walk, &visit);
+                if (err != OOC_ERROR_NONE) {
+                    break;
+                }
+            }
+            walk->logicalBase++;
+        } else {
+            walk->slotPtr        = &buf[i];
+            walk->containingBlock = tableAbsBlock;
+            walk->containingBuf   = buf;
+            walk->level           = level - 1;
+            err = ooc_fsWalkIndirect(walk);
+            if (err != OOC_ERROR_NONE) {
+                break;
             }
         }
     }
+    free(buf);
+    return err;
+}
 
+static OOC_Error ooc_fsWalkBlocks(OOC_FsWalk* walk) {
+    if (!walk) {
+        return OOC_ERROR_INVALID_ARGUMENT;
+    }
+    if (!walk->inode) {
+        return OOC_ERROR_NULL_POINTER;
+    }
+    if (!walk->visitor) {
+        return OOC_ERROR_NULL_POINTER;
+    }
+    if (!walk->fs) {
+        return OOC_ERROR_NULL_POINTER;
+    }
+    OOC_FsInodeDisk* inode = walk->inode;
+    walk->logicalBase = 0;
+    for (uint32_t i = 0; i < OOC_FS_DIRECT_BLOCKS; i++) {
+        if (inode->direct[i] != 0) {
+            OOC_FsBlockVisit visit = {
+                .event           = OOC_FS_WALK_DATA,
+                .logicalIndex    = walk->logicalBase,
+                .slot            = &inode->direct[i],
+                .containingBlock = 0,
+                .containingBuf   = NULL,
+            };
+            OOC_Error err = walk->visitor(walk, &visit);
+            if (err != OOC_ERROR_NONE) {
+                return err;
+            }
+        }
+        walk->logicalBase++;
+    }
+    for (uint32_t level = 0; level < OOC_FS_INDIRECT_LEVELS; level++) {
+        walk->slotPtr        = &inode->indirect[level];
+        walk->containingBlock = 0;
+        walk->containingBuf   = NULL;
+        walk->level           = level;
+        OOC_Error err = ooc_fsWalkIndirect(walk);
+        if (err != OOC_ERROR_NONE) {
+            return err;
+        }
+    }
+    return OOC_ERROR_NONE;
+}
+
+/* -------------------------------------------------------------------------
+ * ooc_fsInodeAllocBlock — find the first free direct-block slot in inode,
+ * allocate a data block written with blockBuf, and store the absolute block
+ * number in that slot.  The caller is responsible for updating inode.size
+ * and writing the inode back.
+ * ------------------------------------------------------------------------- */
+static OOC_Error ooc_fsInodeAllocBlock(OOC_Fs* fs, OOC_FsInodeDisk* inode, const void* blockBuf) {
+    for (uint32_t i = 0; i < OOC_FS_DIRECT_BLOCKS; i++) {
+        if (inode->direct[i] == 0) {
+            uint32_t blockIdx;
+            OOC_Error err = ooc_fsAddDataBlock(fs, blockBuf, &blockIdx);
+            if (err != OOC_ERROR_NONE) {
+                return err;
+            }
+            inode->direct[i] = fs->superblock.dataBlock + blockIdx;
+            return OOC_ERROR_NONE;
+        }
+    }
+    /* TODO: handle single and double indirect blocks */
+    return OOC_ERROR_NO_SPACE;
+}
+
+/* -------------------------------------------------------------------------
+ * ooc_fsStat
+ * ------------------------------------------------------------------------- */
+
+OOC_Error ooc_fsStat(void* self, const OOC_FsFile* file, OOC_FsStat* out) {
+    if (!self || !file || !out) {
+        return OOC_ERROR_INVALID_ARGUMENT;
+    }
+    OOC_TYPE_CHECK(self, ooc_fsClass(), OOC_ERROR_INVALID_OBJECT);
+    OOC_Fs* fs = self;
+    if (!fs->mounted) {
+        return OOC_ERROR_INVALID_STATE;
+    }
+    OOC_FsInodeDisk inode;
+    OOC_Error err = ooc_fsReadInode(fs, file->inodeNum, &inode);
+    if (err != OOC_ERROR_NONE) {
+        return err;
+    }
+    out->mode      = inode.mode;
+    out->uid       = inode.uid;
+    out->gid       = inode.gid;
+    out->size      = inode.size;
+    out->linkCount = inode.linkCount;
+    out->atime     = inode.atime;
+    out->mtime     = inode.mtime;
+    out->ctime     = inode.ctime;
+    return OOC_ERROR_NONE;
+}
+
+/* -------------------------------------------------------------------------
+ * Directory walking: shared visitor that iterates OOC_FsDirentDisk entries
+ * in every data block of a directory inode, calling an inner per-entry
+ * callback.  Returning OOC_ERROR_STOP from the callback terminates the walk.
+ * ------------------------------------------------------------------------- */
+
+typedef OOC_Error (*OOC_FsDirentVisitor)(OOC_Fs* fs, const OOC_FsDirentDisk* entry, void* ctx);
+
+typedef struct {
+    OOC_FsDirentVisitor entryVisitor;
+    void*               entryCtx;
+} OOC_FsDirWalkCtx;
+
+static OOC_Error ooc_fsDirBlockVisitor(OOC_FsWalk* walk, OOC_FsBlockVisit* visit) {
+    if (visit->event != OOC_FS_WALK_DATA) {
+        return OOC_ERROR_NONE;
+    }
+    OOC_FsDirWalkCtx* ctx = walk->ctx;
+    OOC_Fs* fs = walk->fs;
+    uint8_t* buf = malloc(fs->superblock.blockSize);
+    if (!buf) {
+        return OOC_ERROR_OUT_OF_MEMORY;
+    }
+    OOC_Error err = ooc_abstractBlockDeviceRead(fs->device, *visit->slot, buf);
+    if (err != OOC_ERROR_NONE) {
+        free(buf);
+        return err;
+    }
+    uint32_t entriesPerBlock = fs->superblock.blockSize / (uint32_t)sizeof(OOC_FsDirentDisk);
+    OOC_FsDirentDisk* entries = (OOC_FsDirentDisk*)buf;
+    for (uint32_t i = 0; i < entriesPerBlock; i++) {
+        if (entries[i].inode == 0) {
+            continue;
+        }
+        err = ctx->entryVisitor(fs, &entries[i], ctx->entryCtx);
+        if (err != OOC_ERROR_NONE) {
+            break;
+        }
+    }
+    free(buf);
+    return err;
+}
+
+static OOC_Error ooc_fsDirWalk(OOC_Fs* fs, uint32_t dirInodeNum,
+                                OOC_FsDirentVisitor entryVisitor, void* entryCtx) {
+    OOC_FsInodeDisk inode;
+    OOC_Error err = ooc_fsReadInode(fs, dirInodeNum, &inode);
+    if (err != OOC_ERROR_NONE) {
+        return err;
+    }
+    if (!OOC_FS_IS_DIR(inode.mode)) {
+        return OOC_ERROR_INVALID_ARGUMENT;
+    }
+    OOC_FsDirWalkCtx ctx = { .entryVisitor = entryVisitor, .entryCtx = entryCtx };
+    OOC_FsWalk walk = {
+        .fs       = fs,
+        .inode    = &inode,
+        .inodeNum = dirInodeNum,
+        .visitor  = ooc_fsDirBlockVisitor,
+        .ctx      = &ctx,
+    };
+    return ooc_fsWalkBlocks(&walk);
+}
+
+/* -------------------------------------------------------------------------
+ * ooc_fsLookup
+ * ------------------------------------------------------------------------- */
+
+typedef struct {
+    const char*  name;
+    uint8_t      nameLen;
+    OOC_FsFile*  result;
+} OOC_FsLookupCtx;
+
+static OOC_Error ooc_fsLookupEntry(OOC_Fs* fs, const OOC_FsDirentDisk* entry, void* ctx) {
+    (void)fs;
+    OOC_FsLookupCtx* lctx = ctx;
+    if (entry->nameLen == lctx->nameLen &&
+        memcmp(entry->name, lctx->name, lctx->nameLen) == 0) {
+        lctx->result = ooc_fsAllocFileHandle(entry->inode);
+        if (!lctx->result) {
+            return OOC_ERROR_OUT_OF_MEMORY;
+        }
+        return OOC_ERROR_STOP;
+    }
+    return OOC_ERROR_NONE;
+}
+
+OOC_Error ooc_fsLookup(void* self, const OOC_FsFile* dir, const char* name, OOC_FsFile** out) {
+    if (!self || !dir || !name || !out) {
+        return OOC_ERROR_INVALID_ARGUMENT;
+    }
+    OOC_TYPE_CHECK(self, ooc_fsClass(), OOC_ERROR_INVALID_OBJECT);
+    OOC_Fs* fs = self;
+    if (!fs->mounted) {
+        return OOC_ERROR_INVALID_STATE;
+    }
+    size_t nameLen = strlen(name);
+    if (nameLen == 0 || nameLen > OOC_FS_NAME_MAX) {
+        return OOC_ERROR_INVALID_ARGUMENT;
+    }
+    OOC_FsLookupCtx ctx = { .name = name, .nameLen = (uint8_t)nameLen, .result = NULL };
+    OOC_Error err = ooc_fsDirWalk(fs, dir->inodeNum, ooc_fsLookupEntry, &ctx);
+    if (err == OOC_ERROR_STOP) {
+        *out = ctx.result;
+        return OOC_ERROR_NONE;
+    }
+    if (err == OOC_ERROR_NONE) {
+        return OOC_ERROR_NOT_FOUND;
+    }
+    return err;
+}
+
+/* -------------------------------------------------------------------------
+ * ooc_fsReadDir
+ * ------------------------------------------------------------------------- */
+
+typedef struct {
+    uint32_t          index;
+    uint32_t          count;
+    OOC_FsDirentInfo* out;
+} OOC_FsReadDirCtx;
+
+static OOC_Error ooc_fsReadDirEntry(OOC_Fs* fs, const OOC_FsDirentDisk* entry, void* ctx) {
+    OOC_FsReadDirCtx* rctx = ctx;
+    if (rctx->count == rctx->index) {
+        OOC_FsInodeDisk inode;
+        OOC_Error err = ooc_fsReadInode(fs, entry->inode, &inode);
+        if (err != OOC_ERROR_NONE) {
+            return err;
+        }
+        rctx->out->mode = inode.mode;
+        memcpy(rctx->out->name, entry->name, entry->nameLen + 1u);
+        rctx->count++;
+        return OOC_ERROR_STOP;
+    }
+    rctx->count++;
+    return OOC_ERROR_NONE;
+}
+
+OOC_Error ooc_fsReadDir(void* self, const OOC_FsFile* dir, uint32_t index, OOC_FsDirentInfo* out) {
+    if (!self || !dir || !out) {
+        return OOC_ERROR_INVALID_ARGUMENT;
+    }
+    OOC_TYPE_CHECK(self, ooc_fsClass(), OOC_ERROR_INVALID_OBJECT);
+    OOC_Fs* fs = self;
+    if (!fs->mounted) {
+        return OOC_ERROR_INVALID_STATE;
+    }
+    OOC_FsReadDirCtx ctx = { .index = index, .count = 0, .out = out };
+    OOC_Error err = ooc_fsDirWalk(fs, dir->inodeNum, ooc_fsReadDirEntry, &ctx);
+    if (err == OOC_ERROR_STOP) {
+        return OOC_ERROR_NONE;
+    }
+    if (err == OOC_ERROR_NONE) {
+        return OOC_ERROR_NOT_FOUND;
+    }
+    return err;
+}
+
+/* -------------------------------------------------------------------------
+ * ooc_fsDirAddEntry — write a dirent into dir, reusing a free (inode==0)
+ * slot in an existing data block or appending a new block.
+ * ------------------------------------------------------------------------- */
+
+typedef struct {
+    const OOC_FsDirentDisk* entry;
+    bool                    written;
+} OOC_FsDirFreeSlotCtx;
+
+static OOC_Error ooc_fsDirFreeSlotVisitor(OOC_FsWalk* walk, OOC_FsBlockVisit* visit) {
+    if (visit->event != OOC_FS_WALK_DATA) {
+        return OOC_ERROR_NONE;
+    }
+    OOC_FsDirFreeSlotCtx* ctx = walk->ctx;
+    OOC_Fs* fs = walk->fs;
+    uint32_t blockSize = fs->superblock.blockSize;
+    uint8_t* buf = malloc(blockSize);
+    if (!buf) {
+        return OOC_ERROR_OUT_OF_MEMORY;
+    }
+    OOC_Error err = ooc_abstractBlockDeviceRead(fs->device, *visit->slot, buf);
+    if (err != OOC_ERROR_NONE) {
+        free(buf);
+        return err;
+    }
+    uint32_t entriesPerBlock = blockSize / (uint32_t)sizeof(OOC_FsDirentDisk);
+    OOC_FsDirentDisk* entries = (OOC_FsDirentDisk*)buf;
+    for (uint32_t i = 0; i < entriesPerBlock; i++) {
+        if (entries[i].inode == 0) {
+            entries[i] = *ctx->entry;
+            err = ooc_abstractBlockDeviceWrite(fs->device, *visit->slot, buf);
+            free(buf);
+            if (err == OOC_ERROR_NONE) {
+                ctx->written = true;
+                return OOC_ERROR_STOP;
+            }
+            return err;
+        }
+    }
     free(buf);
     return OOC_ERROR_NONE;
 }
 
-static OOC_Error ooc_fsWalkBlocks(OOC_FsWalk* walk) {
-    OOC_FsInodeDisk* inode = walk->inode;
-    OOC_Fs* fs = walk->fs;
-    uint32_t logicalBase = 0;
+static OOC_Error ooc_fsDirAddEntry(OOC_Fs* fs, uint32_t dirInodeNum,
+                                    const char* name, uint32_t childInodeNum) {
+    OOC_FsDirentDisk entry;
+    memset(&entry, 0, sizeof(entry));
+    entry.inode   = childInodeNum;
+    entry.nameLen = (uint8_t)strlen(name);
+    memcpy(entry.name, name, entry.nameLen + 1u);
 
-    for (uint32_t i = 0; i < OOC_FS_DIRECT_BLOCKS; i++) {
-        OOC_FsBlockVisit visit = {
-            .event         = OOC_FS_WALK_DATA,
-            .logicalIndex  = logicalBase,
-            .physicalIndex = inode->direct[i],
-        };
-        OOC_Error err = walk->visitor(walk, &visit);
-        logicalBase++;
-        if (err != OOC_ERROR_NONE) return err;
+    OOC_FsInodeDisk inode;
+    OOC_Error err = ooc_fsReadInode(fs, dirInodeNum, &inode);
+    if (err != OOC_ERROR_NONE) {
+        return err;
     }
 
-    uint32_t ptrsPerBlock = ooc_fsGetPtrsPerBlock(fs);
-    for (uint32_t level = 0; level < OOC_FS_INDIRECT_LEVELS; level++) {
-        uint32_t subtreeSize = 1;
-        for (uint32_t l = 0; l <= level; l++) subtreeSize *= ptrsPerBlock;
-
-        OOC_FsBlockVisit visit = {
-            .event         = OOC_FS_WALK_TABLE,
-            .logicalIndex  = logicalBase,
-            .physicalIndex = inode->indirect[level],
-        };
-        OOC_Error err = walk->visitor(walk, &visit);
-        if (err != OOC_ERROR_NONE) return err;
-
-        if (inode->indirect[level] != 0) {
-            err = ooc_fsWalkIndirect(walk, inode->indirect[level], level, &logicalBase);
-            if (err != OOC_ERROR_NONE) return err;
-        } else {
-            logicalBase += subtreeSize;
-        }
+    /* Try to write into an existing free slot */
+    OOC_FsDirFreeSlotCtx slotCtx = { .entry = &entry, .written = false };
+    OOC_FsWalk walk = {
+        .fs       = fs,
+        .inode    = &inode,
+        .inodeNum = dirInodeNum,
+        .visitor  = ooc_fsDirFreeSlotVisitor,
+        .ctx      = &slotCtx,
+    };
+    err = ooc_fsWalkBlocks(&walk);
+    if (err == OOC_ERROR_STOP && slotCtx.written) {
+        return OOC_ERROR_NONE;
+    }
+    if (err != OOC_ERROR_NONE && err != OOC_ERROR_STOP) {
+        return err;
     }
 
-    return OOC_ERROR_NONE;
+    /* No free slot — append a new block */
+    uint8_t* buf = calloc(1, fs->superblock.blockSize);
+    if (!buf) {
+        return OOC_ERROR_OUT_OF_MEMORY;
+    }
+    *(OOC_FsDirentDisk*)buf = entry;
+    err = ooc_fsInodeAllocBlock(fs, &inode, buf);
+    free(buf);
+    if (err != OOC_ERROR_NONE) {
+        return err;
+    }
+    inode.size += fs->superblock.blockSize;
+    return ooc_fsWriteInode(fs, dirInodeNum, &inode);
 }
+
+/* -------------------------------------------------------------------------
+ * ooc_fsMkdir
+ * ------------------------------------------------------------------------- */
+
+OOC_Error ooc_fsMkdir(void* self, const OOC_FsFile* parent, const char* name, uint32_t mode) {
+    uint32_t parentInodeNum = parent ? parent->inodeNum : 0;
+    if (!self || !parent || !name) {
+        return OOC_ERROR_INVALID_ARGUMENT;
+    }
+    OOC_TYPE_CHECK(self, ooc_fsClass(), OOC_ERROR_INVALID_OBJECT);
+    OOC_Fs* fs = self;
+    if (!fs->mounted) {
+        return OOC_ERROR_INVALID_STATE;
+    }
+    size_t nameLen = strlen(name);
+    if (nameLen == 0 || nameLen > OOC_FS_NAME_MAX) {
+        return OOC_ERROR_INVALID_ARGUMENT;
+    }
+
+    /* Reserve the inode number first so "." can embed it correctly */
+    uint32_t newInodeNum;
+    OOC_Error err = ooc_fsAllocInode(fs, &newInodeNum);
+    if (err != OOC_ERROR_NONE) {
+        return err;
+    }
+
+    /* Build the initial directory block: "." and ".." */
+    uint8_t* buf = calloc(1, fs->superblock.blockSize);
+    if (!buf) {
+        ooc_fsClearInodeBit(fs, newInodeNum);
+        fs->superblock.freeInodes++;
+        ooc_fsWriteSuperblock(fs);
+        return OOC_ERROR_OUT_OF_MEMORY;
+    }
+    OOC_FsDirentDisk* entries = (OOC_FsDirentDisk*)buf;
+    entries[0].inode = newInodeNum;    entries[0].nameLen = 1; memcpy(entries[0].name, ".",  2);
+    entries[1].inode = parentInodeNum; entries[1].nameLen = 2; memcpy(entries[1].name, "..", 3);
+
+    /* Build the new directory inode */
+    uint32_t now = (uint32_t)time(NULL);
+    OOC_FsInodeDisk inode;
+    memset(&inode, 0, sizeof(inode));
+    inode.mode      = OOC_FS_MODE_DIR | (mode & 0x1FFu);
+    inode.linkCount = 2; /* "." + entry in parent */
+    inode.size      = 2u * (uint32_t)sizeof(OOC_FsDirentDisk);
+    inode.atime     = now;
+    inode.mtime     = now;
+    inode.ctime     = now;
+
+    err = ooc_fsInodeAllocBlock(fs, &inode, buf);
+    free(buf);
+    if (err != OOC_ERROR_NONE) {
+        ooc_fsClearInodeBit(fs, newInodeNum);
+        fs->superblock.freeInodes++;
+        ooc_fsWriteSuperblock(fs);
+        return err;
+    }
+
+    err = ooc_fsWriteInode(fs, newInodeNum, &inode);
+    if (err != OOC_ERROR_NONE) {
+        ooc_fsClearInodeBit(fs, newInodeNum);
+        fs->superblock.freeInodes++;
+        ooc_fsWriteSuperblock(fs);
+        return err;
+    }
+
+    /* Add entry in the parent directory */
+    err = ooc_fsDirAddEntry(fs, parentInodeNum, name, newInodeNum);
+    if (err != OOC_ERROR_NONE) {
+        return err;
+    }
+
+    /* Increment parent's linkCount for the ".." back-reference */
+    OOC_FsInodeDisk parentInode;
+    err = ooc_fsReadInode(fs, parentInodeNum, &parentInode);
+    if (err != OOC_ERROR_NONE) {
+        return err;
+    }
+    parentInode.linkCount++;
+    parentInode.mtime = now;
+    parentInode.ctime = now;
+    return ooc_fsWriteInode(fs, parentInodeNum, &parentInode);
+}
+
+/* -------------------------------------------------------------------------
+ * ooc_fsCreate
+ * ------------------------------------------------------------------------- */
+
+OOC_Error ooc_fsCreate(void* self, const OOC_FsFile* parent, const char* name, uint32_t mode) {
+    uint32_t parentInodeNum = parent ? parent->inodeNum : 0;
+    if (!self || !parent || !name) {
+        return OOC_ERROR_INVALID_ARGUMENT;
+    }
+    OOC_TYPE_CHECK(self, ooc_fsClass(), OOC_ERROR_INVALID_OBJECT);
+    OOC_Fs* fs = self;
+    if (!fs->mounted) {
+        return OOC_ERROR_INVALID_STATE;
+    }
+    size_t nameLen = strlen(name);
+    if (nameLen == 0 || nameLen > OOC_FS_NAME_MAX) {
+        return OOC_ERROR_INVALID_ARGUMENT;
+    }
+
+    uint32_t now = (uint32_t)time(NULL);
+    OOC_FsInodeDisk inode;
+    memset(&inode, 0, sizeof(inode));
+    inode.mode      = OOC_FS_MODE_FILE | (mode & 0x1FFu);
+    inode.linkCount = 1;
+    inode.atime     = now;
+    inode.mtime     = now;
+    inode.ctime     = now;
+
+    uint32_t newInodeNum;
+    OOC_Error err = ooc_fsAddInode(fs, &inode, &newInodeNum);
+    if (err != OOC_ERROR_NONE) {
+        return err;
+    }
+
+    err = ooc_fsDirAddEntry(fs, parentInodeNum, name, newInodeNum);
+    if (err != OOC_ERROR_NONE) {
+        return err;
+    }
+
+    /* Update parent timestamps */
+    OOC_FsInodeDisk parentInode;
+    err = ooc_fsReadInode(fs, parentInodeNum, &parentInode);
+    if (err != OOC_ERROR_NONE) {
+        return err;
+    }
+    parentInode.mtime = now;
+    parentInode.ctime = now;
+    return ooc_fsWriteInode(fs, parentInodeNum, &parentInode);
+}
+
+/* -------------------------------------------------------------------------
+ * Filesystem layout calculation and formatting
+ * ------------------------------------------------------------------------- */
 
 static OOC_Error ooc_fsCalculateLayout(OOC_Fs* fs) {
     size_t blockSize   = ooc_abstractBlockDeviceGetBlockSize(fs->device);
@@ -630,6 +1125,22 @@ OOC_Error ooc_fsUnmount(void* self) {
         return err;
     }
     fs->mounted = false;
+    return OOC_ERROR_NONE;
+}
+
+OOC_Error ooc_fsGetRoot(void* self, OOC_FsFile** out) {
+    if (!self || !out) {
+        return OOC_ERROR_INVALID_ARGUMENT;
+    }
+    OOC_TYPE_CHECK(self, ooc_fsClass(), OOC_ERROR_INVALID_OBJECT);
+    OOC_Fs* fs = self;
+    if (!fs->mounted) {
+        return OOC_ERROR_INVALID_STATE;
+    }
+    *out = ooc_fsAllocFileHandle(fs->superblock.rootInode);
+    if (!*out) {
+        return OOC_ERROR_OUT_OF_MEMORY;
+    }
     return OOC_ERROR_NONE;
 }
 
